@@ -1,0 +1,42 @@
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Apple(2013)]{xcodebuild}
+Apple.
+\newblock xcodebuild, 2013.
+\newblock URL
+  \url{https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html}.
+\newblock [Online; accessed 16-Apr-2017].
+
+\bibitem[Atlassian(2016)]{versioningWorkflows}
+Atlassian.
+\newblock Comparing workflows, 2016.
+\newblock URL
+  \url{https://www.atlassian.com/git/tutorials/comparing-workflows}.
+\newblock [Online; accessed 15-Apr-2017].
+
+\bibitem[Wikipedia(2015)]{wiki:BoochMethod}
+Wikipedia.
+\newblock Booch method --- {W}ikipedia{,} the free encyclopedia, 2015.
+\newblock URL \url{https://en.wikipedia.org/wiki/Booch_method}.
+\newblock [Online; accessed 10-Feb-2017].
+
+\bibitem[Wikipedia(2017{\natexlab{a}})]{wiki:SoftwareVersioning}
+Wikipedia.
+\newblock Software versioning --- {W}ikipedia{,} the free encyclopedia,
+  2017{\natexlab{a}}.
+\newblock URL \url{https://en.wikipedia.org/wiki/Software_versioning}.
+\newblock [Online; accessed 18-Feb-2017].
+
+\bibitem[Wikipedia(2017{\natexlab{b}})]{wiki:VersionControl}
+Wikipedia.
+\newblock Version control --- {W}ikipedia{,} the free encyclopedia,
+  2017{\natexlab{b}}.
+\newblock URL \url{https://en.wikipedia.org/wiki/Version_control}.
+\newblock [Online; accessed 18-Feb-2017].
+
+\end{thebibliography}

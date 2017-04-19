@@ -1,0 +1,24 @@
+\select@language {croatian}
+\contentsline {chapter}{\numberline {1}Uvod}{1}
+\contentsline {chapter}{\numberline {2}Kontinuirana integracija}{2}
+\contentsline {section}{\numberline {2.1}Verzioniranje}{3}
+\contentsline {subsection}{\numberline {2.1.1}Sustavi za kontrolu verzija}{4}
+\contentsline {subsection}{\numberline {2.1.2}Uvod u git}{4}
+\contentsline {subsection}{\numberline {2.1.3}Implementacije procesa verzioniranja}{7}
+\contentsline {subsection}{\numberline {2.1.4}Kontinuirana integracija i verzioniranje}{10}
+\contentsline {section}{\numberline {2.2}Automatizacija izgradnje}{11}
+\contentsline {subsection}{\numberline {2.2.1}Upravljanje ovisnostima}{12}
+\contentsline {subsection}{\numberline {2.2.2}Izgradnja}{13}
+\contentsline {subsection}{\numberline {2.2.3}Automatizacija izgradnje kori\IeC {\v s}tenjem Xcode Servera}{14}
+\contentsline {chapter}{\numberline {3}Zaklju\IeC {\v c}ak}{16}
+\contentsline {chapter}{Literatura}{17}
+\contentsline {chapter}{Appendices}{19}
+\contentsline {chapter}{\numberline {A}Izgradnja iOS aplikacije kori\IeC {\v s}tenjem alata xcodebuild}{20}
+\contentsline {section}{\numberline {A.1}Priprema}{20}
+\contentsline {section}{\numberline {A.2}Upravljanje ovisnostima}{21}
+\contentsline {subsection}{\numberline {A.2.1}CocoaPods}{21}
+\contentsline {subsection}{\numberline {A.2.2}Carthage}{22}
+\contentsline {section}{\numberline {A.3}Izgradnja}{23}
+\contentsline {section}{\numberline {A.4}Testiranje}{23}
+\contentsline {chapter}{\numberline {B}Xcode Server}{25}
+\contentsline {section}{\numberline {B.1}Kontinuirana integracija}{25}
