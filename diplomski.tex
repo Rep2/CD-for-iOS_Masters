@@ -511,7 +511,102 @@ Implementacija prvog pristupa je vrlo jednostavna. Potrebno je sve ovisnosti dod
 
 Implemnetacija drugog pristupa je nešto složenija. Snažno je preporučeno Xcode Server pokrenuti na zasebnom račun operacijskog sustava koji nema administrativna prava. Budući da se Xcode Serveru može pristupiti iz vanjske mreže važno je ograničiti prava koja navedeni alat posjeduje. Izdvajanjem procesa na zasebni račun osiguravamo da alat ima samo prava koja su mu potrebna. S druge strane, kompliciramo proces implementacije strogom kontrolom pristupa. Standardno je kreirati račun s imenom \textit{xcodeserver}.
 
-Računu koji obavlja integraciju je potrebno dati potrebna prava te osigurati potrebne alate. Budući da želimo automatizirati što veću količinu posla, poželjno je sve potrebne alate instalirati u sklopu integracije, a ne zahtijevati njihovo postojanje na računalu. Međutim, što više funkcionalnosti nastojimo automatizirati to se implementacija integacije komplicira. Nastojati ću sljediti ovaj princip gdje god je to moguće.
+Računu koji obavlja integraciju je potrebno dati potrebna prava te osigurati potrebne alate. Budući da želimo automatizirati što veću količinu posla, poželjno je sve potrebne alate instalirati u sklopu integracije, a ne zahtijevati njihovo postojanje na računalu. Međutim, što više funkcionalnosti nastojimo automatizirati to se implementacija integacije komplicira. Dodatno, neke alate ne možemo instalirati bez dopuštenja korisnika.
+
+Za dohvat brojnih alata koristimo \textit{Homebrew} aplikacija. Međutim, instalacija navedene aplikacije zahtijeva \textit{sudo} lozinku. Dodatno, potrebno je xcodeserver računu dopustiti pristup \verb|/usr/local| direktoriju. Naredba pod (1) instalira Homberew, naredba pod (2) kreira ci grupu dok naredbe (3) i (4) omogućuju pristup xcodeserver računu.
+
+\begin{verbatim}
+#Homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com
+    /Homebrew/install/master/install)" (1)
+
+sudo dseditgroup -o create ci (2)
+
+sudo dseditgroup -o edit -a {current_user} -t user ci (3)
+sudo dseditgroup -o edit -a xcodeserver -t user ci
+
+sudo chgrp -R ci /usr/local (4)
+sudo chmod -R g+wr /usr/local
+
+\end{verbatim}
+
+Za provjeru postojanja alata koristim sljedeću naredbu:
+
+\begin{verbatim}
+if command -v {ime_naredbe} >/dev/null 2>&1 ; then
+    echo "{ime_naredbe} installed"
+else
+    echo "{ime_naredbe} not installed"
+fi
+\end{verbatim}
+
+U integraciji koristim nekoliko alata napisanih u jeziku \textit{ruby}. Za njihovo lakše održavanje koristim alat \textit{RVM}. RVM olakšava instaliranje i upravljanje alatima napisanim u jeziku ruby.
+
+RVM se predodređeno instalira na lokaciji \verb|~/.rvm/bin/rvm|. Prije pokretanja instalacija provjeravam postoji li rvm. U slučaju ne postojanja ga instaliram i konfiguriram.
+
+\begin{verbatim}
+if command -v ~/.rvm/bin/rvm >/dev/null 2>&1 ; then
+    echo "RVM found"
+else
+    echo "RVM not found, proceeding with installation"
+
+    \curl -sSL https://get.rvm.iwo | bash -s stable
+    source ~/.rvm/scripts/rvm
+fi
+\end{verbatim}
+
+Nakon instaliranje RVMa možemo instalirati CocoaPods alat. Za navedeno koristim sljedeću skriptu:
+
+\begin{verbatim}
+if command -v /usr/local/bin/podw >/dev/null 2>&1 ; then
+    echo "CocoaPods found"
+else
+    echo "CocoaPods not found, proceeding with installation"
+
+    /usr/local/bin/gem install cocoapods --user-install
+    /usr/local/bin/pod setup
+fi
+\end{verbatim}
+
+U slučaju ne postojanja CocoaPods alata, skripta ga instalira i konfigurira. Sada možemo iskoristiti alat za dohvat ovisnosti. Jednostavno se navigiramo u repozitorij i u slučaju postojanja Podfile datoteke dohvaćamo ovisnosti. Sljedeća naredba dohvaća verzije ovisnosti specificirane u \textit{Pofile.lock} datoteci. Ako ovisnost već postoji onda se ona ne dohvaća ponovno.
+
+\begin{verbatim}
+if [ -f Podfile ]; then
+    pod install
+fi
+\end{verbatim}
+
+Za instalaciju Carthage alata koristimo homebrew. Proces je sličan instalaciji CocoaPods alata.
+
+\begin{verbatim}
+if command -v /usr/local/bin/carthage >/dev/null 2>&1 ; then
+    echo "Carthage found"
+else
+    echo "Carthage not found, proceeding with installation"
+
+    if command -v /usr/local/bin/brew >/dev/null 2>&1 ; then
+        echo "Homebrew needs to be installed "
+    else
+        brew install carthage
+    fi
+fi
+\end{verbatim}
+
+Dohvat ovisnosti je također sličan alatu CocoaPods.
+
+\begin{verbatim}
+if [ -f Cartfile ]; then
+    echo "Fetching dependencies using Carthage"
+
+    /usr/local/bin/carthage update --platform ios --cache-builds
+else
+    echo "Skipped fetching dependencies using Carthage"
+fi
+\end{verbatim}
+
+Korištenjem opcije \verb|--cache-builds| spriječavamo izgradnu već postoječih ovisnosti.
+
+
 
 
 
