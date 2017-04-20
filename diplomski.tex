@@ -298,16 +298,27 @@ Abstract.
 \keywords{Keywords.}
 \end{abstract}
 
+
+
+
 \begin{appendices}
-\chapter{Izgradnja iOS aplikacije korištenjem alata xcodebuild}
+\chapter{Ručna integracija i isporuka iOS aplikacija}
 
-U nastavku je dan primjer ručne implementacije procesa izgradnje, testiranje i arhiviranja jednostavnog projekta za iOS operacijski sustav. Primjer je napisan na macOS Sierra 10.12.4 operacijskom sustavu.
+Ovaj dodatak je tehnički usmjeren pregdle integracije i isporuke iOS aplikacija. Glavni cilj dodatka je upoznati se alatima koje koristim kod razvoja, integracije i isporuke. Sam postupak automatizacija donosi svoje prepreke, zbog ćega je lakše prvo definirati postupak koji automatiziramo.
 
-\section{Priprema}
+Prvi dio dodatka specificira alate koje koristimo u razvoju, njihovu instalaciju i pripremu. Drugi dio obrađuje kontinuiranu integraciju, treći kontinuiranu dostavu a četvrti kontinuiranu isporuku.
 
-Instalirati alat Xcode korištenjem AppStore aplikacije. Slijediti upute kod instalacije. Kreirati željeni tip projekta korištenjm Xcode alata.
+Primjeri su napisani korištenjem operacijskog sustava \textit{macOS Sierra 10.12.4}.
 
-Prvo je potrebno preuzeti \textit{homebrew} aplikaciju. Aplikacija olakšva upravljanje alatim. U terminal njeti sljedeću naredbu. Naredba provjerava postojanje homebrew aplikacije. Ako iste ne postoji onda ju preuzima sa službene stranice. Ako homebrew već postoji, onda naredba osvježava stanje aplikacije.
+\section{Alati}
+
+Sve naredbe su definirane za \textit{bash} ljusku. Ovoj ljusci je najjednostavnije pristupiti korištenjem \textit{termianl} aplikacije dostupne na svakoj instalaciji macOS operacijskog sustava. Naravno, moguće je koristiti bilo koji drugi tekstualno sučelje s pristupom bash ljusci.
+
+Za razvoj iOS aplikacija koristim alat Xcode. Na tržištu postoji nekoliko sličnih alata, ali je Xcode daleko najpopularniji te ga koristimo i za ostvarenje automatizacije. Alat je moguće instalirati korištenjem App Store aplikacije. Slijediti upute kod instalacije. Za testiranje procesa koje ću implementirati u ostatku ovog dodatka kreiram jednostavan testni projekt. Projekt je iOS aplikacija imena \textit{Diplomski_rad} te sadrži jednu shemu istog imena. Projekt sadrži tri cilja: iOS aplikaciju, \textit{unit} i \textit{ui} testove.
+
+\textit{Hombrew} je alat za instaliranje i upravljanje alatima za macOS operacijski sustav. Alat olakšava instalaciju i konfiguraciju nekoliko alata koje koristimo u skolpu razvoja. Mana ovog alata je zahtjevanje \textit{sudo} pristupa zbog ćega instalaciju alata nije moguće automatizirati.
+
+Homebrew je moguće preuzeti korištenjem sljedeće naredbe. Naredba prvo provjerava postojanje Homebrew aplikacije. Ako aplikacija ne postoji, onda ju preuzima sa službene stranice. Ako aplikacija postoji, onda naredba osvježava njeno stanje.
 \begin{verbatim}
 which -s brew
 if [[ $? != 0 ]] ; then
