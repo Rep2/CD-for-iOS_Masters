@@ -302,11 +302,14 @@ Abstract.
 
 
 \begin{appendices}
+
+
+
 \chapter{Ručna integracija i isporuka iOS aplikacija}
 
-Ovaj dodatak je tehnički usmjeren pregdle integracije i isporuke iOS aplikacija. Glavni cilj dodatka je upoznati se alatima koje koristim kod razvoja, integracije i isporuke. Sam postupak automatizacija donosi svoje prepreke, zbog ćega je lakše prvo definirati postupak koji automatiziramo.
+Ovaj dodatak je tehnički usmjeren pregled ručne implementacije procesa integracije i isporuke iOS aplikacije. Glavni cilj dodatka je upoznati se s alatima koje koristimo kod razvoja, integracije i isporuke iOS aplikacija. Sam postupak automatizacija donosi svoje prepreke, zbog čega je lakše prvo definirati postupak koji automatiziramo.
 
-Prvi dio dodatka specificira alate koje koristimo u razvoju, njihovu instalaciju i pripremu. Drugi dio obrađuje kontinuiranu integraciju, treći kontinuiranu dostavu a četvrti kontinuiranu isporuku.
+Prvi dio dodatka specificira alate koje koristim u razvoju, integraciji i isporuci te njihovu instalaciju i pripremu. Drugi dio obrađuje integraciju a treći isporuku.
 
 Primjeri su napisani korištenjem operacijskog sustava \textit{macOS Sierra 10.12.4}.
 
@@ -314,47 +317,83 @@ Primjeri su napisani korištenjem operacijskog sustava \textit{macOS Sierra 10.1
 
 Sve naredbe su definirane za \textit{bash} ljusku. Ovoj ljusci je najjednostavnije pristupiti korištenjem \textit{termianl} aplikacije dostupne na svakoj instalaciji macOS operacijskog sustava. Naravno, moguće je koristiti bilo koji drugi tekstualno sučelje s pristupom bash ljusci.
 
-Za razvoj iOS aplikacija koristim alat Xcode. Na tržištu postoji nekoliko sličnih alata, ali je Xcode daleko najpopularniji te ga koristimo i za ostvarenje automatizacije. Alat je moguće instalirati korištenjem App Store aplikacije. Slijediti upute kod instalacije. Za testiranje procesa koje ću implementirati u ostatku ovog dodatka kreiram jednostavan testni projekt. Projekt je iOS aplikacija imena \textit{Diplomski_rad} te sadrži jednu shemu istog imena. Projekt sadrži tri cilja: iOS aplikaciju, \textit{unit} i \textit{ui} testove.
+Za provjeru postojanja alata koristim sljedeći naredbu. Naredbu ću koristiti za provjeru postojanja alata i izbjegavanje nepotrebne reinstalacije.
 
-\textit{Hombrew} je alat za instaliranje i upravljanje alatima za macOS operacijski sustav. Alat olakšava instalaciju i konfiguraciju nekoliko alata koje koristimo u skolpu razvoja. Mana ovog alata je zahtjevanje \textit{sudo} pristupa zbog ćega instalaciju alata nije moguće automatizirati.
-
-Homebrew je moguće preuzeti korištenjem sljedeće naredbe. Naredba prvo provjerava postojanje Homebrew aplikacije. Ako aplikacija ne postoji, onda ju preuzima sa službene stranice. Ako aplikacija postoji, onda naredba osvježava njeno stanje.
 \begin{verbatim}
-which -s brew
-if [[ $? != 0 ]] ; then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com
-        /Homebrew/install/master/install)"
+if command -v {ime_naredbe} >/dev/null 2>&1 ; then
+    echo "{ime_naredbe} installed"
 else
-    brew update
+    echo "{ime_naredbe} not installed"
 fi
 \end{verbatim}
 
-Preuzeti alate CocoaPods i Carthage:
+Za razvoj iOS aplikacija koristim alat Xcode. Na tržištu postoji nekoliko sličnih alata, ali je Xcode daleko najpopularniji te ga koristimo i za ostvarenje automatizacije integracije. Alat je moguće instalirati korištenjem App Store aplikacije. Za testiranje procesa koje ću implementirati u ostatku ovog dodatka kreiram jednostavan testni projekt. Projekt je iOS aplikacija imena \textit{Diplomski\_rad} te sadrži jednu shemu istog imena. Projekt sadrži tri cilja: iOS aplikaciju, \textit{unit} i \textit{ui} testove.
+
+\textit{Hombrew} je alat za instaliranje i upravljanje alatima za macOS operacijski sustav. Alat olakšava instalaciju i konfiguraciju nekoliko alata koje koristimo u sklopu razvoja. Mana ovog alata je zahtijevanje \textit{sudo} pristupa zbog čega instalaciju alata nije moguće automatizirati.
+
+Homebrew je moguće preuzeti korištenjem sljedeće naredbe. Naredba prvo provjerava postojanje Homebrew aplikacije. Ako aplikacija ne postoji, onda ju preuzima sa službene stranice. Ako aplikacija postoji, onda naredba osvježava njeno stanje. Za dohvaćanje alata koristim naredbu \textit{ruby}. Navedena navedena naredba je prisutna na svim trenutnim instalacijama macOS operacijskog sustava.
+
 \begin{verbatim}
-gem install cocoapods
+if command -v brew >/dev/null 2>&1 ; then
+    brew update
+else
+    ruby -e "$(curl -fsSL https://raw.githubusercontent
+        .com/Homebrew/install/master/install)"
+fi
+\end{verbatim}
 
-brew update
-carthage version
-if [[ $? != 0 ]] ; then
-    brew install carthage
+Za upravljanje ovisnosti koristim alate CocoaPods i Carthage. Navedene alate dohvaćam respektivno naredbom pod (1) i naredbom pod (2). Naredba pod (1) osvježava postojeću instalaciju ako alat već postoji zbog čega ne provjeravam njegovo postojanje.
+
+\begin{verbatim}
+gem install cocoapods --user-install (1)
+
+if ! command -v carthage >/dev/null 2>&1 ; then
+    brew install carthage (2)
 fi
 \end{verbatim}
 
 
-\section{Upravljanje ovisnostima}
+\section{Integracija}
 
-Projekt sadrži četiri vanjske ovisnosti kojima upravlja korištenjem dva alata: CocoaPods i Carthage. Oba alata su podjednako popularna te oba imaju svoje prednosti i mane. Zbog navedenog demonstiram korištenje oba alata.
+Integracija započinje verzioniranjem. Ovaj proces je detaljnije obrađen u drugom poglavlju rada. U sklopu ovog rada koristim alat git a repozitorij objavljujem na Github stranici. Za kontrolu pristupa repozitoriju koristim \textit{ssh} protokol.
+
+Novi ssh ključ se kreira naredbom u nastavku.
+
+\begin{verbatim}
+ssh-keygen -t rsa -b 4096 -C "email@primjer.com"
+\end{verbatim}
+
+Korisno je ključ dodati ssh agentu kako ne bi morali svaki put unositi šifru ključa.
+
+\begin{verbatim}
+eval "$(ssh-agent -s)"
+
+ssh-add -K ~/.ssh/{ime_kljuca}
+\end{verbatim}
+
+Ključ je potrebno dodati na Github. Sljedeća naredba kopira javni dio ključa.
+
+\begin{verbatim}
+pbcopy < ~/.ssh/{ime_kljuca}.pub
+\end{verbatim}
+
+
+\subsection{Upravljanje ovisnostima}
+
+Koristim dva alata za upravljanje ovisnostima - CocoaPods i Carthage. CocoaPods je stariji i široko prihvaćen alat za upravljanje ovisnostima iOS projekata. Alat je centraliziran. Ovisnosti moraju biti unaprijed registrirane na CocoaPods platformi zbog čega je složeno koristiti privatne ovisnosti i ovisnosti koje su još u razvoju. Carthage je noviji alat. Za razliku od CocoaPods alata, Carthage ne izmjenjuje datoteke projekta te je decentraliziran. Ovisnost nije potrebno registrirati te ih je moguće dohvatiti iz bilo kojeg repozitorija.
+
+Kako bi osigurao ispravnost procesa dohvate ovisnosti, projektu dodajem četiri vanjske ovisnosti od kojih je jedna privatna.
 
 \subsection{CocoaPods}
 
-Terminal navigirati u početni direktorij projekta.
+CocoaPods alat se inicijalizira korištenjem naredbe u početnom direktoriju projekta.
 
-Inicijalizirati CocoaPods korištenjem naredbe:
 \begin{verbatim}
 pod init
 \end{verbatim}
 
-Modificirati novokreirani datoteku "Podfile". U dokumentu dodati željene ovisnosti. Kao primjer dodajem dvije ovisnosti: LayoutKit u glavnom cilju i Nimble u testnom cilju. Sadržaj datoteke "Podfile":
+Ovisnosti se dodaju u novokreiranu datoteku \textit{Podfile}. Ovisnosti se dodaju željenom cilju. Ako su ciljevi ugniježđeni, onda se ovisnosti i postavke roditelja odnose i na djecu. Definiram dvije ovisnosti, \textit{LayoutKit} u glavnom cilju i \textit{Nimble} u testnom cilju. Sadržaj datoteke \textit{Podfile} je prikazan u nastavku.
+
 \begin{verbatim}
 use_frameworks!
 
@@ -369,55 +408,42 @@ target 'Diplomski_radTests' do
 end
 \end{verbatim}
 
-Dohvatiti ovisnosti naredbom:
+Ovisnosti se dohvaćaju naredbom:
+
 \begin{verbatim}
 pod install
 \end{verbatim}
 
-Naredva će kreirati novo radno okruženje kojem će dodati glavni projekt te sve preuzete ovisnosti. Za nastavak radi koristiti novo kreirano radno okruženje.
-
-U sklopu kontinuirane integracije koristimo sljedeću naredbu:
-\begin{verbatim}
-if [ -f Podfile ]; then
-    pod install
-fi
-\end{verbatim}
-
-Naredba prvo provjerava postoji li Podfile dokument, te tek u slučaju njegovog postojanja pokreće dohvaćanje ovisnosti.
+Naredba kreira novo radno okruženje pod imenom \textit{Diplomski\_rad.xcworkspace}. Radnom okruženju su dodana dva projekta: glavni projekt i novo kreirani \textit{Pods} projekt koji sadrži sve ovisnosti. Daljnji razvoj je potrebno nastaviti korištenjem kreiranog radnog okruženja.
 
 \subsection{Carthage}
 
-Carthge omogućava korištenje javnih i privatnih ovisnosti. Dovoljno je specificirati lokaciju repozitorija i osigurati potrebna prava prisutpa. Kao primjer ovog specificiram dvije ovisnosti: javnu biblioteku Facebook-SDK i privatni repozitorij.
+Korištenjem alata Carthage također dohvaćam dvije ovisnosti ali je jedna od ovisnosti privatna ovisnost podignuta na privatnom \textit{gitlab} poslužitelju.
 
-U početnom direktoriju repozitorija kreirati datoteku "Cartfile". U datoteci specificirati sve ovisnosti. Sadržaj datoteke "Cartfile".
+U početnom direktoriju repozitorija je potrebno kreirati datoteku pod nazivom \textit{Cartfile}. U datoteci se specificiraju sve javne ovisnosti. Privatne ovisnosti je moguće specificirati u \textit{Cartfile.private} datoteci. Sadržaj datoteke \textit{Cartfile} je prikazan u nastavku.
+
 \begin{verbatim}
-git "git@gitlab.trikoder.net:undabot/visor-ios.git" "rep-carthage"
+git "git@naziv_poslužitelja/ime_projekta.git" "ime_grane"
 
 github "facebook/facebook-sdk-swift"
 \end{verbatim}
 
-Dohvatiti ovisnosti naredbom:
+Ovisnosti se dohvaćaju pokretanjem naredbe:
+
 \begin{verbatim}
 carthage update --platform ios
 \end{verbatim}
 
-Jednako kao i kod CocoaPods alata, u procesu kontinuirane integracije koristimo modificiranu naredbu:
+Dohvaćene ovisnosti je potrebno ručno uključiti u projekt. Potrebno je odabrati željeni cilj te u \textit{General -> Linked Frameworks and Libraries} sekciju dovući željene biblioteke iz \verb|Carthage/Build| direktorija. U \textit{Build phases} sekciji dodati novu \textit{Run script} fazu s naredbom:
 
-\begin{verbatim}
-if [ -f Cartfile ]; then
-    carthage update --platform ios
-fi
-\end{verbatim}
-
-
-Budući da Carthage ne modificira projekt potrebno je ručno uključiti ovisnosti. Otvoriti projekt te odabrati cilj kom se dodaju ovisnosti. U "General" tabu, u "Linked Frameworks and Libraries" sekciju dovući svaku biblioteku iz "Carthage/Build" foldera. U "Build phases" stranici dodati novu  "Run script" fazu s naredbom:
 \begin{verbatim}
 /usr/local/bin/carthage copy-frameworks
 \end{verbatim}
 
-U polje "Input Files" dodati sve ovisnosti u obliku:
+U polje \textit{Input Files} dodati sve željene ovisnosti u obliku:
+
 \begin{verbatim}
-$(SRCROOT)/Carthage/Build/iOS/{imebiblioteke}.framework
+$(SRCROOT)/Carthage/Build/iOS/{ime_biblioteke}.framework
 \end{verbatim}
 
 
@@ -539,16 +565,6 @@ sudo dseditgroup -o edit -a xcodeserver -t user ci
 sudo chgrp -R ci /usr/local (4)
 sudo chmod -R g+wr /usr/local
 
-\end{verbatim}
-
-Za provjeru postojanja alata koristim sljedeću naredbu:
-
-\begin{verbatim}
-if command -v {ime_naredbe} >/dev/null 2>&1 ; then
-    echo "{ime_naredbe} installed"
-else
-    echo "{ime_naredbe} not installed"
-fi
 \end{verbatim}
 
 U integraciji koristim nekoliko alata napisanih u jeziku \textit{ruby}. Za njihovo lakše održavanje koristim alat \textit{RVM}. RVM olakšava instaliranje i upravljanje alatima napisanim u jeziku ruby.

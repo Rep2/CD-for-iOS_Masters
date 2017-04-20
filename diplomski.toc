@@ -13,12 +13,13 @@
 \contentsline {chapter}{\numberline {3}Zaklju\IeC {\v c}ak}{16}
 \contentsline {chapter}{Literatura}{17}
 \contentsline {chapter}{Appendices}{19}
-\contentsline {chapter}{\numberline {A}Izgradnja iOS aplikacije kori\IeC {\v s}tenjem alata xcodebuild}{20}
-\contentsline {section}{\numberline {A.1}Priprema}{20}
-\contentsline {section}{\numberline {A.2}Upravljanje ovisnostima}{21}
-\contentsline {subsection}{\numberline {A.2.1}CocoaPods}{21}
-\contentsline {subsection}{\numberline {A.2.2}Carthage}{22}
-\contentsline {section}{\numberline {A.3}Izgradnja}{23}
-\contentsline {section}{\numberline {A.4}Testiranje}{23}
-\contentsline {chapter}{\numberline {B}Xcode Server}{25}
-\contentsline {section}{\numberline {B.1}Kontinuirana integracija}{25}
+\contentsline {chapter}{\numberline {A}Ru\IeC {\v c}na integracija i isporuka iOS aplikacija}{20}
+\contentsline {section}{\numberline {A.1}Alati}{20}
+\contentsline {section}{\numberline {A.2}Integracija}{21}
+\contentsline {subsection}{\numberline {A.2.1}Upravljanje ovisnostima}{22}
+\contentsline {subsection}{\numberline {A.2.2}CocoaPods}{22}
+\contentsline {subsection}{\numberline {A.2.3}Carthage}{23}
+\contentsline {section}{\numberline {A.3}Izgradnja}{24}
+\contentsline {section}{\numberline {A.4}Testiranje}{24}
+\contentsline {chapter}{\numberline {B}Xcode Server}{26}
+\contentsline {section}{\numberline {B.1}Kontinuirana integracija}{26}

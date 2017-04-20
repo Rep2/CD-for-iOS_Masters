@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.28)  19 APR 2017 21:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.28)  20 APR 2017 10:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -813,7 +813,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 
  [4
 
-]
+] [5]
 Poglavlje 1.
 [1
 
@@ -824,7 +824,7 @@ Poglavlje 2.
 ]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 49.
- [3] [4] <images/Initial_commit.png, id=35, 115.43124pt x 220.825pt>
+ [3] [4] <images/Initial_commit.png, id=38, 115.43124pt x 220.825pt>
 File: images/Initial_commit.png Graphic file (type png)
 
 <use images/Initial_commit.png>
@@ -833,21 +833,21 @@ Package pdftex.def Info: images/Initial_commit.png used on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 82.
 
-<images/Branching.png, id=37, 227.85126pt x 218.8175pt>
+<images/Branching.png, id=40, 227.85126pt x 218.8175pt>
 File: images/Branching.png Graphic file (type png)
 
 <use images/Branching.png>
 Package pdftex.def Info: images/Branching.png used on input line 87.
 (pdftex.def)             Requested size: 136.71179pt x 131.2915pt.
 
-<images/FastForwardA.png, id=38, 226.8475pt x 221.82875pt>
+<images/FastForwardA.png, id=41, 226.8475pt x 221.82875pt>
 File: images/FastForwardA.png Graphic file (type png)
 
 <use images/FastForwardA.png>
 Package pdftex.def Info: images/FastForwardA.png used on input line 97.
 (pdftex.def)             Requested size: 136.10954pt x 133.09825pt.
 
-<images/FastForwardB.png, id=39, 131.49126pt x 222.8325pt>
+<images/FastForwardB.png, id=42, 131.49126pt x 222.8325pt>
 File: images/FastForwardB.png Graphic file (type png)
 
 <use images/FastForwardB.png>
@@ -855,63 +855,63 @@ Package pdftex.def Info: images/FastForwardB.png used on input line 103.
 (pdftex.def)             Requested size: 78.89534pt x 133.70053pt.
  [5 <./images/Initial_commit.png> <./images/Branching.png> <./images/FastForwar
 dA.png> <./images/FastForwardB.png>]
-<images/ConflictA.png, id=47, 219.82124pt x 299.1175pt>
+<images/ConflictA.png, id=50, 219.82124pt x 299.1175pt>
 File: images/ConflictA.png Graphic file (type png)
 
 <use images/ConflictA.png>
 Package pdftex.def Info: images/ConflictA.png used on input line 120.
 (pdftex.def)             Requested size: 131.89375pt x 179.47188pt.
 
-<images/ConflictB.png, id=48, 218.8175pt x 299.1175pt>
+<images/ConflictB.png, id=51, 218.8175pt x 299.1175pt>
 File: images/ConflictB.png Graphic file (type png)
 
 <use images/ConflictB.png>
 Package pdftex.def Info: images/ConflictB.png used on input line 126.
 (pdftex.def)             Requested size: 131.2915pt x 179.47188pt.
  [6 <./images/ConflictA.png> <./images/ConflictB.png>] <images/RebaseA.png, id=
-54, 223.83624pt x 299.1175pt>
+57, 223.83624pt x 299.1175pt>
 File: images/RebaseA.png Graphic file (type png)
 
 <use images/RebaseA.png>
 Package pdftex.def Info: images/RebaseA.png used on input line 144.
 (pdftex.def)             Requested size: 111.91785pt x 149.55838pt.
 
-<images/RebaseB.png, id=55, 223.83624pt x 300.12125pt>
+<images/RebaseB.png, id=58, 223.83624pt x 300.12125pt>
 File: images/RebaseB.png Graphic file (type png)
 
 <use images/RebaseB.png>
 Package pdftex.def Info: images/RebaseB.png used on input line 150.
 (pdftex.def)             Requested size: 111.91785pt x 150.06026pt.
 
-<images/RebaseC.png, id=56, 123.46124pt x 300.12125pt>
+<images/RebaseC.png, id=59, 123.46124pt x 300.12125pt>
 File: images/RebaseC.png Graphic file (type png)
 
 <use images/RebaseC.png>
 Package pdftex.def Info: images/RebaseC.png used on input line 156.
 (pdftex.def)             Requested size: 61.73045pt x 150.06026pt.
  [7 <./images/RebaseA.png> <./images/RebaseB.png> <./images/RebaseC.png>] <imag
-es/FeatureBranch.png, id=63, 566.115pt x 292.09125pt>
+es/FeatureBranch.png, id=66, 566.115pt x 292.09125pt>
 File: images/FeatureBranch.png Graphic file (type png)
 
 <use images/FeatureBranch.png>
 Package pdftex.def Info: images/FeatureBranch.png used on input line 176.
 (pdftex.def)             Requested size: 283.05681pt x 146.04526pt.
  [8 <./images/FeatureBranch.png>]
-<images/Gitflow.png, id=68, 700.6175pt x 428.60126pt>
+<images/Gitflow.png, id=72, 700.6175pt x 428.60126pt>
 File: images/Gitflow.png Graphic file (type png)
  <use images/Gitflow.png>
 Package pdftex.def Info: images/Gitflow.png used on input line 189.
 (pdftex.def)             Requested size: 350.30789pt x 214.3001pt.
 
 [9] [10 <./images/Gitflow.png>]
-<images/BuildProcess.png, id=77, 191.71625pt x 395.4775pt>
+<images/BuildProcess.png, id=80, 191.71625pt x 395.4775pt>
 File: images/BuildProcess.png Graphic file (type png)
 
 <use images/BuildProcess.png>
 Package pdftex.def Info: images/BuildProcess.png used on input line 219.
 (pdftex.def)             Requested size: 95.85788pt x 197.73827pt.
  [11] [12 <./images/BuildProcess.png>] [13]
-<images/TargetScheme.png, id=88, 633.36626pt x 239.89626pt>
+<images/TargetScheme.png, id=91, 633.36626pt x 239.89626pt>
 File: images/TargetScheme.png Graphic file (type png)
 
 <use images/TargetScheme.png>
@@ -951,40 +951,70 @@ Underfull \hbox (badness 3769) in paragraph at lines 29--34
 
 ]
 Dodatak A.
-
-Overfull \hbox (12.23485pt too wide) in paragraph at lines 319--319
-[]    \T1/pcr/m/n/12 ruby -e "$(curl -fsSL https://raw.githubusercontent.com[] 
-
- []
-
 [20
 
-] [21]
-Overfull \hbox (62.63483pt too wide) in paragraph at lines 386--386
-[]\T1/pcr/m/n/12 git "git@gitlab.trikoder.net:undabot/visor-ios.git" "rep-carth
-age"[] 
- []
-
-[22] [23] [24]
+] [21] [22] [23] [24] [25]
 Dodatak B.
-[25
+[26
 
-] <images/XcodeServerOptions.png, id=129, 740.7675pt x 437.635pt>
+] <images/XcodeServerOptions.png, id=136, 740.7675pt x 437.635pt>
 File: images/XcodeServerOptions.png Graphic file (type png)
 
 <use images/XcodeServerOptions.png>
-Package pdftex.def Info: images/XcodeServerOptions.png used on input line 486.
+Package pdftex.def Info: images/XcodeServerOptions.png used on input line 521.
 (pdftex.def)             Requested size: 370.38284pt x 218.81696pt.
 
-<images/XcodeServerIntegrationPeriods.png, id=130, 739.76375pt x 436.63126pt>
+<images/XcodeServerIntegrationPeriods.png, id=137, 739.76375pt x 436.63126pt>
 File: images/XcodeServerIntegrationPeriods.png Graphic file (type png)
 
 <use images/XcodeServerIntegrationPeriods.png>
 Package pdftex.def Info: images/XcodeServerIntegrationPeriods.png used on input
- line 495.
+ line 530.
 (pdftex.def)             Requested size: 369.88097pt x 218.3151pt.
- [26 <./images/XcodeServerOptions.png>] [27 <./images/XcodeServerIntegrationPer
-iods.png>] [28] (./diplomski.aux) ) 
+ [27 <./images/XcodeServerOptions.png>] [28 <./images/XcodeServerIntegrationPer
+iods.png>]
+Overfull \hbox (48.23483pt too wide) in paragraph at lines 566--566
+[]\T1/pcr/m/n/12 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.c
+om[] 
+ []
+
+[29]
+Overfull \hbox (19.43484pt too wide) in paragraph at lines 594--594
+[]    \T1/pcr/m/n/12 echo "CocoaPods not found, proceeding with installation"[]
+ 
+ []
+
+
+Overfull \hbox (19.43484pt too wide) in paragraph at lines 618--618
+[]\T1/pcr/m/n/12 if command -v /usr/local/bin/carthage >/dev/null 2>&1 ; then[]
+ 
+ []
+
+
+Overfull \hbox (12.23485pt too wide) in paragraph at lines 618--618
+[]    \T1/pcr/m/n/12 echo "Carthage not found, proceeding with installation"[] 
+
+ []
+
+[30]
+Overfull \hbox (19.43484pt too wide) in paragraph at lines 618--618
+[]    \T1/pcr/m/n/12 if command -v /usr/local/bin/brew >/dev/null 2>&1 ; then[]
+ 
+ []
+
+
+Overfull \hbox (48.23483pt too wide) in paragraph at lines 630--630
+[]    \T1/pcr/m/n/12 /usr/local/bin/carthage update --platform ios --cache-buil
+ds[] 
+ []
+
+
+Overfull \hbox (5.11284pt too wide) in paragraph at lines 632--633
+[]\T1/ptm/m/n/12 Kori²tenjem op-cije []\T1/pcr/m/n/12 --cache-builds \T1/ptm/m/
+n/12 spri-je-£a-vamo iz-gradnu ve¢ pos-to-je-£ih ovis-
+ []
+
+[31] (./diplomski.aux) ) 
 Here is how much of TeX's memory you used:
  8771 strings out of 493014
  124319 string characters out of 6133351
@@ -993,19 +1023,19 @@ Here is how much of TeX's memory you used:
  62260 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,9n,40p,1219b,517s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/en
-c/dvips/base/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/urw/courier
-/ucrr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrro8a
-.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive
-/2016/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texm
-f-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fon
-ts/type1/urw/times/utmri8a.pfb>
-Output written on diplomski.pdf (32 pages, 501031 bytes).
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/bas
+e/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/
+2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/ur
+w/times/utmri8a.pfb>
+Output written on diplomski.pdf (36 pages, 511959 bytes).
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
+ 184 PDF objects out of 1000 (max. 8388607)
+ 106 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
