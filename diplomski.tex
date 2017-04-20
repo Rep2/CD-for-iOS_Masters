@@ -514,6 +514,14 @@ Naredba će pokrenuti testni cilj odabrane sheme na odabranom radnom okruženju.
 
 U sklopu osiguranja kvalitete provodim dva procesa: provjeru pokrivenosti koda testovima i statičku provjeru koda alatom \textit{Swiftlint}.
 
+Provjeru pokrivenosti koda dobivamo koristeći parametar \verb|-showBuildSettings| pri izgradnji i testiranju projekta. Primjer naredbe:
+
+\begin{verbatim}
+xcodebuild -workspace Diplomski_rad.xcworkspace
+    -scheme Diplomski_rad -showBuildSettings
+\end{verbatim}
+
+Naredba podatke o pokrivenosti koda sprema u \verb|~/Library/Developer/|\\\verb|Xcode/DerivedData/{ime_projekta+slučajan_identifikator}/|\\\verb|Build/Intermediates/CodeCoverage| direktoriju. Generirani dokumenti su teško čitljivi. Postoji nekoliko alata koji ih obrađuju i generiraju čitljive rezultati. Budući da u razvoju koristim Xcode, neću u njih dublje ulaziti.
 
 Switlint je alat za statičku analizu koda napisanog u programskom jeziku Swift. Alat definira veliki broj pravila kojim nastoji osigurati praćenje stila i konvencija jezika Swift. Većina pravila se odnosi na izgled i format koda, ali postoje i pravila koja nastoje izbjeći pojavu grešaka.
 
