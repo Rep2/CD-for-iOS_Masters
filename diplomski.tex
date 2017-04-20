@@ -447,21 +447,25 @@ $(SRCROOT)/Carthage/Build/iOS/{ime_biblioteke}.framework
 \end{verbatim}
 
 
-\section{Izgradnja}
+\section{Integracija}
 
-Nakon navigiranja u direktorij projekta za izgradnju je dovoljno pokrenuti naredbu \verb|xcodebuild|. Ukoliko u direktoriju postoji samo jedan projekt, naredba za navedeni projekt uzima predodređenu shemu pokreće operaciju izgradnja za cilj definiran shemom.
+Za izgradnju, testiranje i arhiviranje iOS aplikacija koristim \textit{xcodebuild} alat. Alat je razvio Apple za izgradnju macOS aplikacija. U međuvremenu je alat proširen te danas podržava razvoj programske potpore za iOS, tvOS i watchOS operacijske sustave. Xcode i Xcode Server alati koriste xcodebuild za obavljanje svih operacija vezanih uz projekt. Iako se u procesu automatizacije nećemo direktno susretati s alatom, korisno je znati što se dešava u pozadini.
 
-Projekt i cilj se odabiru naredbom
+Alat je vrlo jednostavan za uporabu. Dovoljno je pokrenuti naredbu \verb|xcodebuild| u početnom direktoriju projekta. Ako u direktoriju postoji samo jedan projekt, naredba pokreće proces izgradnje za predodređenu shemu projekta.
+
+Projekt i cilj se je moguće odabrati korištenjem sljedećih parametara:
+
 \begin{verbatim}
 xcodebuild [-project imeprojekta] [-target imecilja]
 \end{verbatim}
 
-Shema projekta se odabire naredbom
+Shema projekta se odabire \verb|scheme| parametrom:
+
 \begin{verbatim}
 xcodebuild [-project imeprojekta] -scheme imesheme
 \end{verbatim}
 
-Ukoliko se ne specificira operacija xcodebuild koristi \verb|build| opearciiju. Ostale podržane operacije su:
+Naredba prima operaciju kao argument. Ako operacija nije specificirana, xcodebuild naredba predodređeno pokreće izgradnju \eng{build}. Ostale podržane operacije su:
 
 \verb|analyze| - Izgrađuje i analizira cilj ili shemu
 
@@ -471,9 +475,11 @@ Ukoliko se ne specificira operacija xcodebuild koristi \verb|build| opearciiju. 
 
 \verb|installsrc| - Kopira izvorni kod u \verb|SRCROOT|
 
-\verb|install| - Izgrađuje i insalira projekt u ciljni direktorij projekta \verb|DSTROOT|
+\verb|install| - Izgrađuje i instalira projekt u ciljni direktorij projekta \verb|DSTROOT|
 
-\verb|clean| - Briše međupodatke i rezultate izgradnje
+\verb|clean| - Briše metapodatke i rezultate izgradnje
+
+Ispis xcodebuild operacije je vrlo detaljan. Operacija ispisuje sve postupke koje obavlja te daje detaljno izvješće u slučaju pogreške. Međutim, ovaj tip ispisa je teško čitljiv. Zbog navedenog se često koriste alati koji parsiraju i prikazuju ispis u lakše čitljivom formatu.
 
 \section{Testiranje}
 

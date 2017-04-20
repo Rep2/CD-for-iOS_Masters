@@ -19,7 +19,7 @@
 \contentsline {subsection}{\numberline {A.2.1}Upravljanje ovisnostima}{22}
 \contentsline {subsection}{\numberline {A.2.2}CocoaPods}{22}
 \contentsline {subsection}{\numberline {A.2.3}Carthage}{23}
-\contentsline {section}{\numberline {A.3}Izgradnja}{24}
+\contentsline {section}{\numberline {A.3}Integracija}{24}
 \contentsline {section}{\numberline {A.4}Testiranje}{24}
 \contentsline {chapter}{\numberline {B}Xcode Server}{26}
 \contentsline {section}{\numberline {B.1}Kontinuirana integracija}{26}

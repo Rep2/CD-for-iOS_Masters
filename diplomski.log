@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.28)  20 APR 2017 10:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.28)  20 APR 2017 16:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -961,7 +961,7 @@ Dodatak B.
 File: images/XcodeServerOptions.png Graphic file (type png)
 
 <use images/XcodeServerOptions.png>
-Package pdftex.def Info: images/XcodeServerOptions.png used on input line 521.
+Package pdftex.def Info: images/XcodeServerOptions.png used on input line 529.
 (pdftex.def)             Requested size: 370.38284pt x 218.81696pt.
 
 <images/XcodeServerIntegrationPeriods.png, id=137, 739.76375pt x 436.63126pt>
@@ -969,47 +969,47 @@ File: images/XcodeServerIntegrationPeriods.png Graphic file (type png)
 
 <use images/XcodeServerIntegrationPeriods.png>
 Package pdftex.def Info: images/XcodeServerIntegrationPeriods.png used on input
- line 530.
+ line 538.
 (pdftex.def)             Requested size: 369.88097pt x 218.3151pt.
  [27 <./images/XcodeServerOptions.png>] [28 <./images/XcodeServerIntegrationPer
 iods.png>]
-Overfull \hbox (48.23483pt too wide) in paragraph at lines 566--566
+Overfull \hbox (48.23483pt too wide) in paragraph at lines 574--574
 []\T1/pcr/m/n/12 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.c
 om[] 
  []
 
 [29]
-Overfull \hbox (19.43484pt too wide) in paragraph at lines 594--594
+Overfull \hbox (19.43484pt too wide) in paragraph at lines 602--602
 []    \T1/pcr/m/n/12 echo "CocoaPods not found, proceeding with installation"[]
  
  []
 
 
-Overfull \hbox (19.43484pt too wide) in paragraph at lines 618--618
+Overfull \hbox (19.43484pt too wide) in paragraph at lines 626--626
 []\T1/pcr/m/n/12 if command -v /usr/local/bin/carthage >/dev/null 2>&1 ; then[]
  
  []
 
 
-Overfull \hbox (12.23485pt too wide) in paragraph at lines 618--618
+Overfull \hbox (12.23485pt too wide) in paragraph at lines 626--626
 []    \T1/pcr/m/n/12 echo "Carthage not found, proceeding with installation"[] 
 
  []
 
 [30]
-Overfull \hbox (19.43484pt too wide) in paragraph at lines 618--618
+Overfull \hbox (19.43484pt too wide) in paragraph at lines 626--626
 []    \T1/pcr/m/n/12 if command -v /usr/local/bin/brew >/dev/null 2>&1 ; then[]
  
  []
 
 
-Overfull \hbox (48.23483pt too wide) in paragraph at lines 630--630
+Overfull \hbox (48.23483pt too wide) in paragraph at lines 638--638
 []    \T1/pcr/m/n/12 /usr/local/bin/carthage update --platform ios --cache-buil
 ds[] 
  []
 
 
-Overfull \hbox (5.11284pt too wide) in paragraph at lines 632--633
+Overfull \hbox (5.11284pt too wide) in paragraph at lines 640--641
 []\T1/ptm/m/n/12 Kori²tenjem op-cije []\T1/pcr/m/n/12 --cache-builds \T1/ptm/m/
 n/12 spri-je-£a-vamo iz-gradnu ve¢ pos-to-je-£ih ovis-
  []
@@ -1032,7 +1032,7 @@ exlive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/
 -dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/font
 s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on diplomski.pdf (36 pages, 511959 bytes).
+Output written on diplomski.pdf (36 pages, 512788 bytes).
 PDF statistics:
  184 PDF objects out of 1000 (max. 8388607)
  106 compressed objects within 2 object streams
