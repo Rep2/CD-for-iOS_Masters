@@ -320,7 +320,7 @@ Sve naredbe su definirane za \textit{bash} ljusku. Ovoj ljusci je najjednostavni
 Za provjeru postojanja alata koristim sljedeći naredbu. Naredbu ću koristiti za provjeru postojanja alata i izbjegavanje nepotrebne reinstalacije.
 
 \begin{verbatim}
-if command -v {ime_naredbe} >/dev/null 2>&1 ; then
+if which {ime_naredbe} >/dev/null; then
     echo "{ime_naredbe} installed"
 else
     echo "{ime_naredbe} not installed"
@@ -334,7 +334,7 @@ Za razvoj iOS aplikacija koristim alat Xcode. Na tržištu postoji nekoliko sli�
 Homebrew je moguće preuzeti korištenjem sljedeće naredbe. Naredba prvo provjerava postojanje Homebrew aplikacije. Ako aplikacija ne postoji, onda ju preuzima sa službene stranice. Ako aplikacija postoji, onda naredba osvježava njeno stanje. Za dohvaćanje alata koristim naredbu \textit{ruby}. Navedena navedena naredba je prisutna na svim trenutnim instalacijama macOS operacijskog sustava.
 
 \begin{verbatim}
-if command -v brew >/dev/null 2>&1 ; then
+if which brew >/dev/null; then
     brew update
 else
     ruby -e "$(curl -fsSL https://raw.githubusercontent
@@ -347,9 +347,15 @@ Za upravljanje ovisnosti koristim alate CocoaPods i Carthage. Navedene alate doh
 \begin{verbatim}
 gem install cocoapods --user-install (1)
 
-if ! command -v carthage >/dev/null 2>&1 ; then
+if ! which carthage >/dev/null; then
     brew install carthage (2)
 fi
+\end{verbatim}
+
+\textit{Swiftlint} je alat za statičku analizu jezika Swift \eng{linting tool}. Alat je moguće preuzetim korištenjem Homebrew alata.
+
+\begin{verbatim}
+brew install swiftlint
 \end{verbatim}
 
 
@@ -384,7 +390,7 @@ Koristim dva alata za upravljanje ovisnostima - CocoaPods i Carthage. CocoaPods 
 
 Kako bi osigurao ispravnost procesa dohvate ovisnosti, projektu dodajem četiri vanjske ovisnosti od kojih je jedna privatna.
 
-\subsection{CocoaPods}
+\paragraph{CocoaPods}
 
 CocoaPods alat se inicijalizira korištenjem naredbe u početnom direktoriju projekta.
 
@@ -416,7 +422,7 @@ pod install
 
 Naredba kreira novo radno okruženje pod imenom \textit{Diplomski\_rad.xcworkspace}. Radnom okruženju su dodana dva projekta: glavni projekt i novo kreirani \textit{Pods} projekt koji sadrži sve ovisnosti. Daljnji razvoj je potrebno nastaviti korištenjem kreiranog radnog okruženja.
 
-\subsection{Carthage}
+\paragraph{Carthage}
 
 Korištenjem alata Carthage također dohvaćam dvije ovisnosti ali je jedna od ovisnosti privatna ovisnost podignuta na privatnom \textit{gitlab} poslužitelju.
 
@@ -448,6 +454,8 @@ $(SRCROOT)/Carthage/Build/iOS/{ime_biblioteke}.framework
 
 
 \section{Integracija}
+
+\subsection{Izgradnja}
 
 Za izgradnju, testiranje i arhiviranje iOS aplikacija koristim \textit{xcodebuild} alat. Alat je razvio Apple za izgradnju macOS aplikacija. U međuvremenu je alat proširen te danas podržava razvoj programske potpore za iOS, tvOS i watchOS operacijske sustave. Xcode i Xcode Server alati koriste xcodebuild za obavljanje svih operacija vezanih uz projekt. Iako se u procesu automatizacije nećemo direktno susretati s alatom, korisno je znati što se dešava u pozadini.
 
@@ -481,14 +489,18 @@ Naredba prima operaciju kao argument. Ako operacija nije specificirana, xcodebui
 
 Ispis xcodebuild operacije je vrlo detaljan. Operacija ispisuje sve postupke koje obavlja te daje detaljno izvješće u slučaju pogreške. Međutim, ovaj tip ispisa je teško čitljiv. Zbog navedenog se često koriste alati koji parsiraju i prikazuju ispis u lakše čitljivom formatu.
 
-\section{Testiranje}
+\subsection{Testiranje}
 
-Testovi iOS aplikacija se pokreću u iOS simulatoru. Zbog navedenog je potrebno imati barem jedan simulator prihvatljive verzije operacijskog sustava. Sve je simulatore moguće dohvatiti pomoću Xcode alata. Za prikaz dostupnih simulatora je moguće iskoristiti naredbu:
+Xcode projekt implementira dvije vrste testova: \textit{Unit} i \textit{UI} testove. Oba tipa testa su implementirani kao ciljevi unutar projekta koji pokazuju na cilj aplikacije. Unit testovi služe za testiranje unutarnje implementacije projekta. Ovaj tip testa se pokreće kao omotač oko izvorne aplikacije te pristupa njenim resursima. UI test omogućava testiranje ponašanja aplikacije u stvarnom svijetu. Navedeni tip testa simulira korisničku interakciju te provjerava ponašanje aplikacije.
+
+Oba tipa testa se pokreću na iOS simulatoru. Zbog navedenog je potrebno imati barem jedan simulator prihvatljive verzije operacijskog sustava. Simulatore je moguće dohvatiti pomoću Xcode alata. Za prikaz dostupnih simulatora je moguće iskoristiti naredbu:
+
 \begin{verbatim}
 instruments -s devices
 \end{verbatim}
 
 Testiranje se pokreće naredbom:
+
 \begin{verbatim}
 xcodebuild test -workspace Diplomski_rad.xcworkspace
     -scheme Diplomski_rad
@@ -496,9 +508,26 @@ xcodebuild test -workspace Diplomski_rad.xcworkspace
     name=iPhone 7'
 \end{verbatim}
 
-Naredba će pokrenuti testni cilj odabrane sheme na odabranom radnom okruženju. Koristi se radno okruženje umjesto projekta zbog CocoaPods. Odabir drogog projekta, cilja i sheme se radi jednako kao i kod izgradnje.
+Naredba će pokrenuti testni cilj odabrane sheme na odabranom radnom okruženju. Odabir drugog projekta, cilja i sheme se radi jednako kao i kod izgradnje. Za pokretanje drugog testnog cilja je potrebno kreirati novu shemu te joj kao cilj testne operacije postaviti željeni testni cilj.
 
-Za pokretanje UI testova je potrebno kreirati novu shemu te joj kao cilj testne operacije postaviti cilj koji sadrži UI testove.
+\subsection{Osiguranje kvalitete}
+
+U sklopu osiguranja kvalitete provodim dva procesa: provjeru pokrivenosti koda testovima i statičku provjeru koda alatom \textit{Swiftlint}.
+
+
+Switlint je alat za statičku analizu koda napisanog u programskom jeziku Swift. Alat definira veliki broj pravila kojim nastoji osigurati praćenje stila i konvencija jezika Swift. Većina pravila se odnosi na izgled i format koda, ali postoje i pravila koja nastoje izbjeći pojavu grešaka.
+
+Alat se pokreće pozivanjem naredbe \verb|swiftlint| u početnom direktoriju projekta. Ispis alata je sličan onome xcodebuild alata. Za lakše praćenje pogrešaka i pokretanje naredbe kod svakog procesa izgradnje je moguće Xcode projektu dodati novu \verb|Run Script| fazu s naredbom:
+
+\begin{verbatim}
+if which swiftlint >/dev/null; then
+    swiftlint
+else
+    echo "warning: Swiftlint nije instaliran"
+fi
+\end{verbatim}
+
+\section{Isporuka}
 
 \chapter{Xcode Server}
 
