@@ -27,3 +27,5 @@
 \contentsline {chapter}{\numberline {B}Xcode Server}{27}
 \contentsline {section}{\numberline {B.1}Priprema}{28}
 \contentsline {section}{\numberline {B.2}Kontinuirana integracija}{29}
+\contentsline {subsection}{\numberline {B.2.1}CocoaPods}{31}
+\contentsline {subsection}{\numberline {B.2.2}Carthage}{32}

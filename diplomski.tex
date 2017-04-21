@@ -559,9 +559,19 @@ MacOS Server i Xcode je moguće preuzeti korištenjem App Store aplikacije. Cije
 
 Nakon instalacije macOS Servera je potrebno alat povezati s Xcode aplikacijom. Potrebno je pokrenuti macOS Server aplikaciju te u izborniku odabrati opciju Xcode. Pojavit će se ekran za odabir aplikacija. Pronaći lokaciju instalacije željene verzije Xcode alata te ga odabirom povezati s macOS Serverom.
 
+Xcode alat je potrebno povezati s Apple Developer računom. Dovoljno je otvoriti Xcode alat i unijeti Apple Developer email i lozinku.
+
 Nakon povezivanja alata je potrebno odabrati račun operacijskog sustava na kojem će se izvršavati integracije. Zbog sigurnosti je preporučeno macOS Server pokrenuti na zasebnom račun operacijskog sustava koji nema administrativna prava. Budući da se Xcode Serveru može pristupiti iz vanjske mreže, važno je ograničiti prava koja alat posjeduje. Izdvajanjem procesa na zasebni račun osiguravamo da alat ima samo ona prava koja su mu potrebna. Moguće je kreirati račun proizvoljnog imena, ali je standardno koristiti ime \textit{xcodeserver}.
 
 Računu na kojem se obavlja integracija je potrebno dati potrebna prava te osigurati postojanje potrebnih alata. Budući da želimo automatizirati što veću količinu posla, poželjno je što više potrebnih alate instalirati u sklopu integracije, a ne zahtijevati njihovo prethodno postojanje na računalu. Međutim, što više funkcionalnosti nastojimo automatizirati to se implementacija integracije više komplicira.
+
+Za dohvat brojnih alata koristim alat \verb|ruby|. Alat je dostupan na svim instalacijama macOS operacijskog sustava te se predodređeno nalazi u \verb|/usr/bin| direktoriju. Naredba u nastavku dodaje alat ruby i alate koje preuzimam korištenjem rubya u \verb|PARH| varijablu xcodeserver računa. U slučaju izmjene lokacije ruby alata ili lokacije instalacije alata je potrebno izmjeniti dane lokacije u naredbi.
+
+\begin{verbatim}
+su - xcodeserver
+
+export PATH=$PATH:/usr/local:~/.gem/ruby/2.0.0/bin
+\end{verbatim}
 
 Za dohvat brojnih alata koristim \textit{Homebrew} alat. Instalacija alata zahtijeva korištenje računa s administracijskim pravima \eng{sudo user}. Budući da novokreirani račun nije administrator, proces instalacije je potrebno obaviti na računu koji posjeduje navedena prava. Nakon instalacije je potrebno Xcode Server računu omogućiti korištenje alata i dati pristup \verb|/usr/local| direktoriju u kojem Homebrew obavlja izmjene. Naredba pod (1) instalira alat Homberew, naredba pod (2) kreira \verb|ci| grupu, naredba pod (3) dodaje trenutni i Xcode Server račun grupi, dok (4) daje potrebna prava grupi.
 
@@ -590,7 +600,7 @@ Bot je potrebno povezati s repozitorijem izvornog koda. Ova veza omogućava pokr
 
 Nakon povezivanja s repozitorijem izvornog koda je moguće konfigurirati opcije integracije. Moguće je odabrati željenu shemu te operacije koje će se izvršavati. Shema mora biti javna da bi se mogla automatizirati. Opcije su prikazane na slici \ref{fig:XcodeServerOptions}. Testove je moguće obaviti na iOS simulatoru i na stvarnim uređajima povezanim sa serverom.
 
-\begin{figure}
+\begin{figure}[h!]
     \centering
     \includegraphics[scale=0.5]{XcodeServerOptions}
     \caption{Konfiguracija osnovnih opcija integracije}
@@ -618,37 +628,31 @@ Drugi pristup je potrebne ovisnosti specificirati u izvornom repozitoriju te ih 
 
 Implementacija prvog pristupa je vrlo jednostavna. Potrebno je sve ovisnosti dodati u repozitorij, odnosno maknuti ih iz \textit{.gitignore} dokumenta.
 
-Implementacija drugog pristupa je nešto složenija. 
+Implementacija drugog pristupa je nešto složenija. Za upravljanje ovisnostima u iOS razvoju se koriste dva alata: CocoaPods i Carthage. Oba alata imaju svoje prednosti i mane zbog čega demonstriram korištenje oba. Detaljan opis oba alata i razlog njihova korištenja se nalazi u dodatku A.
 
-U integraciji koristim nekoliko alata napisanih u jeziku \textit{ruby}. Za njihovo lakše održavanje koristim alat \textit{RVM}. RVM olakšava instaliranje i upravljanje alatima napisanim u jeziku ruby.
+\subsection{CocoaPods}
 
-RVM se predodređeno instalira na lokaciji \verb|~/.rvm/bin/rvm|. Prije pokretanja instalacija provjeravam postoji li rvm. U slučaju ne postojanja ga instaliram i konfiguriram.
-
-\begin{verbatim}
-if command -v ~/.rvm/bin/rvm >/dev/null 2>&1 ; then
-    echo "RVM found"
-else
-    echo "RVM not found, proceeding with installation"
-
-    \curl -sSL https://get.rvm.iwo | bash -s stable
-    source ~/.rvm/scripts/rvm
-fi
-\end{verbatim}
-
-Nakon instaliranje RVMa možemo instalirati CocoaPods alat. Za navedeno koristim sljedeću skriptu:
+Instalaciju CocoaPods možemo automatizirati korištenjem akcije koja se ostvaruje u sklopu integracije. Akcije se botu dodaju odabirom opcije \verb|Edit bot -> Triggers| te pritiskom na \textit{plus} ikonu u doljnem lijevom kutu. Moguće je kreirati akcije koje se izvršavaju prije ili poslije integracije. U ovom slučaju odabrati akciju koja se izvršava prije integracije te joj dodati naredbu u nastavku.
 
 \begin{verbatim}
-if command -v /usr/local/bin/podw >/dev/null 2>&1 ; then
+if which pod >/dev/null; then
     echo "CocoaPods found"
 else
     echo "CocoaPods not found, proceeding with installation"
 
-    /usr/local/bin/gem install cocoapods --user-install
-    /usr/local/bin/pod setup
+    if which gem >/dev/null; then
+        gem install cocoapods --user-install
+
+        pod repo update
+    else
+        echo "gem not found, quiting CocoaPods instalation"
+    fi
 fi
 \end{verbatim}
 
-U slučaju ne postojanja CocoaPods alata, skripta ga instalira i konfigurira. Sada možemo iskoristiti alat za dohvat ovisnosti. Jednostavno se navigiramo u repozitorij i u slučaju postojanja Podfile datoteke dohvaćamo ovisnosti. Sljedeća naredba dohvaća verzije ovisnosti specificirane u \textit{Pofile.lock} datoteci. Ako ovisnost već postoji onda se ona ne dohvaća ponovno.
+U slučaju ne postojanja CocoaPods alata, naredba ga instalira i konfigurira. Za instalaciju CocoaPods alata koristim \verb|gem| alat koji je dostupan na svim instalacijama macOS operacijskog sustava. U slučaju promjene lokacije alata je istu potrebno izmijeniti u naredbi. Naredba pod (1) dohvaća i instalira CocoaPods alat. Naredba pod (2) dodaje direktorij u kom se nalazi CocoaPods alat u \verb|PATH| varijablu.
+
+CocoaPods ovisnosti definira u \verb|Podfile| dokumentu. Za dohvaćanje i pripremu ovisnosti je dovoljno pozvati naredbu \verb|pod install|. Naredba dohvaća specifičnu verziju ovisnosti definiranu u \verb|Pofile.lock| datoteci. Ako ovisnost odgovarajuće verzije već postoji u lokalnom repozitoriju onda se ista ne dohvaća ponovno.
 
 \begin{verbatim}
 if [ -f Podfile ]; then
@@ -656,35 +660,38 @@ if [ -f Podfile ]; then
 fi
 \end{verbatim}
 
-Za instalaciju Carthage alata koristimo homebrew. Proces je sličan instalaciji CocoaPods alata.
+
+\subsection{Carthage}
+
+Za instalaciju Carthage alata koristim Homebrew alat. Proces je sličan instalaciji CocoaPods alata.
 
 \begin{verbatim}
-if command -v /usr/local/bin/carthage >/dev/null 2>&1 ; then
+if which carthage >/dev/null; then
     echo "Carthage found"
 else
     echo "Carthage not found, proceeding with installation"
 
-    if command -v /usr/local/bin/brew >/dev/null 2>&1 ; then
-        echo "Homebrew needs to be installed "
-    else
+    if which brew >/dev/null; then
         brew install carthage
+    else
+        echo "Homebrew needs to be installed"
     fi
 fi
 \end{verbatim}
 
-Dohvat ovisnosti je također sličan alatu CocoaPods.
+Carthage ovisnosti specificira u Cartfile datoteci. Ako datoteka postoji u direktoriju, ovisnosti se mogu dohvatiti pozivajući \verb|carthage update| naredbu. Za bolje performanse operacije koristim dva argumenta. Argument \verb|--platform ios| specificira dohvaćanje ovisnosti samo za iOS platformu. Argument \verb|--cache-builds| dohvaća ovisnosti samo ako iste nisu već dostupne.
 
 \begin{verbatim}
 if [ -f Cartfile ]; then
     echo "Fetching dependencies using Carthage"
 
-    /usr/local/bin/carthage update --platform ios --cache-builds
+    carthage update --platform ios --cache-builds
 else
     echo "Skipped fetching dependencies using Carthage"
 fi
 \end{verbatim}
 
-Korištenjem opcije \verb|--cache-builds| spriječavamo izgradnu već postoječih ovisnosti.
+Nakon dodavanja navedene četiri naredbe kao akcije koje se izvršavaju prije integracije projekt bi se trebao uspješno izgraditi. Ispis procesa koje obavlja integracija se nalazi u \verb|Logs| sekciji bota. U slučaju postojanja pogreške korisno je pogledati ispis procesa.
 
 
 
