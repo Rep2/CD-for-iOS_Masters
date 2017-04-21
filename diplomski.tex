@@ -539,66 +539,35 @@ fi
 
 \chapter{Xcode Server}
 
-Xcode Server je sustav namjenjen za automatizaciju procesa alata Xcode. Alat je prvenstveno izrađen za implementaciju kontinuirane integracije te danas podržava veliki broj funkcionalnosti.
+Za automatizaciju procesa navedenih u odlomku A koristim alat Xcode Server. Na tržištu postoji veliki broj alata koji omogućuju automatizaciju procesa integracije. Razlog odabira alata Xcode Server objašnjavam u dodatu C.
 
-Xcode Server je kombinacija dva alata, Xcodea i macOS Servera. Xcode je alat za razvoj programske podrške za iOS i macOS operacijske sustave. Ovaj alat koristimo za razvoj programske potpore. MacOS Server je alat za automatizaciju procesa na macOS operacijskom sustavu. Prvenstveno je služio za lakšu automatizaciju procesa, ulančavanje skripta i udaljeni pristup računalu na kojem se obavlja automatizacija. Danas brojni alati koriste macOS Server za lakše ostvarenje automatizacije, posebno ako im je potreban udaljeni pristup. Među njima je i Xcode.
+Xcode Server je alat namijenjen za automatizaciju operacija Xcode projekta. Alat je izgrađen specifično za implementaciju kontinuirane integracije za iOS projekte te implementira veliki broj potrebnih funkcionalnosti.
 
-Oba alata razvija Apple zbog čega su aplikacije uvijek usklađene te su nove funkcionalnosti dostupne na dan njihovog izdavanja. Dodatno, inzistiranje na jednostavnosti korištenja, bogatstvo funkcionalnosti i laka proširivost čine ovaj alat jednim od najboljih za ostvarenje kontinuirane integracije, dostave i isporuke za programsku potporu za iOS operacijske sustave.
+Xcode Server je kombinacija dva alata, Xcodea i macOS Servera. Xcode je alat za razvoj programske podrške za iOS, macOS, tvOS i watchOS operacijske sustave. Alat Xcode koristim i za razvoj programske potpore. MacOS Server je alat za automatizaciju procesa na macOS operacijskom sustavu. Prvenstveno je služio za lakšu automatizaciju procesa, ulančavanje poziva skripta i upravljanje udaljenim pristupom računalu. Danas brojni alati koriste macOS Server za lakše ostvarenje automatizacije. Među njima je i Xcode.
 
-Glavni manjak ovog alata je ograničenost na isključivo Xcode projekte. Kako razvoj mobilnih aplikacija gotovo uvijek uključuje iOS i Android operacijske sustave, timovi se češće odluće na implementaciju zajedničkog rješenja. Dodatno, kako je svijet mobilnih aplikacija vrlo mlad, većina se timova još uvijek drži općih rješenja kao što su Jenkins ili CircleCI.
+Pomoću alata Xcode kreiramo, konfiguriramo i pratimo automatizirane procese. Procesi se pohranjuju i izvršavaju na macOS Serveru. MacOS Server može biti na lokalnom ili udaljenom računalu.
 
-\section{Kontinuirana integracija}
+Oba alata razvija Apple zbog čega su aplikacije usklađene te su nove funkcionalnosti dostupne na dan njihovog izdavanja. Dodatno, inzistiranje na jednostavnosti korištenja, bogatstvo funkcionalnosti i laka proširivost čine ovaj alat jednim od najboljih za ostvarenje kontinuirane integracije, dostave i isporuke za razvoj iOS aplikacija.
 
-Kreiranje, konfiguracija i pračenje automatiziranjih procesa se obavlja korištenjem alata Xcode. Procesi se pokreču i izvršavaju na macOS Serveru. Računalo na kojem se nalazi macOS Server se naziva poslužitelj. Na poslužitelj se je moguće spojiti korištenjem bilo kojeg Xcode alata, sve dok je poslužitelj vidljiv te postoje odgovarajuća prava pristupa.
+Glavni manjak Xcode Servera je ograničenost na isključivo Xcode projekte. Kako razvoj mobilnih aplikacija gotovo uvijek uključuje iOS i Android operacijske sustave, timovi se češće odluče na implementaciju zajedničkog rješenja. Dodatno, kako je svijet mobilnih aplikacija vrlo mlad, većina se timova još uvijek drži općih rješenja kao što su Jenkins ili CircleCI.
 
-Dovoljno je macOS Server postaviti na jednom računalu te implementirati odgovarajuća prava pristupa.
+\section{Priprema}
 
-Automatizacija Xcode procesa se ostvaruje korištenjem alata pod nazivom \textit{bot}. Bot je namijenjen specifično za automatizaciju Xcode projekata zbog čega je veliki broj željenih funkcionalnosti već implementiran.
+MacOS je, s ciljem sigurnosti, vrlo zatvorena platforma. Brojni alati zahtijevaju \verb|sudo| lozinku, korisničku interakciju te ih nije moguće instalirati korištenjem ljuske. Zbog navedenog instalaciju ovih alata nije moguće automatizirati već oni moraju biti unaprijed instalirani na računalu. Među njima su macOS Server, Xcode i Homebrew alati.
 
-Bot se kreira u Xocde alatu, \textit{Product -> Create bot}. Potrebno je imenovati bot i odabrati macOS Server na kojem će se bot izvršavati.
+MacOS Server i Xcode je moguće preuzeti korištenjem App Store aplikacije. Cijena macOS Servera je \$25 ali je besplatan za osobe s Apple Developer računom. Račun je potreban i za razvoj iOS aplikacija zbog čega ga ima svaki iOS programer. Ako posjedujete Apple Developer račun, logirajte se na Apple Developer stranicu \verb|https://developer.apple.com| te pod sekcijom \verb|Tools| pronađite i preuzmite macOS Server aplikaciju. Xcode je besplatno te ga je dovoljno preuzeti korištenjem App Store aplikacije.
 
-Bot je potrebno povezati s repozitorijem izvornog koda. Ova veza omogućava pokretanje integracije automatski nakon izmjene stanja repozitorija te olakšava detekciju bota drugim članovima tima. Moguće je koristiti lokalno ili javno hostani repozitorij verzioniran alatom git ili svn.
+Nakon instalacije macOS Servera je potrebno alat povezati s Xcode aplikacijom. Potrebno je pokrenuti macOS Server aplikaciju te u izborniku odabrati opciju Xcode. Pojavit će se ekran za odabir aplikacija. Pronaći lokaciju instalacije željene verzije Xcode alata te ga odabirom povezati s macOS Serverom.
 
-Nakon povezivanja s repozitorijem je potrebno konfigurirati opcije integracije. Moguće je odabrati željenu shemu te operacije koje će se izvršavati. Željena shema mora biti javna.ve Opcije su prikazane na slici \ref{fig:XcodeServerOptions}. Dodatno, ne samo da testove možemo obaviti na iOS simulatoru, već ih možemo obaviti i na svim povezanim uređajima. Uređaj je dovoljno spojiti s uređajem na kojem je pokrenut macOS Server.
+Nakon povezivanja alata je potrebno odabrati račun operacijskog sustava na kojem će se izvršavati integracije. Zbog sigurnosti je preporučeno macOS Server pokrenuti na zasebnom račun operacijskog sustava koji nema administrativna prava. Budući da se Xcode Serveru može pristupiti iz vanjske mreže, važno je ograničiti prava koja alat posjeduje. Izdvajanjem procesa na zasebni račun osiguravamo da alat ima samo ona prava koja su mu potrebna. Moguće je kreirati račun proizvoljnog imena, ali je standardno koristiti ime \textit{xcodeserver}.
 
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.5]{XcodeServerOptions}
-    \caption{Konfiguracija osnovnih opcija integracije}
-    \label{fig:XcodeServerOptions}
-\end{figure}
+Računu na kojem se obavlja integracija je potrebno dati potrebna prava te osigurati postojanje potrebnih alata. Budući da želimo automatizirati što veću količinu posla, poželjno je što više potrebnih alate instalirati u sklopu integracije, a ne zahtijevati njihovo prethodno postojanje na računalu. Međutim, što više funkcionalnosti nastojimo automatizirati to se implementacija integracije više komplicira.
 
-Moguće je postaviti kada se integracija izvršava. Opcije su periodički, nakon svakog spajanja ili ručno.
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.5]{XcodeServerIntegrationPeriods}
-    \caption{Konfiguracija perioda izvršavanja integracije}
-    \label{fig:XcodeServerIntegrationPeriods}
-\end{figure}
-
-Dodatno, moguće je konfigurirati okolinu u kojoj će se integracija izvršavati te akcije prije ili poslje obavljana integracije. Okolina se konfigurira pomoću kljuć - vrijednost parova. Akcije su proizvoljne skripte pokrenute u \textit{bin/sh} ljusci. Obje funkcionalnosti se ekstenzivno koriste za ostvarenje kontinuirane dostave i isporuke.
-
-Ovime smo kreirali bot. Odmah nakon kreiranja bot započinje integraciju. Integraciju je moguće ručno započeti odabiron \textit{Integrate} opcije u gornjem desnom kutu.
-
-Međutim, prva integracija ne prolazi. Problem izazivaju ovisnosti. Xcode Server preuzima sadržaj repozitorija izvornog te na njemu obavlja integraciju. Problem ovisnosti je moguće riješiti na dva naćina.
-
-Sve potrebne ovisnosti je moguće dodati repozitoriju izvornog koda. Korištenjem navedenog postupka su sve ovisnosti prisutne u repozitoriju odmah nakon preuzimanja repozitorija zbog ćega ih nije potrebno dohvaćati. Navedeni postupak olakšava implementaciju i ubrzava proces integracije. Međutim, dodavenje svih ovisnosti u izvorni repozitorij nosi i značajne probleme. Prvo, repozitorij koda postaje znaćajno veći. Pregledom vlastitih projekata ustanovio sam da su ovisnosti od 2 do 50 puta veće od glavnog projekta. Ćak i u najvećem projektu su ovisnosti bile značajno veće od glavnog projekta. Navedeno povećanje repozitorija usporava preuzimanje i otežava praćenje promjena. Iako navedeni postupak ima svojih prednosti, generalno se izbjegava u praksi.
-
-Drugi pristup je ovisnosti dohvatiti i pripremiti nakon dohvaćanja izvornog koda. Ovaj proces je vremenski vrlo zahtjevan. Dohvaćanje i ponovna izgradnja svih ovisnosti može značajno usporiti proces integracije. Zbog navedenog je vrlo važno dohvaćati samo potrebne ovisnosti. Ostvarivanje navedenog ponašanja značajno ovisi o alatu koji koristimo.
-
-Implementacija prvog pristupa je vrlo jednostavna. Potrebno je sve ovisnosti dodati u repozitorij, odnosno maknuti ih \textit{.gitignore} dokumenta.
-
-Implemnetacija drugog pristupa je nešto složenija. Snažno je preporučeno Xcode Server pokrenuti na zasebnom račun operacijskog sustava koji nema administrativna prava. Budući da se Xcode Serveru može pristupiti iz vanjske mreže važno je ograničiti prava koja navedeni alat posjeduje. Izdvajanjem procesa na zasebni račun osiguravamo da alat ima samo prava koja su mu potrebna. S druge strane, kompliciramo proces implementacije strogom kontrolom pristupa. Standardno je kreirati račun s imenom \textit{xcodeserver}.
-
-Računu koji obavlja integraciju je potrebno dati potrebna prava te osigurati potrebne alate. Budući da želimo automatizirati što veću količinu posla, poželjno je sve potrebne alate instalirati u sklopu integracije, a ne zahtijevati njihovo postojanje na računalu. Međutim, što više funkcionalnosti nastojimo automatizirati to se implementacija integacije komplicira. Dodatno, neke alate ne možemo instalirati bez dopuštenja korisnika.
-
-Za dohvat brojnih alata koristimo \textit{Homebrew} aplikacija. Međutim, instalacija navedene aplikacije zahtijeva \textit{sudo} lozinku. Dodatno, potrebno je xcodeserver računu dopustiti pristup \verb|/usr/local| direktoriju. Naredba pod (1) instalira Homberew, naredba pod (2) kreira ci grupu dok naredbe (3) i (4) omogućuju pristup xcodeserver računu.
+Za dohvat brojnih alata koristim \textit{Homebrew} alat. Instalacija alata zahtijeva korištenje računa s administracijskim pravima \eng{sudo user}. Budući da novokreirani račun nije administrator, proces instalacije je potrebno obaviti na računu koji posjeduje navedena prava. Nakon instalacije je potrebno Xcode Server računu omogućiti korištenje alata i dati pristup \verb|/usr/local| direktoriju u kojem Homebrew obavlja izmjene. Naredba pod (1) instalira alat Homberew, naredba pod (2) kreira \verb|ci| grupu, naredba pod (3) dodaje trenutni i Xcode Server račun grupi, dok (4) daje potrebna prava grupi.
 
 \begin{verbatim}
-#Homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com
-    /Homebrew/install/master/install)" (1)
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubuser
+    content.com/Homebrew/install/master/install)" (1)
 
 sudo dseditgroup -o create ci (2)
 
@@ -607,8 +576,49 @@ sudo dseditgroup -o edit -a xcodeserver -t user ci
 
 sudo chgrp -R ci /usr/local (4)
 sudo chmod -R g+wr /usr/local
-
 \end{verbatim}
+
+\section{Kontinuirana integracija}
+
+Kreiranje, konfiguraciju i praćenje automatiziranih procesa obavljam korištenjem alata Xcode. Procesi se pokreću i izvršavaju na macOS Serveru. Računalo na kojem se nalazi macOS Server se naziva poslužitelj. MacOS Serveru je moguće pristupiti korištenjem proizvoljnog Xcode alata, sve dok je server vidljiv te postoje odgovarajuća prava pristupa. Za spajanje na udaljeni macOS Server je potrebno pokrenuti lokalan macOS Server i u ponuđenim opcijama odabrati udaljeni poslužitelj.
+
+Automatizacija Xcode procesa se ostvaruje korištenjem \textit{bota}. Bot je namijenjen specifično za automatizaciju Xcode projekata te je kreiranje i konfiguriranje kontinuirane integracije jednostavna u usporedbi s drugim alatima.
+
+Bot se kreira korištenjem Xocde alata, \textit{Product -> Create bot...}. Potrebno je imenovati bot i odabrati macOS Server na kojem će se bot izvršavati.
+
+Bot je potrebno povezati s repozitorijem izvornog koda. Ova veza omogućava pokretanje integracije nakon izmjene stanja repozitorija. Moguće je koristiti lokalno ili javno hostani repozitorij verzioniran alatom git ili svn.
+
+Nakon povezivanja s repozitorijem izvornog koda je moguće konfigurirati opcije integracije. Moguće je odabrati željenu shemu te operacije koje će se izvršavati. Shema mora biti javna da bi se mogla automatizirati. Opcije su prikazane na slici \ref{fig:XcodeServerOptions}. Testove je moguće obaviti na iOS simulatoru i na stvarnim uređajima povezanim sa serverom.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{XcodeServerOptions}
+    \caption{Konfiguracija osnovnih opcija integracije}
+    \label{fig:XcodeServerOptions}
+\end{figure}
+
+Integraciju je moguće pokretati periodički, nakon promijene stanja ili ručno.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{XcodeServerIntegrationPeriods}
+    \caption{Konfiguracija perioda izvršavanja integracije}
+    \label{fig:XcodeServerIntegrationPeriods}
+\end{figure}
+
+Dodatno, moguće je konfigurirati okolinu u kojoj će se integracija izvršavati te pomoću \textit|sh| ljuske specificirati akcije koje se obavljaju prije i poslije obavljana integracije. Okolina se konfigurira postavljanjem proizvoljnog broja ključ - vrijednost parova. Akcije su proizvoljne skripte definirane i pokrenute na \textit{bin/sh} ljusci. Obje funkcionalnosti se ekstenzivno koriste za ostvarenje kontinuirane dostave i isporuke.
+
+Integracija započinje odmah nakon kreiranja bota. Proces je moguće ručno započeti odabirom \textit{Integrate} opcije u gornjem desnom kutu.
+
+Prva integracija završava pogreškom koju izaziva ne postojanje potrebnih ovisnosti. Xcode Server kreira privatnu verziju repozitorija izvornog koda te na njemu obavlja integraciju. Problem ovisnosti je moguće riješiti na dva načina.
+
+Sve potrebne ovisnosti je moguće dodati repozitoriju izvornog koda. Korištenjem navedenog postupka su sve ovisnosti prisutne u repozitoriju odmah nakon preuzimanja repozitorija zbog čega ih nije potrebno dohvaćati. Navedeni postupak olakšava i ubrzava proces integracije. Međutim, dodavanje svih ovisnosti u izvorni repozitorij nosi i značajne probleme. Prvo, repozitorij koda postaje poprilično veći. Pregledom vlastitih projekata ustanovio sam da su ovisnosti od 2 do 50 puta veće od projekta. Čak su i u najvećem projektu ovisnosti bile značajno. Povećanje repozitorija usporava preuzimanje i otežava praćenje promjena. Iako navedeni postupak ima svojih prednosti, generalno se izbjegava u praksi.
+
+Drugi pristup je potrebne ovisnosti specificirati u izvornom repozitoriju te ih dohvatiti po potrebi. Ovaj proces je vremenski zathjevniji od prošlog. Dohvaćanje i ponovna izgradnja svih ovisnosti može značajno usporiti proces integracije. Zbog navedenog je vrlo važno dohvaćati samo potrebne ovisnosti. Ostvarivanje optimalnog ponašanja značajno ovisi o alatu koji koristimo.
+
+Implementacija prvog pristupa je vrlo jednostavna. Potrebno je sve ovisnosti dodati u repozitorij, odnosno maknuti ih iz \textit{.gitignore} dokumenta.
+
+Implementacija drugog pristupa je nešto složenija. 
 
 U integraciji koristim nekoliko alata napisanih u jeziku \textit{ruby}. Za njihovo lakše održavanje koristim alat \textit{RVM}. RVM olakšava instaliranje i upravljanje alatima napisanim u jeziku ruby.
 

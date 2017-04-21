@@ -25,4 +25,5 @@
 \contentsline {subsection}{\numberline {A.3.3}Osiguranje kvalitete}{25}
 \contentsline {section}{\numberline {A.4}Isporuka}{26}
 \contentsline {chapter}{\numberline {B}Xcode Server}{27}
-\contentsline {section}{\numberline {B.1}Kontinuirana integracija}{27}
+\contentsline {section}{\numberline {B.1}Priprema}{28}
+\contentsline {section}{\numberline {B.2}Kontinuirana integracija}{29}
