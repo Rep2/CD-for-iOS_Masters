@@ -1,31 +1,36 @@
 \select@language {croatian}
 \contentsline {chapter}{\numberline {1}Uvod}{1}
 \contentsline {chapter}{\numberline {2}Kontinuirana integracija}{2}
-\contentsline {section}{\numberline {2.1}Verzioniranje}{3}
-\contentsline {subsection}{\numberline {2.1.1}Sustavi za kontrolu verzija}{4}
-\contentsline {subsection}{\numberline {2.1.2}Uvod u git}{4}
-\contentsline {subsection}{\numberline {2.1.3}Implementacije procesa verzioniranja}{7}
-\contentsline {subsection}{\numberline {2.1.4}Kontinuirana integracija i verzioniranje}{10}
-\contentsline {section}{\numberline {2.2}Automatizacija izgradnje}{11}
-\contentsline {subsection}{\numberline {2.2.1}Upravljanje ovisnostima}{12}
-\contentsline {subsection}{\numberline {2.2.2}Izgradnja}{13}
-\contentsline {subsection}{\numberline {2.2.3}Automatizacija izgradnje kori\IeC {\v s}tenjem Xcode Servera}{14}
-\contentsline {chapter}{\numberline {3}Zaklju\IeC {\v c}ak}{16}
-\contentsline {chapter}{Literatura}{17}
-\contentsline {chapter}{Appendices}{19}
-\contentsline {chapter}{\numberline {A}Ru\IeC {\v c}na integracija i isporuka iOS aplikacija}{20}
-\contentsline {section}{\numberline {A.1}Alati}{20}
-\contentsline {section}{\numberline {A.2}Integracija}{21}
-\contentsline {subsection}{\numberline {A.2.1}Upravljanje ovisnostima}{22}
-\contentsline {paragraph}{CocoaPods}{22}
-\contentsline {paragraph}{Carthage}{23}
-\contentsline {section}{\numberline {A.3}Integracija}{24}
-\contentsline {subsection}{\numberline {A.3.1}Izgradnja}{24}
-\contentsline {subsection}{\numberline {A.3.2}Testiranje}{24}
-\contentsline {subsection}{\numberline {A.3.3}Osiguranje kvalitete}{25}
-\contentsline {section}{\numberline {A.4}Isporuka}{26}
-\contentsline {chapter}{\numberline {B}Xcode Server}{27}
-\contentsline {section}{\numberline {B.1}Priprema}{28}
-\contentsline {section}{\numberline {B.2}Kontinuirana integracija}{29}
-\contentsline {subsection}{\numberline {B.2.1}CocoaPods}{31}
-\contentsline {subsection}{\numberline {B.2.2}Carthage}{32}
+\contentsline {section}{\numberline {2.1}Izgradnja}{3}
+\contentsline {subsection}{\numberline {2.1.1}Verzioniranje}{5}
+\contentsline {subsection}{\numberline {2.1.2}Implementacija verzioniranja}{7}
+\contentsline {subsection}{\numberline {2.1.3}Priprema sustava}{10}
+\contentsline {subsection}{\numberline {2.1.4}Upravljanje ovisnostima}{11}
+\contentsline {subsection}{\numberline {2.1.5}Izgradnja}{11}
+\contentsline {section}{\numberline {2.2}Testiranje}{13}
+\contentsline {section}{\numberline {2.3}Osiguranje kvalitete}{14}
+\contentsline {section}{\numberline {2.4}Implementacija kontinuirane integracije}{15}
+\contentsline {chapter}{\numberline {3}Zaklju\IeC {\v c}ak}{19}
+\contentsline {chapter}{Literatura}{20}
+\contentsline {chapter}{Appendices}{23}
+\contentsline {chapter}{\numberline {A}Ru\IeC {\v c}na integracija i isporuka iOS aplikacija}{24}
+\contentsline {section}{\numberline {A.1}Alati}{24}
+\contentsline {section}{\numberline {A.2}Priprema}{25}
+\contentsline {subsection}{\numberline {A.2.1}Uvod u git}{26}
+\contentsline {subsection}{\numberline {A.2.2}SSH klju\IeC {\v c}}{29}
+\contentsline {subsection}{\numberline {A.2.3}Upravljanje ovisnostima}{29}
+\contentsline {paragraph}{CocoaPods}{29}
+\contentsline {paragraph}{Carthage}{30}
+\contentsline {section}{\numberline {A.3}Integracija}{31}
+\contentsline {subsection}{\numberline {A.3.1}Izgradnja}{31}
+\contentsline {subsection}{\numberline {A.3.2}Testiranje}{32}
+\contentsline {subsection}{\numberline {A.3.3}Osiguranje kvalitete}{32}
+\contentsline {section}{\numberline {A.4}Isporuka}{33}
+\contentsline {chapter}{\numberline {B}Xcode Server}{34}
+\contentsline {section}{\numberline {B.1}Priprema}{34}
+\contentsline {section}{\numberline {B.2}Kontinuirana integracija}{35}
+\contentsline {subsection}{\numberline {B.2.1}CocoaPods}{37}
+\contentsline {subsection}{\numberline {B.2.2}Carthage}{38}
+\contentsline {subsection}{\numberline {B.2.3}Testiranje i osiguranje kvalitete}{39}
+\contentsline {section}{\numberline {B.3}Kontinuirana dostava}{39}
+\contentsline {chapter}{\numberline {C}Usporedba alata za implementaciju kontinuirane integracije}{41}
