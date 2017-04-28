@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -10,26 +10,26 @@ Apple.
 \newblock xcodebuild, 2013.
 \newblock URL
   \url{https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html}.
-\newblock [Online; accessed 16-Apr-2017].
+\newblock [Online; accessed 16-March-2017].
 
 \bibitem[Atlassian(2016)]{versioningWorkflows}
 Atlassian.
 \newblock Comparing workflows, 2016.
 \newblock URL
   \url{https://www.atlassian.com/git/tutorials/comparing-workflows}.
-\newblock [Online; accessed 15-Apr-2017].
+\newblock [Online; accessed 15-March-2017].
 
 \bibitem[realm(2017)]{SwiftLint}
 realm.
 \newblock Swiftlint, 2017.
 \newblock URL \url{https://github.com/realm/SwiftLint}.
-\newblock [Online; accessed 24-Feb-2017].
+\newblock [Online; accessed 24-Apr-2017].
 
 \bibitem[supermarin(2017)]{xcpretty}
 supermarin.
 \newblock xcpretty, 2017.
 \newblock URL \url{https://github.com/supermarin/xcpretty}.
-\newblock [Online; accessed 22-Apr-2017].
+\newblock [Online; accessed 22-March-2017].
 
 \bibitem[Wikipedia(2015)]{wiki:BoochMethod}
 Wikipedia.
@@ -42,26 +42,33 @@ Wikipedia.
 \newblock Code coverage --- {W}ikipedia{,} the free encyclopedia,
   2017{\natexlab{a}}.
 \newblock URL \url{https://en.wikipedia.org/wiki/Code_coverage}.
-\newblock [Online; accessed 23-Feb-2017].
+\newblock [Online; accessed 23-Apr-2017].
 
-\bibitem[Wikipedia(2017{\natexlab{b}})]{wiki:SoftwareTesting}
+\bibitem[Wikipedia(2017{\natexlab{b}})]{wiki:ContinuousDelivery}
+Wikipedia.
+\newblock Continuous delivery --- {W}ikipedia{,} the free encyclopedia,
+  2017{\natexlab{b}}.
+\newblock URL \url{https://en.wikipedia.org/wiki/Continuous_delivery}.
+\newblock [Online; accessed 28-Apr-2017].
+
+\bibitem[Wikipedia(2017{\natexlab{c}})]{wiki:SoftwareTesting}
 Wikipedia.
 \newblock Software testing --- {W}ikipedia{,} the free encyclopedia,
-  2017{\natexlab{b}}.
+  2017{\natexlab{c}}.
 \newblock URL \url{https://en.wikipedia.org/wiki/Software_testing}.
-\newblock [Online; accessed 23-Feb-2017].
+\newblock [Online; accessed 23-Apr-2017].
 
-\bibitem[Wikipedia(2017{\natexlab{c}})]{wiki:SoftwareVersioning}
+\bibitem[Wikipedia(2017{\natexlab{d}})]{wiki:SoftwareVersioning}
 Wikipedia.
 \newblock Software versioning --- {W}ikipedia{,} the free encyclopedia,
-  2017{\natexlab{c}}.
+  2017{\natexlab{d}}.
 \newblock URL \url{https://en.wikipedia.org/wiki/Software_versioning}.
 \newblock [Online; accessed 18-Feb-2017].
 
-\bibitem[Wikipedia(2017{\natexlab{d}})]{wiki:VersionControl}
+\bibitem[Wikipedia(2017{\natexlab{e}})]{wiki:VersionControl}
 Wikipedia.
 \newblock Version control --- {W}ikipedia{,} the free encyclopedia,
-  2017{\natexlab{d}}.
+  2017{\natexlab{e}}.
 \newblock URL \url{https://en.wikipedia.org/wiki/Version_control}.
 \newblock [Online; accessed 18-Feb-2017].
 
