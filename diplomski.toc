@@ -13,28 +13,32 @@
 \contentsline {chapter}{\numberline {3}Kontinuirana dostava}{19}
 \contentsline {section}{\numberline {3.1}Ru\IeC {\v c}na isporuka}{19}
 \contentsline {section}{\numberline {3.2}Automatizacija isporuke}{22}
-\contentsline {chapter}{\numberline {4}Kontinuirana isporuka}{23}
-\contentsline {chapter}{\numberline {5}Zaklju\IeC {\v c}ak}{24}
-\contentsline {chapter}{Literatura}{25}
-\contentsline {chapter}{Appendices}{28}
-\contentsline {chapter}{\numberline {A}Ru\IeC {\v c}na integracija i isporuka iOS aplikacija}{29}
-\contentsline {section}{\numberline {A.1}Alati}{29}
-\contentsline {section}{\numberline {A.2}Priprema}{30}
-\contentsline {subsection}{\numberline {A.2.1}Uvod u git}{31}
-\contentsline {subsection}{\numberline {A.2.2}SSH klju\IeC {\v c}}{34}
-\contentsline {subsection}{\numberline {A.2.3}Upravljanje ovisnostima}{34}
-\contentsline {paragraph}{CocoaPods}{34}
-\contentsline {paragraph}{Carthage}{35}
-\contentsline {section}{\numberline {A.3}Integracija}{36}
-\contentsline {subsection}{\numberline {A.3.1}Izgradnja}{36}
-\contentsline {subsection}{\numberline {A.3.2}Testiranje}{37}
-\contentsline {subsection}{\numberline {A.3.3}Osiguranje kvalitete}{37}
-\contentsline {section}{\numberline {A.4}Isporuka}{38}
-\contentsline {chapter}{\numberline {B}Xcode Server}{41}
-\contentsline {section}{\numberline {B.1}Priprema}{41}
-\contentsline {section}{\numberline {B.2}Kontinuirana integracija}{42}
-\contentsline {subsection}{\numberline {B.2.1}CocoaPods}{44}
-\contentsline {subsection}{\numberline {B.2.2}Carthage}{45}
-\contentsline {subsection}{\numberline {B.2.3}Testiranje i osiguranje kvalitete}{46}
-\contentsline {section}{\numberline {B.3}Kontinuirana dostava}{46}
-\contentsline {chapter}{\numberline {C}Usporedba alata za implementaciju kontinuirane integracije}{48}
+\contentsline {chapter}{\numberline {4}Kontinuirana isporuka}{24}
+\contentsline {chapter}{\numberline {5}Zaklju\IeC {\v c}ak}{25}
+\contentsline {chapter}{Literatura}{26}
+\contentsline {chapter}{Appendices}{29}
+\contentsline {chapter}{\numberline {A}Ru\IeC {\v c}na integracija i isporuka iOS aplikacija}{30}
+\contentsline {section}{\numberline {A.1}Alati}{30}
+\contentsline {section}{\numberline {A.2}Priprema}{31}
+\contentsline {subsection}{\numberline {A.2.1}Uvod u git}{32}
+\contentsline {subsection}{\numberline {A.2.2}SSH klju\IeC {\v c}}{35}
+\contentsline {subsection}{\numberline {A.2.3}Upravljanje ovisnostima}{35}
+\contentsline {paragraph}{CocoaPods}{35}
+\contentsline {paragraph}{Carthage}{36}
+\contentsline {section}{\numberline {A.3}Integracija}{37}
+\contentsline {subsection}{\numberline {A.3.1}Izgradnja}{37}
+\contentsline {subsection}{\numberline {A.3.2}Testiranje}{38}
+\contentsline {subsection}{\numberline {A.3.3}Osiguranje kvalitete}{38}
+\contentsline {section}{\numberline {A.4}Isporuka}{39}
+\contentsline {chapter}{\numberline {B}Xcode Server}{43}
+\contentsline {section}{\numberline {B.1}Priprema}{43}
+\contentsline {section}{\numberline {B.2}Kontinuirana integracija}{44}
+\contentsline {subsection}{\numberline {B.2.1}CocoaPods}{46}
+\contentsline {subsection}{\numberline {B.2.2}Carthage}{47}
+\contentsline {subsection}{\numberline {B.2.3}Testiranje i osiguranje kvalitete}{48}
+\contentsline {section}{\numberline {B.3}Kontinuirana dostava}{48}
+\contentsline {chapter}{\numberline {C}Fastlane}{50}
+\contentsline {section}{\numberline {C.1}Dohvat ovisnosti}{51}
+\contentsline {section}{\numberline {C.2}Izgradnja}{52}
+\contentsline {section}{\numberline {C.3}Objava na Crashlytics}{52}
+\contentsline {chapter}{\numberline {D}Usporedba alata za implementaciju kontinuirane integracije}{53}

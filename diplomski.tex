@@ -352,6 +352,18 @@ Zbog navedenih razloga prominenti pojedinci u iOS zajednici predviđaju ubrzu za
 
 \section{Automatizacija isporuke}
 
+Direktnu isporuku nije moguće automatizirati zbog dva razloga. Prvo, za obavljanje direktne isporuke mobilni uređaj i računalo koje obavlja isporuku moraju biti direktno povezani što u stvarnom svijetu nije praktično. Čak ako i dediciramo određeni broj mobilnih uređaja specifično za testiranje zaposlenici će ih često koristiti za testiranje te tada neće biti povezani s računalom koje obavlja integraciju. Zbog navedenog pomoću direktne isporuke ne možemo sa sigurnošću tvrditi da se je verzija aplikacije na mobilnom uređaju osvježila. Drugo, automatizaciju direktne isporuke je vrlo teško ostvariti. Apple, zbog sigurnosnih razloga, proces direktne instalacije aplikacije na uređaj drži tajnim. Trenutno je jedini službeno podržani način direktne isporuke istu obaviti korištenjem Xcodea te ovaj proces nije moguće automatizirati.
+
+S druge strane, automatizaciju ad hoc i unutarnje isporuke je vrlo jednostavno ostvariti. Kreiranje arhive i manifesta se može obaviti korištenjem xcodebuild alata uz specificiranje operacije \verb|archive|. Novo kreiranu arhivu je potrebno objaviti korisnicima. Proces objave ovisi o načinu distibucije aplikacije. Ako se koristi privatni poslužitelj, onda je dovoljno staru arhivu poslužitelja zamijeniti novom. Alat MDM trenutno nema jednostavan naćin automatiziranja isporuke. Slično kao i s direktnom isporukom, ne postoji službeno podržani proces. Postoji nekoliko alata razvijenih od strane zajednice koji implementiraju ovaj proces, ali niti jedan nije široko podržan. Budući da smatram ovaj naćin objave lošijim od ostala dva neću ga detaljnije obraditi.
+
+U sklopu rada koristim treći pristup objave aplikacije, vanjske alate specijalizirane za objavu. Odabrao sam alat Crashlytics, trenutno najpopularniji alat u navedenoj skupini. Alat olakšava objavu i distribuciju aplikacija te omogućava automatizaciju cijelog procesa. Dodatno, postoje brojni alati koji olakšavaju ovaj proces. Za olakšanje automatizacije isporuke koristim alat Fastlane.
+
+Za automatizaciju isporuke koristim alat Fastlane. Fastlane je sastavnio dio alata Fabric koji olakšava cijeliokupni proces razvoja, isporuke i praćenja programspe potpore za mobilne operacijske sustave. Razvoj Fabric alata je započeo u novo osnovanoj Crashlytics kompaniji 2011 godine. Kompaniju je u siječnju 2013 godione kupio Twitter te ju je u siječnji 2017 godine preuze Google. Uz podršku ovako velikih imena jasno je zašto je alat popularan.
+
+Fastlane omogučuje automatizaciju velikog broja procesa vezanih uz razvoj aplikacija.
+
+
+
 
 
 
@@ -753,7 +765,9 @@ Danas je na tržištu dostupan veliki broj alata koji implementiraju funkcionaln
 
 Isporuka aplikacija pomoću Crashlytics alata je vrlo jednostavna. Potrebno je samo registrirati aplikaciju i dodati arhivu. Svi korisnici kojima je aplikacija vidljiva ju mogu jednostavno preuzeti i instalirati na uređaj. Alat je detaljnije obrađen u poglavlju \ref{header:KontinuiranaDostavaAutomatizacija} gdje ga koristim za automatizaciju procesa isporuke.
 
+Za objavu javnih aplikacija je isporuku potrebno obaviti korištenjem App Store platforme. Objava aplikacija na App Store platformu se obavlja korištenjem iTunes Connect alata. Za pristup alatu je potrebno posjedovati Apple Developer račun. Proces započinje arhiviranjem aplikacije i registracijom iste korištenjem iTunes Connect alata.
 
+Nakon prijave u \verb|https://itunesconnect.apple.com/| stranicu potrebno je odabrati opciju \verb|Apps|. Proces registracije aplikacije je poprilično jednostavno pratiti. Prvo je potrebno specificirati osnovne informacije o aplikaciji kao što su ime, opis i kategorija aplikacije. Nakon toga je potrebno dostaviti sve potrebne grafike koje uključuju nekoliko verzija ikone aplikacije koja je prikazana na početnom ekranu uređaja te slike potrebne za App Store platformu. Na kraju je potrebno dostaviti konačnu verziju aplikacije i time započeti proces provjere aplikacije. Ako proces završi uspješno aplikacija se izdaje na App Store platformu. U suprotnom je potrebno razriješiti razlog odbijanja aplikacije ponovno započeti proces provjere.
 
 
 
@@ -909,6 +923,84 @@ Rezultate integracije je moguće vodjeti odabirom željenog bota korištenjem Xc
 \end{figure}
 
 \section{Kontinuirana dostava} \label{header:KontinuiranaDostavaAutomatizacija}
+
+
+
+\chapter{Fastlane}
+
+Automatizaciju isporuke programske potpore za iOS operacijski sustav obavljam pomoću alat Fastlane. Danas je alat dio Fabric familije koju je u siječnju 2017. godine kupio Google. Fastlane je kolekcija manjih alata od kojih je svaki zadužen za automatizaciju pojedine operacije. Ove alate nazivamo dodaci. Većina dodataka je razvijena od strane zajednice te se kontinuirano razvijaju novi dodaci. Fastlane specificira i jednostavan način ulančavanja i pokretanja dodataka što značajno olakšava automatizaciju. Iako Fastlane koristim samo za automatizaciju isporuke, alat podržava i automatizaciju ostalih operacija kao što su izgradnja i testiranje.
+
+Instalaciju alata obavljam koristeći Homebrew. Naredba je prikazana u nastavku.
+
+\begin{verbatim}
+brew cask install fastlane
+\end{verbatim}
+
+Inicijalizacija Fastlane alata se obavlja pozivajući naredbu \verb|fastlane init| u početnom direktoriju projekta. Naredba kreira novi direktorij imena \verb|fastlane| te unutar njega stvara dvije tekstualne datoteke: \verb|Fastfile| i \verb|Appfile|.
+
+Fastfile datoteka olakšava uporabu fastlane alata. Unutar datoteke je moguće definirati staze \eng{lane}. Svaka staza je sastavljena od proizvoljnog broja naredaba koje se izvršavaju slijedno. Dodatno, moguće je definirati naredbe koji se izvršavaju prije ili poslije željenih staza. Prilikom inicijalizacije alat Fastlane detektira postavke projekta te na temelju njih stvara nekoliko predodređenih staza. Na primjer, ako projekt sadrži testni cilj, onda fastlane u Fastfile dokumentu kreira testnu stazu. Ako projekt sadrži Cartfile ili Podfile datoteku, onda fastlane dodaje pozive respektivno carthage ili cocoapods dodataka.
+
+Primjer staze je prikazan u nastavku.
+
+\begin{verbatim}
+lane :{imestaze} do
+    {naredbe}
+end
+\end{verbatim}
+
+Pokretanje staze se obavlja pozivanjem naredbe \verb|fastlane {imestaze}| u početnom direktoriju projekta.
+
+Appfile sadrži postavke projekta kao što su korisničko ime i id Apple Developer računa, korisničko ime i ime projekta na Crashlytics platformi te druge varijable koje se koriste u automatizaciji procesa.
+
+Uz zavedene datoteke, fastlane direktorij može sadržavati i brojne druge tekstualne dokumente koji specificiraju postavke pojedinog dodatka. Datoteke slijede istu shemu imenovanja. Prvi dio je skraćenica imena dodatka na koju je dodan \verb|file| sufix - \verb|{skraćenica}file|.
+
+\section{Dohvat ovisnosti}
+
+Za dohvat ovisnosti koristim alate Carthage i CocoaPods. Fastlane podržava oba alata koristeći dodatke \verb|carthage| i \verb|cocoapods|. Dodaci pružaju jednostavno sučelje prema pojedinom alatu, podržavaju sve potrebne funkcionalnosti te jednostavno formatiraju ispis.
+
+Staza koja pokreće dohvat ovisnosti alatom Carthage je prikazana u nastavku. Naveo sam dvije opcije: \verb|platform: 'iOS'| budući da želim dohvatiti ovisnosti samo za iOS operacijski sustav i \verb|cache_builds: true| kako ne bi dohvaćao ovisnosti koje su već dostupne na uređaju.
+
+\begin{verbatim}
+lane :carthageCustom do
+    carthage(platform: 'iOS', cache_builds: true)
+end
+\end{verbatim}
+
+Za dohvat ovisnosti pomoću cocoapods dodatke ne koristim dodatne argumente. Dovoljno je u stazi pozvati \verb|cocoapods| naredbu.
+
+\begin{verbatim}
+lane :cocoapodsCustom do
+    cocoapods
+end
+\end{verbatim}
+
+Budući da dohvat ovisnosti želimo pozivati za svaku stazu, navedene se naredbe mogu specificirati u \verb|before_all| stazi.
+
+\begin{verbatim}
+before_all do |lane|
+    cocoapods
+    carthage(platform: 'iOS', cache_builds: true)
+end
+\end{verbatim}
+
+\section{Izgradnja}
+
+Fastlane za izgradnju projekta koristi dodatak \verb|gym|. Dodatak za izgradnju projekta koristi alat xcodebuild. Međutim, sučelje dodatka gym je puno jednostavnije i kompatibilnije sa stilom Fastlane alata. Dodatno, alat automatski detektira projekte, sheme i ciljeve na temelju kojih obavlja izgradnju, formatira ispis kako bi bio jednostavno čitljiv te kreira datoteke potrebne za isporuku projekta.
+
+Rezultati izvršavanja naredbe se zapisuju u \verb|fastlane\report.xml| datoteku. Uz rezultat izvršavanja svih naredba, datoteka sadrži i njihov redoslijed te trajanje.
+
+Izgradnja projekta se obavlja pozivom naredbe \verb|fastlane gym|. Ako projekt sadrži više shema, naredba korisnika traži odabir željene sheme.
+
+\section{Testiranje}
+
+
+
+\section{Objava na Crashlytics}
+
+
+
+
+
 
 
 
