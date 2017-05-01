@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  1 MAY 2017 15:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  1 MAY 2017 22:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -916,22 +916,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--14
 \T1/pcr/m/n/12 com / legacy / library / documentation / Darwin / Reference /
  []
 
+[26
 
-Underfull \hbox (badness 1014) in paragraph at lines 48--53
+]
+Underfull \hbox (badness 1014) in paragraph at lines 84--89
 \T1/ptm/m/n/12 URL $\T1/pcr/m/n/12 https : / / en . wikipedia . org / wiki / Co
 ntinuous _ delivery$\T1/ptm/m/n/12 .
  []
 
 
-Underfull \hbox (badness 1014) in paragraph at lines 62--67
+Underfull \hbox (badness 1014) in paragraph at lines 98--103
 \T1/ptm/m/n/12 URL $\T1/pcr/m/n/12 https : / / en . wikipedia . org / wiki / So
 ftware _ versioning$\T1/ptm/m/n/12 .
  []
 
-[26
 
-]
-Underfull \hbox (badness 1902) in paragraph at lines 69--74
+Underfull \hbox (badness 1902) in paragraph at lines 105--110
 \T1/pcr/m/n/12 https : / / en . wikipedia . org / wiki / Version _ control$\T1/
 ptm/m/n/12 .  [Online;
  []
@@ -1075,16 +1075,16 @@ Package pdftex.def Info: images/XcodeServerResult.png used on input line 920.
 Dodatak C.
 [50
 
-] [51] [52]
+] [51] [52] [53] [54]
 Dodatak D.
-[53
+[55
 
 ] (./diplomski.aux) ) 
 Here is how much of TeX's memory you used:
- 8849 strings out of 493014
- 126213 string characters out of 6133351
- 207754 words of memory out of 5000000
- 12175 multiletter control sequences out of 15000+600000
+ 8867 strings out of 493014
+ 126579 string characters out of 6133351
+ 207919 words of memory out of 5000000
+ 12193 multiletter control sequences out of 15000+600000
  62260 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,9n,40p,1274b,584s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1097,10 +1097,10 @@ ive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/201
 st/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on diplomski.pdf (58 pages, 787165 bytes).
+Output written on diplomski.pdf (60 pages, 793391 bytes).
 PDF statistics:
- 270 PDF objects out of 1000 (max. 8388607)
- 156 compressed objects within 2 object streams
+ 276 PDF objects out of 1000 (max. 8388607)
+ 160 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

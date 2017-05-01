@@ -40,5 +40,7 @@
 \contentsline {chapter}{\numberline {C}Fastlane}{50}
 \contentsline {section}{\numberline {C.1}Dohvat ovisnosti}{51}
 \contentsline {section}{\numberline {C.2}Izgradnja}{52}
-\contentsline {section}{\numberline {C.3}Objava na Crashlytics}{52}
-\contentsline {chapter}{\numberline {D}Usporedba alata za implementaciju kontinuirane integracije}{53}
+\contentsline {section}{\numberline {C.3}Testiranje}{52}
+\contentsline {section}{\numberline {C.4}Isporuka}{52}
+\contentsline {subsection}{\numberline {C.4.1}Potpisivanje koda}{53}
+\contentsline {chapter}{\numberline {D}Usporedba alata za implementaciju kontinuirane integracije}{55}
