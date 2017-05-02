@@ -1046,11 +1046,49 @@ Nakon inicijalizacije dodatka je sve potrebne certifikate i profile moguće dohv
 match(type: 'adhoc')
 \end{verbatim}
 
+\subsection{Crashlytics platforma}
 
+Crashlytics platformu je moguće iskoristiti za ad hoc i unutarnju isporuku. Prije implementacije isporuke je potrebno registrirati aplikaciju na platformi. Registraciju automatski odrađuje Crashlytics biblioteka koja se dodaje i pokreće zajedno s aplikacijom.
 
+Za dodavanje biblioteke je potrebno preuzeti i slijediti upute Fabric aplikacije dostupne na \verb|https://fabric.io/downloads/apple| stranici. Nakon pokretanja aplikacije odabrati željeni projekt te slijediti upute za dodavanje Crashlytics biblioteke.
 
+Prvo, dodati sljedeće ovisnosti \verb|Podfile| datoteci:
 
+\begin{verbatim}
+pod 'Fabric'
+pod 'Crashlytics'
+\end{verbatim}
 
+Sljedeće, kreirati novu \verb|Run scrip| fazu za željeni cilj te joj dodati naredbu u nastavku:
+
+\begin{verbatim}
+"${PODS_ROOT}/Fabric/run" {api_ključ} {tajni_ključ}
+\end{verbatim}
+
+API i tajni ključevi su dostupni putem Fabric aplikacije.
+
+Zadnje, dodati naredbu \verb|Fabric.with([Crashlytics.self])| u datoteku \verb|AppDelegate|. Registracija aplikacije se odvija prilikom prvog pokretanja aplikacije. Profil aplikacije se nalazi na stranici \verb|https://fabric.io/home|.
+
+Prije isporuke aplikacije je potrebno izgraditi arhivu. Za izgradnju arhive koristim dodatak gym. Kod pokretanja gym naredbe je potrebno odabrati shemu koja kreira ispravan tip arhive za željeni tip isporuke, te arhivu objaviti korištenjem crashlytics dodatka. Nužno je za potpisivanje koda odabrati ispravne certifikate i profil. Staza u nastavku obavlja proces isporuke uz objavu na Crashlytics platformi.
+
+\begin{verbatim}
+lane :beta do
+    increment_build_number
+    gym(scheme: "Diplomski_rad”, export_method: 'ad-hoc')
+    crashlytics
+end
+\end{verbatim}
+
+Dodatno, kako prilikom pokretanja naredbe ne bi morao unositi Crashlytics API i tajni ključ, iste je moguće dodati Crashlytics naredbi.
+
+\begin{verbatim}
+crashlytics(
+    api_token: {api_ključ},
+    build_secret: {tajni_ključ}
+)
+\end{verbatim}
+
+Nakon isporuke je aplikaciju moguće preuzeti direktno s Crashlytics platforme. Kako bi korisnik mogao preuzeti aplikaciju, potrebno ga je prvo dodati kao testera pojedine verzije aplikacije. Na Crashlytics profilu aplikacije odabrati \verb|Add testers| opciju te unijeti email adresu željene osobe. Na uređaju osobe otvoriti poslanu email poruku te odabrati opciju \verb|Let Me In|. Po potrebi instalirati \verb|Beta| aplikaciju pomoću koje se obavlja instalacija. Ako je aplikacija isporučena korištenjem ad hoc isporuke, uređaj korisnika mora biti registriran kao testni uređaj te dodan ad hoc profilu. Kako ne bi morali svakoj verziji aplikacije dodavati testere, grupa testera se može dodati kao argument Crashlytics naredbi \verb|groups: {ime_grupe}|.
 
 
 \chapter{Usporedba alata za implementaciju kontinuirane integracije} \label{UsporedbaCIAlata_DodatakC}

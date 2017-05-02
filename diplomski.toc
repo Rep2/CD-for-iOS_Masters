@@ -43,4 +43,5 @@
 \contentsline {section}{\numberline {C.3}Testiranje}{52}
 \contentsline {section}{\numberline {C.4}Isporuka}{52}
 \contentsline {subsection}{\numberline {C.4.1}Potpisivanje koda}{53}
-\contentsline {chapter}{\numberline {D}Usporedba alata za implementaciju kontinuirane integracije}{55}
+\contentsline {subsection}{\numberline {C.4.2}Crashlytics platforma}{54}
+\contentsline {chapter}{\numberline {D}Usporedba alata za implementaciju kontinuirane integracije}{57}
