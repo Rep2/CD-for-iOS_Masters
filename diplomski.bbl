@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -43,21 +43,27 @@ Open source.
 \newblock URL \url{https://github.com/fastlane/fastlane/tree/master/fastlane}.
 \newblock [Online; accessed 29-Apr-2017].
 
-\bibitem[source(2017{\natexlab{c}})]{fastlane:gym}
+\bibitem[source(2017{\natexlab{c}})]{fastlane:deliver}
 Open source.
-\newblock gym, 2017{\natexlab{c}}.
+\newblock deliver, 2017{\natexlab{c}}.
+\newblock URL \url{https://github.com/fastlane/fastlane/tree/master/deliver}.
+\newblock [Online; accessed 3-May-2017].
+
+\bibitem[source(2017{\natexlab{d}})]{fastlane:gym}
+Open source.
+\newblock gym, 2017{\natexlab{d}}.
 \newblock URL \url{https://github.com/fastlane/fastlane/tree/master/gym}.
 \newblock [Online; accessed 1-May-2017].
 
-\bibitem[source(2017{\natexlab{d}})]{fastlane:match}
+\bibitem[source(2017{\natexlab{e}})]{fastlane:match}
 Open source.
-\newblock match, 2017{\natexlab{d}}.
+\newblock match, 2017{\natexlab{e}}.
 \newblock URL \url{https://github.com/fastlane/fastlane/tree/master/match}.
 \newblock [Online; accessed 1-May-2017].
 
-\bibitem[source(2017{\natexlab{e}})]{fastlane:scan}
+\bibitem[source(2017{\natexlab{f}})]{fastlane:scan}
 Open source.
-\newblock scan, 2017{\natexlab{e}}.
+\newblock scan, 2017{\natexlab{f}}.
 \newblock URL \url{https://github.com/fastlane/fastlane/tree/master/scan}.
 \newblock [Online; accessed 1-May-2017].
 
