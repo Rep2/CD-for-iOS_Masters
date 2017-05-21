@@ -458,7 +458,7 @@ Kontinuirana isporuka automatskom isporukom promjena u produkciju nastoji smanji
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.6]{IntercomShipsPerDay}
+\includegraphics[scale=0.7]{IntercomShipsPerDay}
 \caption{Broj dnevnih isporuka promjena u produkciju kompanije \textit{Intercom}}
 \label{fig:IntercomShipsPerDay}
 \end{figure}
@@ -469,13 +469,42 @@ Dok se \textit{alpha} testiranja provode na vrlo malom broju korisnika, \textit{
 
 Umjesto da se programska podrška isporuči direktno korisnicima, ona prolazi niz ručnih testiranja. Primjer procesa isporuke produkta različitim skupinama korisnika je prikazana na slici \ref{fig:DeploymentStages}.
 
-\begin{figure}[b]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{DeploymentStages}
 \caption{Postupna isporuka programske potpore skupovima korisnika}
 \label{fig:DeploymentStages}
 \end{figure}
 
+Termin kontinuirana isporuka je prvi puta iskoristio poznati autor Kent Beck u razgovoru o agilnom razvoju. Kent Beck je ne isporučenu funkcionalnost usporedio s inventarom koji nije prikazan korisniku. Termin je prvi puta definiran u članku \textit{The Deployment Production Line} autora Jez Humblea, Chris Reada i Dan Northa. Praksa je postala posebno prihvaćena zajednici. Danas praksu razvija i unaprjeđuje uglavnom zajednica web programera koji ju, zbog jednostavnosti isporuke programske podrške za web poslužitelje, mogu jednostavno implementirati.
+
+Isporuka programske podrške za web poslužitelje ima značajnu prednost u usporedbi s ostalom programskom potporom. Najvažnije, web aplikacije nije potrebno instalirati na uređaj. Korisnik promjene vidi čim su one dodane na poslužitelju. Dodatno, razvojni tim može direktno upravljati koju će verziju programske potpore korisnik vidjeti. U usporedbi, isporuka iOS aplikacija prvo mora proći provjeru Apple tima te je korisnik mora preuzeti na uređaj. Zbog navedenog se kontinuirana isporuka programske potpore za iOS operacijski sustav značajno razlikuje od tradicionalne kontinuirane isporuke.
+
+
+\section{Kontinuirana isporuka za iOS operacijski sustav}
+
+Kontinuirana isporuka za iOS operacijski sustav se značajno razlikuje od tradicionalne prakse kontinuirane isporuke. Glavni razlog ove razlike je App Store platforma. Dok se nova verzija web aplikacije može isporučiti u nekoliko minuta, nova verzija iOS aplikacije mora proći službenu provjeru Apple tima te ju potom korisnik mora preuzeti. Dodatno, App Store je zatvorena platforma s ograničenim skupom funkcionalnosti. Iako Apple konstantno dodaje nove funkcionalnosti, platforma je u velikom zaostatku u usporedbi s web razvojem. Navedena ograničenost App Store platforme je glavni razlog zbog kojeg veliki broj poznatih članova iOS zajednice prognozira njenu postupnu eliminaciju. Iako App Store platforma ima navedena ograničenja, još uvijek je moguće automatizirati veliki dio procesa.
+
+Isporuka programske potpore za ograničene skupove korisnika je puno jednostavnija. Budući da za ovaj tip isporuke nije potrebno koristiti App Store platformu, moguće je ostvariti puno veći set funkcionalnosti. U sklopu ovog rada koristim Crashlytics platformu koja pruža brojne funkcionalnosti kao što su automatsko osvježenje i postupna isporuka aplikacije korisnicima.
+
+Vratimo se sada na projekt za koji implementiram kontinuiranu isporuku. U sklopu razvoja isporučujem četiri različite verzije aplikacije pod nazivima: razvoja \eng{develop}, testna \eng{test}, pripremna \eng{release candidate} i produkcijska \eng{production} aplikacija.
+
+Razvojna aplikacije prikazuje trenutno stanje aplikacije. Koriste je članovi tima kako bi mogli isprobati novo razvije funkcionalnosti te kako bi mogli pratiti napredak projekta. Svaka završena izmjena treba biti u što kraćem roku vidljiva na ovoj verziji aplikacije.
+
+Testnu aplikaciju koristi tim za osiguranje kvalitete kako bi osigurao ispravnost novo razvijenih funkcionalnosti. Kako bi osigurao ispravnost tim provjerava sve izmjene ostvare od zadnje verzije aplikacije. Zbog navedenog je poželjno da je broj izmjena između verzija mali ali dobro dokumentiran. Verzija ovog tipa aplikacije se osvježava otprilike jednom tjedno.
+
+Pripremna aplikacije služi za pripremu aplikacije za izdavanje u produkciju. Sve izmjene obavljene od zadnje verzije se još jednom provjeravaju kako bi izbjegli pojavu grešaka u produkcijskoj aplikaciji. Osim tima za osiguranje kvalitete, pristup ovom tipu aplikacije često imaju i vanjski korisnici. Nova verzija ovog tipa aplikacije se kreira kada je potrebno isporučiti aplikaciju u produkciju.
+
+Produkcijska aplikacija je aplikacija trenutno dostupna korisniku. Verzija se osvježava jednom do dva put u tri mjeseca.
+
+Iz navedenog je jasno da trenutan proces ne slijedi principe kontinuirane isporuke. Između dvije produkcijske verzije može proći i tri mjeseca. Ovaj spor proces izdavanja promjena u produkciju rezultira većim brojem ljudskih pogrešaka i lošijim iskustvom korisnika. Zbog navedenog automatizacijom procesa ne samo da pokušavam smanjiti vrijeme koje tim ulaže u isporuku, već i smanjiti period između dvije isporuke.
+
+
+\section{Implementacija kontinuirane isporuke}
+
+Iako je cilj kontinuirane integracije svaku promjenu što brže isporučiti, nema smisla za svaku promjenu linije koda graditi novu verziju aplikacije. Ne samo da to ne bi bilo resursno isplativo, već večina verzija ne bi prošla nit proces automatskog testiranja i provjere kvalitete. Pametnije je verziju prilikom spremanja promjena u repozitoriju izvornog koda.
+
+Dodatno, u praksi se često jedna funkcionalnost razdvaja na više manjih promjena. S
 
 
 
