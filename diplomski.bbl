@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -24,6 +24,20 @@ Atlassian.
 \newblock URL
   \url{https://www.atlassian.com/git/tutorials/comparing-workflows}.
 \newblock [Online; accessed 15-March-2017].
+
+\bibitem[Caum(2013)]{cd:whats_the_diff}
+Carl Caum.
+\newblock What's the diff, 2013.
+\newblock URL
+  \url{https://puppet.com/blog/continuous-delivery-vs-continuous-deployment-what-s-diff}.
+\newblock [Online; accessed 20-May-2017].
+
+\bibitem[Intercom(2015)]{intercom:cd}
+Intercom.
+\newblock Why continuous deployment just keeps on giving, 2015.
+\newblock URL
+  \url{https://blog.intercom.com/why-continuous-deployment-just-keeps-on-giving/}.
+\newblock [Online; accessed 20-May-2017].
 
 \bibitem[realm(2017)]{SwiftLint}
 realm.

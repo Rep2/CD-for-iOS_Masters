@@ -445,9 +445,42 @@ Automatizacije objave se ostvaruje korištenjem javnog APIja iTunes Connect plat
 
 \chapter{Kontinuirana isporuka} \label{header:KontinuiranaIsporuka}
 
-Kontinuirana isporuka \eng{continuous deployment} je praksa u programskom inženjerstvu koja nastoji eliminirati vrijeme između razvoja i objave funkcionalnosti u produkciju. Kontinuirana dostava automatizira proces isporuke, međutim, ne isporučuje programsku potporu automatski. Svaku isporuku nove verziju programske potpore je potrebno ručuno pokrenuti. S druge strane, kontinuirana isporuka automatski isporučuju svaku novu verziju. Razlika između kontinuirane dostave i kontinuirane isporuke je prikazana na slici \ref{fig:CDDifferences}.
+Kontinuirana isporuka \eng{continuous deployment} je praksa u programskom inženjerstvu koja nastoji smanjiti vrijeme između razvoja i objave funkcionalnosti u produkciju. Kontinuirana dostava automatizira proces isporuke, međutim, ne isporučuje programsku potporu automatski. Svaku isporuku nove verziju programske potpore je potrebno ručno pokrenuti. S druge strane, kontinuirana isporuka automatski isporučuju svaku novu verziju. Razlika između kontinuirane dostave i kontinuirane isporuke je prikazana na slici \ref{fig:CDDifferences}\citep{cd:whats_the_diff}.
 
-Automatska isporuka zahtijeva automatizaciju isporuke, a automazacija isporuke zahtijeva automatizaciju izgradnje i testiranja. Samim time kontinuirana isporuka zahtijeva kontinuiranu dostavu i integraciju. Zbog navedenog se kontinuirana isporuka smatra dodatkom kontinuirane dostave i integracije.
+\begin{figure}
+\centering
+\includegraphics[scale=0.55]{CDDifferences}
+\caption{Usporedba kontinuirane dostave i kontinuirane isporuke}
+\label{fig:CDDifferences}
+\end{figure}
+
+Kontinuirana isporuka automatskom isporukom promjena u produkciju nastoji smanjiti vrijeme između razvoja funkcionalnosti i njene objave u produkciju te samim time ukupno vrijeme trajanja razvoja. Kontinuirana isporuka ova obavlja na dva načina. Prvo, automatizacijom isporuke i automatskom isporukom promjena, kontinuirana isporuka značajno smanjuje vrijeme koje tim mora uložiti za obavljanje isporuke. Druga stavka je direktna posljedica prve. Zbog smanjenja opterećenja koje isporuka nanosi na tim, obavljanje isporuke postaje puno lakše. Lakše obavljanje isporuke dovodi do češćeg obavljanja isporuke. Irska kompanije \textit{Intercom} u svom blogu bilježi stabilan porast broja dnevnih isporuka promjenu od produkcija. Od ispod 20 isporuka u 2012. godini, do preko 80 isporuka u 2015. godini. Slika \ref{fig:IntercomShipsPerDay} prikazuje broj dnevnih isporuka promjena u produkciju kompanije \textit{Intercom}\citep{intercom:cd}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.6]{IntercomShipsPerDay}
+\caption{Broj dnevnih isporuka promjena u produkciju kompanije \textit{Intercom}}
+\label{fig:IntercomShipsPerDay}
+\end{figure}
+
+Iako kontinuirana isporuka nastoji promjene automatski isporučiti u produkciju, navedeno ne znači da se svaka promjena koda automatski isporučuju direktno korisniku. Prvo, svaka promjena prolazi cijeli proces automatskog testiranja i provjere kvalitete. Dodatno, promjene u praksi često prolaze brojna ručna testiranja prije objave u produkciju. Ručna testiranja možemo generalno podijeliti na testiranja razvojnog tima, testiranja tima za osiguranje kvalitete i testiranja vanjskih korisnika koja po broju korisnika dijelimo na \textit{alpha} i |textit{beta} testove.
+
+Dok se \textit{alpha} testiranja provode na vrlo malom broju korisnika, \textit{beta} testiranja mogu sadržavati i do 10% korisnika. Testiranja razvojnog tima provodi tim koji razvija aplikaciju. Ovi testovi nastoje potvrditi ispravnost razvijene funkcionalnosti ali ne ulaze dulje u ispravnost cijele programske podrške. Testiranja tima za osiguranje kvalitete nastoje osigurati ispravnost cijele programske podrške. Način, raspored i provođenje testiranja je strogo definiran te po opsegu daleko nadmašuje testiranje razvojnog tima. S druge strane, testiranja na vanjskim korisnicima ne provode zaposlenici već potencijalni budući korisnici. Korisnici ne testiraju programsku podršku već ju normalno koriste. Međutim, velik broj korisnika omogućava pronalazak i najmanje greške u programskoj podršci. Dodatno, ovaj tip testiranja se može iskoristiti i za praćenje ponašanja korisnika na temelju čega se mogu uvoditi poboljšanja produkta.
+
+Umjesto da se programska podrška isporuči direktno korisnicima, ona prolazi niz ručnih testiranja. Primjer procesa isporuke produkta različitim skupinama korisnika je prikazana na slici \ref{fig:DeploymentStages}.
+
+\begin{figure}[b]
+\centering
+\includegraphics[scale=0.6]{DeploymentStages}
+\caption{Postupna isporuka programske potpore skupovima korisnika}
+\label{fig:DeploymentStages}
+\end{figure}
+
+
+
+
+
+
 
 
 

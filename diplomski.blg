@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: diplomski.aux
 The style file: fer.bst
 Database file #1: literatura.bib
-You've used 17 entries,
+You've used 19 entries,
             2773 wiz_defined-function locations,
-            670 strings with 6950 characters,
-and the built_in function-call counts, 5257 in all, are:
-= -- 476
-> -- 170
-< -- 17
-+ -- 77
-- -- 51
-* -- 279
-:= -- 802
-add.period$ -- 68
-call.type$ -- 17
-change.case$ -- 68
-chr.to.int$ -- 8
-cite$ -- 34
-duplicate$ -- 255
-empty$ -- 545
-format.name$ -- 68
-if$ -- 1123
+            679 strings with 7239 characters,
+and the built_in function-call counts, 5869 in all, are:
+= -- 532
+> -- 190
+< -- 19
++ -- 85
+- -- 57
+* -- 309
+:= -- 896
+add.period$ -- 76
+call.type$ -- 19
+change.case$ -- 76
+chr.to.int$ -- 10
+cite$ -- 38
+duplicate$ -- 285
+empty$ -- 609
+format.name$ -- 76
+if$ -- 1255
 int.to.chr$ -- 10
 int.to.str$ -- 1
 missing$ -- 0
-newline$ -- 110
-num.names$ -- 68
-pop$ -- 204
+newline$ -- 122
+num.names$ -- 76
+pop$ -- 228
 preamble$ -- 1
-purify$ -- 51
+purify$ -- 57
 quote$ -- 0
-skip$ -- 209
+skip$ -- 235
 stack$ -- 0
-substring$ -- 34
-swap$ -- 28
+substring$ -- 38
+swap$ -- 30
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 187
+type$ -- 209
 warning$ -- 0
-while$ -- 51
+while$ -- 57
 width$ -- 0
-write$ -- 245
+write$ -- 273
