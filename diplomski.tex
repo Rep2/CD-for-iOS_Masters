@@ -411,7 +411,7 @@ Apple nastoji što jednostavnije i neprimjetnije osvježiti verzije aplikacije. 
 Zbog navedenih razloga prominenti pojedinci u iOS zajednici predviđaju ubrzu zamjenu App Store platforme nekim boljim načinom isporuke. Međutim, Apple nije objavio nikakvu naznaku ovog te smo za sad ograničeni sustavom koji imamo.
 
 
-\section{Automatizacija isporuke}
+\section{Automatizacija isporuke} \label{header:Automatizacija_isporuke}
 
 Kao što je navedeno u uvodu poglavlja, automatizacija isporuke donosi brojne pozetivne aspekte. Prvo, ručna isporuka zahtijeva određeno vrijeme programera. Ovo vrijeme je potrebno uložiti za svaku pojedinu isporuku. Što se više puta programska potpora isporuči, to je ukupna količina vremena utrošenog u isporuku veća. S druge strane, automatizacija isporuke zahtijeva ulog većeg dijela vremena u fazi automatizacije procesa, ali značajno smanjuje količinu vremena potrebnog za isporuku.
 
@@ -541,6 +541,48 @@ Pripremna grana služi za pripremu isporuke aplikacije u produkciju. Grana se kr
 
 U praksi se često javljaju novi, neočekivani zahtjevi. Jedan od primjera ovog tipa zahtjeva je otkrivanje pogreške u produkcijskoj verziji koju je odmah potrebno ukloniti. Budući da razvojna grana sadrži promjene koje još nisu objavljene na produkciji, grešku nije moguće otkloniti sljedeći standardnu praksu. Međutim, moguće je granu za otklanjanje pogreške kreirati direktno iz glavne grane. Nakon otklanjanja pogreške i testiranja, promjena se spaja s glavnom granom čime se ista objavljuje u produkciju i s radnom granom. Primjer otklanjanja greške u produkciji se nalazi na slici \ref{fig:HotfixGitflow}. Važno je prilikom pojave zahtjeva ovog tipa iskoristiti postojeće procese isporuke.
 
+
+\section{Implementacija kontinuirane isporuke}
+
+Za ostvarenje kontinuirane isporuke je potrebno pokrenuti odgovarajući proces kontinuirane dostave ako se proces kontinuirane integracije uspješno izvrši. Budući da su kontinuirana integracija i kontinuirana dostava već implementirani, potrebno je samo detektirati uspješnost izvršenja kontinuirane integracije i pokrenuti odgovarajući proces kontinuirane dostave.
+
+Provjeru ispravnog izvršenja kontinuirane integracije obavljam korištenjem varijabli okruženja koje Xcode Server generira u procesu integracije.
+
+Ispravnost izgradnje provjeravam korištenjem varijabli \verb|XCS_ERROR_COUNT|, \\ \verb|XCS_WARNING_COUNT| i \verb|XCS_WARNING_CHANGE|. \verb|XCS_ERROR_COUNT| i \\ \verb|XCS_WARNING_COUNT| varijable definiraju broj pogrešaka i upozorenja generiranih u procesu integracije. Za ispravnost izgradnje broj grešaka mora biti 0. Poželjno je da i broj upozorenja bude 0, ali zbog vanjskih biblioteka to često nije moguće ostvariti. Zbog navedenog se umjesto broja upozorenja često koristim \verb|XCS_WARNING_CHANGE| varijablu koja definira promjenu u broju upozorenja. U sklopu ovog projekta definiram da je izgradnja uspješna ako se broj upozorenja nije povećao.
+
+Ispravnost testiranja provjeravam korištenjem \verb|XCS_TEST_FAILURE_COUNT| varijable. Testiranje smatram uspješnim isključivo ako je broj neuspješnih testova 0.
+
+Ispravnost provjere ispravnosti ovisi o definiranim provjerama ispravnosti. Swiftlint nepoštivanje pravila dojavljuje koriste'i standardne pogreške i upozorenja. Trenutno nije moguće razaznati je li pogreška ili upozorenje generirano izgradnjom ili Swiftlint provjerom. Zbog navedenog se držim pravila definiranog u sklopu ispravnosti izgradnje. Pokrivenost koda trenutno nije dostupna putem varijable okruženja. Međutim, moguće ju je dohvatiti korištenjem javnog Xcode Server APIja pozivom \verb|GET HTTPS| metode:
+
+\begin{verbatim}
+/integration/{id}/coverage{?include_methods}
+\end{verbatim}
+
+Naredba vraća podatke o pokrivenosti koda u JSON formatu koje je moguće iskoristiti za provjeru dovoljne pokrivenosti koda testovima.
+
+Provjeru ispravnost cijele integracije implementiram koristeći sljedeću naredbu:
+
+\begin{verbatim}
+if XCS_ERROR_COUNT == 0 &&
+    XCS_WARNING_CHANGE <= 0 &&
+    XCS_TEST_FAILURE_COUNT == 0
+        {isporuka}
+fi
+\end{verbatim}
+
+Tip isporuke koji se koristi je moguće definirati direktno u botu koji koristimo, na temelju imena bota ili imena izvorne grane. Definiranje tipa isporuke u samom botu je najjednostavnije, ali uzrokuje razlikom u implementaciji botova. U radu koristim ime bota pohranjeno u varijabli okruženja \verb|XCS_BOT_NAME|. Na temelju imena odlučujem koji proces isporuke pokrenuti.
+
+\begin{verbatim}
+if XCS_BOT_NAME == '*Test'
+    fastlane test
+elif XCS_BOT_NAME == '*ReleaseCandidate'
+    fastlane release_candidate
+elif XCS_BOT_NAME == '*Production'
+    fastlane production
+else
+    fastlane develop
+fi
+\end{verbatim}
 
 
 \chapter{Zaključak}

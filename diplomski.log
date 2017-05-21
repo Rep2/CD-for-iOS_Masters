@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  21 MAY 2017 20:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  21 MAY 2017 22:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -968,9 +968,15 @@ File: images/HotfixGitflow.png Graphic file (type png)
 <use images/HotfixGitflow.png>
 Package pdftex.def Info: images/HotfixGitflow.png used on input line 537.
 (pdftex.def)             Requested size: 238.8919pt x 200.24763pt.
- [34 <./images/GitFlowCD.png>] [35 <./images/HotfixGitflow.png>]
+ [34 <./images/GitFlowCD.png>]
+Overfull \hbox (2.69272pt too wide) in paragraph at lines 551--552
+\T1/ptm/m/n/12 Zbog na-ve-de-nog se umjesto broja upo-zo-re-nja £esto ko-ris-ti
+m []\T1/pcr/m/n/12 XCS_WARNING_CHANGE
+ []
+
+[35 <./images/HotfixGitflow.png>] [36]
 Poglavlje 5.
-(./diplomski.bbl [36
+(./diplomski.bbl [37
 
 ]
 Underfull \hbox (badness 5667) in paragraph at lines 9--14
@@ -1006,7 +1012,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--41
 ptm/m/n/12 .
  []
 
-[37
+[38
 
 ]
 Underfull \hbox (badness 1014) in paragraph at lines 104--109
@@ -1026,180 +1032,181 @@ Underfull \hbox (badness 1902) in paragraph at lines 125--130
 ptm/m/n/12 .  [Online;
  []
 
-) [38] [39] [40
+) [39] [40] [41
 
 
 ]
 Dodatak A.
-[41
+[42
 
-] [42] <images/Initial_commit.png, id=194, 115.43124pt x 220.825pt>
+] [43] <images/Initial_commit.png, id=197, 115.43124pt x 220.825pt>
 File: images/Initial_commit.png Graphic file (type png)
 
 <use images/Initial_commit.png>
-Package pdftex.def Info: images/Initial_commit.png used on input line 641.
+Package pdftex.def Info: images/Initial_commit.png used on input line 683.
 (pdftex.def)             Requested size: 69.25926pt x 132.496pt.
 
-<images/Branching.png, id=195, 227.85126pt x 218.8175pt>
+<images/Branching.png, id=198, 227.85126pt x 218.8175pt>
 File: images/Branching.png Graphic file (type png)
 
 <use images/Branching.png>
-Package pdftex.def Info: images/Branching.png used on input line 647.
+Package pdftex.def Info: images/Branching.png used on input line 689.
 (pdftex.def)             Requested size: 136.71179pt x 131.2915pt.
 
-<images/FastForwardA.png, id=196, 226.8475pt x 221.82875pt>
+<images/FastForwardA.png, id=199, 226.8475pt x 221.82875pt>
 File: images/FastForwardA.png Graphic file (type png)
 
 <use images/FastForwardA.png>
-Package pdftex.def Info: images/FastForwardA.png used on input line 659.
+Package pdftex.def Info: images/FastForwardA.png used on input line 701.
 (pdftex.def)             Requested size: 136.10954pt x 133.09825pt.
 
-<images/FastForwardB.png, id=197, 131.49126pt x 222.8325pt>
+<images/FastForwardB.png, id=200, 131.49126pt x 222.8325pt>
 File: images/FastForwardB.png Graphic file (type png)
 
 <use images/FastForwardB.png>
-Package pdftex.def Info: images/FastForwardB.png used on input line 665.
+Package pdftex.def Info: images/FastForwardB.png used on input line 707.
 (pdftex.def)             Requested size: 78.89534pt x 133.70053pt.
 
-<images/ConflictA.png, id=198, 219.82124pt x 299.1175pt>
+<images/ConflictA.png, id=201, 219.82124pt x 299.1175pt>
 File: images/ConflictA.png Graphic file (type png)
 
 <use images/ConflictA.png>
-Package pdftex.def Info: images/ConflictA.png used on input line 680.
+Package pdftex.def Info: images/ConflictA.png used on input line 722.
 (pdftex.def)             Requested size: 131.89375pt x 179.47188pt.
 
-<images/ConflictB.png, id=199, 218.8175pt x 299.1175pt>
+<images/ConflictB.png, id=202, 218.8175pt x 299.1175pt>
 File: images/ConflictB.png Graphic file (type png)
 
 <use images/ConflictB.png>
-Package pdftex.def Info: images/ConflictB.png used on input line 686.
+Package pdftex.def Info: images/ConflictB.png used on input line 728.
 (pdftex.def)             Requested size: 131.2915pt x 179.47188pt.
- [43 <./images/Initial_commit.png> <./images/Branching.png>] [44 <./images/Fast
+ [44 <./images/Initial_commit.png> <./images/Branching.png>] [45 <./images/Fast
 ForwardA.png> <./images/FastForwardB.png> <./images/ConflictA.png> <./images/Co
 nflictB.png>]
-<images/RebaseA.png, id=213, 223.83624pt x 299.1175pt>
+<images/RebaseA.png, id=217, 223.83624pt x 299.1175pt>
 File: images/RebaseA.png Graphic file (type png)
 
 <use images/RebaseA.png>
-Package pdftex.def Info: images/RebaseA.png used on input line 704.
+Package pdftex.def Info: images/RebaseA.png used on input line 746.
 (pdftex.def)             Requested size: 111.91785pt x 149.55838pt.
 
-<images/RebaseB.png, id=214, 223.83624pt x 300.12125pt>
+<images/RebaseB.png, id=218, 223.83624pt x 300.12125pt>
 File: images/RebaseB.png Graphic file (type png)
 
 <use images/RebaseB.png>
-Package pdftex.def Info: images/RebaseB.png used on input line 710.
+Package pdftex.def Info: images/RebaseB.png used on input line 752.
 (pdftex.def)             Requested size: 111.91785pt x 150.06026pt.
 
-<images/RebaseC.png, id=215, 123.46124pt x 300.12125pt>
+<images/RebaseC.png, id=219, 123.46124pt x 300.12125pt>
 File: images/RebaseC.png Graphic file (type png)
 
 <use images/RebaseC.png>
-Package pdftex.def Info: images/RebaseC.png used on input line 716.
+Package pdftex.def Info: images/RebaseC.png used on input line 758.
 (pdftex.def)             Requested size: 61.73045pt x 150.06026pt.
- [45 <./images/RebaseA.png> <./images/RebaseB.png> <./images/RebaseC.png>] [46]
- [47] [48]
-Overfull \hbox (8.79755pt too wide) in paragraph at lines 880--881
+ [46 <./images/RebaseA.png> <./images/RebaseB.png> <./images/RebaseC.png>] [47]
+ [48] [49]
+Overfull \hbox (8.79755pt too wide) in paragraph at lines 922--923
 []\T1/ptm/m/n/12 Provjeru po-kri-ve-nosti koda do-bi-vamo ko-ris-te¢i pa-ra-me-
 tar []\T1/pcr/m/n/12 -showBuildSettings
  []
 
-[49] <images/iTunesUUID.png, id=235, 675.52374pt x 265.99374pt>
+[50] <images/iTunesUUID.png, id=239, 675.52374pt x 265.99374pt>
 File: images/iTunesUUID.png Graphic file (type png)
 
 <use images/iTunesUUID.png>
-Package pdftex.def Info: images/iTunesUUID.png used on input line 911.
+Package pdftex.def Info: images/iTunesUUID.png used on input line 953.
 (pdftex.def)             Requested size: 337.76105pt x 132.99654pt.
- [50] [51 <./images/iTunesUUID.png>] [52] [53]
+ [51] [52 <./images/iTunesUUID.png>] [53] [54]
 Dodatak B.
-[54
+[55
 
-] <images/XcodeServerOptions.png, id=253, 740.7675pt x 437.635pt>
+] <images/XcodeServerOptions.png, id=256, 740.7675pt x 437.635pt>
 File: images/XcodeServerOptions.png Graphic file (type png)
 
 <use images/XcodeServerOptions.png>
-Package pdftex.def Info: images/XcodeServerOptions.png used on input line 989.
+Package pdftex.def Info: images/XcodeServerOptions.png used on input line 1031.
+
 (pdftex.def)             Requested size: 370.38284pt x 218.81696pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/XcodeServerIntegrationPeriods.png, id=254, 739.76375pt x 436.63126pt>
+<images/XcodeServerIntegrationPeriods.png, id=257, 739.76375pt x 436.63126pt>
 File: images/XcodeServerIntegrationPeriods.png Graphic file (type png)
 
 <use images/XcodeServerIntegrationPeriods.png>
 Package pdftex.def Info: images/XcodeServerIntegrationPeriods.png used on input
- line 998.
+ line 1040.
 (pdftex.def)             Requested size: 369.88097pt x 218.3151pt.
- [55]
-Overfull \hbox (7.66048pt too wide) in paragraph at lines 1019--1020
+ [56]
+Overfull \hbox (7.66048pt too wide) in paragraph at lines 1061--1062
 \T1/ptm/m/n/12 sklopu in-te-gra-cije. Ak-cije se botu do-daju oda-bi-rom op-cij
 e []\T1/pcr/m/n/12 Edit bot -> Triggers
  []
 
-[56 <./images/XcodeServerOptions.png>]
-Overfull \hbox (19.43484pt too wide) in paragraph at lines 1035--1035
+[57 <./images/XcodeServerOptions.png>]
+Overfull \hbox (19.43484pt too wide) in paragraph at lines 1077--1077
 []    \T1/pcr/m/n/12 echo "CocoaPods not found, proceeding with installation"[]
  
  []
 
 
-Overfull \hbox (12.23485pt too wide) in paragraph at lines 1035--1035
+Overfull \hbox (12.23485pt too wide) in paragraph at lines 1077--1077
 []        \T1/pcr/m/n/12 echo "gem not found, quiting CocoaPods instalation"[] 
 
  []
 
-[57 <./images/XcodeServerIntegrationPeriods.png>]
-Overfull \hbox (12.23485pt too wide) in paragraph at lines 1064--1064
+[58 <./images/XcodeServerIntegrationPeriods.png>]
+Overfull \hbox (12.23485pt too wide) in paragraph at lines 1106--1106
 []    \T1/pcr/m/n/12 echo "Carthage not found, proceeding with installation"[] 
 
  []
 
-[58] <images/XcodeServerResult.png, id=270, 1002.74625pt x 682.55pt>
+[59] <images/XcodeServerResult.png, id=273, 1002.74625pt x 682.55pt>
 File: images/XcodeServerResult.png Graphic file (type png)
 
 <use images/XcodeServerResult.png>
-Package pdftex.def Info: images/XcodeServerResult.png used on input line 1092.
+Package pdftex.def Info: images/XcodeServerResult.png used on input line 1134.
 (pdftex.def)             Requested size: 401.0914pt x 273.01517pt.
- [59] [60 <./images/XcodeServerResult.png>]
+ [60] [61 <./images/XcodeServerResult.png>]
 Dodatak C.
-[61
+[62
 
-] [62] [63]
-Overfull \hbox (146.81163pt too wide) in paragraph at lines 1184--1185
+] [63] [64]
+Overfull \hbox (146.81163pt too wide) in paragraph at lines 1226--1227
 \T1/ptm/m/n/12 te-fakta se kre-iraju ko-ri-²te-njem Ap-ple De-ve-lo-per plat-fo
 rme. Na-kon pri-jave na []\T1/pcr/m/n/12 https://developer.apple.com
  []
 
 
-Overfull \hbox (208.88826pt too wide) in paragraph at lines 1186--1187
+Overfull \hbox (208.88826pt too wide) in paragraph at lines 1228--1229
 \T1/ptm/m/n/12 trebno spre-miti na ra-£u-nalu koje obav-lja is-po-ruku u di-rek
 -to-riju []\T1/pcr/m/n/12 ~/Library/MobileDevice/Provisioning Profiles/
  []
 
-[64] [65] [66]
-Overfull \hbox (3.51799pt too wide) in paragraph at lines 1271--1272
+[65] [66] [67]
+Overfull \hbox (3.51799pt too wide) in paragraph at lines 1313--1314
 []\T1/ptm/m/n/12 Kreiranje pro-fila se obav-lja na []\T1/pcr/m/n/12 https://itu
 nesconnect.apple.com/ \T1/ptm/m/n/12 stra-
  []
 
-<images/iTunesConnectAppCreation.png, id=297, 470.75874pt x 541.02126pt>
+<images/iTunesConnectAppCreation.png, id=300, 470.75874pt x 541.02126pt>
 File: images/iTunesConnectAppCreation.png Graphic file (type png)
 
 <use images/iTunesConnectAppCreation.png>
 Package pdftex.def Info: images/iTunesConnectAppCreation.png used on input line
- 1275.
+ 1317.
 (pdftex.def)             Requested size: 188.30016pt x 216.40466pt.
- [67 <./images/iTunesConnectAppCreation.png>] [68]
+ [68 <./images/iTunesConnectAppCreation.png>] [69]
 Dodatak D.
-[69
+[70
 
 ] (./diplomski.aux) ) 
 Here is how much of TeX's memory you used:
- 8935 strings out of 493014
- 128423 string characters out of 6133351
- 208158 words of memory out of 5000000
- 12252 multiletter control sequences out of 15000+600000
+ 8936 strings out of 493014
+ 128455 string characters out of 6133351
+ 208169 words of memory out of 5000000
+ 12253 multiletter control sequences out of 15000+600000
  62260 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,9n,40p,1274b,553s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1212,10 +1219,10 @@ ive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/201
 st/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on diplomski.pdf (74 pages, 1443074 bytes).
+Output written on diplomski.pdf (75 pages, 1446646 bytes).
 PDF statistics:
- 340 PDF objects out of 1000 (max. 8388607)
- 192 compressed objects within 2 object streams
+ 343 PDF objects out of 1000 (max. 8388607)
+ 194 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  156 words of extra memory for PDF output out of 10000 (max. 10000000)
 
