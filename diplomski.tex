@@ -125,7 +125,7 @@ Git je kreirao Linus Torvalds 2005. godine zbog nezadovoljstva tadašnjim sustav
 
 Svn je stariji, međutim još je uvijek široko korišten sustav. Koristi ga veliki broj starijih kompanija i projekata otvorenog koda. Git je značajno dobio na popularnosti u zadnjem desetljeću. Njegova jednostavnost i fleksibilnost ga čine lakšim za upoznavanje i korištenje. Danas git preuzima tržište te se koristi u većini novih projekata. Zbog navedenog u ostatku rada koristim git. Detaljan pregled osnovnih funkcionalnosti alata git se nalazi u dodatku \ref{uvodUGit}. Sve se funkcionalnosti mogu, uz manju modifikaciju, implementirati i u svnu.
 
-\subsection{Implementacija verzioniranja}
+\subsection{Implementacija verzioniranja} \label{header:Implementacija_verzioniranja}
 
 Ostaje otvoreno pitanje kako koristiti alat za kontrolu verzija. Koliko često kreirati novu verziju koda i koliko često promjene spajati sa zajedničkim repozitorijem. Kod korištenja gita se javljaju i pitanja kako organizirati repozitorije i sustav grananja.
 
@@ -500,16 +500,46 @@ Produkcijska aplikacija je aplikacija trenutno dostupna korisniku. Verzija se os
 Iz navedenog je jasno da trenutan proces ne slijedi principe kontinuirane isporuke. Između dvije produkcijske verzije može proći i tri mjeseca. Ovaj spor proces izdavanja promjena u produkciju rezultira većim brojem ljudskih pogrešaka i lošijim iskustvom korisnika. Zbog navedenog automatizacijom procesa ne samo da pokušavam smanjiti vrijeme koje tim ulaže u isporuku, već i smanjiti period između dvije isporuke.
 
 
-\section{Implementacija kontinuirane isporuke}
+\section{Pokretanje isporuke}
 
-Iako je cilj kontinuirane integracije svaku promjenu što brže isporučiti, nema smisla za svaku promjenu linije koda graditi novu verziju aplikacije. Ne samo da to ne bi bilo resursno isplativo, već večina verzija ne bi prošla nit proces automatskog testiranja i provjere kvalitete. Pametnije je verziju prilikom spremanja promjena u repozitoriju izvornog koda.
+Iako je cilj kontinuirane integracije svaku promjenu što brže isporučiti, nema smisla za svaku promjenu linije koda graditi novu verziju aplikacije. Ne samo da to ne bi bilo resursno isplativo, već većina verzija ne bi prošla nit proces automatskog testiranja i provjere kvalitete. Pametnije je verziju prilikom spremanja promjena u repozitoriju izvornog koda.
 
-Dodatno, u praksi se često jedna funkcionalnost razdvaja na više manjih promjena. S
+Dodatno, u praksi se često jedna funkcionalnost razdvaja na više manjih promjena. Svaka od ovih promjena sama prolazi automatska testiranja i osiguranje kvalitete, međutim često dovodi aplikaciju u ne koristivo stanje. Zbog navedenog nema smisla osvježavati verziju kada se ona nalazi u navedenom među stanju. Dodatno, razvojni tim može istovremeno raditi na nekoliko različitih funkcionalnosti.
 
+Za rješavanje navedenog problema se u praksi najčešće koristi proces verzioniranja poz nazivom grananje funkcionalnosti \eng{feature branch} opisana u odlomku \ref{header:Implementacija_verzioniranja}. Umjesto pokretanja procesa isporuke aplikacije prilikom svake promjene repozitorija izvornog koda, proces isporuke se pokreče samo prilikom izmjene glavne grane. Ovaj pristup smanjuje opterećenje sustava te rezultira isporukom upotrebljivog produkta. Dodatno, prilikom spajanja razvojne grane je moguće obaviti dodatne kontrole ispravnosti kao što su timski pregled koda. Slika \ref{fig:FeatureBranchCD} prikazuje proces automatskog pokretanja isporuke nakon spajanja razvojne grane.
 
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{FeatureBranchCD}
+\caption{Automatska isporuka nakon promjene glavne grane}
+\label{fig:FeatureBranchCD}
+\end{figure}
 
+Ovaj pristup je vrlo jednostavan te omogućava automatiziranje isporuke promjena na produkciju. Ako projekta ne zahtijeva testnu i pripremnu verziju aplikacije, isporuku u produkciju je moguće ostvariti korištenjem oznaka \eng{tag}. Oznake dodaju dodatno značenje stanju u sustavu za kontrolu verzija. Umjesto isporuke na temelju novog stanja, isporuku u produkciju je moguće pokrenuti nakon kreiranja oznake.
 
+Međutim, ovaj tip automatske isporuke je vrlo limitiran. Glavna mana je limitiranost u broju tipova aplikacija. Za otklananje navedenog problema možemo koristiti \textit{gitflow} proces verzioniranja. Umjesto postojanja jedne glavne grane, \textit{gitflow} proces koristi nekoliko grana s posebnim značenjem.
 
+Glavna grana \eng{master branch} predstavlja trenutno stanje programske potpore u produkciji. Svaka verzija ove grane je obilježena oznakom koja sadrži ljudski čitljivu verziju aplikacije i popis promjena obavljenih od prošle verzije. Razvojna grana \eng{develop branch} predstavlja trenutno stanje aplikacije u razvoju. Objava promjena u produkciju se obavlja pomoću pomoćne grane koja se kreira iz razvojne grane. Nakon provjere ispravnosti promjena iste se dodaju glavnoj grani i time objavljuju u produkciju. Pregled cijelog procesa je dostupan u odlomku \ref{header:Implementacija_verzioniranja}.
+
+Za potrebe našeg projekta koristim modificiranu verziju \textit{gitflow} procesa. Uz glavnu i razvojnu granu koristim još dvije posebne grane. Testna grana služi za isporuku testne aplikacije timu za osiguranje kvalitete. U testnu se granu promjene dodaju iz razvojne grane. Nakon pronalaska pogreške iste se otklanjaju direktno na ovoj grani. Nakon potvrde ispravnosti funkcionalnosti započinje testiranje novonastalih funkcionalnosti.
+
+Pripremna grana služi za pripremu isporuke aplikacije u produkciju. Grana se kreira iz željenog ispravnog stanja testne grane. Nakon završne provjere ispravnosti promjene se dodaju na glavnu granu čime se objavljuju u produkciju. Slika \ref{fig:GitFlowCD} prikazuje proces automatizirane isporuke korištenjem \textit{gitflow} procesa.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{GitFlowCD}
+\caption{Automatska isporuka primjenom \textit{gitflow} procesa}
+\label{fig:GitFlowCD}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{HotfixGitflow}
+\caption{Automatska isporuka otklananja pogreške u produkciji}
+\label{fig:HotfixGitflow}
+\end{figure}
+
+U praksi se često javljaju novi, neočekivani zahtjevi. Jedan od primjera ovog tipa zahtjeva je otkrivanje pogreške u produkcijskoj verziji koju je odmah potrebno ukloniti. Budući da razvojna grana sadrži promjene koje još nisu objavljene na produkciji, grešku nije moguće otkloniti sljedeći standardnu praksu. Međutim, moguće je granu za otklanjanje pogreške kreirati direktno iz glavne grane. Nakon otklanjanja pogreške i testiranja, promjena se spaja s glavnom granom čime se ista objavljuje u produkciju i s radnom granom. Primjer otklanjanja greške u produkciji se nalazi na slici \ref{fig:HotfixGitflow}. Važno je prilikom pojave zahtjeva ovog tipa iskoristiti postojeće procese isporuke.
 
 
 
