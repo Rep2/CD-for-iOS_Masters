@@ -123,7 +123,104 @@ Danas se u praksi koriste dva alata: Apach Subversion i git. Apache Subversion, 
 
 Git je kreirao Linus Torvalds 2005. godine zbog nezadovoljstva tadašnjim sustavima za kontrolu verzija. Git je izdan kao alat otvorenog koda te je ubrzo okupio veliku podršku u zajednici. Za razliku od svna, git je distribuirani sustav. Repozitoriji istog projekta mogu postojati na proizvoljnom broju uređaja u proizvoljnom broju stanja. Navedeni se repozitoriji mogu klonirati, usklađivati i uređivati neovisno jedan od drugom. Zbog navedenog je pomoću gita moguće implementirati proizvoljan tijek verzioniranja. Bio to centralizirani repozitorij nalik na svnov pristup, pristup s osobama zaduženim za odobravanje promjena, distribuirani model i drugi. Najvažnije, git je jednostavan ali vrlo moćan alat. Implementacija osnovnih funkcionalnosti je jednostavna dok istovremeno postoji podrška za vrlo kompleksne pothvate.
 
-Svn je stariji, međutim još je uvijek široko korišten sustav. Koristi ga veliki broj starijih kompanija i projekata otvorenog koda. Git je značajno dobio na popularnosti u zadnjem desetljeću. Njegova jednostavnost i fleksibilnost ga čine lakšim za upoznavanje i korištenje. Danas git preuzima tržište te se koristi u većini novih projekata. Zbog navedenog u ostatku rada koristim git. Detaljan pregled osnovnih funkcionalnosti alata git se nalazi u dodatku \ref{uvodUGit}. Sve se funkcionalnosti mogu, uz manju modifikaciju, implementirati i u svnu.
+Svn je stariji, međutim još je uvijek široko korišten sustav. Koristi ga veliki broj starijih kompanija i projekata otvorenog koda. Git je značajno dobio na popularnosti u zadnjem desetljeću. Njegova jednostavnost i fleksibilnost ga čine lakšim za upoznavanje i korištenje. Danas git preuzima tržište te se koristi u većini novih projekata. Zbog navedenog u ostatku rada koristim git. Sve se funkcionalnosti mogu, uz manju modifikaciju, implementirati i u svnu.
+
+
+\subsection{Uvod u git} \label{uvodUGit}
+
+Temeljne funkcionalnosti git alata su repozitoriji i grane. Repozitorij je direktorij koji je verzioniran korištenjem git sustava za kontrolu verzija. Ovaj repozitorij sadrži direktorij “.git” koji specificira na koji se način verzionira repozitori te sadrži informacije o repozitoriju.
+
+Repozitoriji se mogu klonirati na istom ili drugom uređaju. Klonirani repozitorij je novi repozitorij koji sadržava svu povijest kloniranog repozitorija. Promjene koje se obavljaju u kloniranom repozitoriju nemaju nikakvog utjecaja na izvorni repozitorij. Međutim, promjene obavljene u kloniranom repozitoriju se mogu, uz postojanje odgovarajuće autorizacije, prenijeti na izvorni repozitorij. Prijenos promjena se ne mora obavljati isključivo između izvornog i kloniranog repozitorija, već se može obaviti između bilo koja dva povezana repozitorija.
+
+\begin{figure}[b!]
+\centering
+\begin{minipage}{.5\textwidth}
+\centering
+\includegraphics[scale=0.6]{Initial_commit}
+\caption{Grana s tri potvrde}
+\label{fig:Initial_commit}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+\centering
+\includegraphics[scale=0.6]{Branching}
+\caption{Grananje}
+\label{fig:Branching}
+\end{minipage}
+\end{figure}
+
+Prilikom kreiranja git repozitorija stvara se i glavna grana (eng. master branch) repozitorija. Grana je definirana slijedom promjena koje su primijenjene na njoj. Modificiranje dokumenata u repozitorija ne uzrokuje samo po sebi stvaranje nove verzije. Obavljene modifikacije je potrebno potvrditi \eng{commit}. Potvrđivanje modifikacija kreira novu verziju izvornog koda na trenutnoj grani te osvježava njeno stanje. Potvrđivanje promjena je prikazano na slici \ref{fig:Initial_commit}. Repozitorij koda se stvara kreiranjem glavne grane i obavljanjem inicijalnog potvrđivanja \eng{initial commit}. Glavna grana je označena slovom A. Inicijalno potvrđivanje je označeno s A1, dok su naknadna potvrđivanja označena s A2 i A3.
+
+\begin{figure}
+\centering
+\begin{subfigure}{.49\textwidth}
+\centering
+\includegraphics[scale=0.6]{FastForwardA}
+\caption{Stanje prije spajanja}
+\label{fig:FastForwardA}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\centering
+\includegraphics[scale=0.6]{FastForwardB}
+\caption{Stanje nakon spajanja}
+\label{fig:FastForwardB}
+\end{subfigure}
+\caption{Spajanja dodavanje promjena}
+\label{fig:FastForward}
+\end{figure}
+
+Nova grana se može kreirati iz bilo kojeg stanja postojeće granje. Ovaj se postupak naziva grananje \eng{branching}. Izvorna i klonirana grana dijele zajedničku povijest do trenutka grananja. Daljnje promjene se primjenjuju samo na izvornu ili kloniranu granu. Slika \ref{fig:Branching} prikazuje postupak grananja. Grana B se kreira iz stanja A2 grane A. Grane A i B dijele dva zajednička stanja A1 i A2. Ova stanja nazivamo zajednička povijest grana. Nakon grananja na granu B dodajemo dva nova stanja B2 i B3.
+
+
+\begin{figure}[b!]
+\centering
+\begin{subfigure}{.49\textwidth}
+\centering
+\includegraphics[scale=0.6]{ConflictA}
+\caption{Stanje prije spajanja}
+\label{fig:ConflictA}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\centering
+\includegraphics[scale=0.6]{ConflictB}
+\caption{Stanje nakon spajanja}
+\label{fig:ConflictB}
+\end{subfigure}
+\caption{Spajanja otklananjem konflikta}
+\label{fig:Conflict}
+\end{figure}
+
+Grane je također moguće spojiti. Spajanje grana dodaje promjene obavljene na izvornoj \eng{source} grani u odredišnu \eng{destionation} granu. Spajanje je moguće obaviti na nekoliko načina ovisno o odnosu dviju grana koje se spajaju. Slika \ref{fig:FastForward} prikazuje najjednostavniji odnos dviju grana kod spajanja. Nakon grananja grane B iz stanja A2 grane A na granu B se dodaju dva nova stanja, B2 i B3. U međuvremenu je grana A ostala nepromijenjena. Zbog navedenog je spajanje grana moguće obaviti jednostavno dodavanjem promjena B grane na vrh A grane, \eng{fast forward}. Slike \ref{fig:FastForwardA} prikazuje stanje prije spajanja dok slika \ref{fig:FastForwardB} prikazuje stanje nakon spajanja. Dodatno, samo spajanje je moguće označiti dodavanjem dodatnog stanja na granu na kojoj se obavlja spajanje.
+
+Postupak se komplicira ako je odredišna grana modificirana nakon grananja. U navedenom slučaju nije moguće promjene obavljene u izvorišnoj gani samo dodati na vrh odredišne grane, nego je promjene potrebno spojiti. Proces spajanja ovisi o tome postoje li konflikti između promjena. Ako ne postoji, spajanje je moguće obaviti jednako kao na slici \ref{fig:FastForward}, jednostavno dodavanjem promjena na vrh odredišne grane.
+
+Međutim, ako promjene izazivaju konflikte, onda je te konflikte potrebno ručno razriješiti. Otklanjanje konflikata uzrokuje izmjenom verzija jedne ili obje grane. Proces otklanjanja konflikata se najčešće odrađuje dodavanjem jedne po jedne verzije izvorne grane na odredišnu granu. Ako dodana verzija ne izaziva konflikt, ona se jednostavno dodaje na vrh odredišne grane. Međutim, ako verzija izaziva konflikt, tada se isti otklanja modificirajući dodanu verziju. Slika \ref{fig:Conflict} prikazuje proces spajanja grana s konfliktom. Konflikt je nastao između verzija A2 i B2. Konflikt se otklanja dodavanjem verzije B2 na vrh A grane i njenim modificiranjem. Ovo je stanje označeno s B2'. Stanje B3 ne izaziva konflikt te se samo dodaje na vrh A grane. Rezultat spajanja su dvije grane A i B različitih povijesti.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.3\textwidth}
+\centering
+\includegraphics[scale=0.5]{RebaseA}
+\caption{Početno stanje}
+\label{fig:RebaseA}
+\end{subfigure}
+\begin{subfigure}{.3\textwidth}
+\centering
+\includegraphics[scale=0.5]{RebaseB}
+\caption{Stanje nakon \textit{rebase}}
+\label{fig:RebaseB}
+\end{subfigure}
+\begin{subfigure}{.3\textwidth}
+\centering
+\includegraphics[scale=0.5]{RebaseC}
+\caption{Stanje nakon spajanja}
+\label{fig:RebaseC}
+\end{subfigure}
+\caption{Spajanje \textit{rebase} postupkom}
+\label{fig:Rebase}
+\end{figure}
+
+Gore naveden slučaj se često rješava postupkom pod nazivom \textit{rebase}. Postupak prije spajanja u povijest izvorišne grane dodaje sve verzije nastala u odredišnoj grani nakon grananja. Verzije se dodaju odmah nakon stare točke grananja čime se točka grananja pomiče na zadnju verziju A grane. Slika \ref{fig:RebaseB} prikazuje stanje nakon obavljanja \textit{rebase} postupka na grani B. Sada su grane u stanju jednakom onom na slici \ref{fig:FastForward} te je spajanje moguće obaviti dodavanjem promjena na vrh odredišne grane. Stanje B2 se još uvijek mijenja, međutim sada je povijest repozitorija linearna.
+
 
 \subsection{Implementacija verzioniranja} \label{header:Implementacija_verzioniranja}
 
@@ -612,13 +709,13 @@ Abstract.
 
 
 
-\chapter{Ručna integracija i isporuka iOS aplikacija}
+\chapter{Tehnički detalji implementacije kontinuirane isporuke}
 
-Ovaj dodatak je tehnički usmjeren pregled ručne implementacije procesa integracije i isporuke iOS aplikacije. Glavni cilj dodatka je upoznati se s alatima koje koristimo kod razvoja, integracije i isporuke iOS aplikacija. Sam postupak automatizacija donosi svoje prepreke, zbog čega je lakše prvo definirati postupak koji automatiziramo.
+Ovaj dodatak je tehnički usmjeren pregled implementacije kontinuirane isporuke za programsku potporu za iOS operacijski sustav. Dodatak daje pregled kreiranja i korištenja kontinuirane integracije, dostave i isporuke.
 
-Prvi dio dodatka specificira alate koje koristim u razvoju, integraciji i isporuci te njihovu instalaciju i pripremu. Drugi dio obrađuje integraciju a treći isporuku.
+Dodatak je podjeljen prema sukladno podjeli glavnog dijela rada. Prvo je obrađena kontinuirana integracija, zatim kontinuirana dostava i na kraju dodatka kontinuirana isporuka. Svaki od poglavlja započinje pregledom alata korištenjih u poglavlju nakon čega sljede faze procesa koji se obrađuje.
 
-Primjeri su napisani korištenjem operacijskog sustava \textit{macOS Sierra 10.12.4}.
+Primjeri su napisani za macOS operacijski sutav te su testirani na \textit{Sierra 10.12.4} verziji. Minimalna preporučena verzija operacijskog sustava je \textit{Yosemite 10.10}.
 
 \section{Alati} \label{AlatiBuild}
 
@@ -669,102 +766,6 @@ brew install swiftlint
 \section{Priprema} \label{IntegracijaDodatakA}
 
 Integracija započinje verzioniranjem. U sklopu ovog rada koristim alat git a repozitorij objavljujem na Github stranici. Za kontrolu pristupa repozitoriju koristim \textit{ssh} protokol.
-
-\subsection{Uvod u git} \label{uvodUGit}
-
-Temeljne funkcionalnosti git alata su repozitoriji i grane. Repozitorij je direktorij koji je verzioniran korištenjem git sustava za kontrolu verzija. Ovaj repozitorij sadrži direktorij “.git” koji specificira na koji se način verzionira repozitori te sadrži informacije o repozitoriju.
-
-Repozitoriji se mogu klonirati na istom ili drugom uređaju. Klonirani repozitorij je novi repozitorij koji sadržava svu povijest kloniranog repozitorija. Promjene koje se obavljaju u kloniranom repozitoriju nemaju nikakvog utjecaja na izvorni repozitorij. Međutim, promjene obavljene u kloniranom repozitoriju se mogu, uz postojanje odgovarajuće autorizacije, prenijeti na izvorni repozitorij. Prijenos promjena se ne mora obavljati isključivo između izvornog i kloniranog repozitorija, već se može obaviti između bilo koja dva povezana repozitorija.
-
-\begin{figure}[b!]
-\centering
-\begin{minipage}{.5\textwidth}
-\centering
-\includegraphics[scale=0.6]{Initial_commit}
-\caption{Grana s tri potvrde}
-\label{fig:Initial_commit}
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-\centering
-\includegraphics[scale=0.6]{Branching}
-\caption{Grananje}
-\label{fig:Branching}
-\end{minipage}
-\end{figure}
-
-Prilikom kreiranja git repozitorija stvara se i glavna grana (eng. master branch) repozitorija. Grana je definirana slijedom promjena koje su primijenjene na njoj. Modificiranje dokumenata u repozitorija ne uzrokuje samo po sebi stvaranje nove verzije. Obavljene modifikacije je potrebno potvrditi \eng{commit}. Potvrđivanje modifikacija kreira novu verziju izvornog koda na trenutnoj grani te osvježava njeno stanje. Potvrđivanje promjena je prikazano na slici \ref{fig:Initial_commit}. Repozitorij koda se stvara kreiranjem glavne grane i obavljanjem inicijalnog potvrđivanja \eng{initial commit}. Glavna grana je označena slovom A. Inicijalno potvrđivanje je označeno s A1, dok su naknadna potvrđivanja označena s A2 i A3.
-
-\begin{figure}
-\centering
-\begin{subfigure}{.49\textwidth}
-\centering
-\includegraphics[scale=0.6]{FastForwardA}
-\caption{Stanje prije spajanja}
-\label{fig:FastForwardA}
-\end{subfigure}
-\begin{subfigure}{.49\textwidth}
-\centering
-\includegraphics[scale=0.6]{FastForwardB}
-\caption{Stanje nakon spajanja}
-\label{fig:FastForwardB}
-\end{subfigure}
-\caption{Spajanja dodavanje promjena}
-\label{fig:FastForward}
-\end{figure}
-
-Nova grana se može kreirati iz bilo kojeg stanja postojeće granje. Ovaj se postupak naziva grananje \eng{branching}. Izvorna i klonirana grana dijele zajedničku povijest do trenutka grananja. Daljnje promjene se primjenjuju samo na izvornu ili kloniranu granu. Slika \ref{fig:Branching} prikazuje postupak grananja. Grana B se kreira iz stanja A2 grane A. Grane A i B dijele dva zajednička stanja A1 i A2. Ova stanja nazivamo zajednička povijest grana. Nakon grananja na granu B dodajemo dva nova stanja B2 i B3.
-
-
-\begin{figure}[b!]
-\centering
-\begin{subfigure}{.49\textwidth}
-\centering
-\includegraphics[scale=0.6]{ConflictA}
-\caption{Stanje prije spajanja}
-\label{fig:ConflictA}
-\end{subfigure}
-\begin{subfigure}{.49\textwidth}
-\centering
-\includegraphics[scale=0.6]{ConflictB}
-\caption{Stanje nakon spajanja}
-\label{fig:ConflictB}
-\end{subfigure}
-\caption{Spajanja otklananjem konflikta}
-\label{fig:Conflict}
-\end{figure}
-
-Grane je također moguće spojiti. Spajanje grana dodaje promjene obavljene na izvornoj \eng{source} grani u odredišnu \eng{destionation} granu. Spajanje je moguće obaviti na nekoliko načina ovisno o odnosu dviju grana koje se spajaju. Slika \ref{fig:FastForward} prikazuje najjednostavniji odnos dviju grana kod spajanja. Nakon grananja grane B iz stanja A2 grane A na granu B se dodaju dva nova stanja, B2 i B3. U međuvremenu je grana A ostala nepromijenjena. Zbog navedenog je spajanje grana moguće obaviti jednostavno dodavanjem promjena B grane na vrh A grane, \eng{fast forward}. Slike \ref{fig:FastForwardA} prikazuje stanje prije spajanja dok slika \ref{fig:FastForwardB} prikazuje stanje nakon spajanja. Dodatno, samo spajanje je moguće označiti dodavanjem dodatnog stanja na granu na kojoj se obavlja spajanje.
-
-Postupak se komplicira ako je odredišna grana modificirana nakon grananja. U navedenom slučaju nije moguće promjene obavljene u izvorišnoj gani samo dodati na vrh odredišne grane, nego je promjene potrebno spojiti. Proces spajanja ovisi o tome postoje li konflikti između promjena. Ako ne postoji, spajanje je moguće obaviti jednako kao na slici \ref{fig:FastForward}, jednostavno dodavanjem promjena na vrh odredišne grane.
-
-Međutim, ako promjene izazivaju konflikte, onda je te konflikte potrebno ručno razriješiti. Otklanjanje konflikata uzrokuje izmjenom verzija jedne ili obje grane. Proces otklanjanja konflikata se najčešće odrađuje dodavanjem jedne po jedne verzije izvorne grane na odredišnu granu. Ako dodana verzija ne izaziva konflikt, ona se jednostavno dodaje na vrh odredišne grane. Međutim, ako verzija izaziva konflikt, tada se isti otklanja modificirajući dodanu verziju. Slika \ref{fig:Conflict} prikazuje proces spajanja grana s konfliktom. Konflikt je nastao između verzija A2 i B2. Konflikt se otklanja dodavanjem verzije B2 na vrh A grane i njenim modificiranjem. Ovo je stanje označeno s B2'. Stanje B3 ne izaziva konflikt te se samo dodaje na vrh A grane. Rezultat spajanja su dvije grane A i B različitih povijesti.
-
-\begin{figure}[h!]
-\centering
-\begin{subfigure}{.3\textwidth}
-\centering
-\includegraphics[scale=0.5]{RebaseA}
-\caption{Početno stanje}
-\label{fig:RebaseA}
-\end{subfigure}
-\begin{subfigure}{.3\textwidth}
-\centering
-\includegraphics[scale=0.5]{RebaseB}
-\caption{Stanje nakon \textit{rebase}}
-\label{fig:RebaseB}
-\end{subfigure}
-\begin{subfigure}{.3\textwidth}
-\centering
-\includegraphics[scale=0.5]{RebaseC}
-\caption{Stanje nakon spajanja}
-\label{fig:RebaseC}
-\end{subfigure}
-\caption{Spajanje \textit{rebase} postupkom}
-\label{fig:Rebase}
-\end{figure}
-
-Gore naveden slučaj se često rješava postupkom pod nazivom \textit{rebase}. Postupak prije spajanja u povijest izvorišne grane dodaje sve verzije nastala u odredišnoj grani nakon grananja. Verzije se dodaju odmah nakon stare točke grananja čime se točka grananja pomiče na zadnju verziju A grane. Slika \ref{fig:RebaseB} prikazuje stanje nakon obavljanja \textit{rebase} postupka na grani B. Sada su grane u stanju jednakom onom na slici \ref{fig:FastForward} te je spajanje moguće obaviti dodavanjem promjena na vrh odredišne grane. Stanje B2 se još uvijek mijenja, međutim sada je povijest repozitorija linearna.
-
 
 \subsection{SSH ključ}
 
