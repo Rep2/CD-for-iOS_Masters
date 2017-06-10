@@ -371,7 +371,7 @@ Proces integracije bi preuzeo novu verziju izvornog koda, pomoću alata CocoaPod
 
 Međutim, na tržištu već postoji veliki broj alata koji već implementiraju navedene funkcionalnosti. Dodatno, navedeni alati pružaju i brojne funkcionalnosti kao što su formatirani prikaz rezultata, udaljeno kreiranje i konfiguriranje procesa te testiranje na stvarnim uređajima. Korištenjem ovih alata olakšavamo implementaciju kontinuirane integracije.
 
-Za implementaciju kontinuirane integracije, dostave i isporuke koristim alat Xcode Server. Na tržištu postoji vrlo velik broj sličnih alata. Dodatak \ref{UsporedbaCIAlata_DodatakC} objašnjava zašto sam od svih alata odabrao upravo Xcode Server.
+Za implementaciju kontinuirane integracije, dostave i isporuke koristim alat Xcode Server. Na tržištu postoji vrlo velik broj sličnih alata. Dodatak \ref{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju} objašnjava zašto sam od svih alata odabrao upravo Xcode Server.
 
 Xcode Server je izgrađen specifično za implementaciju kontinuirane integracije za Xcode projekte. Zbog navedenog je proces implementacije značajno jednostavniji u usporedbi s većinom sličnih alata.
 
@@ -709,15 +709,53 @@ Abstract.
 
 
 
-\chapter{Tehnički detalji implementacije kontinuirane isporuke}
+\chapter{Tehnički detalji implementacije kontinuirane integracije, dostave i isporuke}
 
-Ovaj dodatak je tehnički usmjeren pregled implementacije kontinuirane isporuke za programsku potporu za iOS operacijski sustav. Dodatak daje pregled kreiranja i korištenja kontinuirane integracije, dostave i isporuke.
+Ovaj dodatak je tehnički usmjeren pregled implementacije kontinuirane integracije, dostave i isporuke za programsku potporu za iOS operacijski sustav. Cilj rada nije samo implementirati naveden procese, već omogućiti njihovo jednostavno korištenje i replikaciju na drugim projektima. Zbog navedenog implementacija mora biti prenosiva i jednostavno replicirana.
 
-Dodatak je podjeljen prema sukladno podjeli glavnog dijela rada. Prvo je obrađena kontinuirana integracija, zatim kontinuirana dostava i na kraju dodatka kontinuirana isporuka. Svaki od poglavlja započinje pregledom alata korištenjih u poglavlju nakon čega sljede faze procesa koji se obrađuje.
+Dodatak je podijeljen prema procesima koji se implementiraju. Prvo je obrađena kontinuirana integracija, zatim kontinuirana dostava i na kraju dodatka kontinuirana isporuka. Navedena podjela odgovara redoslijedu koji se obično koristi u praksi. Dodatno, nije potrebno implementirati sve procesa, ali treba imati na umu da kontinuirana dostava zahtijeva kontinuiranu integraciju, dok kontinuirana isporuka zahtijeva kontinuiranu dostavu.
 
-Primjeri su napisani za macOS operacijski sutav te su testirani na \textit{Sierra 10.12.4} verziji. Minimalna preporučena verzija operacijskog sustava je \textit{Yosemite 10.10}.
+Primjeri su napisani za macOS operacijski sustav te su testirani na \textit{Sierra 10.12.4} verziji. Minimalna preporučena verzija operacijskog sustava je \textit{Yosemite 10.10}.
 
-\section{Alati} \label{AlatiBuild}
+\section{Kontinuirana integracija}
+
+Za implementaciju kontinuirane integracije koristim alat Xcode Server. Na tržištu postoji veliki broj sličnih alata. Razlog odabira upravo Xcode Server alata je obrazložen u dodatku \ref{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}.
+
+Xcode Server pruža velik broj unaprijed implementiranih funkcionalnosti. Iako ove funkcionalnosti olakšavaju implementaciju kontinuirane integracije, one otežavaju automatizaciju i migraciju kreiranja kontinuirane integracije na druge alate. Zbog navedenog na kraju dodatka specificiram prenosivu verziju kontinuirane integracije.
+
+\subsection{Priprema}
+
+Za implementaciju i korištenje kontinuirane integracije koristim brojne alate koji ne pružaju vizualno sučelje. Navedenim se alatima može pristupiti isključivo korištenjem nardedbenog korisničkog sučelja - \textit{ljusku}. Moguće je koristiti proizvoljnju ljusku. U sklopu rada koristim \texit{bash} ljusku. Pristup naredbenom korisničkom sučelju se može ostvariti korištenjem proizvoljne aplikacije. U sklopu rada koristim aplikaciju Terminal koja je dostupna u sklopu instalacije macOS operacijskog sustava.
+
+\paragraph{Xcode Server}
+
+Xcode Server je spoj dva alata - Xcodea i macOS Servera. Xcode je integrirani sustav razvoj programske potpore za iOS, macOS, tvOS i watchOS operacijske sustave. MacOS Server je alat za automatizaciju procesa na macOS operacijskom sustavu. Prije implementacije kontinuirane integracije je potrebno preuzeti oba alata, instalirati i konfigurirati oba alata.
+
+Oba alata je moguće preuzeti korištenjem App Store apliakcije koje je dostupna u sklopu svake instalacije macOS operacijskog sustava. Međutim, cijena macOS Server aplikacije je u trenutku pisanja ovog rada $25. Međutim, aplikacija je besplatna za osobe s Apple Developer računom koji je potreban i za razovoj iOS aplikacije. Besplatnu verziju macOS Servera je moguće preuzeti na poveznici \url{https://developer.apple.com/download/}. Nakon preuzimanja slijediti upute za instalaciju obje aplikacije.
+
+Nakon instalacije alata je potrebno kreirati Xcode Server povezivanjem Xcode i macOS Server aplikacija. Pokrenuti macOS Server, u lijevom izborniku odabrati \texit{Xcode} te odabrati opciju \textit{Choose Xcode...}. U novo otvorenom izborniku odabrati željenu verziju Xcode aplikacije. Slika \ref{fig:XcodeServerSetup} prikazuje proces povezivanjamacOS Server i Xcode aplikacija.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{XcodeServerSetup1}
+\caption{Povezivanje macOS Server i Xcode aplikacija}
+\label{fig:XcodeServerSetup1}
+\end{figure}
+
+MacOS Server uz automatizaciju procesa omogućava i udaljeno upravljanje računalom. Zbog navedenog je uobičajno macOS Server pokrenuti na zasebnom računu operacijskog sustava te dopustiti pristup samo potrebnim alatima i datotekama. Nakon povezivanja Xcode aplikacije s macOS Serverom otvara se izbornik u kojem je moguće kreirati novi račun operacijskog sustava ili odabrati postojeći. U sklopu ovog rada kreiram novi račun predodređenog imena \textit{xcodeserver}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{XcodeServerSetup2}
+\caption{Kreiranje Xcode Server korisničkog računa}
+\label{fig:XcodeServerSetup2}
+\end{figure}
+
+
+
+
+
+\subsection{Alati} \label{AlatiBuild}
 
 Sve naredbe su definirane za \textit{bash} ljusku. Ovoj ljusci je najjednostavnije pristupiti korištenjem \textit{termianl} aplikacije dostupne na svakoj instalaciji macOS operacijskog sustava. Naravno, moguće je koristiti bilo koji drugi tekstualno sučelje s pristupom bash ljusci.
 
@@ -988,7 +1026,7 @@ Nakon prijave u \verb|https://itunesconnect.apple.com/| stranicu potrebno je oda
 
 \chapter{Xcode Server} \label{XcodeServer}
 
-Za automatizaciju procesa navedenih u odlomku A koristim alat Xcode Server. Na tržištu postoji veliki broj alata koji omogućuju automatizaciju procesa integracije. Razlog odabira alata Xcode Server objašnjavam u dodatku \ref{UsporedbaCIAlata_DodatakC}.
+Za automatizaciju procesa navedenih u odlomku A koristim alat Xcode Server. Na tržištu postoji veliki broj alata koji omogućuju automatizaciju procesa integracije. Razlog odabira alata Xcode Server objašnjavam u dodatku \ref{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}.
 
 \section{Priprema} \label{PripremaAlata}
 
@@ -1341,7 +1379,7 @@ Staza prvo dohvaća potrebne certifikate i profile, izgrađuje arhivu aplikacije
 Nakon isporuke aplikacije je moguće pokrenuti proces objave. Prije objave, aplikacija mora proći Appleov pregled koji može trajati i do nekoliko tjedana. Zbog navedenog je preporučeno prije pokretanja procesa detaljno provjeriti ispravnost aplikacije te pročitati službene smjernice. Ako aplikacija prođe provjeru, onda ju je moguće objaviti korištenjem iTunes Connect web stranice.
 
 
-\chapter{Usporedba alata za implementaciju kontinuirane integracije} \label{UsporedbaCIAlata_DodatakC}
+\chapter{Usporedba alata za implementaciju kontinuirane integracije} \label{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}
 
 \end{appendices}
 
