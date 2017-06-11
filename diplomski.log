@@ -1,16 +1,16 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  31 MAY 2017 19:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  11 JUN 2017 20:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **diplomski
 (./diplomski.tex
-LaTeX2e <2016/03/31>
-Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (./fer.cls
 Document Class: fer 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/report.cls
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/size12.clo
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -26,21 +26,21 @@ File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count88
@@ -56,20 +56,20 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2016/02/28 v1.1s UTF-8 support for inputenc
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -281,6 +281,8 @@ File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+0219 (decimal 537)
    defining Unicode char U+021A (decimal 538)
    defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+0232 (decimal 562)
+   defining Unicode char U+0233 (decimal 563)
    defining Unicode char U+1E02 (decimal 7682)
    defining Unicode char U+1E03 (decimal 7683)
    defining Unicode char U+200C (decimal 8204)
@@ -301,12 +303,14 @@ File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+2039 (decimal 8249)
    defining Unicode char U+203A (decimal 8250)
    defining Unicode char U+2423 (decimal 9251)
+   defining Unicode char U+1E20 (decimal 7712)
+   defining Unicode char U+1E21 (decimal 7713)
 )
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -346,8 +350,8 @@ File: ot1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -370,45 +374,45 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2016/04/23 3.9r The Babel package
+(/usr/local/texlive/2017/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2017/05/19 3.10 The Babel package
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/babel-croatian/croatian.ldf
+(/usr/local/texlive/2017/texmf-dist/tex/generic/babel-croatian/croatian.ldf
 Language: croatian 2014/03/31 v1.3m Croatian support from the babel system
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2016/04/23 3.9r Babel common definitions
+(/usr/local/texlive/2017/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2017/05/19 3.10 Babel common definitions
 \babel@savecnt=\count91
 \U@D=\dimen111
 )))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1enc.def
-File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 96.
+Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count92
@@ -416,10 +420,10 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen112
 \Gin@req@width=\dimen113
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks18
 \symAMSa=\mathgroup4
@@ -427,41 +431,41 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/10 v2.15b AMS math features
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/11/05 v2.16a AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks19
 \ex@=\dimen114
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen115
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count93
-LaTeX Info: Redefining \frac on input line 199.
+LaTeX Info: Redefining \frac on input line 213.
 \uproot@=\count94
 \leftroot@=\count95
-LaTeX Info: Redefining \overline on input line 297.
+LaTeX Info: Redefining \overline on input line 375.
 \classnum@=\count96
 \DOTSCASE@=\count97
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen116
-LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \macc@depth=\count98
 \c@MaxMatrixCols=\count99
 \dotsspace@=\muskip10
@@ -482,22 +486,24 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks23
-LaTeX Info: Redefining \[ on input line 2739.
-LaTeX Info: Redefining \] on input line 2740.
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/fixltx2e.sty
-Package: fixltx2e 2015/06/22 v2.0b fixes to LaTeX (obsolete)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
+Applying: [2015/01/01] Old fixltx2e package on input line 46.
 
 
 Package fixltx2e Warning: fixltx2e is not required with releases after 2015
 (fixltx2e)                All fixes are now in the LaTeX kernel.
 (fixltx2e)                See the latexrelease package for details.
 
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption.sty
+Already applied: [0000/00/00] Old fixltx2e package on input line 53.
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen123
 \captionmargin@=\dimen124
@@ -509,14 +515,14 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 )
 \c@ContinuedFloat=\count105
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/enumitem/enumitem.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip46
 \enit@outerparindent=\dimen130
@@ -524,17 +530,17 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box28
 \enitdp@description=\count106
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has chapter divisions on input line 50.
 
 
 Package tocbibind Note: Using chapter style headings, unless overridden.
 
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/times.sty
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/natbib/natbib.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip47
 \bibsep=\skip48
@@ -543,7 +549,7 @@ LaTeX Info: Redefining \cite on input line 694.
 )
 \listindentation=\dimen131
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/booktabs/booktabs.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \heavyrulewidth=\dimen132
 \lightrulewidth=\dimen133
@@ -563,10 +569,10 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \@lastruleclass=\count111
 \@thisrulewidth=\dimen144
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2016/04/19 v0.5f Insert pages of external PDF documents (AM)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2017/01/14 v0.5h Insert pages of external PDF documents (AM)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/calc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count112
 \calc@Bcount=\count113
@@ -579,16 +585,16 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count114
 \calc@Cskip=\skip51
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/atbegshi.sty
-Package: atbegshi 2016/05/16 v1.17 At begin shipout hook (HO)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -605,8 +611,8 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 \AM@pagewidth=\dimen147
 \AM@pageheight=\dimen148
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pdfpages/pppdftex.def
-File: pppdftex.def 2016/04/19 v0.5f Pdfpages driver for pdfTeX (AM)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2017/01/14 v0.5h Pdfpages driver for pdfTeX (AM)
 )
 \AM@pagebox=\box29
 \AM@global@opts=\toks25
@@ -614,12 +620,12 @@ File: pppdftex.def 2016/04/19 v0.5f Pdfpages driver for pdfTeX (AM)
 \c@AM@survey=\count115
 \AM@templatesizebox=\box30
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
 \c@subfigure=\count116
 \c@subtable=\count117
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count118
 \lst@gtempboxa=\box31
 \lst@token=\toks27
@@ -633,18 +639,18 @@ Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
 \lst@lineno=\count123
 \lst@maxwidth=\dimen152
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count124
 \lst@skipnumbers=\count125
 \lst@framebox=\box32
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/appendix/appendix.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/appendix/appendix.sty
 Package: appendix 2009/09/02 v1.2b extra appendix facilities
 \c@@pps=\count126
 \c@@ppsavesec=\count127
@@ -653,20 +659,20 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 (./diplomski.aux)
 \openout1 = `diplomski.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 13.
- (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/t1ptm.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 21.
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 *geometry* driver: auto-detecting
@@ -703,7 +709,7 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count129
 \scratchdimen=\dimen153
@@ -716,11 +722,11 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 \MPnumerator=\count133
 \makeMPintoPDFobject=\count134
 \everyMPtoPDFconversion=\toks29
-) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
+) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
@@ -729,34 +735,36 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
@@ -765,43 +773,43 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box34
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/lscape.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 \c@lstlisting=\count135
-LaTeX Font Info:    Try loading font information for T1+phv on input line 21.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 29.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/t1phv.fd
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 21.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 29.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 21.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 29.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 21.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 29.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 21.
-LaTeX Font Info:    Try loading font information for U+msa on input line 21.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 29.
+LaTeX Font Info:    Try loading font information for U+msa on input line 29.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 24.
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 32.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/t1pcr.fd
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 ) [1] [3]
 (./diplomski.toc
@@ -825,46 +833,50 @@ Poglavlje 2.
 File: images/CIFazes.png Graphic file (type png)
 
 <use images/CIFazes.png>
-Package pdftex.def Info: images/CIFazes.png used on input line 54.
+Package pdftex.def Info: images/CIFazes.png used on input line 62.
 (pdftex.def)             Requested size: 302.33183pt x 215.0049pt.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 63.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 71.
  [3 <./images/CIFazes.png>]
 <images/BuildProcess.png, id=38, 191.71625pt x 395.4775pt>
 File: images/BuildProcess.png Graphic file (type png)
 
 <use images/BuildProcess.png>
-Package pdftex.def Info: images/BuildProcess.png used on input line 71.
+Package pdftex.def Info: images/BuildProcess.png used on input line 79.
 (pdftex.def)             Requested size: 95.85788pt x 197.73827pt.
  [4 <./images/BuildProcess.png>]
+
+LaTeX Warning: Reference `IntegracijaDodatakA' on page 5 undefined on input lin
+e 88.
+
 <images/VersioningTreeA.png, id=43, 75.78313pt x 435.6275pt>
 File: images/VersioningTreeA.png Graphic file (type png)
 
 <use images/VersioningTreeA.png>
-Package pdftex.def Info: images/VersioningTreeA.png used on input line 92.
+Package pdftex.def Info: images/VersioningTreeA.png used on input line 100.
 (pdftex.def)             Requested size: 30.3127pt x 174.24791pt.
 
 <images/VersioningTreeB.png, id=44, 76.78688pt x 436.12938pt>
 File: images/VersioningTreeB.png Graphic file (type png)
 
 <use images/VersioningTreeB.png>
-Package pdftex.def Info: images/VersioningTreeB.png used on input line 98.
+Package pdftex.def Info: images/VersioningTreeB.png used on input line 106.
 (pdftex.def)             Requested size: 30.7142pt x 174.44865pt.
 
 <images/VersioningTreeC.png, id=45, 76.78688pt x 436.63126pt>
 File: images/VersioningTreeC.png Graphic file (type png)
 
 <use images/VersioningTreeC.png>
-Package pdftex.def Info: images/VersioningTreeC.png used on input line 104.
+Package pdftex.def Info: images/VersioningTreeC.png used on input line 112.
 (pdftex.def)             Requested size: 30.7142pt x 174.6494pt.
 
 <images/VersioningTree.png, id=46, 210.7875pt x 435.12563pt>
 File: images/VersioningTree.png Graphic file (type png)
 
 <use images/VersioningTree.png>
-Package pdftex.def Info: images/VersioningTree.png used on input line 110.
+Package pdftex.def Info: images/VersioningTree.png used on input line 118.
 (pdftex.def)             Requested size: 84.3135pt x 174.04716pt.
 
 
@@ -876,42 +888,42 @@ VersioningTreeC.png> <./images/VersioningTree.png>]
 File: images/Initial_commit.png Graphic file (type png)
 
 <use images/Initial_commit.png>
-Package pdftex.def Info: images/Initial_commit.png used on input line 139.
+Package pdftex.def Info: images/Initial_commit.png used on input line 147.
 (pdftex.def)             Requested size: 69.25926pt x 132.496pt.
 
 <images/Branching.png, id=58, 227.85126pt x 218.8175pt>
 File: images/Branching.png Graphic file (type png)
 
 <use images/Branching.png>
-Package pdftex.def Info: images/Branching.png used on input line 145.
+Package pdftex.def Info: images/Branching.png used on input line 153.
 (pdftex.def)             Requested size: 136.71179pt x 131.2915pt.
 
 <images/FastForwardA.png, id=59, 226.8475pt x 221.82875pt>
 File: images/FastForwardA.png Graphic file (type png)
 
 <use images/FastForwardA.png>
-Package pdftex.def Info: images/FastForwardA.png used on input line 157.
+Package pdftex.def Info: images/FastForwardA.png used on input line 165.
 (pdftex.def)             Requested size: 136.10954pt x 133.09825pt.
 
 <images/FastForwardB.png, id=60, 131.49126pt x 222.8325pt>
 File: images/FastForwardB.png Graphic file (type png)
 
 <use images/FastForwardB.png>
-Package pdftex.def Info: images/FastForwardB.png used on input line 163.
+Package pdftex.def Info: images/FastForwardB.png used on input line 171.
 (pdftex.def)             Requested size: 78.89534pt x 133.70053pt.
 
 <images/ConflictA.png, id=61, 219.82124pt x 299.1175pt>
 File: images/ConflictA.png Graphic file (type png)
 
 <use images/ConflictA.png>
-Package pdftex.def Info: images/ConflictA.png used on input line 178.
+Package pdftex.def Info: images/ConflictA.png used on input line 186.
 (pdftex.def)             Requested size: 131.89375pt x 179.47188pt.
 
 <images/ConflictB.png, id=62, 218.8175pt x 299.1175pt>
 File: images/ConflictB.png Graphic file (type png)
 
 <use images/ConflictB.png>
-Package pdftex.def Info: images/ConflictB.png used on input line 184.
+Package pdftex.def Info: images/ConflictB.png used on input line 192.
 (pdftex.def)             Requested size: 131.2915pt x 179.47188pt.
  [7 <./images/Initial_commit.png> <./images/Branching.png>] [8 <./images/FastFo
 rwardA.png> <./images/FastForwardB.png> <./images/ConflictA.png> <./images/Conf
@@ -919,45 +931,61 @@ lictB.png>]
 <images/RebaseA.png, id=76, 223.83624pt x 299.1175pt>
 File: images/RebaseA.png Graphic file (type png)
  <use images/RebaseA.png>
-Package pdftex.def Info: images/RebaseA.png used on input line 202.
+Package pdftex.def Info: images/RebaseA.png used on input line 210.
 (pdftex.def)             Requested size: 111.91785pt x 149.55838pt.
 
 <images/RebaseB.png, id=77, 223.83624pt x 300.12125pt>
 File: images/RebaseB.png Graphic file (type png)
 
 <use images/RebaseB.png>
-Package pdftex.def Info: images/RebaseB.png used on input line 208.
+Package pdftex.def Info: images/RebaseB.png used on input line 216.
 (pdftex.def)             Requested size: 111.91785pt x 150.06026pt.
 
 <images/RebaseC.png, id=78, 123.46124pt x 300.12125pt>
 File: images/RebaseC.png Graphic file (type png)
 
 <use images/RebaseC.png>
-Package pdftex.def Info: images/RebaseC.png used on input line 214.
+Package pdftex.def Info: images/RebaseC.png used on input line 222.
 (pdftex.def)             Requested size: 61.73045pt x 150.06026pt.
  [9 <./images/RebaseA.png> <./images/RebaseB.png> <./images/RebaseC.png>] <imag
 es/FeatureBranch.png, id=85, 566.115pt x 292.09125pt>
 File: images/FeatureBranch.png Graphic file (type png)
 
 <use images/FeatureBranch.png>
-Package pdftex.def Info: images/FeatureBranch.png used on input line 237.
+Package pdftex.def Info: images/FeatureBranch.png used on input line 245.
 (pdftex.def)             Requested size: 283.05681pt x 146.04526pt.
  [10]
 <images/Gitflow.png, id=89, 700.6175pt x 428.60126pt>
 File: images/Gitflow.png Graphic file (type png)
  <use images/Gitflow.png>
-Package pdftex.def Info: images/Gitflow.png used on input line 250.
+Package pdftex.def Info: images/Gitflow.png used on input line 258.
 (pdftex.def)             Requested size: 350.30789pt x 214.3001pt.
 
-[11 <./images/FeatureBranch.png>] [12 <./images/Gitflow.png>] [13] [14]
-<images/TargetScheme.png, id=105, 633.36626pt x 239.89626pt>
+[11 <./images/FeatureBranch.png>] [12 <./images/Gitflow.png>]
+
+LaTeX Warning: Reference `AlatiBuild' on page 13 undefined on input line 285.
+
+[13] [14] <images/TargetScheme.png, id=105, 633.36626pt x 239.89626pt>
 File: images/TargetScheme.png Graphic file (type png)
 
 <use images/TargetScheme.png>
-Package pdftex.def Info: images/TargetScheme.png used on input line 305.
+Package pdftex.def Info: images/TargetScheme.png used on input line 313.
 (pdftex.def)             Requested size: 316.68236pt x 119.94783pt.
- [15 <./images/TargetScheme.png>] [16] [17]
-[18] [19] [20] [21]
+
+
+LaTeX Warning: Reference `IzgradnjeDodatak' on page 15 undefined on input line 
+320.
+
+[15 <./images/TargetScheme.png>] [16] [17] [18] [19]
+
+LaTeX Warning: Reference `PripremaAlata' on page 20 undefined on input line 402
+.
+
+
+LaTeX Warning: Reference `KontinuiranaIntegracija_DodatakB' on page 20 undefine
+d on input line 406.
+
+[20] [21]
 Poglavlje 3.
 [22
 
@@ -965,17 +993,17 @@ Poglavlje 3.
 File: images/ContinuousDelivery.png Graphic file (type png)
 
 <use images/ContinuousDelivery.png>
-Package pdftex.def Info: images/ContinuousDelivery.png used on input line 428.
+Package pdftex.def Info: images/ContinuousDelivery.png used on input line 436.
 (pdftex.def)             Requested size: 106.59906pt x 186.09668pt.
  [23 <./images/ContinuousDelivery.png>]
 [24] <images/CodeSigning.png, id=141, 199.74625pt x 303.1325pt>
 File: images/CodeSigning.png Graphic file (type png)
 
 <use images/CodeSigning.png>
-Package pdftex.def Info: images/CodeSigning.png used on input line 455.
+Package pdftex.def Info: images/CodeSigning.png used on input line 463.
 (pdftex.def)             Requested size: 119.84866pt x 181.8809pt.
  [25 <./images/CodeSigning.png>]
-Overfull \hbox (0.155pt too wide) in paragraph at lines 466--467
+Overfull \hbox (0.155pt too wide) in paragraph at lines 474--475
 []\T1/ptm/m/n/12 Automatizaciju kon-fi-gu-ra-cije pro-jekta je naj-lak²e os-tva
 -riti de-fi-ni-ra-njem sheme ime-
  []
@@ -986,10 +1014,10 @@ Poglavlje 4.
 File: images/CDDifferences.png Graphic file (type png)
 
 <use images/CDDifferences.png>
-Package pdftex.def Info: images/CDDifferences.png used on input line 549.
+Package pdftex.def Info: images/CDDifferences.png used on input line 557.
 (pdftex.def)             Requested size: 397.48622pt x 157.3383pt.
 
-Overfull \hbox (1.94426pt too wide) in paragraph at lines 554--555
+Overfull \hbox (1.94426pt too wide) in paragraph at lines 562--563
 []\T1/ptm/m/n/12 Kontinuirana is-po-ruka auto-mat-skom is-po-ru-kom pro-mjena u
  pro-duk-ciju nas-toji sma-
  []
@@ -998,7 +1026,7 @@ Overfull \hbox (1.94426pt too wide) in paragraph at lines 554--555
 File: images/IntercomShipsPerDay.png Graphic file (type png)
 
 <use images/IntercomShipsPerDay.png>
-Package pdftex.def Info: images/IntercomShipsPerDay.png used on input line 558.
+Package pdftex.def Info: images/IntercomShipsPerDay.png used on input line 566.
 
 (pdftex.def)             Requested size: 365.3625pt x 131.38997pt.
  [32
@@ -1008,7 +1036,7 @@ Package pdftex.def Info: images/IntercomShipsPerDay.png used on input line 558.
 File: images/DeploymentStages.png Graphic file (type png)
 
 <use images/DeploymentStages.png>
-Package pdftex.def Info: images/DeploymentStages.png used on input line 571.
+Package pdftex.def Info: images/DeploymentStages.png used on input line 579.
 (pdftex.def)             Requested size: 411.33992pt x 191.51697pt.
  [33 <./images/IntercomShipsPerDay.png> <./images/DeploymentStages.png>] [34] [
 35]
@@ -1016,26 +1044,26 @@ Package pdftex.def Info: images/DeploymentStages.png used on input line 571.
 File: images/FeatureBranchCD.png Graphic file (type png)
 
 <use images/FeatureBranchCD.png>
-Package pdftex.def Info: images/FeatureBranchCD.png used on input line 610.
+Package pdftex.def Info: images/FeatureBranchCD.png used on input line 618.
 (pdftex.def)             Requested size: 347.79852pt x 200.24763pt.
  [36 <./images/FeatureBranchCD.png>]
 <images/GitFlowCD.png, id=189, 780.9175pt x 518.93875pt>
 File: images/GitFlowCD.png Graphic file (type png)
 
 <use images/GitFlowCD.png>
-Package pdftex.def Info: images/GitFlowCD.png used on input line 627.
+Package pdftex.def Info: images/GitFlowCD.png used on input line 635.
 (pdftex.def)             Requested size: 390.4578pt x 259.46873pt.
 
 <images/HotfixGitflow.png, id=190, 477.785pt x 400.49625pt>
 File: images/HotfixGitflow.png Graphic file (type png)
 
 <use images/HotfixGitflow.png>
-Package pdftex.def Info: images/HotfixGitflow.png used on input line 634.
+Package pdftex.def Info: images/HotfixGitflow.png used on input line 642.
 (pdftex.def)             Requested size: 238.8919pt x 200.24763pt.
  [37 <./images/GitFlowCD.png>]
-Overfull \hbox (2.69272pt too wide) in paragraph at lines 648--649
+Overfull \hbox (2.69272pt too wide) in paragraph at lines 656--657
 \T1/ptm/m/n/12 Zbog na-ve-de-nog se umjesto broja upo-zo-re-nja £esto ko-ris-ti
-m []\T1/pcr/m/n/12 XCS_WARNING_CHANGE
+m [][]\T1/pcr/m/n/12 XCS_WARNING_CHANGE
  []
 
 [38 <./images/HotfixGitflow.png>] [39]
@@ -1079,19 +1107,19 @@ ptm/m/n/12 .
 [41
 
 ]
-Underfull \hbox (badness 1014) in paragraph at lines 104--109
+Underfull \hbox (badness 1014) in paragraph at lines 116--121
 \T1/ptm/m/n/12 URL $\T1/pcr/m/n/12 https : / / en . wikipedia . org / wiki / Co
 ntinuous _ delivery$\T1/ptm/m/n/12 .
  []
 
 
-Underfull \hbox (badness 1014) in paragraph at lines 118--123
+Underfull \hbox (badness 1014) in paragraph at lines 130--135
 \T1/ptm/m/n/12 URL $\T1/pcr/m/n/12 https : / / en . wikipedia . org / wiki / So
 ftware _ versioning$\T1/ptm/m/n/12 .
  []
 
 
-Underfull \hbox (badness 1902) in paragraph at lines 125--130
+Underfull \hbox (badness 1902) in paragraph at lines 137--142
 \T1/pcr/m/n/12 https : / / en . wikipedia . org / wiki / Version _ control$\T1/
 ptm/m/n/12 .  [Online;
  []
@@ -1103,125 +1131,185 @@ ptm/m/n/12 .  [Online;
 Dodatak A.
 [45
 
-] [46] [47] [48] [49]
-Overfull \hbox (8.79755pt too wide) in paragraph at lines 923--924
-[]\T1/ptm/m/n/12 Provjeru po-kri-ve-nosti koda do-bi-vamo ko-ris-te¢i pa-ra-me-
-tar []\T1/pcr/m/n/12 -showBuildSettings
+] <images/XcodeServerSetup1.png, id=223, 1038.88126pt x 653.44125pt>
+File: images/XcodeServerSetup1.png Graphic file (type png)
+
+<use images/XcodeServerSetup1.png>
+Package pdftex.def Info: images/XcodeServerSetup1.png used on input line 742.
+(pdftex.def)             Requested size: 363.61389pt x 228.70786pt.
+
+Overfull \hbox (15.42392pt too wide) in paragraph at lines 749--750
+\T1/ptm/m/n/12 platnu ver-ziju ma-cOS Ser-vera je mo-gu¢e pre-uzeti na po-vez-n
+ici $\T1/pcr/m/n/12 https : / / developer .
  []
 
-[50] <images/iTunesUUID.png, id=239, 675.52374pt x 265.99374pt>
-File: images/iTunesUUID.png Graphic file (type png)
+<images/XcodeServerSetup2.png, id=224, 1038.88126pt x 651.43375pt>
+File: images/XcodeServerSetup2.png Graphic file (type png)
 
-<use images/iTunesUUID.png>
-Package pdftex.def Info: images/iTunesUUID.png used on input line 954.
-(pdftex.def)             Requested size: 337.76105pt x 132.99654pt.
- [51] [52 <./images/iTunesUUID.png>] [53] [54]
-Dodatak B.
-[55
+<use images/XcodeServerSetup2.png>
+Package pdftex.def Info: images/XcodeServerSetup2.png used on input line 753.
+(pdftex.def)             Requested size: 363.61389pt x 228.00522pt.
+ [46 <./images/XcodeServerSetup1.png>]
+<images/DodavanjeCertifikata.png, id=229, 789.95125pt x 457.71pt>
+File: images/DodavanjeCertifikata.png Graphic file (type png)
 
-] <images/XcodeServerOptions.png, id=256, 740.7675pt x 437.635pt>
+<use images/DodavanjeCertifikata.png>
+Package pdftex.def Info: images/DodavanjeCertifikata.png used on input line 762
+.
+(pdftex.def)             Requested size: 315.9749pt x 183.08075pt.
+ [47 <./images/XcodeServerSetup2.png> <./images/DodavanjeCertifikata.png>]
+
+LaTeX Warning: Reference `header:dodatak_potpisivanje_koda' on page 48 undefine
+d on input line 770.
+
+
+Overfull \hbox (5.92921pt too wide) in paragraph at lines 772--773
+[]\T1/ptm/m/n/12 Pripremne pro-file je po-trebno spre-miti na lo-ka-ciji $\T1/p
+cr/m/n/12 ~ / Library / MobileDevice /
+ []
+
+<images/DodavanjePripravnihProfila.png, id=235, 803.0pt x 103.38625pt>
+File: images/DodavanjePripravnihProfila.png Graphic file (type png)
+
+<use images/DodavanjePripravnihProfila.png>
+Package pdftex.def Info: images/DodavanjePripravnihProfila.png used on input li
+ne 776.
+(pdftex.def)             Requested size: 321.1943pt x 41.35376pt.
+
+<images/GitHubSSH.png, id=236, 1010.77625pt x 850.17625pt>
+File: images/GitHubSSH.png Graphic file (type png)
+
+<use images/GitHubSSH.png>
+Package pdftex.def Info: images/GitHubSSH.png used on input line 797.
+(pdftex.def)             Requested size: 404.30333pt x 340.06447pt.
+ [48 <./images/DodavanjePripravnihProfila.png>]
+[49 <./images/GitHubSSH.png>]
+Overfull \hbox (0.29012pt too wide) in paragraph at lines 824--825
+\T1/ptm/m/n/12 Xcode Ser-ver auto-ma-ti-za-ciju iz-grad-nje, tes-ti-ra-nja i is
+-po-ruke os-tva-ruje ko-ri-²te-njem alata
+ []
+
+<images/BotCreation.png, id=245, 791.95876pt x 360.34625pt>
+File: images/BotCreation.png Graphic file (type png)
+
+<use images/BotCreation.png>
+Package pdftex.def Info: images/BotCreation.png used on input line 830.
+(pdftex.def)             Requested size: 316.7779pt x 144.13594pt.
+
+<images/BotServerSelection.png, id=246, 739.76375pt x 441.65pt>
+File: images/BotServerSelection.png Graphic file (type png)
+
+<use images/BotServerSelection.png>
+Package pdftex.def Info: images/BotServerSelection.png used on input line 839.
+(pdftex.def)             Requested size: 295.90025pt x 176.65686pt.
+ [50 <./images/BotCreation.png>]
+<images/BotAddingSSH.png, id=252, 743.77875pt x 440.64626pt>
+File: images/BotAddingSSH.png Graphic file (type png)
+
+<use images/BotAddingSSH.png>
+Package pdftex.def Info: images/BotAddingSSH.png used on input line 852.
+(pdftex.def)             Requested size: 297.50623pt x 176.25537pt.
+ [51 <./images/BotServerSelection.png> <./images/BotAddingSSH.png>]
+<images/XcodeServerOptions.png, id=258, 740.7675pt x 437.635pt>
 File: images/XcodeServerOptions.png Graphic file (type png)
 
 <use images/XcodeServerOptions.png>
-Package pdftex.def Info: images/XcodeServerOptions.png used on input line 1032.
-
+Package pdftex.def Info: images/XcodeServerOptions.png used on input line 869.
 (pdftex.def)             Requested size: 370.38284pt x 218.81696pt.
+ [52 <./images/XcodeServerOptions.png>]
+[53] <images/PreIntegrationScript.png, id=266, 741.77126pt x 444.66125pt>
+File: images/PreIntegrationScript.png Graphic file (type png)
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<images/XcodeServerIntegrationPeriods.png, id=257, 739.76375pt x 436.63126pt>
-File: images/XcodeServerIntegrationPeriods.png Graphic file (type png)
-
-<use images/XcodeServerIntegrationPeriods.png>
-Package pdftex.def Info: images/XcodeServerIntegrationPeriods.png used on input
- line 1041.
-(pdftex.def)             Requested size: 369.88097pt x 218.3151pt.
- [56]
-Overfull \hbox (7.66048pt too wide) in paragraph at lines 1062--1063
-\T1/ptm/m/n/12 sklopu in-te-gra-cije. Ak-cije se botu do-daju oda-bi-rom op-cij
-e []\T1/pcr/m/n/12 Edit bot -> Triggers
- []
-
-[57 <./images/XcodeServerOptions.png>]
-Overfull \hbox (19.43484pt too wide) in paragraph at lines 1078--1078
-[]    \T1/pcr/m/n/12 echo "CocoaPods not found, proceeding with installation"[]
- 
- []
-
-
-Overfull \hbox (12.23485pt too wide) in paragraph at lines 1078--1078
-[]        \T1/pcr/m/n/12 echo "gem not found, quiting CocoaPods instalation"[] 
-
- []
-
-[58 <./images/XcodeServerIntegrationPeriods.png>]
-Overfull \hbox (12.23485pt too wide) in paragraph at lines 1107--1107
-[]    \T1/pcr/m/n/12 echo "Carthage not found, proceeding with installation"[] 
-
- []
-
-[59] <images/XcodeServerResult.png, id=273, 1002.74625pt x 682.55pt>
+<use images/PreIntegrationScript.png>
+Package pdftex.def Info: images/PreIntegrationScript.png used on input line 919
+.
+(pdftex.def)             Requested size: 370.88472pt x 222.33008pt.
+ [54 <./images/PreIntegrationScript.png>]
+<images/XcodeServerResult.png, id=271, 1002.74625pt x 682.55pt>
 File: images/XcodeServerResult.png Graphic file (type png)
 
 <use images/XcodeServerResult.png>
-Package pdftex.def Info: images/XcodeServerResult.png used on input line 1135.
+Package pdftex.def Info: images/XcodeServerResult.png used on input line 967.
 (pdftex.def)             Requested size: 401.0914pt x 273.01517pt.
- [60] [61 <./images/XcodeServerResult.png>]
+ [55] [56 <./images/XcodeServerResult.png>]
+Dodatak B.
+[57
+
+]
+Overfull \hbox (8.79755pt too wide) in paragraph at lines 1043--1044
+[]\T1/ptm/m/n/12 Provjeru po-kri-ve-nosti koda do-bi-vamo ko-ris-te¢i pa-ra-me-
+tar [][]\T1/pcr/m/n/12 -showBuildSettings
+ []
+
+[58] <images/iTunesUUID.png, id=286, 675.52374pt x 265.99374pt>
+File: images/iTunesUUID.png Graphic file (type png)
+
+<use images/iTunesUUID.png>
+Package pdftex.def Info: images/iTunesUUID.png used on input line 1074.
+(pdftex.def)             Requested size: 337.76105pt x 132.99654pt.
+ [59] [60 <./images/iTunesUUID.png>]
+
+LaTeX Warning: Reference `header:KontinuiranaDostavaAutomatizacija' on page 61 
+undefined on input line 1101.
+
+[61] [62]
 Dodatak C.
-[62
+[63
 
-] [63] [64]
-Overfull \hbox (146.81163pt too wide) in paragraph at lines 1227--1228
+] [64] [65]
+Overfull \hbox (146.81163pt too wide) in paragraph at lines 1192--1193
 \T1/ptm/m/n/12 te-fakta se kre-iraju ko-ri-²te-njem Ap-ple De-ve-lo-per plat-fo
-rme. Na-kon pri-jave na []\T1/pcr/m/n/12 https://developer.apple.com
+rme. Na-kon pri-jave na [][]\T1/pcr/m/n/12 https://developer.apple.com
  []
 
 
-Overfull \hbox (208.88826pt too wide) in paragraph at lines 1229--1230
+Overfull \hbox (208.88826pt too wide) in paragraph at lines 1194--1195
 \T1/ptm/m/n/12 trebno spre-miti na ra-£u-nalu koje obav-lja is-po-ruku u di-rek
--to-riju []\T1/pcr/m/n/12 ~/Library/MobileDevice/Provisioning Profiles/
+-to-riju [][]\T1/pcr/m/n/12 ~/Library/MobileDevice/Provisioning Profiles/
  []
 
-[65] [66] [67]
-Overfull \hbox (3.51799pt too wide) in paragraph at lines 1314--1315
-[]\T1/ptm/m/n/12 Kreiranje pro-fila se obav-lja na []\T1/pcr/m/n/12 https://itu
-nesconnect.apple.com/ \T1/ptm/m/n/12 stra-
+[66] [67] [68]
+Overfull \hbox (3.51799pt too wide) in paragraph at lines 1279--1280
+[]\T1/ptm/m/n/12 Kreiranje pro-fila se obav-lja na [][]\T1/pcr/m/n/12 https://i
+tunesconnect.apple.com/ []\T1/ptm/m/n/12 stra-
  []
 
-<images/iTunesConnectAppCreation.png, id=300, 470.75874pt x 541.02126pt>
+<images/iTunesConnectAppCreation.png, id=320, 470.75874pt x 541.02126pt>
 File: images/iTunesConnectAppCreation.png Graphic file (type png)
 
 <use images/iTunesConnectAppCreation.png>
 Package pdftex.def Info: images/iTunesConnectAppCreation.png used on input line
- 1318.
+ 1283.
 (pdftex.def)             Requested size: 188.30016pt x 216.40466pt.
- [68 <./images/iTunesConnectAppCreation.png>] [69]
+ [69 <./images/iTunesConnectAppCreation.png>] [70]
 Dodatak D.
-[70
+[71
 
-] (./diplomski.aux) ) 
+] (./diplomski.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 8936 strings out of 493014
- 128455 string characters out of 6133351
- 208154 words of memory out of 5000000
- 12253 multiletter control sequences out of 15000+600000
+ 9320 strings out of 492995
+ 132962 string characters out of 6132704
+ 248437 words of memory out of 5000000
+ 12639 multiletter control sequences out of 15000+600000
  62260 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,9n,40p,1274b,517s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8
-r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texl
-ive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/201
-6/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-di
-st/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/t
-ype1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/t
-imes/utmri8a.pfb>
-Output written on diplomski.pdf (75 pages, 1446573 bytes).
+ 43i,9n,42p,1274b,1644s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2
+017/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2017/tex
+mf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2017/texmf-dist
+/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/
+type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
+times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr
+8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on diplomski.pdf (76 pages, 1864669 bytes).
 PDF statistics:
- 343 PDF objects out of 1000 (max. 8388607)
- 194 compressed objects within 2 object streams
+ 362 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 156 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 196 words of extra memory for PDF output out of 10000 (max. 10000000)
 

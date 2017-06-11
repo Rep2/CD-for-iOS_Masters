@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -80,6 +80,18 @@ Open source.
 \newblock scan, 2017{\natexlab{f}}.
 \newblock URL \url{https://github.com/fastlane/fastlane/tree/master/scan}.
 \newblock [Online; accessed 1-May-2017].
+
+\bibitem[source(2017{\natexlab{g}})]{homebrew}
+Open source.
+\newblock Homebrew, 2017{\natexlab{g}}.
+\newblock URL \url{https://brew.sh/}.
+\newblock [Online; accessed 11-Jun-2017].
+
+\bibitem[source(2017{\natexlab{h}})]{ruby}
+Open source.
+\newblock Ruby, 2017{\natexlab{h}}.
+\newblock URL \url{https://www.ruby-lang.org/en/}.
+\newblock [Online; accessed 11-Jun-2017].
 
 \bibitem[supermarin(2017)]{xcpretty}
 supermarin.

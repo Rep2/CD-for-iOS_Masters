@@ -1,10 +1,18 @@
 \documentclass[times, utf8, diplomski, numeric]{fer}
 \usepackage{booktabs}
 
+\usepackage{url}
 \usepackage{pdfpages}
 \usepackage{subcaption}
 \usepackage{listings}
 \usepackage[toc,page]{appendix}
+
+\usepackage{listings}
+\lstset{
+breaklines=true,
+basicstyle=\ttfamily}
+
+\renewcommand{\lstlistingname}{Skripta}
 
 \graphicspath{ {images/} }
 
@@ -274,7 +282,7 @@ Dohvat i konfiguracija alata uvelike ovisi o alatima koji se koriste u procesu i
 
 MacOS je vrlo siguran, i time zatvoren, operacijski sustav. Gotovo svi alati zahtijevaju korisničko dopuštenje te šifru računa koji obavlja instalaciju. Ako se instalacija obavlja za cijeli sustav ili više računa potrebno je instalaciju autorizirati računom s administracijskim privilegijama. Postoji nekoliko načina za automatski upis lozinke, ali navedeni procesi narušavaju sigurnost operacijskog sustava te ne rade za alate s grafičkim sučeljem. Zbog navedenog nije moguće u potpunosti automatizirati proces izgradnje.
 
-Popis alata korištenih u izgradnji se nalazi u dodatku \ref{AlatiBuild}. Priprema alata čiju instalaciju nije moguće automatizirati se nalazi u dodatku \ref{PripremaAlata} dok je priprema ostalih alata specificirana u ostatku \ref{XcodeServer} dodatka.
+Popis alata korištenih u izgradnji se nalazi u dodatku \ref{AlatiBuild}. Priprema alata čiju instalaciju nije moguće automatizirati se nalazi u dodatku \ref{header:dodatak_priprema_CI}.
 
 Xcode projekt, projekt pomoću kojeg implementiram iOS aplikaciju, omogućava specifikaciju postavka izgradnje korištenjem vizualnog sučelja. Postavke izgradnje Xcode sprema u teško čitljivu formatiranu datoteku. S ciljem lakše specifikacije i praćenja postavka izgradnje se mogu iskoristiti konfiguracijske datoteke. Prilikom izgradnje postavke definirane u datotekama nadjačavaju postavke specificirane u projektu.
 
@@ -393,7 +401,7 @@ Budući da želimo automatizirati što veću količinu posla, poželjno je što 
 
 U procesu integracije koristimo tri alata za olakšavanje dohvaćanja i konfiguracije drugih alata: ruby, gem i Homebrew. Alati ruby i gem su dostupni na svim instalacijama macOS operacijskog sustava. Međutim, ako su lokacije njihove instalacije promijenjena, onda je potrebno istu dodati u \verb|PATH| varijablu računa operacijskog sustava ili izmijeniti skripte kako bi iste pokazivale na ispravnu lokaciju. Alat Homebrew je potrebno ručno dohvatiti i konfigurirati. Proces je prikazan u dodatku \ref{PripremaAlata}.
 
-Za olakšavanje implementacije kontinuirane integracije koristim alate CocoaPods, Carthage i Swiftlint. Instalacija i konfiguracija navedenih alata je prikazana u dodatku \ref{XcodeServer}.
+Za olakšavanje implementacije kontinuirane integracije koristim alate CocoaPods, Carthage i Swiftlint. Instalacija i konfiguracija navedenih alata je prikazana u dodatku \ref{header:dodatak_priprema_CI}.
 
 Automatizaciju izgradnje, testiranja i osiguranja kvalitete implementiram korištenjem alata \verb|bot| koji je dio Xcode alata. Bot se kreira u alatu Xcode odabirom opcije \verb|Product -> Create bot...|. Za kreiranje je potrebno specificirati repozitorij izvornog koda te odabirati opcije integacije. Sve potrebne funkcionalnosti su već implementirane te je potrebno samo ukljućiti njihovo korištenje. Proces kreiranja bota je prikazan u dodatku \ref{KontinuiranaIntegracija_DodatakB}.
 
@@ -723,183 +731,282 @@ Za implementaciju kontinuirane integracije koristim alat Xcode Server. Na trži�
 
 Xcode Server pruža velik broj unaprijed implementiranih funkcionalnosti. Iako ove funkcionalnosti olakšavaju implementaciju kontinuirane integracije, one otežavaju automatizaciju i migraciju kreiranja kontinuirane integracije na druge alate. Zbog navedenog na kraju dodatka specificiram prenosivu verziju kontinuirane integracije.
 
-\subsection{Priprema}
+\subsection{Priprema} \label{header:dodatak_priprema_CI}
 
-Za implementaciju i korištenje kontinuirane integracije koristim brojne alate koji ne pružaju vizualno sučelje. Navedenim se alatima može pristupiti isključivo korištenjem nardedbenog korisničkog sučelja - \textit{ljusku}. Moguće je koristiti proizvoljnju ljusku. U sklopu rada koristim \texit{bash} ljusku. Pristup naredbenom korisničkom sučelju se može ostvariti korištenjem proizvoljne aplikacije. U sklopu rada koristim aplikaciju Terminal koja je dostupna u sklopu instalacije macOS operacijskog sustava.
+Za implementaciju i korištenje kontinuirane integracije koristim brojne alate koji ne pružaju vizualno sučelje. Navedenim se alatima može pristupiti isključivo korištenjem nardedbenog korisničkog sučelja - \textit{ljusku}. Moguće je koristiti proizvoljnju ljusku. U sklopu rada koristim \textit{bash} ljusku. Pristup naredbenom korisničkom sučelju se može ostvariti korištenjem proizvoljne aplikacije. U sklopu rada koristim aplikaciju Terminal koja je dostupna u sklopu instalacije macOS operacijskog sustava.
 
 \paragraph{Xcode Server}
 
-Xcode Server je spoj dva alata - Xcodea i macOS Servera. Xcode je integrirani sustav razvoj programske potpore za iOS, macOS, tvOS i watchOS operacijske sustave. MacOS Server je alat za automatizaciju procesa na macOS operacijskom sustavu. Prije implementacije kontinuirane integracije je potrebno preuzeti oba alata, instalirati i konfigurirati oba alata.
-
-Oba alata je moguće preuzeti korištenjem App Store apliakcije koje je dostupna u sklopu svake instalacije macOS operacijskog sustava. Međutim, cijena macOS Server aplikacije je u trenutku pisanja ovog rada $25. Međutim, aplikacija je besplatna za osobe s Apple Developer računom koji je potreban i za razovoj iOS aplikacije. Besplatnu verziju macOS Servera je moguće preuzeti na poveznici \url{https://developer.apple.com/download/}. Nakon preuzimanja slijediti upute za instalaciju obje aplikacije.
-
-Nakon instalacije alata je potrebno kreirati Xcode Server povezivanjem Xcode i macOS Server aplikacija. Pokrenuti macOS Server, u lijevom izborniku odabrati \texit{Xcode} te odabrati opciju \textit{Choose Xcode...}. U novo otvorenom izborniku odabrati željenu verziju Xcode aplikacije. Slika \ref{fig:XcodeServerSetup} prikazuje proces povezivanjamacOS Server i Xcode aplikacija.
-
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{XcodeServerSetup1}
+\includegraphics[scale=0.35]{XcodeServerSetup1}
 \caption{Povezivanje macOS Server i Xcode aplikacija}
 \label{fig:XcodeServerSetup1}
 \end{figure}
 
-MacOS Server uz automatizaciju procesa omogućava i udaljeno upravljanje računalom. Zbog navedenog je uobičajno macOS Server pokrenuti na zasebnom računu operacijskog sustava te dopustiti pristup samo potrebnim alatima i datotekama. Nakon povezivanja Xcode aplikacije s macOS Serverom otvara se izbornik u kojem je moguće kreirati novi račun operacijskog sustava ili odabrati postojeći. U sklopu ovog rada kreiram novi račun predodređenog imena \textit{xcodeserver}.
+Xcode Server je spoj dva alata - Xcodea i macOS Servera. Xcode je integrirani sustav razvoj programske potpore za iOS, macOS, tvOS i watchOS operacijske sustave. MacOS Server je alat za automatizaciju procesa na macOS operacijskom sustavu. Prije implementacije kontinuirane integracije je potrebno preuzeti oba alata, instalirati i konfigurirati oba alata.
+
+Oba alata je moguće preuzeti korištenjem App Store aplikacije koje je dostupna u sklopu svake instalacije macOS operacijskog sustava. Međutim, cijena macOS Server aplikacije je u trenutku pisanja ovog rada \$25. Međutim, aplikacija je besplatna za osobe s Apple Developer računom koji je potreban i za razvoj iOS aplikacije. Besplatnu verziju macOS Servera je moguće preuzeti na poveznici \path{https://developer.apple.com/download/}. Nakon preuzimanja slijediti upute za instalaciju obje aplikacije.
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{XcodeServerSetup2}
+\includegraphics[scale=0.35]{XcodeServerSetup2}
 \caption{Kreiranje Xcode Server korisničkog računa}
 \label{fig:XcodeServerSetup2}
 \end{figure}
 
+Nakon instalacije alata je potrebno kreirati Xcode Server povezivanjem Xcode i macOS Server aplikacija. Pokrenuti macOS Server, u lijevom izborniku odabrati \textit{Xcode} te odabrati opciju \textit{Choose Xcode...}. U novo otvorenom izborniku odabrati željenu verziju Xcode aplikacije. Slika \ref{fig:XcodeServerSetup1} prikazuje proces povezivanja macOS Server i Xcode aplikacija.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.4]{DodavanjeCertifikata}
+\caption{Dodavanje certifikata korištenjem Keychain Assistant aplikacije}
+\label{fig:DodavanjeCertifikata}
+\end{figure}
+
+MacOS Server uz automatizaciju procesa omogućava i udaljeno upravljanje računalom. Zbog navedenog je preporučeno macOS Server pokrenuti na zasebnom računu operacijskog sustava te dopustiti pristup samo potrebnim alatima i datotekama. Nakon povezivanja Xcode aplikacije s macOS Serverom otvara se izbornik u kojem je moguće kreirati novi račun operacijskog sustava ili odabrati postojeći. U sklopu ovog rada kreiram novi račun predodređenog imena \textit{xcodeserver}. Slijediti upute nakon kreiranja računa.
 
 
+U sklopu izgradnje i testiranja iOS projekta se obavlja i proces potpisivanja kod. Sam proces definiram u \ref{header:dodatak_potpisivanje_koda} dijelu ovog dodatka. Za sada je dovoljno znati da proces zahtjeva postojanje tri artefakta: osobni certifikat, certifikat aplikacije i pripremni profil aplikacije za tip isporuke koji se koristi. Navedene certifikate je moguće kreirati i preuzeti sa stranice na poveznici \path{https://developer.apple.com/account}. Certifikate je potrebno instalirati korištenjem Keychain Assistant aplikacije. Navedeno je najjednostavnije ostvariti pokretanjem certifikata korištenjem navedene aplikacije.
 
+Pripremne profile je potrebno spremiti na lokaciji \path{~/Library/MobileDevice/Provisioning Profiles}.
 
-\subsection{Alati} \label{AlatiBuild}
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{DodavanjePripravnihProfila}
+\caption{Dodavanje pripremnih profila}
+\label{fig:DodavanjePripravnihProfila}
+\end{figure}
 
-Sve naredbe su definirane za \textit{bash} ljusku. Ovoj ljusci je najjednostavnije pristupiti korištenjem \textit{termianl} aplikacije dostupne na svakoj instalaciji macOS operacijskog sustava. Naravno, moguće je koristiti bilo koji drugi tekstualno sučelje s pristupom bash ljusci.
+\paragraph{Homebrew}
 
-Za provjeru postojanja alata koristim sljedeći naredbu. Naredbu ću koristiti za provjeru postojanja alata i izbjegavanje nepotrebne reinstalacije.
+Homebrew je alat za dohvat i upravljanje alatima za macOS operacijski sustav\citep{homebrew}. Dodatno, alat ove funkcionalnosti omogućava putem naredbenog korisničkog sučelja zbog čega je dohvat i upravljanje moguće automatizirati. Instalacija alata zahtijeva administrativna prava \eng{sudo user}, zbog čega istu nije moguće automatizirati. Skripta \ref{listing:homebrew} instalira Homebrew alat korištenjem alata \textit{ruby}. Slijediti upute instalacije.
 
-\begin{verbatim}
-if which {ime_naredbe} >/dev/null; then
-    echo "{ime_naredbe} installed"
-else
-    echo "{ime_naredbe} not installed"
-fi
-\end{verbatim}
+\begin{lstlisting}[caption=Instalacija Homebrew alata, label=listing:homebrew]
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+\end{lstlisting}
 
-Za razvoj iOS aplikacija koristim alat Xcode. Na tržištu postoji nekoliko sličnih alata, ali je Xcode daleko najpopularniji te ga koristimo i za ostvarenje automatizacije integracije. Alat je moguće instalirati korištenjem App Store aplikacije. Za testiranje procesa koje ću implementirati u ostatku ovog dodatka kreiram jednostavan testni projekt. Projekt je iOS aplikacija imena \textit{Diplomski\_rad} te sadrži jednu shemu istog imena. Projekt sadrži tri cilja: iOS aplikaciju, \textit{unit} i \textit{ui} testove.
+\paragraph{SSH autentifikacija}
 
-\textit{Hombrew} je alat za instaliranje i upravljanje alatima za macOS operacijski sustav. Alat olakšava instalaciju i konfiguraciju nekoliko alata koje koristimo u sklopu razvoja. Mana ovog alata je zahtijevanje \textit{sudo} pristupa zbog čega instalaciju alata nije moguće automatizirati.
+U sklopu rada koristim SSH autentifikaciju za pristup udaljenom git repozitoriju. Za početak je potrebno generirati novi SSH ključ. Nakon generiranja, ključ je potrebno dodati SSH agentu kako se šifra ključa ne bi morala unositi svaki put. Na kraju, javni dio ključa je potrebno registrirati na platformi koja pohranjuje repozitorij. Navedena funkcionalnost se najčešće nalazi u postavkama korisničkog računa.
 
-Homebrew je moguće preuzeti korištenjem sljedeće naredbe. Naredba prvo provjerava postojanje Homebrew aplikacije. Ako aplikacija ne postoji, onda ju preuzima sa službene stranice. Ako aplikacija postoji, onda naredba osvježava njeno stanje. Za dohvaćanje alata koristim naredbu \textit{ruby}. Navedena navedena naredba je prisutna na svim trenutnim instalacijama macOS operacijskog sustava.
+Skripta \ref{listing:ssh} automatizira cijeli proces. Naredba pod \#1 generira novi SSH ključ, naredba pod \#2 dodaje ključ SSH agentu, dok naredba pod \#3 kopira javni dio ključa koji potrebno dodati platformi koja pohranjuje repozitorij.
 
-\begin{verbatim}
-if which brew >/dev/null; then
-    brew update
-else
-    ruby -e "$(curl -fsSL https://raw.githubusercontent
-        .com/Homebrew/install/master/install)"
-fi
-\end{verbatim}
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.4]{GitHubSSH}
+\caption{Dodavanje SSH ključa na GitHub platformu}
+\label{fig:GitHubSSH}
+\end{figure}
 
-Za upravljanje ovisnosti koristim alate CocoaPods i Carthage. Navedene alate dohvaćam respektivno naredbom pod (1) i naredbom pod (2). Naredba pod (1) osvježava postojeću instalaciju ako alat već postoji zbog čega ne provjeravam njegovo postojanje.
+\begin{lstlisting}[caption=Postavljanje SSH autentifikacije, label=listing:ssh]
+ssh-keygen -t rsa -b 4096 -C "{e-mail adresa}" #1
 
-\begin{verbatim}
-gem install cocoapods --user-install (1)
-
-if ! which carthage >/dev/null; then
-    brew install carthage (2)
-fi
-\end{verbatim}
-
-\textit{Swiftlint} je alat za statičku analizu jezika Swift \eng{linting tool}. Alat je moguće preuzetim korištenjem Homebrew alata.
-
-\begin{verbatim}
-brew install swiftlint
-\end{verbatim}
-
-
-\section{Priprema} \label{IntegracijaDodatakA}
-
-Integracija započinje verzioniranjem. U sklopu ovog rada koristim alat git a repozitorij objavljujem na Github stranici. Za kontrolu pristupa repozitoriju koristim \textit{ssh} protokol.
-
-\subsection{SSH ključ}
-
-Novi ssh ključ se kreira naredbom u nastavku.
-
-\begin{verbatim}
-ssh-keygen -t rsa -b 4096 -C "email@primjer.com"
-\end{verbatim}
-
-Korisno je ključ dodati ssh agentu kako ne bi morali svaki put unositi šifru ključa.
-
-\begin{verbatim}
-eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)" #2
 
 ssh-add -K ~/.ssh/{ime_kljuca}
+
+pbcopy < ~/.ssh/{ime_kljuca}.pub #3
+\end{lstlisting}
+
+U sklopu rada koristim GitHub platformu. Slika \ref{fig:GitHubSSH} prikazuje proces dodavanja SSH ključa na GitHub platformi. SSH ključ se dodaje odabirom opcije \textit{Settings -> SSH and GPG keys -> New SSH key} te dodavanjem kopiranog javnog dijela ključa u polje za ključ. Nakon spremanja ključa isti je moguće koristiti za autorizaciju komunikacije s GitHub platformom.
+
+\paragraph{Standardni alati}
+
+U sklopu implementacije i korištenja kontinuirane integracije koristim nekoliko alata koji su standardni u svakoj instalaciji macOS Servera. Zbog potpunosti ih ovdje navodim.
+
+\subparagraph{Ruby}
+
+Ruby je moderan, dinamički programski jezik koji olakšava implementaciju brojnih funkcionalnosti\citep{ruby}. U sklopu rada ga koristim za dohvat drugih alata.
+
+\subsection{Izgradnja}
+
+Xcode Server automatizaciju izgradnje, testiranja i isporuke ostvaruje korištenjem alata nazvanog \textit{bot}. Bot se kreira i konfigurira korištenjem Xcode aplikacije a pokreće na macOS Server aplikaciji. Dodatno, navedene aplikacije se ne moraju nalaziti na istom računalu.
+
+Bot se kreira korištenjem Xcode alata. Slika \ref{fig:BotCreation} prikazuje postupak kreiranja bota. Potrebno je odabrati opciju \textit{Product -> Create bot...}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{BotCreation}
+\caption{Kreiranje bota korištenjem Xcode aplikacije}
+\label{fig:BotCreation}
+\end{figure}
+
+Nakon odabira navedene opcije otvara se novi prozor u kojem je potrebno imenovati bot te odabrati macOS Server na kojem će se bot izvršavati. Ukoliko macOS Server nije vidljiv, ponovno pokrenuti macOS Server aplikaciju. Slika \ref{fig:BotServerSelection} prikazuje odabir macOS Server aplikacije kod kreiranja bota.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{BotServerSelection}
+\caption{Odabir macOS Servera}
+\label{fig:BotServerSelection}
+\end{figure}
+
+\paragraph{Verzioniranje}
+
+Konačno dolazimo do verzioniranja projekta. Ako je projekt verzioniran git ili svn sustavom za kontrolu verzija, Xcode Server prepoznaje i ispravno konfigurira proces verzioniranja. Moguće je dodati i novi udaljeni ili lokalni repozitorij.
+
+Nakon odabira repozitorija je potrebno autentificirati vezu. Udaljenom git repozitoriju se može pristupiti korištenjem HTTPS ili SSH autentifikacije. SSH autentifikacija je pouzdanija te olakšava automatizaciju pristupa. Zbog navedenog u ovom radu koristim SSH autentifikaciju. Odabrati opciju \textit{Sing In... -> Existing SSH Keys}, odabrati odgovarajući ključ te unijeti šifru. Slika \ref{fig:BotAddingSSH} prikazuje proces dodavanja SSH ključa.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.4]{BotAddingSSH}
+\caption{Dodavanje SSH ključa}
+\label{fig:BotAddingSSH}
+\end{figure}
+
+\paragraph{Izgradnja projekta}
+
+Nakon povezivanja bota s repozitorijem izvornog koda je moguće konfigurirati opcije integracije. Moguće je odabrati shemu projekta te operacije koje će se izvršavati u sklopu integracije. Shema mora biti javna da bi se mogla automatizirati. Slika \ref{fig:XcodeServerOptions} prikazuje opcije koje se mogu konfigurirati.
+
+Dodatno, integraciju je moguće pokretati periodički, nakon promijene stanja ili ručno.
+
+\paragraph{Priprema ovisnosti}
+
+U sklopu pripreme ovisnosti koristim dva alata - CocoaPods i Carthage. CocoaPods je stariji, široko prihvaćen i centraliziran alat za upravljanje ovisnostima iOS projekata. Ovisnosti moraju biti unaprijed registrirane na CocoaPods platformi zbog čega je složeno koristiti privatne ovisnosti i ovisnosti koje su još u razvoju. Carthage je noviji alat. Za razliku od CocoaPods alata, Carthage ne mijenja datoteke projekta te je decentraliziran. Ovisnost nije potrebno registrirati te ih je moguće dohvatiti iz bilo kojeg repozitorija.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{XcodeServerOptions}
+\caption{Konfiguracija osnovnih opcija integracije}
+\label{fig:XcodeServerOptions}
+\end{figure}
+
+Oba alata omogućavaju jednostavnu automatizaciju pripreme ovisnosti. Uz automatizaciju pripreme ovisnosti, automatiziram i dohvat samih alata. Zbog navedenog iste nije potrebno unaprijed instalirati. Dodatno, priprema ovisnosti se može automatizirati i korištenjem Fastlane alata koji je specificiran u dodatku \ref{header:dodatak_fastlane}.
+
+Skripta \ref{listing:cocoapods} implementira dohvaćanje ovisnosti korištenjem CocoaPods alata. Naredba \#1 provjerava postojanja Podfile datoteke. Podfile datoteka specificira ovisnosti koje je potrebno dohvatiti korištenjem CocoaPods alata. Naredba \#2 provjerava postojanje CocoaPods alata kojem se u naredbenom korisničkom sučelju pristupa pod skraćenicom \textit{pod}. Ako alat nije instaliran, isti se instalira korištenjem gem alata. Na kraju, naredba \#4 dohvaća ovisnosti korištenjem CocoaPods alata.
+
+\begin{lstlisting}[caption=Dohvat ovisnosti korištenjem alata CocoaPods, label=listing:cocoapods]
+if [ -f Podfile ]; then #1
+    echo "Podfile found. Starting CocoaPods"
+
+    if ! which pod >/dev/null; then #2
+        echo "Installing CocoaPods"
+
+        gem install cocoapods --user-install #3
+        pod repo update
+
+        echo "CocoaPods installed"
+    fi
+
+    pod install #4
+
+    echo "Finished dependancy fetch using CocoaPods"
+fi
+\end{lstlisting}
+
+Skripta \ref{listing:carthage} implementira dohvaćanje ovisnosti korištenjem Carthage alata. Carthage ovisnosti specificira u Cartfile datoteci. Naredba \#1 provjerava postojanje navedene datoteke. Naredba \#2 provjerava postojanje Carthage alata te ga dohvaća ako ne postoji. Naredba \#3 dohvaća ovisnosti korištenjem Carthage alata. Za bolje performanse operacije koristim dva argumenta. Argument \verb|--platform ios| specificira dohvaćanje ovisnosti samo za iOS platformu. Argument \verb|--cache-builds| dohvaća ovisnosti samo ako iste nisu već dostupne.
+
+\begin{lstlisting}[caption=Dohvat ovisnosti korištenjem alata Carthage, label=listing:carthage]
+if [ -f Cartfile ]; then #1
+    echo "Cartfile found. Starting Carthage"
+
+    if !(which carthage >/dev/null); then #2
+        echo "Instaling Carthage"
+
+        brew install carthage
+    fi
+
+    carthage update --platform ios --cache-builds #3
+
+    echo "Finished dependancy fetch using Carthage"
+fi
+\end{lstlisting}
+
+Obje skripte je potrebno pokrenuti prije obavljanja integracije. Za ostvarenje navedene funkcionalnosti botu dodajem skriptu koja se izvršava prije pokretanja integracije \eng{Pre-Integration Script}. Slika \ref{fig:PreIntegrationScript} prikazuje proces dodavanja nove skripte. Odabrati opciju \textit{Edit Bot... -> Triggers} te kreirati novu skriptu.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{PreIntegrationScript}
+\caption{Dodavanje skripte koja se izvršava prije integracije botu}
+\label{fig:PreIntegrationScript}
+\end{figure}
+
+Unutar novo kreirane skripte je moguće dodati sve naredbe koje se trebaju izvršiti prije integracije. Međutim, radi jednostavnosti i fleksibilnosti je navedene naredbe korisno izdvojiti u zasebnu datoteku. Korištenjem ovog pristupa olakšavam implementaciju kontinuirane integracije te omogućavam laku izmjenu skripte koja se izvršava prije integracije. Skripta \ref{listing:pre_integration_script_call} se korištenjem \path{XCS_PRIMARY_REPO_DIR} varijable okruženja navigira u početni direktorij projekta te provjerava postojanje datoteke \path{scripts/preintegration}. U slučaju postojanja datoteke ista se izvršava.
+
+\begin{lstlisting}[caption=Poziv skripte koja se izvršava prije integracije, label=listing:pre_integration_script_call]
+#!/bin/bash
+
+cd $XCS_PRIMARY_REPO_DIR
+
+if [ -f scripts/preintegration ]; then
+    ./scripts/preintegration
+fi
+\end{lstlisting}
+
+Skripta \ref{listing:pre_integration_script} se izvršava prije integracija. Skripta jednostavno poziva prije definirane skripte. Na isti je način moguće dodati proizvoljan broj naredaba. Dodatno, skripta u \textit{PATH} varijablu okruženja dodaje dvije putanje koje olakšavaju korištenje postojećih alata.
+
+\begin{lstlisting}[caption=Skripta koja se izvršava prije integracije, label=listing:pre_integration_script]
+#!/bin/bash
+
+export PATH="/usr/local/bin:~/.gem/ruby/2.0.0/bin/:$PATH"
+
+if [ -f scripts/cocoapods ]; then
+    ./scripts/cocoapods
+fi
+
+if [ -f scripts/carthage ]; then
+    ./scripts/carthage
+fi
+\end{lstlisting}
+
+Sve skripte se trebaju nalaziti u \path{scripts} direktoriju repozitorija.
+
+Nakon dodavanja skripti pokrenuti integraciju. Izgled rezultata integracije je prikazan na slici \ref{XcodeServerResult}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{XcodeServerResult}
+\caption{Rezultati procesa integracije}
+\label{fig:XcodeServerResult}
+\end{figure}
+
+\subsection{Testiranje}
+
+Testovi se pokreću odabirom opcije \path{Perform test action} u postavkama integracije bota. U sklopu testiranja se pokreću svi testovi koje definira odabrana shema.
+
+Slika \ref{fig:AddingTests} prikazuje proces dodavanja testnog cilja postojećoj shemi projekta. Odabrati željenu shemu te opciju \textit{Edit scheme}. U lijevom izborniku odabrati opciju \textit{Test} te pritiskom na plus ikonu dodati testni cilj postojećoj shemi. Nakon spremanja promjene integracija u sljedećem izvršavanju obavlja i novo dodane testove.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{AddingTests}
+\caption{Dodavanje novog testnog cilja postojećoj shemi}
+\label{fig:AddingTests}
+\end{figure}
+
+Rezultati testova su vidljivi na početnom ekranu bota te ih je jednostavno razlučiti od pogrešaka u izgradnji.
+
+\subsection{Osiguranje kvalitete}
+
+U sklopu osiguranja kvalitete provodim dva procesa: provjeru pokrivenosti koda testovima i statičku provjeru koda alatom \textit{Swiftlint}.
+
+Prikupljanje podatka o pokrivenosti koda testovima se uključuje odabirom opcije \path{Code Coverage -> Enabled} u postavkama integracije. Trenutno ne postoji efektivan način usporedbe dva podatka o pokrivenosti koda testovima. Složeni format koji Xcode Server proizvodi pruža veliki broj informacija, ali trenutno je vrlo teško čitljiv. Međutim, rezultate je moguće ručno usporediti odabirom sekcije \textit{Coverage} na početnom ekranu bota.
+
+Switlint je alat za statičku analizu koda napisanog u programskom jeziku Swift. Alat definira veliki broj pravila kojim nastoji osigurati praćenje stila i konvencija jezika Swift. Većina pravila se odnosi na izgled i format koda, ali postoje i pravila koja nastoje izbjeći pojavu grešaka.
+
+Alat se pokreće pozivanjem naredbe \verb|swiftlint| u početnom direktoriju projekta. Ispis alata je sličan onome xcodebuild alata. Za pokretanje Swiftlint alata kod svakog procesa izgradnje je moguće Xcode projektu dodati novu \path{Run Script} fazu s naredbom \ref{listing:swiftlint}.
+
+\begin{lstlisting}[caption=Provjera postojanja i pokretanje Swiftlint alata, label=listing:swiftlint]
+if which swiftlint >/dev/null; then
+    swiftlint
+else
+    echo "warning: Swiftlint nije instaliran"
+fi
 \end{verbatim}
 
-Ključ je potrebno dodati na Github. Sljedeća naredba kopira javni dio ključa.
+Ako je poziv \path{swiftlint} naredbe dodan kao \path{Run script} faza u projektu, onda se isti poziva prilikom svake izgradnje i nije potrebno obavljati nikakve modifikacije. Ispis naredbe se parsira zajedno s ispisom xcodebuild alata te se rezultati dojavljuju zajedno. Ako naredba nije dodana projektu onda je poziv potrebno ručno implementirati nakon obavljanja integracije. Kod korištenja ovog pristupa je potrebno ispis samostalno parsirati.
 
-\begin{verbatim}
-pbcopy < ~/.ssh/{ime_kljuca}.pub
-\end{verbatim}
+Rezultate integracije je moguće vodjeti odabirom željenog bota korištenjem Xcode alata. Primjer rezultata je prikazan na slici \ref{fig:XcodeServerResult}.
 
 
-\subsection{Upravljanje ovisnostima}
 
-Koristim dva alata za upravljanje ovisnostima - CocoaPods i Carthage. CocoaPods je stariji i široko prihvaćen alat za upravljanje ovisnostima iOS projekata. Alat je centraliziran. Ovisnosti moraju biti unaprijed registrirane na CocoaPods platformi zbog čega je složeno koristiti privatne ovisnosti i ovisnosti koje su još u razvoju. Carthage je noviji alat. Za razliku od CocoaPods alata, Carthage ne izmjenjuje datoteke projekta te je decentraliziran. Ovisnost nije potrebno registrirati te ih je moguće dohvatiti iz bilo kojeg repozitorija.
+\section{Kontinuirana dostava}
 
-Kako bi osigurao ispravnost procesa dohvate ovisnosti, projektu dodajem četiri vanjske ovisnosti od kojih je jedna privatna.
-
-\paragraph{CocoaPods}
-
-CocoaPods alat se inicijalizira korištenjem naredbe u početnom direktoriju projekta.
-
-\begin{verbatim}
-pod init
-\end{verbatim}
-
-Ovisnosti se dodaju u novokreiranu datoteku \textit{Podfile}. Ovisnosti se dodaju željenom cilju. Ako su ciljevi ugniježđeni, onda se ovisnosti i postavke roditelja odnose i na djecu. Definiram dvije ovisnosti, \textit{LayoutKit} u glavnom cilju i \textit{Nimble} u testnom cilju. Sadržaj datoteke \textit{Podfile} je prikazan u nastavku.
-
-\begin{verbatim}
-use_frameworks!
-
-target 'Diplomski_rad' do
-  pod 'LayoutKit'
-end
+\section{Kontinuirana isporuka}
 
 
-target 'Diplomski_radTests' do
-  inherit! :search_paths
-    pod 'Nimble'
-end
-\end{verbatim}
-
-Ovisnosti se dohvaćaju naredbom:
-
-\begin{verbatim}
-pod install
-\end{verbatim}
-
-Naredba kreira novo radno okruženje pod imenom \textit{Diplomski\_rad.xcworkspace}. Radnom okruženju su dodana dva projekta: glavni projekt i novo kreirani \textit{Pods} projekt koji sadrži sve ovisnosti. Daljnji razvoj je potrebno nastaviti korištenjem kreiranog radnog okruženja.
-
-\paragraph{Carthage}
-
-Korištenjem alata Carthage također dohvaćam dvije ovisnosti ali je jedna od ovisnosti privatna ovisnost podignuta na privatnom \textit{gitlab} poslužitelju.
-
-U početnom direktoriju repozitorija je potrebno kreirati datoteku pod nazivom \textit{Cartfile}. U datoteci se specificiraju sve javne ovisnosti. Privatne ovisnosti je moguće specificirati u \textit{Cartfile.private} datoteci. Sadržaj datoteke \textit{Cartfile} je prikazan u nastavku.
-
-\begin{verbatim}
-git "git@naziv_poslužitelja/ime_projekta.git" "ime_grane"
-
-github "facebook/facebook-sdk-swift"
-\end{verbatim}
-
-Ovisnosti se dohvaćaju pokretanjem naredbe:
-
-\begin{verbatim}
-carthage update --platform ios
-\end{verbatim}
-
-Dohvaćene ovisnosti je potrebno ručno uključiti u projekt. Potrebno je odabrati željeni cilj te u \textit{General -> Linked Frameworks and Libraries} sekciju dovući željene biblioteke iz \verb|Carthage/Build| direktorija. U \textit{Build phases} sekciji dodati novu \textit{Run script} fazu s naredbom:
-
-\begin{verbatim}
-/usr/local/bin/carthage copy-frameworks
-\end{verbatim}
-
-U polje \textit{Input Files} dodati sve željene ovisnosti u obliku:
-
-\begin{verbatim}
-$(SRCROOT)/Carthage/Build/iOS/{ime_biblioteke}.framework
-\end{verbatim}
 
 
-\section{Integracija}
-
-\subsection{Izgradnja} \label{IzgradnjeDodatak}
+\chapter{Alat Xcodebuild}
 
 Za izgradnju, testiranje i arhiviranje iOS aplikacija koristim \textit{xcodebuild} alat. Alat je razvio Apple za izgradnju macOS aplikacija. U međuvremenu je alat proširen te danas podržava razvoj programske potpore za iOS, tvOS i watchOS operacijske sustave. Xcode i Xcode Server alati koriste xcodebuild za obavljanje svih operacija vezanih uz projekt. Iako se u procesu automatizacije nećemo direktno susretati s alatom, korisno je znati što se dešava u pozadini.
 
@@ -1024,162 +1131,7 @@ Nakon prijave u \verb|https://itunesconnect.apple.com/| stranicu potrebno je oda
 
 
 
-\chapter{Xcode Server} \label{XcodeServer}
-
-Za automatizaciju procesa navedenih u odlomku A koristim alat Xcode Server. Na tržištu postoji veliki broj alata koji omogućuju automatizaciju procesa integracije. Razlog odabira alata Xcode Server objašnjavam u dodatku \ref{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}.
-
-\section{Priprema} \label{PripremaAlata}
-
-MacOS je, s ciljem sigurnosti, vrlo zatvorena platforma. Brojni alati zahtijevaju \verb|sudo| lozinku, korisničku interakciju te ih nije moguće instalirati korištenjem ljuske. Zbog navedenog instalaciju ovih alata nije moguće automatizirati već oni moraju biti unaprijed instalirani na računalu. Među njima su macOS Server, Xcode i Homebrew alati.
-
-\begin{verbatim}
-su - xcodeserver
-
-export PATH=$PATH:/usr/local:~/.gem/ruby/2.0.0/bin
-\end{verbatim}
-
-Za dohvat brojnih alata koristim \textit{Homebrew} alat. Instalacija alata zahtijeva korištenje računa s administracijskim pravima \eng{sudo user}. Budući da novokreirani račun nije administrator, proces instalacije je potrebno obaviti na računu koji posjeduje navedena prava. Nakon instalacije je potrebno Xcode Server računu omogućiti korištenje alata i dati pristup \verb|/usr/local| direktoriju u kojem Homebrew obavlja izmjene. Naredba pod (1) instalira alat Homberew, naredba pod (2) kreira \verb|ci| grupu, naredba pod (3) dodaje trenutni i Xcode Server račun grupi, dok (4) daje potrebna prava grupi.
-
-\begin{verbatim}
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubuser
-    content.com/Homebrew/install/master/install)" (1)
-
-sudo dseditgroup -o create ci (2)
-
-sudo dseditgroup -o edit -a {current_user} -t user ci (3)
-sudo dseditgroup -o edit -a xcodeserver -t user ci
-
-sudo chgrp -R ci /usr/local (4)
-sudo chmod -R g+wr /usr/local
-\end{verbatim}
-
-\section{Kontinuirana integracija} \label{KontinuiranaIntegracija_DodatakB}
-
-Kreiranje, konfiguraciju i praćenje automatiziranih procesa obavljam korištenjem alata Xcode. Procesi se pokreću i izvršavaju na macOS Serveru. Računalo na kojem se nalazi macOS Server se naziva poslužitelj. MacOS Serveru je moguće pristupiti korištenjem proizvoljnog Xcode alata, sve dok je server vidljiv te postoje odgovarajuća prava pristupa. Za spajanje na udaljeni macOS Server je potrebno pokrenuti lokalan macOS Server i u ponuđenim opcijama odabrati udaljeni poslužitelj.
-
-Automatizacija Xcode procesa se ostvaruje korištenjem \textit{bota}. Bot je namijenjen specifično za automatizaciju Xcode projekata te je kreiranje i konfiguriranje kontinuirane integracije jednostavna u usporedbi s drugim alatima.
-
-Bot se kreira korištenjem Xocde alata, \textit{Product -> Create bot...}. Potrebno je imenovati bot i odabrati macOS Server na kojem će se bot izvršavati.
-
-Bot je potrebno povezati s repozitorijem izvornog koda. Ova veza omogućava pokretanje integracije nakon izmjene stanja repozitorija. Moguće je koristiti lokalno ili javno hostani repozitorij verzioniran alatom git ili svn.
-
-Nakon povezivanja s repozitorijem izvornog koda je moguće konfigurirati opcije integracije. Moguće je odabrati željenu shemu te operacije koje će se izvršavati. Shema mora biti javna da bi se mogla automatizirati. Opcije su prikazane na slici \ref{fig:XcodeServerOptions}. Testove je moguće obaviti na iOS simulatoru i na stvarnim uređajima povezanim sa serverom.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.5]{XcodeServerOptions}
-    \caption{Konfiguracija osnovnih opcija integracije}
-    \label{fig:XcodeServerOptions}
-\end{figure}
-
-Integraciju je moguće pokretati periodički, nakon promijene stanja ili ručno.
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.5]{XcodeServerIntegrationPeriods}
-    \caption{Konfiguracija perioda izvršavanja integracije}
-    \label{fig:XcodeServerIntegrationPeriods}
-\end{figure}
-
-Dodatno, moguće je konfigurirati okolinu u kojoj će se integracija izvršavati te pomoću \textit|sh| ljuske specificirati akcije koje se obavljaju prije i poslije obavljana integracije. Okolina se konfigurira postavljanjem proizvoljnog broja ključ - vrijednost parova. Akcije su proizvoljne skripte definirane i pokrenute na \textit{bin/sh} ljusci. Obje funkcionalnosti se ekstenzivno koriste za ostvarenje kontinuirane dostave i isporuke.
-
-Integracija započinje odmah nakon kreiranja bota. Proces je moguće ručno započeti odabirom \textit{Integrate} opcije u gornjem desnom kutu.
-
-Prva integracija završava pogreškom koju izaziva ne postojanje potrebnih ovisnosti. Xcode Server kreira privatnu verziju repozitorija izvornog koda te na njemu obavlja integraciju. Problem ovisnosti je moguće riješiti na dva načina.
-
-Sve potrebne ovisnosti je moguće dodati repozitoriju izvornog koda. Korištenjem navedenog postupka su sve ovisnosti prisutne u repozitoriju odmah nakon preuzimanja repozitorija zbog čega ih nije potrebno dohvaćati. Navedeni postupak olakšava i ubrzava proces integracije. Međutim, dodavanje svih ovisnosti u izvorni repozitorij nosi i značajne probleme. Prvo, repozitorij koda postaje poprilično veći. Pregledom vlastitih projekata ustanovio sam da su ovisnosti od 2 do 50 puta veće od projekta. Čak su i u najvećem projektu ovisnosti bile značajno. Povećanje repozitorija usporava preuzimanje i otežava praćenje promjena. Iako navedeni postupak ima svojih prednosti, generalno se izbjegava u praksi.
-
-Drugi pristup je potrebne ovisnosti specificirati u izvornom repozitoriju te ih dohvatiti po potrebi. Ovaj proces je vremenski zathjevniji od prošlog. Dohvaćanje i ponovna izgradnja svih ovisnosti može značajno usporiti proces integracije. Zbog navedenog je vrlo važno dohvaćati samo potrebne ovisnosti. Ostvarivanje optimalnog ponašanja značajno ovisi o alatu koji koristimo.
-
-Implementacija prvog pristupa je vrlo jednostavna. Potrebno je sve ovisnosti dodati u repozitorij, odnosno maknuti ih iz \textit{.gitignore} dokumenta.
-
-Implementacija drugog pristupa je nešto složenija. Za upravljanje ovisnostima u iOS razvoju se koriste dva alata: CocoaPods i Carthage. Oba alata imaju svoje prednosti i mane zbog čega demonstriram korištenje oba. Detaljan opis oba alata i razlog njihova korištenja se nalazi u dodatku A.
-
-\subsection{CocoaPods}
-
-Instalaciju CocoaPods možemo automatizirati korištenjem akcije koja se ostvaruje u sklopu integracije. Akcije se botu dodaju odabirom opcije \verb|Edit bot -> Triggers| te pritiskom na \textit{plus} ikonu u doljnem lijevom kutu. Moguće je kreirati akcije koje se izvršavaju prije ili poslije integracije. U ovom slučaju odabrati akciju koja se izvršava prije integracije te joj dodati naredbu u nastavku.
-
-\begin{verbatim}
-if which pod >/dev/null; then
-    echo "CocoaPods found"
-else
-    echo "CocoaPods not found, proceeding with installation"
-
-    if which gem >/dev/null; then
-        gem install cocoapods --user-install
-
-        pod repo update
-    else
-        echo "gem not found, quiting CocoaPods instalation"
-    fi
-fi
-\end{verbatim}
-
-U slučaju ne postojanja CocoaPods alata, naredba ga instalira i konfigurira. Za instalaciju CocoaPods alata koristim \verb|gem| alat koji je dostupan na svim instalacijama macOS operacijskog sustava. U slučaju promjene lokacije alata je istu potrebno izmijeniti u naredbi. Naredba pod (1) dohvaća i instalira CocoaPods alat. Naredba pod (2) dodaje direktorij u kom se nalazi CocoaPods alat u \verb|PATH| varijablu.
-
-CocoaPods ovisnosti definira u \verb|Podfile| dokumentu. Za dohvaćanje i pripremu ovisnosti je dovoljno pozvati naredbu \verb|pod install|. Naredba dohvaća specifičnu verziju ovisnosti definiranu u \verb|Pofile.lock| datoteci. Ako ovisnost odgovarajuće verzije već postoji u lokalnom repozitoriju onda se ista ne dohvaća ponovno.
-
-\begin{verbatim}
-if [ -f Podfile ]; then
-    pod install
-fi
-\end{verbatim}
-
-
-\subsection{Carthage}
-
-Za instalaciju Carthage alata koristim Homebrew alat. Proces je sličan instalaciji CocoaPods alata.
-
-\begin{verbatim}
-if which carthage >/dev/null; then
-    echo "Carthage found"
-else
-    echo "Carthage not found, proceeding with installation"
-
-    if which brew >/dev/null; then
-        brew install carthage
-    else
-        echo "Homebrew needs to be installed"
-    fi
-fi
-\end{verbatim}
-
-Carthage ovisnosti specificira u Cartfile datoteci. Ako datoteka postoji u direktoriju, ovisnosti se mogu dohvatiti pozivajući \verb|carthage update| naredbu. Za bolje performanse operacije koristim dva argumenta. Argument \verb|--platform ios| specificira dohvaćanje ovisnosti samo za iOS platformu. Argument \verb|--cache-builds| dohvaća ovisnosti samo ako iste nisu već dostupne.
-
-\begin{verbatim}
-if [ -f Cartfile ]; then
-    echo "Fetching dependencies using Carthage"
-
-    carthage update --platform ios --cache-builds
-else
-    echo "Skipped fetching dependencies using Carthage"
-fi
-\end{verbatim}
-
-Nakon dodavanja navedene četiri naredbe kao akcije koje se izvršavaju prije integracije projekt bi se trebao uspješno izgraditi. Ispis procesa koje obavlja integracija se nalazi u \verb|Logs| sekciji bota. U slučaju postojanja pogreške korisno je pogledati ispis procesa.
-
-\subsection{Testiranje i osiguranje kvalitete}
-
-Testovi se pokreću odabirom sheme koja za testnu operaciju koristi željene testne ciljeve i uključivanjem opcije \verb|Perform test action| u postavkama integracije. Predodređeno shema za testove pokreće oba testna cilja (UI i Unit) testove. Za isključivanje pojedinog testnog cilja ili dodavanje novih je potrebno modificirati testne postavke sheme.
-
-Prikupljanje podatka o pokrivenosti koda testovima se uključuje odabirom opcije \verb|Code Coverage -> Enabled| u postavkama integracije.
-
-Ako je poziv \verb|swiftlint| naredbe dodan kao \verb|Run script| faza u projektu, onda se isti poziva prilikom svake izgradnje i nije potrebno obavljati nikakve modifikacije. Ispis naredbe se parsira zajedno s ispisom xcodebuild alata te se rezultati dojavljuju zajedno. Ako naredba nije dodana projektu onda je poziv potrebno ručno implementirati nakon obavljanja integracije. Kod korištenja ovog pristupa je potrebno ispis samostalno parsirati.
-
-Rezultate integracije je moguće vodjeti odabirom željenog bota korištenjem Xcode alata. Primjer rezultata je prikazan na slici \ref{fig:XcodeServerResult}.
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.4]{XcodeServerResult}
-    \caption{Rezultati procesa integracije}
-    \label{fig:XcodeServerResult}
-\end{figure}
-
-\section{Kontinuirana dostava} \label{header:KontinuiranaDostavaAutomatizacija}
-
-
-
-\chapter{Fastlane}
+\chapter{Fastlane} \label{header:dodatak_fastlane}
 
 Automatizaciju isporuke programske potpore za iOS operacijski sustav obavljam pomoću alat fastlane. Danas je alat dio Fabric familije koju je u siječnju 2017. godine kupio Google. Fastlane je kolekcija manjih alata od kojih je svaki zadužen za automatizaciju pojedine operacije. Ove alate nazivamo dodaci. Većina dodataka je razvijena od strane zajednice te se kontinuirano razvijaju novi dodaci. Fastlane specificira i jednostavan način ulančavanja i pokretanja dodataka što značajno olakšava automatizaciju. Iako fastlane koristim samo za automatizaciju isporuke, alat podržava i automatizaciju ostalih operacija kao što su izgradnja i testiranje\citep{fastlane}.
 
