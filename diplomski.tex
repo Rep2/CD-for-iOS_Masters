@@ -427,7 +427,7 @@ Važno je napomenuti da kontinuirana dostava ne isporučuje produkt automatski, 
 
 Programsku potporu je moguće objaviti na više načina. Samim time postoji i više procesa isporuke. Programsku potporu je moguće isporučiti ručnom distribucijom njenih arhiva, objavom arhive na privatnom poslužitelju ili objavom arhiva na nekoj javnoj distribucijskoj platformi. Navedeni načini isporuke se značajno razliku. Samim time se i automatizacije navedenih načina isporuke značajno razlikuju.
 
-Programsku potporu za iOS operacijski sustav isporučujemo na sljedeće načine: direktna isporuka \eng{direct distribution}, \textit{ad hoc} isporuka \eng{ad hoc distribution}, unutarnja isporuka \eng{in-house distribution} i isporuka korištenjem App Store platforme. Odabir načina uglavnom ovisi o klijentu za koji obavljamo isporuku. Na primjer, za isporuku programske potpore unutar tima možemo koristiti direktnu isporuku. Jednostavno povežemo mobilni uređaj s računalom koje obavlja isporuku i instaliramo aplikaciju. Isto naravno nije moguće te ne bi bilo praktično raditi za javne korisnike. Njima programsku potporu isporučujemo korištenjem javne App Store platforme odakle je oni mogu samostalno preuzeti. Primjer implementacije svakog od pristupa je dostupan u dodatku \ref{header:ImplementacijaIsporuke}.
+Programsku potporu za iOS operacijski sustav isporučujemo na sljedeće načine: direktna isporuka \eng{direct distribution}, \textit{ad hoc} isporuka \eng{ad hoc distribution}, unutarnja isporuka \eng{in-house distribution} i isporuka korištenjem App Store platforme. Odabir načina uglavnom ovisi o klijentu za koji obavljamo isporuku. Na primjer, za isporuku programske potpore unutar tima možemo koristiti direktnu isporuku. Jednostavno povežemo mobilni uređaj s računalom koje obavlja isporuku i instaliramo aplikaciju. Isto naravno nije moguće te ne bi bilo praktično raditi za javne korisnike. Njima programsku potporu isporučujemo korištenjem javne App Store platforme odakle je oni mogu samostalno preuzeti. Primjer implementacije svakog od pristupa je dostupan u dodatku \ref{header:RučnaImplementacijaIsporuke}.
 
 Svaki od spomenutih tipova isporuke se koristi u razvoju programske potpore za iOS operacijski sustav. Zbog navedenog ću u sklopu automatizacije isporuke, odnosno kontinuirane dostave, obraditi sve navedene tipove isporuke. Iako se procesi razlikuju u implementaciji, sastoje se od istih koraka: pripreme za distribuciju, odnosno arhiviranja programske potpore i objave. Slika \ref{fig:ContinuousDelivery} prikazuje proces isporuke.
 
@@ -760,14 +760,14 @@ Nakon instalacije alata je potrebno kreirati Xcode Server povezivanjem Xcode i m
 \begin{figure}[b!]
 \centering
 \includegraphics[scale=0.4]{DodavanjeCertifikata}
-\caption{Dodavanje certifikata korištenjem Keychain Assistant aplikacije}
+\caption{Dodavanje certifikata korištenjem Keychain Access aplikacije}
 \label{fig:DodavanjeCertifikata}
 \end{figure}
 
 MacOS Server uz automatizaciju procesa omogućava i udaljeno upravljanje računalom. Zbog navedenog je preporučeno macOS Server pokrenuti na zasebnom računu operacijskog sustava te dopustiti pristup samo potrebnim alatima i datotekama. Nakon povezivanja Xcode aplikacije s macOS Serverom otvara se izbornik u kojem je moguće kreirati novi račun operacijskog sustava ili odabrati postojeći. U sklopu ovog rada kreiram novi račun predodređenog imena \textit{xcodeserver}. Slijediti upute nakon kreiranja računa.
 
 
-U sklopu izgradnje i testiranja iOS projekta se obavlja i proces potpisivanja kod. Sam proces definiram u \ref{header:dodatak_potpisivanje_koda} dijelu ovog dodatka. Za sada je dovoljno znati da proces zahtjeva postojanje tri artefakta: osobni certifikat, certifikat aplikacije i pripremni profil aplikacije za tip isporuke koji se koristi. Navedene certifikate je moguće kreirati i preuzeti sa stranice na poveznici \path{https://developer.apple.com/account}. Certifikate je potrebno instalirati korištenjem Keychain Assistant aplikacije. Navedeno je najjednostavnije ostvariti pokretanjem certifikata korištenjem navedene aplikacije.
+U sklopu izgradnje i testiranja iOS projekta se obavlja i proces potpisivanja kod. Sam proces definiram u \ref{header:dodatak_potpisivanje_koda} dijelu ovog dodatka. Za sada je dovoljno znati da proces zahtjeva postojanje tri artefakta: osobni certifikat, certifikat aplikacije i pripremni profil aplikacije za tip isporuke koji se koristi. Navedene certifikate je moguće kreirati i preuzeti sa stranice na poveznici \path{https://developer.apple.com/account}. Certifikate je potrebno instalirati korištenjem Keychain Access aplikacije. Navedeno je najjednostavnije ostvariti pokretanjem certifikata korištenjem navedene aplikacije.
 
 Pripremne profile je potrebno spremiti na lokaciji \path{~/Library/MobileDevice/Provisioning Profiles}.
 
@@ -951,13 +951,13 @@ fi
 
 Sve skripte se trebaju nalaziti u \path{scripts} direktoriju repozitorija.
 
-Nakon dodavanja skripti pokrenuti integraciju. Izgled rezultata integracije je prikazan na slici \ref{XcodeServerResult}.
+Nakon dodavanja skripti je potrebno pokrenuti integraciju. Izgled rezultata izgradnje je prikazan na slici \ref{fig:XcodeServerBuildResult}.
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.4]{XcodeServerResult}
-\caption{Rezultati procesa integracije}
-\label{fig:XcodeServerResult}
+\includegraphics[scale=0.3]{XcodeServerBuildResult}
+\caption{Rezultati procesa izgradnje}
+\label{fig:XcodeServerBuildResult}
 \end{figure}
 
 \subsection{Testiranje}
@@ -973,17 +973,24 @@ Slika \ref{fig:AddingTests} prikazuje proces dodavanja testnog cilja postojećoj
 \label{fig:AddingTests}
 \end{figure}
 
-Rezultati testova su vidljivi na početnom ekranu bota te ih je jednostavno razlučiti od pogrešaka u izgradnji.
+Rezultati obavljanja testova su također vidljivi na prvom ekranu bota u sekciji \textit{Test History}. Osim broja uspješnih i neuspješnih testova, alat omogućuje i prikaz detaljnih rezultata testiranja.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.4]{XcodeServerTestResult}
+\caption{Rezultati procesa testiranja i osiguranja kvalitete}
+\label{fig:XcodeServerTestResult}
+\end{figure}
 
 \subsection{Osiguranje kvalitete}
 
 U sklopu osiguranja kvalitete provodim dva procesa: provjeru pokrivenosti koda testovima i statičku provjeru koda alatom \textit{Swiftlint}.
 
-Prikupljanje podatka o pokrivenosti koda testovima se uključuje odabirom opcije \path{Code Coverage -> Enabled} u postavkama integracije. Trenutno ne postoji efektivan način usporedbe dva podatka o pokrivenosti koda testovima. Složeni format koji Xcode Server proizvodi pruža veliki broj informacija, ali trenutno je vrlo teško čitljiv. Međutim, rezultate je moguće ručno usporediti odabirom sekcije \textit{Coverage} na početnom ekranu bota.
+Prikupljanje podatka o pokrivenosti koda testovima se uključuje odabirom opcije \path{Code Coverage -> Enabled} u postavkama integracije. Trenutno ne postoji efektivan način usporedbe dva podatka o pokrivenosti koda testovima. Složeni format koji Xcode Server proizvodi pruža veliki broj informacija, ali trenutno je vrlo teško čitljiv. Međutim, rezultate je moguće ručno usporediti na temelju sekcije \textit{Code Coverage} na početnom ekranu bota.
 
 Switlint je alat za statičku analizu koda napisanog u programskom jeziku Swift. Alat definira veliki broj pravila kojim nastoji osigurati praćenje stila i konvencija jezika Swift. Većina pravila se odnosi na izgled i format koda, ali postoje i pravila koja nastoje izbjeći pojavu grešaka.
 
-Alat se pokreće pozivanjem naredbe \verb|swiftlint| u početnom direktoriju projekta. Ispis alata je sličan onome xcodebuild alata. Za pokretanje Swiftlint alata kod svakog procesa izgradnje je moguće Xcode projektu dodati novu \path{Run Script} fazu s naredbom \ref{listing:swiftlint}.
+Alat se pokreće pozivanjem naredbe \path{swiftlint} u početnom direktoriju projekta. Ispis alata je sličan onome xcodebuild alata. Za pokretanje Swiftlint alata kod svakog procesa izgradnje je moguće Xcode projektu dodati novu \path{RunScript} fazu s naredbom \ref{listing:swiftlint}.
 
 \begin{lstlisting}[caption=Provjera postojanja i pokretanje Swiftlint alata, label=listing:swiftlint]
 if which swiftlint >/dev/null; then
@@ -991,17 +998,170 @@ if which swiftlint >/dev/null; then
 else
     echo "warning: Swiftlint nije instaliran"
 fi
-\end{verbatim}
+\end{lstlisting}
 
-Ako je poziv \path{swiftlint} naredbe dodan kao \path{Run script} faza u projektu, onda se isti poziva prilikom svake izgradnje i nije potrebno obavljati nikakve modifikacije. Ispis naredbe se parsira zajedno s ispisom xcodebuild alata te se rezultati dojavljuju zajedno. Ako naredba nije dodana projektu onda je poziv potrebno ručno implementirati nakon obavljanja integracije. Kod korištenja ovog pristupa je potrebno ispis samostalno parsirati.
-
-Rezultate integracije je moguće vodjeti odabirom željenog bota korištenjem Xcode alata. Primjer rezultata je prikazan na slici \ref{fig:XcodeServerResult}.
-
-
+Ako je poziv \path{swiftlint} naredbe dodan kao \path|RunScript| faza u projektu, onda se isti poziva prilikom svake izgradnje i nije potrebno obavljati modifikacije bota. Ispis naredbe se parsira zajedno s ispisom xcodebuild alata te se rezultati dojavljuju zajedno. Ako naredba nije dodana projektu onda je poziv potrebno ručno implementirati nakon obavljanja integracije. Kod korištenja ovog pristupa je potrebno ispis samostalno parsirati.
 
 \section{Kontinuirana dostava}
 
+Kontinuirana dostava je praksa u sklopu programskog inženjerstva koja automatizira proces isporuke programske potpore. Automatizacijom isporuke nastojimo olakšati proces isporuke i tima ga češće obavljati.
+
+Isporuku programske potpore za iOS operacijske sustave možemo podijeliti na četiri tipa: direktna isporuka, \textit{ad hoc} isporuka, unutarnja isporuka i isporuka korištenjem App Store platforme. Svaki od navedenih tipova isporuke možemo podijeliti u tri faze: potpisivanje koda, arhiviranje i objavu.
+
+Prvi dio poglavlja prikazuje ručnu implementaciju isporuke. Cilj navedenog dijela je upoznavanje sa standardnim procesom isporuke programske potpore za iOS operacijski sustav. Drugi dio poglavlja se bavi automatizacijom isporuke odnosno ostvarenjem kontinuirane dostave.
+
+\subsection{Ručna isporuka} \label{header:RučnaImplementacijaIsporuke}
+
+Za ručnu implementaciju isporuke koristim Xcode aplikaciju. Xcode pruža intuitivno i jednostavno vizualno sučelje za ostvarenje isporuke, međutim navedeni proces nije moguće automatizirati. Dodatno, Xcode ne implementira proces objave koje je potrebno odraditi odvojeno.
+
+\paragraph{Potpisivanje koda}
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.4]{AppleDeveloperCertificateCreation}
+\caption{Odabir tipa certifikata koji se kreira}
+\label{fig:AppleDeveloperCertificateCreation}
+\end{figure}
+
+Postupak potpisivanja koda zahtjeva tri artefakta: certifikat, identifikator aplikacije i pripremni profil za tip isporuke koja se koristi. Dodatno, direktna i ad hoc isporuka zahtijevaju i identifikator uređaja na koji se obavlja isporuka te se navedena registracija dodaje pripremnom profilu.
+
+Svi artefakti se kreiraju korištenjem \path|https://developer.apple.com| platforme. Nakon prijave odabrati \verb|Certificates, Identifiers & Profiles| opciju.
+
+Apple definira veliki broj tipova certifikata. U sklopu isporuke nas zanimaju samo dva tipa: razvojni i produkcijski certifikati. Razvojni certifikati se koriste u razvoju i za direktnu isporuku. Standardno je kreirati zaseban certifikat za svakog programera. Produkcijski certifikati se koriste za ad hoc, unutarnju i App Store isporuku. Standardno je kreirati jedan certifikat po razvojnom timu. Slika \ref{fig:AppleDeveloperCertificateCreation} prikazuje odabir tipa certifikata u procesu kreiranja. Za dovršenje kreiranja certifikata je potrebno kreirati i dostaviti CSR datoteku korištenjem Keychain Access aplikacije. Navedena datoteka sadrži informacije potrebne za kreiranje certifikata kao što su javi i privatni ključ.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{KeychainAccessRequest}
+\caption{Kreiranje nove CSR datoteke}
+\label{fig:KeychainAccessRequest}
+\end{figure}
+
+Pokrenuti Keychain Access aplikaciju te odabrati opciju \textit{Keychain Access -> Certificate Assistant -> Request a Certificate from a Certificate Authority}. Slika \ref{fig:KeychainAccessRequest} prikazuje odabir navedene opcije.
+
+Slijediti upute novo otvorenog prozora i time kreirani novu CSR datoteku. Datoteku dostaviti u formu za kreiranje certifikate te nakon toga obrisati. Proces je isti za sve tipove certifikata.
+
+Za korištenje certifikata je potrebno posjedovati certifikat i privatni ključ kojim je on kreiran. Certifikat je moguće preuzeti s Apple Developer platforme dok je privatni ključ dostupan isključivo na uređaju koji je kreirao CSR datoteku. Za dohvat privatnog ključa otvoriti Keychain Access aplikaciju te pronaći željeni certifikat. Ako na uređaju postoji privatni ključ navedenog certifikata, isti je moguće izdvojiti korištenjem opcije \textit{Export}. Slika \ref{fig:PrivateKeyExport} prikazuje izdvajanje privatnog ključa certifikata.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.4]{PrivateKeyExport}
+\caption{Izdvajanje privatnog ključa certifikata}
+\label{fig:PrivateKeyExport}
+\end{figure}
+
+Ovako izdvojeni privatni ključ certifikata je moguće distribuirati. Nužno je osigurati tajnost privatnog ključa jer suprotno narušava sigurnost svih aplikacija koje koriste navedeni certifikat.
+
+Identifikator aplikacije specificira aplikaciju koja se isporučuje. Postoje dva tipa identifikatora aplikacije: \textit{wildcard} i eksplicitni identifikatori aplikacije. Wildcard identifikatori aplikacije registriraju više od jedne aplikacije te ih karakterizira asterisk (*) u sklopu imena, na primjer "com.*". S druge strane, eksplicitni identifikatori jedinstveno identificiraju aplikaciju, na primjer "com.rep.testna\_aplikacija". Uz specificiranje aplikacije, potrebno je dodati ime identifikatora te odabrati servise koje aplikacija koristi. Slika \ref{fig:AppIdentifierCreation} prikazuje ekran za kreiranje identifikator aplikacije.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{AppIdentifierCreation}
+\caption{Kreiranje identifikatora aplikacije}
+\label{fig:AppIdentifierCreation}
+\end{figure}
+
+Na kraju, pripremni profil povezuje identifikator aplikacije i certifikat. Svaki tip isporuke zahtijeva odgovarajući tip pripremnog profila zbog čega postoje četiri tipa pripremnog profila. Nakon odabira željenog profila je potrebno odabrati identifikator aplikacije i željeni certifikat. Moguće je koristiti isključivo eksplicitne identifikatore. Pripremni profil za direktnu isporuku zahtijeva razvojni certifikat, dok pripremni profili ostalih tipova isporuka zahtijevaju produkcijski certifikat.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.55]{SigningArtefactsSetup}
+\caption{Postavljanje artefakta za potpisivanje koda}
+\label{fig:SigningArtefactsSetup}
+\end{figure}
+
+Novo kreirana artefakte je potrebno preuzeti i pripremiti za korištenje. Profile je potrebno spremiti na računalu koje obavlja isporuku u direktoriju \path|~/Library/MobileDevice/Provisioning Profiles/| a certifikate je potrebno pokrenuti korištenjem Keychain Access aplikacije.
+
+Prije pokretanja arhiviranja je potrebno konfigurirati projekt kako bi se u sklopu arhiviranja koristili ispravni artefakti. Otvoriti Xcode projekt, odabrati željen cilj u sekciji \textit{General} podstaviti \textit{Debug} i \textit{Release} certifikate za potpisivanje koda.
+
+
+\paragraph{Arhiviranje}
+
+
+Direktna isporuka aplikaciju instalira na mobilni uređaj koji je direktno povezan s računalom koje obavlja isporuku. Uređaj je prije isporuke potrebno registrirati kao testni uređaj na Apple developer računu. Za pristup Apple Developer računu se je potrebno u isti prijaviti na \path{https://developer.apple.com} stranici. Nakon prijave odabrati opciju \verb|Certificates, Identifiers & Profiles|. U lijevom bočnom izborniku odabrati opciju \verb|Devices| te u gornjem desnom kutu klikom na \textit{plus} ikonu pokrenuti proces registriranja novog testnog uređaja. Za registraciju je potrebno dohvatiti UUID uređaja. UUID se može dohvatiti korištenjem iTunes aplikacije dostupne u sklopu instalacije macOS operacijskom sustavu. Potrebno je povezati mobilni uređaj s računalom korištenjem USB kabela. U iTunes aplikaciji odabrati povezani mobilni uređaj te kopirati UUID uređaja. Slika \ref{fig:iTunesUUID} prikazuje lokaciju UUID broja u iTunes aplikacije.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{iTunesUUID}
+\caption{Dohvat UUIDa uređaja korištenjem iTunes aplikacije}
+\label{fig:iTunesUUID}
+\end{figure}
+
+Nakon dohvata UUIDa je isti potrebno kopirati u formu za registriranje testnog uređaja.
+
+Dodatno, prije isporuke aplikacije je potrebno kreirati certifikat za razvoj i certifikat za osobu koja obavlja isporuku. Svaki certifikat se sastoji od privatnog i javnog dijela. Javan dio je slobodno dijeliti te se uvijek može preuzeti s Apple Developer računa. S druge strane, tajni dio certifikata se mora održati strogo tajnim te instalirati samo na uređajima koji zahtijevaju navedeni certifikat. Proces kreiranja i održavanja certifikata je poprilično komplicirao proces razvoja i isporuke. Zbog navedenog je Apple ugradio podršku za automatsko upravljanje certifikatima. Ovim postupkom je gotovo u potpunosti eliminirana potreba ručnog kreiranja i održavanja certifikata. Za uključenje opcije je potrebno odabrati \verb|Automatically manage signing| opciju na željenom cilju projekta.
+
+Certifikate je moguće kreirati ručno korištenjem Apple Developer platforme. Proces je sličan registraciji testnog uređaja. Nakon prijave potrebno je odabrati opciju \verb|Certificates, Identifiers & Profiles -> Identifiers|. Kreiranje certifikata je dobro definirano te je potrebno samo slijediti uputstva.
+
+Instalaciju aplikacije na uređaj ostvarujem korištenjem Xcode aplikacije. Potrebno je odabrati željeni spojen uređaj i pokrenuti \verb|run| operaciju na željenoj shemi. Operacija izgrađuje i instalira aplikaciju na odabranom uređaju. Apple zbog sigurnosnih razloga drži tajnim proces isporuke aplikacije na uređaj zbog čega je navedeni proces moguće ostvariti samo korištenjem Xcode alata.
+
+Implementacija ad hoc i unutarnje isporuke je vrlo slična. Procesi se razlikuju u certifikatima koje koriste i u tome da ad hoc isporuka zahtijeva prethodnu registraciju testnog uređaja. Proces isporuke započinje arhiviranjem aplikacije. Arhiviranje aplikacije je moguće ostvariti korištenjem alata xcodebuild ili aplikacije Xcode. Kod arhiviranja pomoću alata xcodebuild je potrebno iskoristiti operaciju \verb|archive| te u odabranoj shemi specificirati željene opcije. S druge strane proces arhiviranja korištenjem alata Xcode je jednostavniji ali ga nije moguće automatizirati. Korištenjem aplikacije Xcode odabrati opciju \verb|Product -> Archive|. U novo otvorenom prozoru odabrati opciju \verb|Export...|. Slika \ref{fig:XcodeArchiveOptions} prikazuje moguće tipove isporuke koji odgovaraju ranije navedenim tipovima. Nakon odabira željene opcije slijediti upute alata.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{XcodeArchiveOptions}
+\caption{Opcije arhiviranja korištenjem Xcode aplikacije}
+\label{fig:XcodeArchiveOptions}
+\end{figure}
+
+Proces generira dvije datoteke. Arhivu aplikacije s \verb|.ipa| nastavkom i manifest aplikacije s \verb|.plist| nastavkom. Arhiva aplikacije se koristi za instalaciju aplikacije na mobilni uređaj, dok se manifest može koristiti za jednostavnije preuzimanje arhive. Unutar manifesta je moguće specificirati lokaciju arhive. Budući da je manifest vrlo mala xml datoteka, jednostavno ju je moguće podijeliti sa svim potrebnim osobama. Na temelju preuzetog manifesta sustav preuzima povezanu arhivu i instalira aplikaciju.
+
+Arhivu i manifest je moguće objaviti na nekoliko načina. Osnovan način je korištenjem vlastitog poslužitelja distribuirati potrebne datoteke. Najjednostavnije je napraviti jednostavnu HTML stranicu koja sadrži poveznicu na manifest. Manifest je moguće distribuirati i korištenjem drugih metoda dijeljena kao što su email ili Dropbox, ali je arhivu potrebno objaviti na poslužitelju.
+
+Sljedeći način objave koristi službeni Appleov alat \textit{Mobile Device Management, MDM}. Alat je namijenjen za jednostavnu isporuku i distribuciji aplikacija koje nisu namijenjene za javnu objavu. Po funkcionalnosti je vrlo sličan App Store platformi. MDM omogućava jednostavnu objavu aplikacije i novih verzija te omogućava automatsku izgradnju i osvježenje verzije aplikacije. Međutim, alat je vrlo skup te ga koriste gotovo isključivo velike kompanije.
+
+Danas je na tržištu dostupan veliki broj alata koji implementiraju funkcionalnosti slične MDMu za značajno manju cijenu. Najpopularniji od ovih alata je alat Crashlytics. Kompanija je osnovana 2011 godine s ciljem praćenja i dojave pogreška i rušenja mobilnih aplikacija. Kompaniju je 2013 godine kupio Twitter a početkom 2017 kupio Google. Danas alat uz praćenje pogrešaka olakšava distribuciju aplikacija i automatizaciju procesa.
+
+Isporuka aplikacija pomoću Crashlytics alata je vrlo jednostavna. Potrebno je samo registrirati aplikaciju i dodati arhivu. Svi korisnici kojima je aplikacija vidljiva ju mogu jednostavno preuzeti i instalirati na uređaj.
+
+Za objavu javnih aplikacija je isporuku potrebno obaviti korištenjem App Store platforme. Objava aplikacija na App Store platformu se obavlja korištenjem iTunes Connect alata. Za pristup alatu je potrebno posjedovati Apple Developer račun. Proces započinje arhiviranjem aplikacije i registracijom iste korištenjem iTunes Connect alata.
+
+Nakon prijave u \verb|https://itunesconnect.apple.com/| stranicu potrebno je odabrati opciju \verb|Apps|. Proces registracije aplikacije je poprilično jednostavno pratiti. Prvo je potrebno specificirati osnovne informacije o aplikaciji kao što su ime, opis i kategorija aplikacije. Nakon toga je potrebno dostaviti sve potrebne grafike koje uključuju nekoliko verzija ikone aplikacije koja je prikazana na početnom ekranu uređaja te slike potrebne za App Store platformu. Na kraju je potrebno dostaviti konačnu verziju aplikacije i time započeti proces provjere aplikacije. Ako proces završi uspješno aplikacija se izdaje na App Store platformu. U suprotnom je potrebno razriješiti razlog odbijanja aplikacije ponovno započeti proces provjere.
+
+
+
+\subsection{Potpisivanje koda} \label{header:PotpisivanjeKodaDodatak}
+
+Zbog navedenog je korisno automatizirati navedeni proces. Automatizacija se može implementirati na nekoliko načina. Trenutno najpopularnije rješenje je sve certifikate i profile držati u jednom tajnom repozitoriju\citep{codesigningguide}. Dodatno, preporučeno je koristiti samo jedan programerski \eng{developer} certifikat po timu. Umjesto kreiranja certifikata za svakog pojedinog člana tima, kreira se samo jedan certifikat kojeg svi članovi koriste za isporuku. Prije obavljanja isporuke potrebno je kreirati certifikat aplikacije te profile za sve potrebne tipove isporuke. Kreiranje certifikata i profile se obavlja korištenjem Apple Developer platforme. Nakon prijave je potrebno odabrati \verb|Certificates, Identifiers & Profiles| opciju odakle je moguće kreirati sve potrebne artefakte.
+
+Nakon kreiranja certifikata i profila je potrebno iste zajedno s tajnim ključevima certifikata dodati u privatni repozitorij i dati prava pristupa članovima tima. Sve podatke je preporučeno enkriptirati.
+
+Umjesto ručnog kreiranja i održavanja certifikata i profila je moguće koristiti fastlane dodatak \verb|match|\citep{fastlane:match}. Alat samostalno kreira, dohvaća i priprema certifikate i profile čime značajno olakšava proces potpisivanja koda.
+
+Inicijalizacija match dodatka se obavlja naredbom \verb|fastlane match init|. Potrebno je unijeti URL repozitorija te autorizirati pristup. URL repozitoriji se zajedno s ostalim parametrima sprema u \verb|Matchfile| datoteku.
+
+Preporučeno je za autentifikaciju repozitorija koristiti SSH protokol. Za automatsko korištenje SSH ključa je isti potrebno dodati alatu \verb|ssh-agent| te podesiti SSH protokol. Za dodavanje ključa ssh agentu pokrenuti naredbu u nastavku.
+
+\begin{verbatim}
+chmod 600 ~/.ssh/{imekljuca}.pub (1)
+
+ssh-add -K ~/.ssh/{imekljuca} (2)
+\end{verbatim}
+
+Naredba pod (1) ograničava pristup ključu na samo njegovog vlasnika. Navedeno je potrebno radi sigurnosti ključa. Naredba pod (2) dodaje ključ ssh agentu.
+
+Dodatno, potrebno je konfigurirati SSH protokol da koristi željeni ključ. Kreirati novu datoteku \verb|.ssh/config| sa sadržajem:
+
+\begin{verbatim}
+Host *
+UseKeychain yes
+AddKeysToAgent yes
+IdentityFile ~/.ssh/id_rsa{imekljuca}
+\end{verbatim}
+
+Nakon inicijalizacije dodatka je sve potrebne certifikate i profile moguće dohvatiti automatski. Dovoljno je pozvati match dodatak i specificirati tip isporuke koji se koristi. Opcije su \verb|development|, \verb|adhoc|, \verb|enterprise| i \verb|appstore| od kojih svaka odgovara pojedinom tipu isporuke. Naredba u nastavku dohvaća certifikate i profil za ad hoc isporuku.
+
+\begin{verbatim}
+match(type: 'adhoc')
+\end{verbatim}
+
+
+\subsection{Automatizacija isporuke}
+
+Za automatizaciju isporuke koristim alat Fastlane. Fastlane implementira veliki broj funkcionalnosti potrebnih u procesu isporuke i time značajno olakšava automatizaciju procesa.
+
+
 \section{Kontinuirana isporuka}
+
 
 
 
@@ -1086,48 +1246,13 @@ else
 fi
 \end{verbatim}
 
-
-
-\section{Isporuka} \label{header:ImplementacijaIsporuke}
-
-Kao što je navedeno u odlomku \ref{header:RucnaIsporuka}, isporuka programske potpore za iOS operacijske sustave dolazi u četiri tipa: direktna isporuka, \textit{ad hoc} isporuka , unutarnja isporuka i isporuka korištenjem App Store platforme. U nastavku je prikazana ručna implementacija svakog tipa.
-
-Direktna isporuka aplikaciju instalira na mobilni uređaj koji je direktno povezan s računalom koje obavlja isporuku. Uređaj je prije isporuke potrebno registrirati kao testni uređaj na Apple developer računu. Za pristup Apple Developer računu se je potrebno u isti prijaviti na \verb|https://developer.apple.com/| stranici. Nakon prijave odabrati opciju \verb|Certificates, Identifiers & Profiles|. U lijevom bočnom izborniku odabrati opciju \verb|Devices| te u gornjem desnom kutu klikom na \textit{plus} ikonu pokrenuti proces registriranja novog testnog uređaja. Za registraciju je potrebno dohvatiti UUID uređaja. UUID se može dohvatiti korištenjem iTunes aplikacije dostupne na macOS operacijskom sustavu. Potrebno je povezati mobilni uređaj s računalom korištenjem USB kabla. U iTunes aplikaciji odabrati povezani mobilni uređaj te kopirati UUID uređaja. Slika \ref{fig:iTunesUUID} prikazuje lokaciju UUID broja u iTunes aplikacije.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{iTunesUUID}
-\caption{Dohvat UUIDa uređaja korištenjem iTunes aplikacije}
-\label{fig:iTunesUUID}
-\end{figure}
-
-Nakon dohvata UUIDa je isti potrebno kopirati u formu za registriranje testnog uređaja.
-
-Dodatno, prije isporuke aplikacije je potrebno kreirati certifikat za razvoj i certifikat za osobu koja obavlja isporuku. Svaki certifikat se sastoji od privatnog i javnog dijela. Javan dio je slobodno dijeliti te se uvijek može preuzeti s Apple Developer računa. S druge strane, tajni dio certifikata se mora održati strogo tajnim te instalirati samo na uređajima koji zahtijevaju navedeni certifikat. Proces kreiranja i održavanja certifikata je poprilično komplicirao proces razvoja i isporuke. Zbog navedenog je Apple ugradio podršku za automatsko upravljanje certifikatima. Ovim postupkom je gotovo u potpunosti eliminirana potreba ručnog kreiranja i održavanja certifikata. Za uključenje opcije je potrebno odabrati \verb|Automatically manage signing| opciju na željenom cilju projekta.
-
-Certifikate je moguće kreirati ručno korištenjem Apple Developer platforme. Proces je sličan registraciji testnog uređaja. Nakon prijave potrebno je odabrati opciju \verb|Certificates, Identifiers & Profiles -> Identifiers|. Kreiranje certifikata je dobro definirano te je potrebno samo slijediti uputstva.
-
-Instalaciju aplikacije na uređaj ostvarujem korištenjem Xcode alata. Potrebno je odabrati željeni spojen uređaj i pokrenuti \verb|run| operaciju na željenoj shemi. Operacija izgrađuje i instalira aplikaciju na odabranom uređaju. Apple zbog sigurnosnih razloga drži tajnim proces isporuke aplikacije na uređaj zbog čega je navedeni proces moguće ostvariti samo korištenjem Xcode alata.
-
-Implementacija ad hoc i unutarnje isporuke je vrlo slična. Procesi se razlikuju u certifikatima koje koriste i u tome da ad hoc isporuka zahtijeva prethodnu registraciju testnog uređaja. Proces isporuke započinje arhiviranjem aplikacije. Arhiviranje aplikacije je moguće ostvariti korištenjem alata xcodebuild uz specificiranje \verb|archive| operacije i željene sheme. Navedena operacija prvo izgrađuje projekt uz korištenje opcija optimizacije. Primjer naredbe je prikazan u nastavku.
+\subsection{Isporuka}
 
 \begin{verbatim}
 xcodebuild -scheme {imesheme} archive
 \end{verbatim}
 
 Naredba je interaktivna te od korisnika zahtijeva unos nekoliko parametara. Dovoljno je slijediti upute naredbe. Naredba generira dvije datoteke. Arhivu aplikacije s \verb|.ipa| nastavkom i manifest aplikacije s \verb|.plist| nastavkom. Arhiva aplikacije se koristi za instalaciju aplikacije na mobilni uređaj, dok se manifest može koristiti za jednostavnije preuzimanje arhive. Unutar manifesta je moguće specificirati lokaciju arhive. Budući da je manifest vrlo mala xml datoteka, jednostavno ju je moguće podijeliti sa svim potrebnim osobama. Na temelju preuzetog manifesta sustav preuzima povezanu arhivu i instalira aplikaciju.
-
-Arhivu i manifest je moguće objaviti na nekoliko načina. Osnovan način je korištenjem vlastitog poslužitelja distribuirati potrebne datoteke. Najjednostavnije je napraviti jednostavnu HTML stranicu koja sadrži poveznicu na manifest. Manifest je moguće distribuirati i korištenjem drugih metoda dijeljena kao što su email ili Dropbox, ali je arhivu potrebno objaviti na poslužitelju.
-
-Sljedeći način objave koristi službeni Appleov alat \textit{Mobile Device Management, MDM}. Alat je namijenjen za jednostavnu isporuku i distribuciji aplikacija koje nisu namijenjene za javnu objavu. Po funkcionalnosti je vrlo sličan App Store platformi. MDM omogućava jednostavnu objavu aplikacije i novih verzija te omogućava automatsku izgradnju i osvježenje verzije aplikacije. Međutim, alat je vrlo skup te ga koriste gotovo isključivo velike kompanije.
-
-Danas je na tržištu dostupan veliki broj alata koji implementiraju funkcionalnosti slične MDMu za značajno manju cijenu. Najpopularniji od ovih alata je alat Crashlytics. Kompanija je osnovana 2011 godine s ciljem praćenja i dojave pogreška i rušenja mobilnih aplikacija. Kompaniju je 2013 godine kupio Twitter a početkom 2017 kupio Google. Danas alat uz praćenje pogrešaka olakšava distribuciju aplikacija i automatizaciju procesa.
-
-Isporuka aplikacija pomoću Crashlytics alata je vrlo jednostavna. Potrebno je samo registrirati aplikaciju i dodati arhivu. Svi korisnici kojima je aplikacija vidljiva ju mogu jednostavno preuzeti i instalirati na uređaj. Alat je detaljnije obrađen u poglavlju \ref{header:KontinuiranaDostavaAutomatizacija} gdje ga koristim za automatizaciju procesa isporuke.
-
-Za objavu javnih aplikacija je isporuku potrebno obaviti korištenjem App Store platforme. Objava aplikacija na App Store platformu se obavlja korištenjem iTunes Connect alata. Za pristup alatu je potrebno posjedovati Apple Developer račun. Proces započinje arhiviranjem aplikacije i registracijom iste korištenjem iTunes Connect alata.
-
-Nakon prijave u \verb|https://itunesconnect.apple.com/| stranicu potrebno je odabrati opciju \verb|Apps|. Proces registracije aplikacije je poprilično jednostavno pratiti. Prvo je potrebno specificirati osnovne informacije o aplikaciji kao što su ime, opis i kategorija aplikacije. Nakon toga je potrebno dostaviti sve potrebne grafike koje uključuju nekoliko verzija ikone aplikacije koja je prikazana na početnom ekranu uređaja te slike potrebne za App Store platformu. Na kraju je potrebno dostaviti konačnu verziju aplikacije i time započeti proces provjere aplikacije. Ako proces završi uspješno aplikacija se izdaje na App Store platformu. U suprotnom je potrebno razriješiti razlog odbijanja aplikacije ponovno započeti proces provjere.
 
 
 
@@ -1211,45 +1336,6 @@ Kao što je navedeno u poglavlju, direktnu isporuku trenutno nije moguće automa
 Fastlane također omogućava automatizaciju isporuke programske potpore za javnost korištenjem App Store platforme.
 
 Prije implementacije isporuke programske potpore je potrebno riješiti pitanje potpisivanja koda.
-
-\subsection{Potpisivanje koda} \label{header:PotpisivanjeKodaDodatak}
-
-Postupak potpisivanja koda se sastoji od dva tipa artefakta: certifikata i profila. Oba artefakta se kreiraju korištenjem Apple Developer platforme. Nakon prijave na \verb|https://developer.apple.com| stranici odabrati opciju \verb|Certificates, Identifiers & Profiles|. Navedena stranica omogućava kreiranje certifikata i profila. Potrebno je odabrati željen artefakt te slijediti upute za kreiranje.
-
-Novo kreirana artefakte je potrebno preuzeti i pripremiti za korištenje. Profile je potrebno spremiti na računalu koje obavlja isporuku u direktoriju \verb|~/Library/MobileDevice/Provisioning Profiles/| a certifikate je potrebno pripremiti korištenjem \verb|keychain| aplikacije. Certifikate i profile je moguće ručno kreirati i održavati, međutim, u velikom timu se proces može vrlo brzo zakomplicirati.
-
-Zbog navedenog je korisno automatizirati navedeni proces. Automatizacija se može implementirati na nekoliko načina. Trenutno najpopularnije rješenje je sve certifikate i profile držati u jednom tajnom repozitoriju\citep{codesigningguide}. Dodatno, preporučeno je koristiti samo jedan programerski \eng{developer} certifikat po timu. Umjesto kreiranja certifikata za svakog pojedinog člana tima, kreira se samo jedan certifikat kojeg svi članovi koriste za isporuku. Prije obavljanja isporuke potrebno je kreirati certifikat aplikacije te profile za sve potrebne tipove isporuke. Kreiranje certifikata i profile se obavlja korištenjem Apple Developer platforme. Nakon prijave je potrebno odabrati \verb|Certificates, Identifiers & Profiles| opciju odakle je moguće kreirati sve potrebne artefakte.
-
-Nakon kreiranja certifikata i profila je potrebno iste zajedno s tajnim ključevima certifikata dodati u privatni repozitorij i dati prava pristupa članovima tima. Sve podatke je preporučeno enkriptirati.
-
-Umjesto ručnog kreiranja i održavanja certifikata i profila je moguće koristiti fastlane dodatak \verb|match|\citep{fastlane:match}. Alat samostalno kreira, dohvaća i priprema certifikate i profile čime značajno olakšava proces potpisivanja koda.
-
-Inicijalizacija match dodatka se obavlja naredbom \verb|fastlane match init|. Potrebno je unijeti URL repozitorija te autorizirati pristup. URL repozitoriji se zajedno s ostalim parametrima sprema u \verb|Matchfile| datoteku.
-
-Preporučeno je za autentifikaciju repozitorija koristiti SSH protokol. Za automatsko korištenje SSH ključa je isti potrebno dodati alatu \verb|ssh-agent| te podesiti SSH protokol. Za dodavanje ključa ssh agentu pokrenuti naredbu u nastavku.
-
-\begin{verbatim}
-chmod 600 ~/.ssh/{imekljuca}.pub (1)
-
-ssh-add -K ~/.ssh/{imekljuca} (2)
-\end{verbatim}
-
-Naredba pod (1) ograničava pristup ključu na samo njegovog vlasnika. Navedeno je potrebno radi sigurnosti ključa. Naredba pod (2) dodaje ključ ssh agentu.
-
-Dodatno, potrebno je konfigurirati SSH protokol da koristi željeni ključ. Kreirati novu datoteku \verb|.ssh/config| sa sadržajem:
-
-\begin{verbatim}
-Host *
-    UseKeychain yes
-    AddKeysToAgent yes
-    IdentityFile ~/.ssh/id_rsa{imekljuca}
-\end{verbatim}
-
-Nakon inicijalizacije dodatka je sve potrebne certifikate i profile moguće dohvatiti automatski. Dovoljno je pozvati match dodatak i specificirati tip isporuke koji se koristi. Opcije su \verb|development|, \verb|adhoc|, \verb|enterprise| i \verb|appstore| od kojih svaka odgovara pojedinom tipu isporuke. Naredba u nastavku dohvaća certifikate i profil za ad hoc isporuku.
-
-\begin{verbatim}
-match(type: 'adhoc')
-\end{verbatim}
 
 \subsection{Crashlytics platforma} \label{header:CrashlyticsImplementacija}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  11 JUN 2017 20:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  12 JUN 2017 12:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1225,65 +1225,114 @@ Package pdftex.def Info: images/PreIntegrationScript.png used on input line 919
 .
 (pdftex.def)             Requested size: 370.88472pt x 222.33008pt.
  [54 <./images/PreIntegrationScript.png>]
-<images/XcodeServerResult.png, id=271, 1002.74625pt x 682.55pt>
-File: images/XcodeServerResult.png Graphic file (type png)
+<images/XcodeServerBuildResult.png, id=271, 1187.43625pt x 422.57875pt>
+File: images/XcodeServerBuildResult.png Graphic file (type png)
 
-<use images/XcodeServerResult.png>
-Package pdftex.def Info: images/XcodeServerResult.png used on input line 967.
-(pdftex.def)             Requested size: 401.0914pt x 273.01517pt.
- [55] [56 <./images/XcodeServerResult.png>]
+<use images/XcodeServerBuildResult.png>
+Package pdftex.def Info: images/XcodeServerBuildResult.png used on input line 9
+58.
+(pdftex.def)             Requested size: 356.23363pt x 126.7746pt.
+
+<images/AddingTests.png, id=272, 902.37125pt x 507.8975pt>
+File: images/AddingTests.png Graphic file (type png)
+
+<use images/AddingTests.png>
+Package pdftex.def Info: images/AddingTests.png used on input line 971.
+(pdftex.def)             Requested size: 360.94211pt x 203.1554pt.
+ [55 <./images/XcodeServerBuildResult.png>]
+<images/XcodeServerTestResult.png, id=277, 956.57375pt x 436.63126pt>
+File: images/XcodeServerTestResult.png Graphic file (type png)
+
+<use images/XcodeServerTestResult.png>
+Package pdftex.def Info: images/XcodeServerTestResult.png used on input line 98
+0.
+(pdftex.def)             Requested size: 382.62271pt x 174.6494pt.
+ [56 <./images/AddingTests.png> <./images/XcodeServerTestResult.png>] [57]
+<images/AppleDeveloperCertificateCreation.png, id=287, 689.57625pt x 361.35pt>
+File: images/AppleDeveloperCertificateCreation.png Graphic file (type png)
+
+<use images/AppleDeveloperCertificateCreation.png>
+Package pdftex.def Info: images/AppleDeveloperCertificateCreation.png used on i
+nput line 1021.
+(pdftex.def)             Requested size: 275.8256pt x 144.53743pt.
+
+<images/KeychainAccessRequest.png, id=288, 872.25874pt x 285.065pt>
+File: images/KeychainAccessRequest.png Graphic file (type png)
+
+<use images/KeychainAccessRequest.png>
+Package pdftex.def Info: images/KeychainAccessRequest.png used on input line 10
+34.
+(pdftex.def)             Requested size: 348.89731pt x 114.02397pt.
+ [58 <./images/AppleDeveloperCertificateCreation.png>] <images/PrivateKeyExport
+.png, id=293, 884.30376pt x 204.765pt>
+File: images/PrivateKeyExport.png Graphic file (type png)
+
+<use images/PrivateKeyExport.png>
+Package pdftex.def Info: images/PrivateKeyExport.png used on input line 1047.
+(pdftex.def)             Requested size: 353.71524pt x 81.90454pt.
+
+<images/AppIdentifierCreation.png, id=294, 979.66pt x 612.2875pt>
+File: images/AppIdentifierCreation.png Graphic file (type png)
+
+<use images/AppIdentifierCreation.png>
+Package pdftex.def Info: images/AppIdentifierCreation.png used on input line 10
+58.
+(pdftex.def)             Requested size: 391.85706pt x 244.91066pt.
+ [59 <./images/KeychainAccessRequest.png> <./images/PrivateKeyExport.png>]
+<images/SigningArtefactsSetup.png, id=300, 490.83376pt x 247.92625pt>
+File: images/SigningArtefactsSetup.png Graphic file (type png)
+
+<use images/SigningArtefactsSetup.png>
+Package pdftex.def Info: images/SigningArtefactsSetup.png used on input line 10
+67.
+(pdftex.def)             Requested size: 269.9594pt x 136.35985pt.
+ [60 <./images/AppIdentifierCreation.png> <./images/SigningArtefactsSetup.png>]
+
+<images/iTunesUUID.png, id=306, 662.475pt x 215.80624pt>
+File: images/iTunesUUID.png Graphic file (type png)
+
+<use images/iTunesUUID.png>
+Package pdftex.def Info: images/iTunesUUID.png used on input line 1083.
+(pdftex.def)             Requested size: 331.2367pt x 107.90285pt.
+ [61 <./images/iTunesUUID.png>]
+<images/XcodeArchiveOptions.png, id=311, 589.20125pt x 358.33875pt>
+File: images/XcodeArchiveOptions.png Graphic file (type png)
+
+<use images/XcodeArchiveOptions.png>
+Package pdftex.def Info: images/XcodeArchiveOptions.png used on input line 1100
+.
+(pdftex.def)             Requested size: 294.5999pt x 179.16893pt.
+ [62 <./images/XcodeArchiveOptions.png>]
+[63] [64] [65]
 Dodatak B.
-[57
+[66
 
 ]
-Overfull \hbox (8.79755pt too wide) in paragraph at lines 1043--1044
+Overfull \hbox (8.79755pt too wide) in paragraph at lines 1227--1228
 []\T1/ptm/m/n/12 Provjeru po-kri-ve-nosti koda do-bi-vamo ko-ris-te¢i pa-ra-me-
 tar [][]\T1/pcr/m/n/12 -showBuildSettings
  []
 
-[58] <images/iTunesUUID.png, id=286, 675.52374pt x 265.99374pt>
-File: images/iTunesUUID.png Graphic file (type png)
-
-<use images/iTunesUUID.png>
-Package pdftex.def Info: images/iTunesUUID.png used on input line 1074.
-(pdftex.def)             Requested size: 337.76105pt x 132.99654pt.
- [59] [60 <./images/iTunesUUID.png>]
-
-LaTeX Warning: Reference `header:KontinuiranaDostavaAutomatizacija' on page 61 
-undefined on input line 1101.
-
-[61] [62]
+[67] [68]
 Dodatak C.
-[63
+[69
 
-] [64] [65]
-Overfull \hbox (146.81163pt too wide) in paragraph at lines 1192--1193
-\T1/ptm/m/n/12 te-fakta se kre-iraju ko-ri-²te-njem Ap-ple De-ve-lo-per plat-fo
-rme. Na-kon pri-jave na [][]\T1/pcr/m/n/12 https://developer.apple.com
- []
-
-
-Overfull \hbox (208.88826pt too wide) in paragraph at lines 1194--1195
-\T1/ptm/m/n/12 trebno spre-miti na ra-£u-nalu koje obav-lja is-po-ruku u di-rek
--to-riju [][]\T1/pcr/m/n/12 ~/Library/MobileDevice/Provisioning Profiles/
- []
-
-[66] [67] [68]
-Overfull \hbox (3.51799pt too wide) in paragraph at lines 1279--1280
+] [70] [71] [72]
+Overfull \hbox (3.51799pt too wide) in paragraph at lines 1389--1390
 []\T1/ptm/m/n/12 Kreiranje pro-fila se obav-lja na [][]\T1/pcr/m/n/12 https://i
 tunesconnect.apple.com/ []\T1/ptm/m/n/12 stra-
  []
 
-<images/iTunesConnectAppCreation.png, id=320, 470.75874pt x 541.02126pt>
+<images/iTunesConnectAppCreation.png, id=348, 470.75874pt x 541.02126pt>
 File: images/iTunesConnectAppCreation.png Graphic file (type png)
 
 <use images/iTunesConnectAppCreation.png>
 Package pdftex.def Info: images/iTunesConnectAppCreation.png used on input line
- 1283.
+ 1393.
 (pdftex.def)             Requested size: 188.30016pt x 216.40466pt.
- [69 <./images/iTunesConnectAppCreation.png>] [70]
+ [73] [74 <./images/iTunesConnectAppCreation.png>] [75]
 Dodatak D.
-[71
+[76
 
 ] (./diplomski.aux)
 
@@ -1291,10 +1340,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 9320 strings out of 492995
- 132962 string characters out of 6132704
- 248437 words of memory out of 5000000
- 12639 multiletter control sequences out of 15000+600000
+ 9368 strings out of 492995
+ 134536 string characters out of 6132704
+ 248547 words of memory out of 5000000
+ 12679 multiletter control sequences out of 15000+600000
  62260 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,9n,42p,1274b,1644s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1306,10 +1355,10 @@ mf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2017/texmf-dist
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on diplomski.pdf (76 pages, 1864669 bytes).
+Output written on diplomski.pdf (81 pages, 2112288 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 196 compressed objects within 2 object streams
+ 395 PDF objects out of 1000 (max. 8388607)
+ 207 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 236 words of extra memory for PDF output out of 10000 (max. 10000000)
 
