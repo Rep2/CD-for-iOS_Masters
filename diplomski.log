@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  12 JUN 2017 12:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  13 JUN 2017 01:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1008,7 +1008,20 @@ Overfull \hbox (0.155pt too wide) in paragraph at lines 474--475
 -riti de-fi-ni-ra-njem sheme ime-
  []
 
-[26] [27] [28] [29] [30] [31]
+
+LaTeX Warning: Reference `header:header:dodatak:AutomatizacijaPotpisivanjaKoda'
+ on page 26 undefined on input line 476.
+
+[26] [27] [28] [29] [30]
+
+LaTeX Warning: Reference `header:CrashlyticsImplementacija' on page 31 undefine
+d on input line 543.
+
+
+LaTeX Warning: Reference `header:AppStoreObjava' on page 31 undefined on input 
+line 547.
+
+[31]
 Poglavlje 4.
 <images/CDDifferences.png, id=165, 722.7pt x 286.06876pt>
 File: images/CDDifferences.png Graphic file (type png)
@@ -1285,54 +1298,78 @@ File: images/SigningArtefactsSetup.png Graphic file (type png)
 <use images/SigningArtefactsSetup.png>
 Package pdftex.def Info: images/SigningArtefactsSetup.png used on input line 10
 67.
-(pdftex.def)             Requested size: 269.9594pt x 136.35985pt.
+(pdftex.def)             Requested size: 294.50252pt x 148.7569pt.
  [60 <./images/AppIdentifierCreation.png> <./images/SigningArtefactsSetup.png>]
 
 <images/iTunesUUID.png, id=306, 662.475pt x 215.80624pt>
 File: images/iTunesUUID.png Graphic file (type png)
 
 <use images/iTunesUUID.png>
-Package pdftex.def Info: images/iTunesUUID.png used on input line 1083.
+Package pdftex.def Info: images/iTunesUUID.png used on input line 1080.
 (pdftex.def)             Requested size: 331.2367pt x 107.90285pt.
- [61 <./images/iTunesUUID.png>]
-<images/XcodeArchiveOptions.png, id=311, 589.20125pt x 358.33875pt>
+
+<images/XcodeArchiveOptions.png, id=307, 589.20125pt x 358.33875pt>
 File: images/XcodeArchiveOptions.png Graphic file (type png)
 
 <use images/XcodeArchiveOptions.png>
-Package pdftex.def Info: images/XcodeArchiveOptions.png used on input line 1100
+Package pdftex.def Info: images/XcodeArchiveOptions.png used on input line 1097
 .
 (pdftex.def)             Requested size: 294.5999pt x 179.16893pt.
- [62 <./images/XcodeArchiveOptions.png>]
-[63] [64] [65]
-Dodatak B.
-[66
-
-]
-Overfull \hbox (8.79755pt too wide) in paragraph at lines 1227--1228
-[]\T1/ptm/m/n/12 Provjeru po-kri-ve-nosti koda do-bi-vamo ko-ris-te¢i pa-ra-me-
-tar [][]\T1/pcr/m/n/12 -showBuildSettings
+ [61 <./images/iTunesUUID.png>] [62 <./images/XcodeArchiveOptions.png>]
+Overfull \hbox (3.51799pt too wide) in paragraph at lines 1139--1140
+[]\T1/ptm/m/n/12 Kreiranje pro-fila se obav-lja na $\T1/pcr/m/n/12 https : / / 
+itunesconnect . apple . com/$ \T1/ptm/m/n/12 stra-
  []
 
-[67] [68]
-Dodatak C.
-[69
-
-] [70] [71] [72]
-Overfull \hbox (3.51799pt too wide) in paragraph at lines 1389--1390
-[]\T1/ptm/m/n/12 Kreiranje pro-fila se obav-lja na [][]\T1/pcr/m/n/12 https://i
-tunesconnect.apple.com/ []\T1/ptm/m/n/12 stra-
- []
-
-<images/iTunesConnectAppCreation.png, id=348, 470.75874pt x 541.02126pt>
+<images/iTunesConnectAppCreation.png, id=317, 470.75874pt x 541.02126pt>
 File: images/iTunesConnectAppCreation.png Graphic file (type png)
 
 <use images/iTunesConnectAppCreation.png>
 Package pdftex.def Info: images/iTunesConnectAppCreation.png used on input line
- 1393.
+ 1143.
 (pdftex.def)             Requested size: 188.30016pt x 216.40466pt.
- [73] [74 <./images/iTunesConnectAppCreation.png>] [75]
+ [63] [64 <./images/iTunesConnectAppCreation.png>] [65] [66]
+Overfull \hbox (0.71437pt too wide) in paragraph at lines 1216--1217
+\T1/ptm/m/n/12 nicu $\T1/pcr/m/n/12 https : / / www . fabric . io / settings / 
+organizations$\T1/ptm/m/n/12 . Na-kon pri-jave
+ []
+
+<images/FabricKeys.png, id=331, 674.52pt x 347.2975pt>
+File: images/FabricKeys.png Graphic file (type png)
+
+<use images/FabricKeys.png>
+Package pdftex.def Info: images/FabricKeys.png used on input line 1220.
+(pdftex.def)             Requested size: 337.25917pt x 173.64832pt.
+ [67 <./images/FabricKeys.png>] [68]
+<images/ModificiraniGitflowTokRaka.png, id=340, 975.645pt x 643.40375pt>
+File: images/ModificiraniGitflowTokRaka.png Graphic file (type png)
+
+<use images/ModificiraniGitflowTokRaka.png>
+Package pdftex.def Info: images/ModificiraniGitflowTokRaka.png used on input li
+ne 1265.
+(pdftex.def)             Requested size: 487.8213pt x 321.70108pt.
+
+Overfull \hbox (75.25633pt too wide) in paragraph at lines 1265--1266
+ [][] 
+ []
+
+[69] [70 <./images/ModificiraniGitflowTokRaka.png>]
+Dodatak B.
+[71
+
+]
+Overfull \hbox (8.79755pt too wide) in paragraph at lines 1330--1331
+[]\T1/ptm/m/n/12 Provjeru po-kri-ve-nosti koda do-bi-vamo ko-ris-te¢i pa-ra-me-
+tar [][]\T1/pcr/m/n/12 -showBuildSettings
+ []
+
+[72] [73]
+Dodatak C.
+[74
+
+] [75] [76]
 Dodatak D.
-[76
+[77
 
 ] (./diplomski.aux)
 
@@ -1340,10 +1377,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 9368 strings out of 492995
- 134536 string characters out of 6132704
- 248547 words of memory out of 5000000
- 12679 multiletter control sequences out of 15000+600000
+ 9389 strings out of 492995
+ 135161 string characters out of 6132704
+ 248642 words of memory out of 5000000
+ 12698 multiletter control sequences out of 15000+600000
  62260 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,9n,42p,1274b,1644s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1355,10 +1392,10 @@ mf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2017/texmf-dist
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on diplomski.pdf (81 pages, 2112288 bytes).
+Output written on diplomski.pdf (82 pages, 2176020 bytes).
 PDF statistics:
- 395 PDF objects out of 1000 (max. 8388607)
- 207 compressed objects within 3 object streams
+ 402 PDF objects out of 1000 (max. 8388607)
+ 209 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 236 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 246 words of extra memory for PDF output out of 10000 (max. 10000000)
 

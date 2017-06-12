@@ -444,7 +444,7 @@ Kako bi osigurao autentičnost i ne izmijenjenost objavljene programske potpore,
 
 Za kreiranje arhive, a samim time i isporuku programske potpore, je potrebno posjedovati odgovarajuće certifikate i profile. U sklopu isporuke se koriste dva certifikata i jedan profil: certifikat programera koji obavlja isporuku, certifikat aplikacije koja se isporučuju te profil za aplikaciju koji odgovara tipu isporuke koji se obavlja\citep{codesigning}. Postoje četiri tipa profila od kojih svaki odgovara svom tipu isporuke: razvojni, ad hoc, unutarnji i App Store profil. Za kreiranje razvojnog, ad hoc i App Store profila je potrebno posjedovati Apple Developer račun dok je za unutarnji profil, pa samim time i unutarnju isporuku, potrebno posjedovati Apple Enterprise račun.
 
-Certifikati i profili se kreiraju korištenjem Apple Developer platforme. Proces kreiranja i pripreme artefakta je prikazan u dodatku \ref{header:PotpisivanjeKodaDodatak}.
+Certifikati i profili se kreiraju korištenjem Apple Developer platforme. Proces kreiranja i pripreme artefakta je prikazan u dodatku \ref{header:dodatak:RucnoPotpisivanjaKoda}.
 
 Ručno kreiranje i održavanje certifikati i profila se može vrlo lako zakomplicirati. Certifikati se sastoje od dva dijela, javnog i privatnog ključa. Javni ključ je moguće slobodno distribuirati. Međutim, tajni ključ je nužno održati tajnim. Drugim riječima, pristup tajnom ključu moraju imati samo osobe zadužene za njegovo korištenje. Profili su također potpisani certifikatom. Profili za razvoj su potpisani generalnim certifikatom za razvoj, dok su certifikati za isporuku potpisani certifikatima aplikacije. Zbog navedenog je uz profile potrebno distribuirati i pripadajuće privatne ključeve.
 
@@ -473,7 +473,7 @@ Konfiguriranje projekta je potrebno obaviti samo nakon kreiranja novog artefakta
 
 Automatizaciju konfiguracije projekta je najlakše ostvariti definiranjem sheme imenovanja artefakta koji se koriste u pojedinom tipu isporuke. Definiranjem sheme nazivanja i njenom primjenom proces unaprijed zna nazive potrebnih artefakta pomoću čega može konfigurirati projekt.
 
-Automatizaciju potpisivanja koda je moguće implementirati ručno ili korištenjem nekog od postojećih alata. U sklopu ovog rada koristim alata \verb|match| koji je dio \verb|fastlane| familije. Alat implementira sve potrebne funkcionalnosti te pruža veliki broj opcija konfiguracije. Implementacija automatizacije potpisivanja koda korištenjem \verb|match| alata je prikazana u dodatku \ref{header:PotpisivanjeKodaDodatak}.
+Automatizaciju potpisivanja koda je moguće implementirati ručno ili korištenjem nekog od postojećih alata. U sklopu ovog rada koristim alata \verb|match| koji je dio \verb|fastlane| familije. Alat implementira sve potrebne funkcionalnosti te pruža veliki broj opcija konfiguracije. Implementacija automatizacije potpisivanja koda korištenjem \verb|match| alata je prikazana u dodatku \ref{header:header:dodatak:AutomatizacijaPotpisivanjaKoda}.
 
 \section{Isporuka programske potpore} \label{header:RucnaIsporuka}
 
@@ -1014,7 +1014,7 @@ Prvi dio poglavlja prikazuje ručnu implementaciju isporuke. Cilj navedenog dije
 
 Za ručnu implementaciju isporuke koristim Xcode aplikaciju. Xcode pruža intuitivno i jednostavno vizualno sučelje za ostvarenje isporuke, međutim navedeni proces nije moguće automatizirati. Dodatno, Xcode ne implementira proces objave koje je potrebno odraditi odvojeno.
 
-\paragraph{Potpisivanje koda}
+\paragraph{Potpisivanje koda} \label{header:dodatak:RucnoPotpisivanjaKoda}
 
 \begin{figure}[b!]
 \centering
@@ -1064,7 +1064,7 @@ Na kraju, pripremni profil povezuje identifikator aplikacije i certifikat. Svaki
 
 \begin{figure}[b!]
 \centering
-\includegraphics[scale=0.55]{SigningArtefactsSetup}
+\includegraphics[scale=0.6]{SigningArtefactsSetup}
 \caption{Postavljanje artefakta za potpisivanje koda}
 \label{fig:SigningArtefactsSetup}
 \end{figure}
@@ -1073,11 +1073,7 @@ Novo kreirana artefakte je potrebno preuzeti i pripremiti za korištenje. Profil
 
 Prije pokretanja arhiviranja je potrebno konfigurirati projekt kako bi se u sklopu arhiviranja koristili ispravni artefakti. Otvoriti Xcode projekt, odabrati željen cilj u sekciji \textit{General} podstaviti \textit{Debug} i \textit{Release} certifikate za potpisivanje koda.
 
-
-\paragraph{Arhiviranje}
-
-
-Direktna isporuka aplikaciju instalira na mobilni uređaj koji je direktno povezan s računalom koje obavlja isporuku. Uređaj je prije isporuke potrebno registrirati kao testni uređaj na Apple developer računu. Za pristup Apple Developer računu se je potrebno u isti prijaviti na \path{https://developer.apple.com} stranici. Nakon prijave odabrati opciju \verb|Certificates, Identifiers & Profiles|. U lijevom bočnom izborniku odabrati opciju \verb|Devices| te u gornjem desnom kutu klikom na \textit{plus} ikonu pokrenuti proces registriranja novog testnog uređaja. Za registraciju je potrebno dohvatiti UUID uređaja. UUID se može dohvatiti korištenjem iTunes aplikacije dostupne u sklopu instalacije macOS operacijskom sustavu. Potrebno je povezati mobilni uređaj s računalom korištenjem USB kabela. U iTunes aplikaciji odabrati povezani mobilni uređaj te kopirati UUID uređaja. Slika \ref{fig:iTunesUUID} prikazuje lokaciju UUID broja u iTunes aplikacije.
+Uređaj se registrira pomoću UUID identifikatora. UUID se može dohvatiti korištenjem iTunes aplikacije dostupne u sklopu instalacije macOS operacijskom sustavu. Potrebno je povezati mobilni uređaj s računalom korištenjem USB kabela. U iTunes aplikaciji odabrati povezani mobilni uređaj te kopirati UUID uređaja. Slika \ref{fig:iTunesUUID} prikazuje lokaciju UUID broja u iTunes aplikacije.
 
 \begin{figure}[h!]
 \centering
@@ -1086,15 +1082,15 @@ Direktna isporuka aplikaciju instalira na mobilni uređaj koji je direktno povez
 \label{fig:iTunesUUID}
 \end{figure}
 
-Nakon dohvata UUIDa je isti potrebno kopirati u formu za registriranje testnog uređaja.
+\paragraph{Arhiviranje}
 
-Dodatno, prije isporuke aplikacije je potrebno kreirati certifikat za razvoj i certifikat za osobu koja obavlja isporuku. Svaki certifikat se sastoji od privatnog i javnog dijela. Javan dio je slobodno dijeliti te se uvijek može preuzeti s Apple Developer računa. S druge strane, tajni dio certifikata se mora održati strogo tajnim te instalirati samo na uređajima koji zahtijevaju navedeni certifikat. Proces kreiranja i održavanja certifikata je poprilično komplicirao proces razvoja i isporuke. Zbog navedenog je Apple ugradio podršku za automatsko upravljanje certifikatima. Ovim postupkom je gotovo u potpunosti eliminirana potreba ručnog kreiranja i održavanja certifikata. Za uključenje opcije je potrebno odabrati \verb|Automatically manage signing| opciju na željenom cilju projekta.
-
-Certifikate je moguće kreirati ručno korištenjem Apple Developer platforme. Proces je sličan registraciji testnog uređaja. Nakon prijave potrebno je odabrati opciju \verb|Certificates, Identifiers & Profiles -> Identifiers|. Kreiranje certifikata je dobro definirano te je potrebno samo slijediti uputstva.
+Direktna isporuka aplikaciju instalira na mobilni uređaj koji je direktno povezan s računalom koje obavlja isporuku. Uređaj je prije isporuke potrebno registrirati kao testni uređaj na Apple developer računu.
 
 Instalaciju aplikacije na uređaj ostvarujem korištenjem Xcode aplikacije. Potrebno je odabrati željeni spojen uređaj i pokrenuti \verb|run| operaciju na željenoj shemi. Operacija izgrađuje i instalira aplikaciju na odabranom uređaju. Apple zbog sigurnosnih razloga drži tajnim proces isporuke aplikacije na uređaj zbog čega je navedeni proces moguće ostvariti samo korištenjem Xcode alata.
 
-Implementacija ad hoc i unutarnje isporuke je vrlo slična. Procesi se razlikuju u certifikatima koje koriste i u tome da ad hoc isporuka zahtijeva prethodnu registraciju testnog uređaja. Proces isporuke započinje arhiviranjem aplikacije. Arhiviranje aplikacije je moguće ostvariti korištenjem alata xcodebuild ili aplikacije Xcode. Kod arhiviranja pomoću alata xcodebuild je potrebno iskoristiti operaciju \verb|archive| te u odabranoj shemi specificirati željene opcije. S druge strane proces arhiviranja korištenjem alata Xcode je jednostavniji ali ga nije moguće automatizirati. Korištenjem aplikacije Xcode odabrati opciju \verb|Product -> Archive|. U novo otvorenom prozoru odabrati opciju \verb|Export...|. Slika \ref{fig:XcodeArchiveOptions} prikazuje moguće tipove isporuke koji odgovaraju ranije navedenim tipovima. Nakon odabira željene opcije slijediti upute alata.
+Proces arhiviranja je jednak za ad hoc, unutarnju i App Store isporuku. Arhiviranje je moguće ostvariti korištenjem alata xcodebuild ili aplikacije Xcode. Kod arhiviranja pomoću alata xcodebuild je potrebno iskoristiti operaciju \verb|archive| te u odabranoj shemi specificirati željene opcije. Proces arhiviranja korištenjem alata Xcode je jednostavniji ali ga nije moguće automatizirati.
+
+Korištenjem aplikacije Xcode odabrati opciju \verb|Product -> Archive|. U novo otvorenom prozoru odabrati opciju \verb|Export...|. Slika \ref{fig:XcodeArchiveOptions} prikazuje moguće tipove isporuke koji odgovaraju ranije navedenim tipovima isporuke. Nakon odabira željene opcije slijediti upute za kreiranje arhive.
 
 \begin{figure}
 \centering
@@ -1105,65 +1101,183 @@ Implementacija ad hoc i unutarnje isporuke je vrlo slična. Procesi se razlikuju
 
 Proces generira dvije datoteke. Arhivu aplikacije s \verb|.ipa| nastavkom i manifest aplikacije s \verb|.plist| nastavkom. Arhiva aplikacije se koristi za instalaciju aplikacije na mobilni uređaj, dok se manifest može koristiti za jednostavnije preuzimanje arhive. Unutar manifesta je moguće specificirati lokaciju arhive. Budući da je manifest vrlo mala xml datoteka, jednostavno ju je moguće podijeliti sa svim potrebnim osobama. Na temelju preuzetog manifesta sustav preuzima povezanu arhivu i instalira aplikaciju.
 
-Arhivu i manifest je moguće objaviti na nekoliko načina. Osnovan način je korištenjem vlastitog poslužitelja distribuirati potrebne datoteke. Najjednostavnije je napraviti jednostavnu HTML stranicu koja sadrži poveznicu na manifest. Manifest je moguće distribuirati i korištenjem drugih metoda dijeljena kao što su email ili Dropbox, ali je arhivu potrebno objaviti na poslužitelju.
+\paragraph{Objava} \label{header:rucna_objaca}
 
-Sljedeći način objave koristi službeni Appleov alat \textit{Mobile Device Management, MDM}. Alat je namijenjen za jednostavnu isporuku i distribuciji aplikacija koje nisu namijenjene za javnu objavu. Po funkcionalnosti je vrlo sličan App Store platformi. MDM omogućava jednostavnu objavu aplikacije i novih verzija te omogućava automatsku izgradnju i osvježenje verzije aplikacije. Međutim, alat je vrlo skup te ga koriste gotovo isključivo velike kompanije.
+Arhivu i manifest je moguće objaviti na nekoliko načina. Najjednostavnije ali i najograničenije je napraviti jednostavnu HTML stranicu koja sadrži poveznicu na manifest. Manifest je moguće distribuirati i korištenjem drugih metoda dijeljena kao što su email ili Dropbox, ali je arhivu potrebno objaviti na poslužitelju.
+
+Za objavu je moguće koristi službeni Appleov alat \textit{Mobile Device Management, MDM}. Alat je namijenjen za jednostavnu isporuku i distribuciji aplikacija koje nisu namijenjene za javnu objavu. Po funkcionalnosti je vrlo sličan App Store platformi. MDM omogućava jednostavnu objavu aplikacije i novih verzija te omogućava automatsku izgradnju i osvježenje verzije aplikacije. Međutim, alat je vrlo skup te ga koriste gotovo isključivo velike kompanije.
 
 Danas je na tržištu dostupan veliki broj alata koji implementiraju funkcionalnosti slične MDMu za značajno manju cijenu. Najpopularniji od ovih alata je alat Crashlytics. Kompanija je osnovana 2011 godine s ciljem praćenja i dojave pogreška i rušenja mobilnih aplikacija. Kompaniju je 2013 godine kupio Twitter a početkom 2017 kupio Google. Danas alat uz praćenje pogrešaka olakšava distribuciju aplikacija i automatizaciju procesa.
 
-Isporuka aplikacija pomoću Crashlytics alata je vrlo jednostavna. Potrebno je samo registrirati aplikaciju i dodati arhivu. Svi korisnici kojima je aplikacija vidljiva ju mogu jednostavno preuzeti i instalirati na uređaj.
+Crashlytics platformu je moguće iskoristiti za ad hoc i unutarnju isporuku. Prije implementacije isporuke je potrebno registrirati aplikaciju na platformi. Registraciju automatski odrađuje Crashlytics biblioteka koja se dodaje i pokreće zajedno s aplikacijom.
 
-Za objavu javnih aplikacija je isporuku potrebno obaviti korištenjem App Store platforme. Objava aplikacija na App Store platformu se obavlja korištenjem iTunes Connect alata. Za pristup alatu je potrebno posjedovati Apple Developer račun. Proces započinje arhiviranjem aplikacije i registracijom iste korištenjem iTunes Connect alata.
+Za dodavanje biblioteke je potrebno preuzeti i slijediti upute Fabric aplikacije dostupne na \path|https://fabric.io/downloads/apple| stranici. Nakon pokretanja aplikacije odabrati željeni projekt te slijediti upute za dodavanje Crashlytics biblioteke.
 
-Nakon prijave u \verb|https://itunesconnect.apple.com/| stranicu potrebno je odabrati opciju \verb|Apps|. Proces registracije aplikacije je poprilično jednostavno pratiti. Prvo je potrebno specificirati osnovne informacije o aplikaciji kao što su ime, opis i kategorija aplikacije. Nakon toga je potrebno dostaviti sve potrebne grafike koje uključuju nekoliko verzija ikone aplikacije koja je prikazana na početnom ekranu uređaja te slike potrebne za App Store platformu. Na kraju je potrebno dostaviti konačnu verziju aplikacije i time započeti proces provjere aplikacije. Ako proces završi uspješno aplikacija se izdaje na App Store platformu. U suprotnom je potrebno razriješiti razlog odbijanja aplikacije ponovno započeti proces provjere.
+Prvo, dodati ovisnosti u skripti \ref{listing:crashlytics} u \verb|Podfile| datoteku.
 
+\begin{lstlisting}[caption=Ovisnosti potrebne za objavu korištenjem Crashlytisc platforme, label=listing:crashlytics]
+pod 'Fabric'
+pod 'Crashlytics'
+\end{lstlisting}
 
+Nakon toga kreirati novu \verb|Run scrip| fazu za željeni cilj te joj dodati skriptu \ref{listing:fabric_run_script}.
 
-\subsection{Potpisivanje koda} \label{header:PotpisivanjeKodaDodatak}
+\begin{lstlisting}[caption=Fabric Run Script faza, label=listing:fabric_run_script]
+"${PODS_ROOT}/Fabric/run" {api_kljuc} {tajni_kljuc}
+\end{lstlisting}
 
-Zbog navedenog je korisno automatizirati navedeni proces. Automatizacija se može implementirati na nekoliko načina. Trenutno najpopularnije rješenje je sve certifikate i profile držati u jednom tajnom repozitoriju\citep{codesigningguide}. Dodatno, preporučeno je koristiti samo jedan programerski \eng{developer} certifikat po timu. Umjesto kreiranja certifikata za svakog pojedinog člana tima, kreira se samo jedan certifikat kojeg svi članovi koriste za isporuku. Prije obavljanja isporuke potrebno je kreirati certifikat aplikacije te profile za sve potrebne tipove isporuke. Kreiranje certifikata i profile se obavlja korištenjem Apple Developer platforme. Nakon prijave je potrebno odabrati \verb|Certificates, Identifiers & Profiles| opciju odakle je moguće kreirati sve potrebne artefakte.
+API i tajni ključevi su dostupni putem Fabric aplikacije.
 
-Nakon kreiranja certifikata i profila je potrebno iste zajedno s tajnim ključevima certifikata dodati u privatni repozitorij i dati prava pristupa članovima tima. Sve podatke je preporučeno enkriptirati.
+Zadnje, dodati naredbu \verb|Fabric.with([Crashlytics.self])| u datoteku \verb|AppDelegate|. Registracija aplikacije se odvija prilikom prvog pokretanja aplikacije. Profil aplikacije se nakon pokretanja aplikacije nalazi na stranici \path|https://fabric.io/home|.
 
-Umjesto ručnog kreiranja i održavanja certifikata i profila je moguće koristiti fastlane dodatak \verb|match|\citep{fastlane:match}. Alat samostalno kreira, dohvaća i priprema certifikate i profile čime značajno olakšava proces potpisivanja koda.
+Nakon kreiranja profila je kreiranu arhivu i manifest moguće jednostavno dodati korištenjem Crashlytics platforme.
 
-Inicijalizacija match dodatka se obavlja naredbom \verb|fastlane match init|. Potrebno je unijeti URL repozitorija te autorizirati pristup. URL repozitoriji se zajedno s ostalim parametrima sprema u \verb|Matchfile| datoteku.
+Isporuku javnih iOS aplikacija je dozvoljeno implementirati isključivo korištenjem App Store platforme. App Store je službena platforma za distribuciju programske potpore za macOS, iOS, tvOS i watchOS operacijske sustave. Uz jednostavnost distribucije svim korisnicima navedenih operacijskih sustava, platforma pruža i brojne druge funkcionalnosti kao što su automatsko instaliranje novih verzija i praćenje ponašanja korisnika.
 
-Preporučeno je za autentifikaciju repozitorija koristiti SSH protokol. Za automatsko korištenje SSH ključa je isti potrebno dodati alatu \verb|ssh-agent| te podesiti SSH protokol. Za dodavanje ključa ssh agentu pokrenuti naredbu u nastavku.
+Objava programske potpore na App Store platformu se obavlja korištenjem iTunes Connect web stranice. iTunes Connect omogućava kreiranje, modificiranje i praćenje objavljene programske potpore. Prije objave je potrebno kreirati profil aplikacije korištenjem iTunes Connect alata.
 
-\begin{verbatim}
-chmod 600 ~/.ssh/{imekljuca}.pub (1)
+Kreiranje profila se obavlja na \path|https://itunesconnect.apple.com/| stranici. Nakon prijave je potrebno odabrati opciju \verb|My Apps| te kreirati novi profil. Slika \ref{fig:iTunesConnectAppCreation} prikazuje formu za kreiranje profila aplikacije.
 
-ssh-add -K ~/.ssh/{imekljuca} (2)
-\end{verbatim}
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{iTunesConnectAppCreation}
+\caption{Forma za kreiranje profila aplikacije na iTunes Connect web stranici}
+\label{fig:iTunesConnectAppCreation}
+\end{figure}
 
-Naredba pod (1) ograničava pristup ključu na samo njegovog vlasnika. Navedeno je potrebno radi sigurnosti ključa. Naredba pod (2) dodaje ključ ssh agentu.
-
-Dodatno, potrebno je konfigurirati SSH protokol da koristi željeni ključ. Kreirati novu datoteku \verb|.ssh/config| sa sadržajem:
-
-\begin{verbatim}
-Host *
-UseKeychain yes
-AddKeysToAgent yes
-IdentityFile ~/.ssh/id_rsa{imekljuca}
-\end{verbatim}
-
-Nakon inicijalizacije dodatka je sve potrebne certifikate i profile moguće dohvatiti automatski. Dovoljno je pozvati match dodatak i specificirati tip isporuke koji se koristi. Opcije su \verb|development|, \verb|adhoc|, \verb|enterprise| i \verb|appstore| od kojih svaka odgovara pojedinom tipu isporuke. Naredba u nastavku dohvaća certifikate i profil za ad hoc isporuku.
-
-\begin{verbatim}
-match(type: 'adhoc')
-\end{verbatim}
-
+Nakon kreiranja profila aplikacije je potrebno ispuniti dodatne podatke o aplikaciji kao što su opis i kategorija aplikacije te ikone u različitim veličinama. Slično kao i kod Crashlytics platforme, sada je moguće jednostavno dostaviti arhivu i manifest aplikacije. Međutim, aplikaciju prije objave na App Store platformi provjerava tim Appleovih stručnjaka. Proces provjere je vrlo strog zbog čega treba pažljivo pratiti Appleove naputke kod izrade i objave aplikacije.
 
 \subsection{Automatizacija isporuke}
 
-Za automatizaciju isporuke koristim alat Fastlane. Fastlane implementira veliki broj funkcionalnosti potrebnih u procesu isporuke i time značajno olakšava automatizaciju procesa.
+Za automatizaciju isporuke koristim alata fastlane. Fastlane je služben Googleov alat izvorno kreiran za automatizaciju isporuke. Alat se sastoji od većeg broja dodataka od kojih je svaki pojedini dodatak zadužen za automatizaciju zasebne funkcionalnosti. Osim isporuke, fastlane danas podržava i procese izgradnje, testiranja, praćenja i drugo. Dodatno, alat podržava i veliki broj platformi među kojima su iOS, Android, macOS i Windows. Alat je detaljnije definiran u dodatku \ref{header:dodatak_fastlane}.
 
+\paragraph{Potpisivanje koda} \label{header:dodatak:AutomatizacijaPotpisivanjaKoda}
+
+Ručni proces implementacije potpisivanja koda opisan u odjeljku \ref{header:dodatak:RucnoPotpisivanjaKoda} nije moguće automatizirati. Dodatno, navedeni proces zahtijeva ručnu distribuciju certifikata, njihovih privatnih ključeva, identifikatora i pripremnih profila. Ovakva se distribucija vrlo brzo može zakomplicirati te nije poželjna u praksi.
+
+Automatizacija potposivanja koda riješava oba problema. Međutim, automatizaciju je moguće ostvariti na nekoliko načina. Trenutno najpopularnije rješenje je sve certifikate i profile držati u jednom tajnom repozitoriju\citep{codesigningguide}. Dodatno, preporučeno je koristiti samo jedan programerski \eng{developer} certifikat po timu. Umjesto kreiranja certifikata za svakog pojedinog člana tima, kreira se samo jedan certifikat kojeg svi članovi koriste za isporuku. Umjesto ručnog kreiranja i održavanja certifikata i profila koristim fastlane dodatak \verb|match|\citep{fastlane:match}. Alat samostalno kreira, dohvaća i priprema certifikate i profile čime značajno olakšava proces potpisivanja koda.
+
+Inicijalizacija match dodatka se obavlja naredbom \verb|fastlane match init|. Potrebno je unijeti URL repozitorija te autorizirati pristup. URL repozitoriji se zajedno s ostalim parametrima sprema u \verb|Matchfile| datoteku.
+
+Preporučeno je za autentifikaciju repozitorija koristiti SSH protokol. Match zbog sigurnosti zahtjeva da korišteni SSH ključ bude dostupan samo trenutnom korisniku operacijskog sustava zbog čega je potrebno podesiti prava pristupa. Skripta \ref{listing:ssh_chmod} modificira prava pristupa za zadani ključ kako bi njegovo korištenje bilo dostupno samo trenutnom korisničkom računu operacijskog sustava.
+
+\begin{lstlisting}[caption=Ograničavanje prava pristupa SSH ključu na samo trenutnog korisnika, label=listing:ssh_chmod]
+chmod 600 ~/.ssh/{imekljuca}.pub
+\end{lstlisting}
+
+Dodatno, potrebno je konfigurirati SSH protokol kako bi isti koristi željeni ključ. Kreirati novu datoteku \path|.ssh/config| sa sadržajem skripte \ref{listing:SSH_match}.
+
+\begin{lstlisting}[caption=Postavke SSH protokola za alat match, label=listing:SSH_match]
+Host *
+UseKeychain yes
+AddKeysToAgent yes
+IdentityFile ~/.ssh/{imekljuca}
+\end{lstlisting}
+
+Nakon inicijalizacije alata match je sve potrebne certifikate i profile moguće dohvatiti automatski. Dovoljno je pozvati match dodatak i specificirati tip isporuke koji se koristi. Opcije su \verb|development|, \verb|adhoc|, \verb|enterprise| i \verb|appstore| od kojih svaka odgovara pojedinom tipu isporuke. Naredba u nastavku dohvaća certifikate i profil za ad hoc isporuku.
+
+\begin{lstlisting}[caption=Dohvćanje artefakta pomoću dodatka match za ad hoc isporuku]
+match(type: 'adhoc')
+\end{lstlisting}
+
+\paragraph{Arhviranje}
+
+Xcode Server pruža mogućnost arhiviranja aplikacije u sklopu kontinuirane integracije. Međutim, funkcionalnost je vrlo ograničena. Na primjer, nije moguće dinamički konfigurirati artefakte koji se koriste za potpisivanje koda niti podesiti argumente arhiviranja.
+
+Zbog navedenog automatizaciju arhiviranja ostvarujem korištenjem fastlane dodatak gym. Dodatak izgrađuje i arhivira aplikaciju te omogućava vrlo jednostavnu konfiguraciju oba procesa. Dodatno, alat automatski detektira i koristi artefakte za potpisivanje koda dohvaćene korištenjem dodatka match. Skripta \ref{listing:gym_archive} prikazuje arhiviranje projekta za ad hoc tip isporuke.
+
+\begin{lstlisting}[caption=Arhiviranje aplikacije za ad hoc isporuku pomoću dodatka gym, label=listing:gym_archive]
+gym(scheme: "Diplomski_rad", export_method: "ad-hoc")
+\end{lstlisting}
+
+\paragraph{Dostava}
+
+Kao što sam utvrdio u odlomku \ref{header:rucna_objaca}, Crashlytic je platforma najpogodnija za implementaciju isporuke koja nije namijenjena za javnost. Za isporuku javne aplikacije je nužno koristiti App Store platformu. Zbog navedenog automatiziram navedena dva tipa dostave. Fastlane podržava oba tipa isporuke.
+
+Za dostavu aplikacije korištenjem Crashlytics platforme koristim fastlane dodatak \verb|crashlytics|. Dodatak omogućava jednostavnu objavu aplikacije uz minimalnu konfiguraciju projekta te se nadovezuje direktno na dodatak gym. Za pokretanje dostavje je dovoljno pokrenuti dodatak crashlytics nakon arhiviranja projetka. Skripta \ref{listing:crashlytics_deploy} prikazuje fastlane stazu koja izgrađuje, arhivira i objavljuje aplikaciju na Crashlytics platformi.
+
+\begin{lstlisting}[caption=Fastlane staza za isporuku korištenjem Crashlytics platforme, label=listing:crashlytics_deploy]
+lane :develop do
+    increment_build_number
+
+    match(app_identifier: "com.rep.Diplomski-rad.development", type: "development")
+    gym(scheme: "Diplomski_rad", export_method: "development")
+
+    crashlytics(
+        api_token: {api_kljuc},
+        build_secret: {tajni_kljuc},
+        groups: 'Rep')
+
+end
+\end{lstlisting}
+
+Dodatno, kako prilikom pokretanja naredbe ne bi morao unositi crashlytics API i tajni ključ, iste je moguće specificirati kao argumente crashlytics naredbe.
+
+API i tajni ključ je moguće dohvatiti korištenjem Fabric platforme. Slijediti poveznicu \path{https://www.fabric.io/settings/organizations}. Nakon prijave odabrati željenu organizaciju. Slika \ref{fig:FabricKeys} prikazuje lokaciju ključeva.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{FabricKeys}
+\caption{API i tajni ključ}
+\label{fig:FabricKeys}
+\end{figure}
+
+Nakon isporuke je aplikaciju moguće preuzeti direktno s Crashlytics platforme. Kako bi korisnik mogao preuzeti aplikaciju, potrebno ga je prvo dodati kao testera pojedine verzije aplikacije. Na Crashlytics profilu aplikacije odabrati \verb|Add testers| opciju te unijeti email adresu željene osobe. Na uređaju osobe otvoriti poslanu email poruku te odabrati opciju \verb|Let Me In|. Po potrebi instalirati \verb|Beta| aplikaciju pomoću koje se obavlja instalacija. Ako je aplikacija isporučena korištenjem ad hoc isporuke, uređaj korisnika mora biti registriran kao testni uređaj te dodan ad hoc profilu. Kako ne bi morali svakoj verziji aplikacije dodavati testere, grupa testera se može dodati kao argument Crashlytics naredbi \verb|groups: {ime_grupe}|.
+
+Isporuku programske potpore za App Store platformu implementiram pomoću fastlane dodatak \verb|deliver|\citep{fastlane:deliver}. Alat se inicijalizira pozivom \verb|fastlane deliver| \verb|init| naredbe. Naredba zahtijeva unos korisničkog imena i lozinke Apple Developer računa te unos identifikatora profila aplikacije. Identifikator je moguće dohvatiti korištenjem iTunes Connect stranice. Korištenjem stranice otvoriti profil aplikacije te locirati identifikator. Identifikator profila se nalazi pod poljem \verb|Apple ID|.
+
+Naredba kreira nekoliko datoteka u \verb|fastlane| direktoriju. Tekstualna datoteka \verb|Deliverfile| pohranjuje podatke vezane uz objavu aplikacije na App Store platformi kao što su korisničko ime Apple Developer računa te identifikator aplikacije. Direktorij \verb|metadata| sadrži nekoliko dokumenata koji omogućavaju jednostavan unos podataka koji će se koristiti prilikom isporuke aplikacije na App Store platformu. Na primjer, pomoću dokumenta \verb|description.txt| je moguće specificirati opis aplikacije. Dodatno, moguće je kreirati zaseban opis za svaki jezik koji Apple podržava.
+
+Sada je isporuku moguće obaviti jednostavno pozivom \verb|deliver| alata. Naravno, kreirana arhiva mora biti potpisana certifikatima i profilima za distribuciju na App Store platformi. Zbog navedenog kreiram novu shemu pomoću koje specificiram korištenje ispravnih certifikata i profila.
+
+Staza u nastavku implementira objavu aplikacije na App Store platformu.
+
+\begin{lstlisting}[caption=Isporuka na App Store platformu korištenjem dodatka deliver]
+lane :release do
+    match(type: "appstore")
+    gym(scheme: "Production", export_method: "app-store")
+    deliver
+end
+\end{lstlisting}
+
+Staza prvo dohvaća potrebne certifikate i profile, izgrađuje arhivu aplikacije te na kraju arhivu objavljuje koristeći deliver dodatak.
+
+Nakon isporuke aplikacije je moguće pokrenuti proces objave. Prije objave, aplikacija mora proći Appleov pregled koji može trajati i do nekoliko tjedana. Zbog navedenog je preporučeno prije pokretanja procesa detaljno provjeriti ispravnost aplikacije te pročitati službene smjernice. Ako aplikacija prođe provjeru, onda ju je moguće objaviti korištenjem iTunes Connect web stranice.
 
 \section{Kontinuirana isporuka}
 
+Kontinuirana isporuka automatski isporučuje novo izgrađene funkcionalnosti. Funkcionalnosti se isporučuju u četiri faze. Prvo se izdaju samo članovima tima, zatim u dva navrata timu za osiguranje kvalitete te na kraju na javno na App Store platformu. Funkcionalnost se prvi puta isporučuje testnom timu radi provjere novo razvijenih funkcionalnosti, a drugi puta radi verifikacije ispravnosti verzije aplikacije koja će se izdati za javnost.
 
+Za pokretanje procesa isporuke koristim modificirani \textit{Gitflow} tok rada. Samu isporuku ostvarujem kombinacijom procesa definiranih u prijašnja dva poglavlja.
 
+\subsection{Gitflow radni tok}
+
+Kako bi ostvario isporuku četiri različitih verzija aplikacija koristim modificirani Gitflow tok rada. Standardan Gitflow tok rada koristi tri specijalne grane: glavnu, razvojnu i pripremnu granu. Glavna grana predstavlja trenutno stanje projekta dok razvojna grana služi za dodavanje novih funkcionalnosti. Za svaku funkcionalnost koja se razvija se kreira nova grana iz trenutnog stanja razvojne grane. Nakon završetka razvoja funkcionalnosti kreirana grana se spaja u razvojnu granu.
+
+Glavna grana i time cijeli projekt se osvježava spajanjem promjena razvojne grane s glavnom granom. Kako bi se osigurala ispravnost funkcionalnosti koje se dodaju projektu, spajanje razvoje i glavne grane se obavlja korištenjem pripremne grane. Pripremna grana se kreira iz radne grane te se nakon provjere ispravnosti spaja s glavnom granom. U slučaju pronalaska pogrešaka iste se otklanjaju na pripremnoj grani. Pogreške ispravljene na ovaj način je potrebno na kraju dodati i razvojnoj grani. Dodatno, pripremna grana se može kreirati iz glavne grane kad je potrebno otkloniti pogrešku u trenutnoj verziji aplikacije.
+
+Uz navedene grane koristim i testnu granu koja služi za isporuku testne aplikacije timu za osiguranje kvalitete. Navedena se grana kreira iz razvojne grane. Na grani se otklanjaju pronađene pogreške nakon čega se ista spaja s razvojnom granom.
+
+Isporuku produkcijske aplikacije obavljamo s glavne grane, isporuku razvojne aplikacije s razojne grane, testne aplikacije s testne grane, a pripremne aplikacije s pripremne grane. Slika \ref{fig:ModificiraniGitflowTokRaka} prikazuje modificirani Gitflow radni tok.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{ModificiraniGitflowTokRaka}
+\caption{Modificirani Gitflow radni tok}
+\label{fig:ModificiraniGitflowTokRaka}
+\end{figure}
+
+Sada je vrlo jednostavno odrediti koju ispouku treba koristiti. Ukoliko se izmjena nalazi na razvojnoj grani potrebno je osvježiti razvojnu verziju aplikacije, ako se izmjena nalazi na testnoj grani potrebno je osvježiti testnu verziju, u sljučaju izmjene pripremne grane je potrebno osvježiti pripremnu verziju dok je u sljučaju izmjene glavne grane potrebno osvježiti javnu verziju aplikacije na App Store platformi.
+
+Skripta \ref{listing:git_branch_creation} prikazuje proces kreiranja potrebnih grana.
+
+\begin{lstlisting}[caption=Isporuka na App Store platformu korištenjem dodatka deliver]
+lane :release do
+match(type: "appstore")
+gym(scheme: "Production", export_method: "app-store")
+deliver
+end
+\end{lstlisting}
 
 
 \chapter{Alat Xcodebuild}
@@ -1326,96 +1440,6 @@ Izgradnja projekta se obavlja pozivom naredbe \verb|fastlane gym|. Ako projekt s
 Fastlane testiranje projekta obavlja korištenjem dodatka \verb|scan|\citep{fastlane:scan}. Scan se ponaša slično dodatku gym. Operaciju testiranja obavlja korištenjem xcodebuild alata. Dodatak samostalno detektira projekte i sheme za koje pokreće testove. U slučaju postojanja više sheme, dodatak korisnika traži odabir željene sheme. Dodatka zatim pokreče sve testne ciljeve koje definira shema.
 
 Dodatak rezultate pohranjuje u \verb|fastlane\test_output\report.junit| datoteci. \verb|Junit| format je široko prihvaćen naćin zapisa rezultata testova te postoji veliki broj alata za njegov vizualan prikaz.
-
-\section{Isporuka}
-
-U poglavlju \ref{header:RucnaIsporuka} sam definirao četiri tipa isporuke: direktna isporuka, \textit{ad hoc} isporuka, unutarnja isporuka i isporuka korištenjem App Store platforme.
-
-Kao što je navedeno u poglavlju, direktnu isporuku trenutno nije moguće automatizirati. Dodatno, unutarnja isporuka i ad hoc isporuka su vrlo slične. Ad hoc isporuka zahtijeva registraciju uređaja na koji se instalira aplikacija kao testnog uređaja na Apple Developer platformi. Unutarnja isporuka nema ovaj zahtjev, međutim, onda je dostupna samo za korisnike s Apple Enterprise računom, skupljom verzijom Apple Developer računa. Zbog navedenog ove dvije isporuke možemo automatizirati istim procesom. Produkt oba tipa isporuke ćemo obaviti korištenjem Crashlytics platforme. Crashlytics je trenutno najbolja i najjednostavnija platforma za objavu programske potpore za iOS operacijski sustav za ograničen skup korisnika. Dodatno, fastlane podržava navedenu platformu što automatizaciju objave čini vrlo jednostavnom.
-
-Fastlane također omogućava automatizaciju isporuke programske potpore za javnost korištenjem App Store platforme.
-
-Prije implementacije isporuke programske potpore je potrebno riješiti pitanje potpisivanja koda.
-
-\subsection{Crashlytics platforma} \label{header:CrashlyticsImplementacija}
-
-Crashlytics platformu je moguće iskoristiti za ad hoc i unutarnju isporuku. Prije implementacije isporuke je potrebno registrirati aplikaciju na platformi. Registraciju automatski odrađuje Crashlytics biblioteka koja se dodaje i pokreće zajedno s aplikacijom.
-
-Za dodavanje biblioteke je potrebno preuzeti i slijediti upute Fabric aplikacije dostupne na \verb|https://fabric.io/downloads/apple| stranici. Nakon pokretanja aplikacije odabrati željeni projekt te slijediti upute za dodavanje Crashlytics biblioteke.
-
-Prvo, dodati sljedeće ovisnosti \verb|Podfile| datoteci:
-
-\begin{verbatim}
-pod 'Fabric'
-pod 'Crashlytics'
-\end{verbatim}
-
-Sljedeće, kreirati novu \verb|Run scrip| fazu za željeni cilj te joj dodati naredbu u nastavku:
-
-\begin{verbatim}
-"${PODS_ROOT}/Fabric/run" {api_ključ} {tajni_ključ}
-\end{verbatim}
-
-API i tajni ključevi su dostupni putem Fabric aplikacije.
-
-Zadnje, dodati naredbu \verb|Fabric.with([Crashlytics.self])| u datoteku \verb|AppDelegate|. Registracija aplikacije se odvija prilikom prvog pokretanja aplikacije. Profil aplikacije se nalazi na stranici \verb|https://fabric.io/home|.
-
-Prije isporuke aplikacije je potrebno izgraditi arhivu. Za izgradnju arhive koristim dodatak gym. Kod pokretanja gym naredbe je potrebno odabrati shemu koja kreira ispravan tip arhive za željeni tip isporuke, te arhivu objaviti korištenjem crashlytics dodatka. Nužno je za potpisivanje koda odabrati ispravne certifikate i profil. Staza u nastavku obavlja proces isporuke uz objavu na Crashlytics platformi.
-
-\begin{verbatim}
-lane :beta do
-    increment_build_number
-    gym(scheme: "Diplomski_rad”, export_method: 'ad-hoc')
-    crashlytics
-end
-\end{verbatim}
-
-Dodatno, kako prilikom pokretanja naredbe ne bi morao unositi Crashlytics API i tajni ključ, iste je moguće dodati Crashlytics naredbi.
-
-\begin{verbatim}
-crashlytics(
-    api_token: {api_ključ},
-    build_secret: {tajni_ključ}
-)
-\end{verbatim}
-
-Nakon isporuke je aplikaciju moguće preuzeti direktno s Crashlytics platforme. Kako bi korisnik mogao preuzeti aplikaciju, potrebno ga je prvo dodati kao testera pojedine verzije aplikacije. Na Crashlytics profilu aplikacije odabrati \verb|Add testers| opciju te unijeti email adresu željene osobe. Na uređaju osobe otvoriti poslanu email poruku te odabrati opciju \verb|Let Me In|. Po potrebi instalirati \verb|Beta| aplikaciju pomoću koje se obavlja instalacija. Ako je aplikacija isporučena korištenjem ad hoc isporuke, uređaj korisnika mora biti registriran kao testni uređaj te dodan ad hoc profilu. Kako ne bi morali svakoj verziji aplikacije dodavati testere, grupa testera se može dodati kao argument Crashlytics naredbi \verb|groups: {ime_grupe}|.
-
-\subsection{App Store platforma} \label{header:AppStoreObjava}
-
-Isporuku javnih iOS aplikacija je dozvoljeno implementirati isključivo korištenjem App Store platforme. App Store je službena platforma za distribuciju programske potpore za macOS, iOS, tvOS i watchOS operacijske sustave. Uz jednostavnost distribucije svim korisnicima navedenih operacijskih sustava, platforma pruža i brojne druge funkcionalnosti kao što su automatsko instaliranje novih verzija i praćenje ponašanja korisnika.
-
-Objava programske potpore na App Store platformu se obavlja korištenjem iTunes Connect web stranice. iTunes Connect omogućava kreiranje, modificiranje i praćenje objavljene programske potpore. Prije objave je potrebno kreirati profil aplikacije korištenjem iTunes Connect alata.
-
-Kreiranje profila se obavlja na \verb|https://itunesconnect.apple.com/| stranici. Nakon prijave je potrebno odabrati opciju \verb|My Apps| te kreirati novi profil. Slika \ref{fig:iTunesConnectAppCreation} prikazuje formu za kreiranje profila aplikacije.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.4]{iTunesConnectAppCreation}
-\caption{Forma za kreiranje profila aplikacije na iTunes Connect web stranici}
-\label{fig:iTunesConnectAppCreation}
-\end{figure}
-
-Isporuku programske potpore za App Store platformu implementiram pomoću fastlane dodatak \verb|deliver|\citep{fastlane:deliver}. Alat se inicijalizira pozivom \verb|fastlane deliver| \verb|init| naredbe. Naredba zahtijeva unos korisničkog imena i lozinke Apple Developer računa te unos identifikatora profila aplikacije. Identifikator je moguće dohvatiti korištenjem iTunes Connect stranice. Korištenjem stranice otvoriti profil aplikacije te locirati identifikator. Identifikator profila se nalazi pod poljem \verb|Apple ID|.
-
-Naredba kreira nekoliko datoteka u \verb|fastlane| direktoriju. Tekstualna datoteka \verb|Deliverfile| pohranjuje podatke vezane uz objavu aplikacije na App Store platformi kao što su korisničko ime Apple Developer računa te identifikator aplikacije. Direktorij \verb|metadata| sadrži nekoliko dokumenata koji omogućavaju jednostavan unos podataka koji će se korisititi prilikom isporuke aplikacije na App Store platformu. Na primjer, pomoću dokumenta \verb|description.txt| je moguće specificirati opis aplikacije. Dodatno, moguće je kreirati zaseban opis za svaki jezik koji Apple podržava.
-
-Sada je isporuku moguće obaviti jednostavno pozivom \verb|deliver| alata. Naravno, kreirana arhiva mora biti potpisana certifikatima i profilima za distribuciju na App Store platformi. Zbog navedenog kreiram novu shemu pomoću koje specificiram korištenje ispravnih certifikata i profila.
-
-Staza u nastavku implementira objavu aplikacije na App Store platformu.
-
-\begin{verbatim}
-lane :release do
-    match(type: "appstore")
-    gym(scheme: “Production”)
-    deliver
-end
-\end{verbatim}
-
-Staza prvo dohvaća potrebne certifikate i profile, izgrađuje arhivu aplikacije te na kraju arhivu objavljuje koristeći deliver dodatak.
-
-Nakon isporuke aplikacije je moguće pokrenuti proces objave. Prije objave, aplikacija mora proći Appleov pregled koji može trajati i do nekoliko tjedana. Zbog navedenog je preporučeno prije pokretanja procesa detaljno provjeriti ispravnost aplikacije te pročitati službene smjernice. Ako aplikacija prođe provjeru, onda ju je moguće objaviti korištenjem iTunes Connect web stranice.
-
 
 \chapter{Usporedba alata za implementaciju kontinuirane integracije} \label{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}
 

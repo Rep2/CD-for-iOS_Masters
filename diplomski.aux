@@ -206,6 +206,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {A.2}Kontinuirana dostava}{57}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.2.1}Ru\IeC {\v c}na isporuka}{58}}
 \newlabel{header:Ru\IeC {\v c}naImplementacijaIsporuke}{{A.2.1}{58}}
+\newlabel{header:dodatak:RucnoPotpisivanjaKoda}{{A.2.1}{58}}
 \@writefile{toc}{\contentsline {paragraph}{Potpisivanje koda}{58}}
 \@writefile{lof}{\contentsline {figure}{\numberline {A.14}{\ignorespaces Odabir tipa certifikata koji se kreira\relax }}{58}}
 \newlabel{fig:AppleDeveloperCertificateCreation}{{A.14}{58}}
@@ -217,44 +218,62 @@
 \newlabel{fig:AppIdentifierCreation}{{A.17}{60}}
 \@writefile{lof}{\contentsline {figure}{\numberline {A.18}{\ignorespaces Postavljanje artefakta za potpisivanje koda\relax }}{60}}
 \newlabel{fig:SigningArtefactsSetup}{{A.18}{60}}
-\@writefile{toc}{\contentsline {paragraph}{Arhiviranje}{61}}
 \@writefile{lof}{\contentsline {figure}{\numberline {A.19}{\ignorespaces Dohvat UUIDa ure\IeC {\dj }aja kori\IeC {\v s}tenjem iTunes aplikacije\relax }}{61}}
 \newlabel{fig:iTunesUUID}{{A.19}{61}}
+\@writefile{toc}{\contentsline {paragraph}{Arhiviranje}{61}}
 \@writefile{lof}{\contentsline {figure}{\numberline {A.20}{\ignorespaces Opcije arhiviranja kori\IeC {\v s}tenjem Xcode aplikacije\relax }}{62}}
 \newlabel{fig:XcodeArchiveOptions}{{A.20}{62}}
+\newlabel{header:rucna_objaca}{{A.2.1}{62}}
+\@writefile{toc}{\contentsline {paragraph}{Objava}{62}}
+\newlabel{listing:crashlytics}{{A.8}{63}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {A.8}Ovisnosti potrebne za objavu kori\IeC {\v s}tenjem Crashlytisc platforme}{63}}
+\newlabel{listing:fabric_run_script}{{A.9}{63}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {A.9}Fabric Run Script faza}{63}}
 \citation{codesigningguide}
 \citation{fastlane:match}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.2.2}Potpisivanje koda}{64}}
-\newlabel{header:PotpisivanjeKodaDodatak}{{A.2.2}{64}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.2.3}Automatizacija isporuke}{65}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.3}Kontinuirana isporuka}{65}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}Alat Xcodebuild}{66}}
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.0.1}Testiranje}{67}}
-\newlabel{TestiranjeXcodeBuild}{{B.0.1}{67}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.0.2}Osiguranje kvalitete}{67}}
-\newlabel{OsiguranjeKvaliteteImplementacija}{{B.0.2}{67}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.0.3}Isporuka}{68}}
-\citation{fastlane}
-\@writefile{toc}{\contentsline {chapter}{\numberline {C}Fastlane}{69}}
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{header:dodatak_fastlane}{{C}{69}}
-\citation{fastlane:gym}
-\@writefile{toc}{\contentsline {section}{\numberline {C.1}Dohvat ovisnosti}{70}}
-\citation{fastlane:scan}
-\@writefile{toc}{\contentsline {section}{\numberline {C.2}Izgradnja}{71}}
-\@writefile{toc}{\contentsline {section}{\numberline {C.3}Testiranje}{71}}
-\@writefile{toc}{\contentsline {section}{\numberline {C.4}Isporuka}{71}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.4.1}Crashlytics platforma}{72}}
-\newlabel{header:CrashlyticsImplementacija}{{C.4.1}{72}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.21}{\ignorespaces Forma za kreiranje profila aplikacije na iTunes Connect web stranici\relax }}{64}}
+\newlabel{fig:iTunesConnectAppCreation}{{A.21}{64}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2.2}Automatizacija isporuke}{64}}
+\newlabel{header:dodatak:AutomatizacijaPotpisivanjaKoda}{{A.2.2}{64}}
+\@writefile{toc}{\contentsline {paragraph}{Potpisivanje koda}{64}}
+\newlabel{listing:ssh_chmod}{{A.10}{65}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {A.10}Ograni\IeC {\v c}avanje prava pristupa SSH klju\IeC {\v c}u na samo trenutnog korisnika}{65}}
+\newlabel{listing:SSH_match}{{A.11}{65}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {A.11}Postavke SSH protokola za alat match}{65}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {A.12}Dohv\IeC {\'c}anje artefakta pomo\IeC {\'c}u dodatka match za ad hoc isporuku}{65}}
+\@writefile{toc}{\contentsline {paragraph}{Arhviranje}{65}}
+\newlabel{listing:gym_archive}{{A.13}{66}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {A.13}Arhiviranje aplikacije za ad hoc isporuku pomo\IeC {\'c}u dodatka gym}{66}}
+\@writefile{toc}{\contentsline {paragraph}{Dostava}{66}}
+\newlabel{listing:crashlytics_deploy}{{A.14}{66}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {A.14}Fastlane staza za isporuku kori\IeC {\v s}tenjem Crashlytics platforme}{66}}
 \citation{fastlane:deliver}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.4.2}App Store platforma}{73}}
-\newlabel{header:AppStoreObjava}{{C.4.2}{73}}
-\@writefile{lof}{\contentsline {figure}{\numberline {C.1}{\ignorespaces Forma za kreiranje profila aplikacije na iTunes Connect web stranici\relax }}{74}}
-\newlabel{fig:iTunesConnectAppCreation}{{C.1}{74}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {D}Usporedba alata za implementaciju kontinuirane integracije}{76}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.22}{\ignorespaces API i tajni klju\IeC {\v c}\relax }}{67}}
+\newlabel{fig:FabricKeys}{{A.22}{67}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {A.15}Isporuka na App Store platformu kori\IeC {\v s}tenjem dodatka deliver}{68}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.3}Kontinuirana isporuka}{68}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3.1}Gitflow radni tok}{69}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.23}{\ignorespaces Modificirani Gitflow radni tok\relax }}{70}}
+\newlabel{fig:ModificiraniGitflowTokRaka}{{A.23}{70}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}Alat Xcodebuild}{71}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}{{D}{76}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.0.1}Testiranje}{72}}
+\newlabel{TestiranjeXcodeBuild}{{B.0.1}{72}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.0.2}Osiguranje kvalitete}{72}}
+\newlabel{OsiguranjeKvaliteteImplementacija}{{B.0.2}{72}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.0.3}Isporuka}{73}}
+\citation{fastlane}
+\@writefile{toc}{\contentsline {chapter}{\numberline {C}Fastlane}{74}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{header:dodatak_fastlane}{{C}{74}}
+\citation{fastlane:gym}
+\@writefile{toc}{\contentsline {section}{\numberline {C.1}Dohvat ovisnosti}{75}}
+\citation{fastlane:scan}
+\@writefile{toc}{\contentsline {section}{\numberline {C.2}Izgradnja}{76}}
+\@writefile{toc}{\contentsline {section}{\numberline {C.3}Testiranje}{76}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {D}Usporedba alata za implementaciju kontinuirane integracije}{77}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}{{D}{77}}

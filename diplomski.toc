@@ -43,18 +43,19 @@
 \contentsline {subsection}{\numberline {A.2.1}Ru\IeC {\v c}na isporuka}{58}
 \contentsline {paragraph}{Potpisivanje koda}{58}
 \contentsline {paragraph}{Arhiviranje}{61}
-\contentsline {subsection}{\numberline {A.2.2}Potpisivanje koda}{64}
-\contentsline {subsection}{\numberline {A.2.3}Automatizacija isporuke}{65}
-\contentsline {section}{\numberline {A.3}Kontinuirana isporuka}{65}
-\contentsline {chapter}{\numberline {B}Alat Xcodebuild}{66}
-\contentsline {subsection}{\numberline {B.0.1}Testiranje}{67}
-\contentsline {subsection}{\numberline {B.0.2}Osiguranje kvalitete}{67}
-\contentsline {subsection}{\numberline {B.0.3}Isporuka}{68}
-\contentsline {chapter}{\numberline {C}Fastlane}{69}
-\contentsline {section}{\numberline {C.1}Dohvat ovisnosti}{70}
-\contentsline {section}{\numberline {C.2}Izgradnja}{71}
-\contentsline {section}{\numberline {C.3}Testiranje}{71}
-\contentsline {section}{\numberline {C.4}Isporuka}{71}
-\contentsline {subsection}{\numberline {C.4.1}Crashlytics platforma}{72}
-\contentsline {subsection}{\numberline {C.4.2}App Store platforma}{73}
-\contentsline {chapter}{\numberline {D}Usporedba alata za implementaciju kontinuirane integracije}{76}
+\contentsline {paragraph}{Objava}{62}
+\contentsline {subsection}{\numberline {A.2.2}Automatizacija isporuke}{64}
+\contentsline {paragraph}{Potpisivanje koda}{64}
+\contentsline {paragraph}{Arhviranje}{65}
+\contentsline {paragraph}{Dostava}{66}
+\contentsline {section}{\numberline {A.3}Kontinuirana isporuka}{68}
+\contentsline {subsection}{\numberline {A.3.1}Gitflow radni tok}{69}
+\contentsline {chapter}{\numberline {B}Alat Xcodebuild}{71}
+\contentsline {subsection}{\numberline {B.0.1}Testiranje}{72}
+\contentsline {subsection}{\numberline {B.0.2}Osiguranje kvalitete}{72}
+\contentsline {subsection}{\numberline {B.0.3}Isporuka}{73}
+\contentsline {chapter}{\numberline {C}Fastlane}{74}
+\contentsline {section}{\numberline {C.1}Dohvat ovisnosti}{75}
+\contentsline {section}{\numberline {C.2}Izgradnja}{76}
+\contentsline {section}{\numberline {C.3}Testiranje}{76}
+\contentsline {chapter}{\numberline {D}Usporedba alata za implementaciju kontinuirane integracije}{77}
