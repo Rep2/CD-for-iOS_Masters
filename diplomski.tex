@@ -1271,13 +1271,17 @@ Sada je vrlo jednostavno odrediti koju ispouku treba koristiti. Ukoliko se izmje
 
 Skripta \ref{listing:git_branch_creation} prikazuje proces kreiranja potrebnih grana.
 
-\begin{lstlisting}[caption=Isporuka na App Store platformu korištenjem dodatka deliver]
-lane :release do
-match(type: "appstore")
-gym(scheme: "Production", export_method: "app-store")
-deliver
-end
+\begin{lstlisting}[caption=Kreiranje potrebnih grana Gitflow radnog toka, label=listing:git_branch_creation]
+git checkout -b develop
+git push --set-upstream origin develop
+
+git checkout -b release-candidate
+git push --set-upstream origin release-candidate
+
+git checkout -b test
+git push --set-upstream origin test
 \end{lstlisting}
+
 
 
 \chapter{Alat Xcodebuild}
