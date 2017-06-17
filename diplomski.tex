@@ -37,25 +37,47 @@ basicstyle=\ttfamily}
 \tableofcontents
 
 \chapter{Uvod}
-Uvod rada. Nakon uvoda dolaze poglavlja u kojima se obrađuje tema.
+
+Profesionalna izrada iOS programske potpore za iOS operacijski sustav zahtjeve čestu isporuku različitih verzija aplikacije. Osim isporuke produkcijske verzije programske potpore čija učestalost može varirati od nekoliko puta tjedno do jednom u nekoliko mjeseci, u sklopu razvoja se isporučuju i druge verzije kao što su verzija za testiranje, verzija koja prikazuje trenutno stanje razvoja i pripremna produkcijska verzija. Učestalost isporuke navedenih tipova također značajno varira od tima do tima.
+
+Kako je iOS operacijski sustav relativno mlad, isporuka se još uvijek uglavnom obavlja ručno. Ručna isporuka programske potpore je vremenski zahtjevna te je podložna ljudskoj pogrešci. Zbog navedenog se izbjegava često obavljanje isporuke što dovodi do zajedničke isporuke većeg broja promjena što zatim dovodi do većeg broja pogrešaka, lošije kvalitete programske potpore te sporije isporuke novih funkcionalnosti.
+
+Ovaj problem je moguće rješiti automatizacijom cijelog ili većeg dijela isporuke programske potpore za iOS operacijski sustav. Međutim, kako bi isporučili programsku potporu, prvo ju moramo arhivirati te zatim dobivenu arhivu objaviti na željenoj platformi. Arhiviranje je proces pripreme iOS projekta za isporuku. Dodano, i proces arhiviranja i proces objave značajno ovise o platformi na kojoj objavljujemo programsku potporu.
+
+Prije arhiviranja programske potpore je istu potrebno izgraditi te utvrditi da zadovoljave sve postavljene uvjete. Uvjeti se najčešće izražavaju u obliku testova ali mogu poprimiti i druge oblike.
+
+Na kraju, potrebno je utvrditi pomoću kojeg je tipa isporuke potrebno isporučiti pojedinu verziju programske potpore.
+
+Navedene funckionalnosti možemo svrstati u tri dobro prihvaćene prakse u sklopu računalnog inženjerstva: kontinuiranu integraciju, kontinuiranu dostavu i kontinuiranu isporuku.
+
+Kontinuirana integracija automatizira procese izgradnje, testiranaja i osiguranja kvalitete prvenstveno kako bi poboljšala kvalitetu programske potpore. Ovako automatizirani proces se provodi nad svakom novom verzijom programske potpore čime se osigurava njena ispravnost. Dodatno, kontinuirana integracija potiče učestalu integraciju radnih kopija s glavnom kopijom kako bi se izbjegla pojava konflikat pri integraciji.
+
+Kontinuirana dostava automatizira proces isporuke programske potpore. U sklopu razvoja programske potpore za iOS operacijski sustav, praksa uključuje automatizaciju potpisivanja koda, arhiviranja i objave. Praksa automatiziranjem navedenih procesa nastoji olakšati proces isporuke te time povečati učestalost objave novih funkcionalnosti. Svaka funkcionalnos koja je razvijena a nije objavljena predstvlja gubitak timu. Dokle god razvijena funkcionalnost sjedi ne objavljena, ona ne donosi korist zbog koje je razvijena. Dodatno, pokazano je da isporuka manjeg broja promjena pozitivno utječe na kvalitetu isporučene programske potpore.
+
+Kontinuirana isporuka nastoji što više smanjiti vrijeme koje protekne od završetka razvoja do objave funkcionalnosti, pa ga čak i u potpunosti eliminirati. Kontinuirana isporuka ovo ostvaruje automatskom isporukom promjena. Međutim, promjene se ne isporučuju direktno u produkciju već prolaze više faza isporuke. Prvo se isporučuju razvojnom timu, zatim timu za osiguranje kvalitete, vanjskim testerima a nekad čak i ograničenom broju stvarnih korisnika. Tek nakon svih ovih faza se promjena isporučuje u produkciju. Kontinuirana integracija ovime nastoji povečati kvalitetu programske potpore, ubrzati isporuku promjena te smanjiti opterečenje razvojnog tima.
+
+U sklopu ovog rada definiram i implementiram navedene prakse za iOS operacijski sustav.
+
+Cilj rada nije samo u teoriji ispitati mogućnost implementacije navedenih procesa, već ih iskoristiti na stvarnim projektima. Zbog navedenog, implementacija mora biti jednostavno prenosiva na drugi projekt. Zbog ovog ograničenja ne samo da nastojim automatizirati isporuku, već nastojim automatizirati i proces dodadavanja automatske isporuke iOS projektu.
+
+Rad je strukturiran po praksama u redosljedu koji je korišten u ovom uvodu. Svaku od praksi prvo promatram iz opće perspektive te zatim definiram i implementiram za iOS operacijski sustav. Rad završava pregledom ostvarenih funkcionalnosti i kratkim zaključkom.
 
 
-
-\chapter{Kontinuirana integracija} \label{KontinuiranaIntegracija}
+\chapter{Kontinuirana integracija} \label{header:Kontinuirana_Integracija}
 
 Kontinuirana integracija je praksa spajanja razvojnih kopija koda s glavnom kopijom nekoliko puta dnevno. Termin je prvi predložio i iskoristio Grady Booch 1991. godine tijekom opisa metode danas poznate kao Boochova metoda \eng{Booch method}\citep{wiki:BoochMethod}.
 
-Glavni cilj metode je smanjivanje broja konflikata prilikom spajanja različitih verzija koda. Tijekom razvoja programeri preuzimaju zajedničku \eng{master} kopiju izvornog koda \eng{source code} te nad njom obavljaju promjene. Lokalnu kopiju izvornog koda nazivamo \textit{razvojnom kopijom izvornog koda}. Svaki programer ima vlastitu razvojnu kopiju izvornog koda.
+Glavni cilj metode je smanjivanje broja konflikata prilikom spajanja različitih verzija koda. Tijekom razvoja članovi tima preuzimaju zajedničku \eng{master} kopiju izvornog koda \eng{source code} te nad njom obavljaju promjene. Lokalnu kopiju izvornog koda nazivamo \textit{razvojnom kopijom izvornog koda}. Članovi tima pomoću zajedničke kopije izvornog koda stvaraju razvojnu kopiju izvornog koda na vlastitiom računalu.
 
-Nakon implementacije željenih promjena programer vlastitu razvojnu kopiju spaja s izvornom kopijom. Ovaj postupak nazivamo integracija izvornog koda. Ako zajednička kopija izvornog koda nije bila mijenjana od kako ju je programer preuzeo, onda je promjene moguće jednostavno dodati na vrh zajedničke kopije. Međutim, ako je zajednička kopija izvornog koda izmijenjena, onda je potrebno na neki način spojiti lokalne i već spojene promjene.
+Nakon implementacije željenih promjena programer vlastitu razvojnu kopiju spaja s izvornom kopijom. Ovaj postupak nazivamo integracija izvornog koda. Ako zajednička kopija izvornog koda nije bila mijenjana od kako ju je programer preuzeo, onda je promjene moguće jednostavno dodati zajedničkoj kopiji. Međutim, ako je zajednička kopija izvornog koda izmijenjena, onda je potrebno na neki način spojiti lokalne i promjene koje se već nalaze na glavnoj kopiji izvornog koda.
 
-Čim je duže programerova kopija izdvojena to je veća vjerojatnost izmijene izvorne kopije. Što se kopije više razlikuju to je teže obaviti njihovo spajanje. Dodatno, spajanje često nije moguće obaviti automatski. Ova se pojava naziva konflikt te se javlja prilikom spajanja kopija koje su modificirale isti dio izvornog koda. Programer u takvom slučaju prije integracije prvo mora preuzeti glavnu kopiju, ručno otkloniti konflikte koje prouzrokuju njegove promjene, te tada obaviti integraciju.
+Što je duže programerova kopija izdvojena, to je veća vjerojatnost da je izvorna kopija u međuvremenu izmijenjena. Što se kopije više razlikuju to je teže obaviti njihovo spajanje. Dodatno, spajanje često nije moguće obaviti automatski. Ova se pojava naziva konflikt te se javlja prilikom spajanja kopija koje su istovremeno modificirale isti dio istog dokumenta. Programer u takvom slučaju prvo mora preuzeti novu glavnu kopiju, ručno otkloniti konflikte koje prouzrokuju njegove promjene, te nakon toga obaviti integraciju.
 
-Nakon nekog vremena kopije mogu postati toliko različite da je vrijeme potrebno za njihovo spajanje duže od vremena koje je uloženo za implementaciju promjena. Ovaj se problem tada naziva \textit{pakao integracije}. Iako se ova situacija čini teško mogućom timovi mogu biti veliki, pritisak može biti visok i tempo naporan. Bez specificiranja postupka verzioniranja te automatizacije izgradnje i provjere ispravnosti projekti lako mogu završiti upravo u navedenom stanju.
+Nakon nekog vremena izvorna i radna kopija mogu postati toliko različite da je vrijeme potrebno za njihovo spajanje duže od vremena koje je uloženo za implementaciju promjena. Ovaj se problem tada naziva \textit{pakao integracije}. Iako se navedena situacija čini teško, mogućom timovi mogu biti veliki, pritisak može biti visok i tempo naporan. Bez specificiranja postupka verzioniranja te automatizacije izgradnje i provjere ispravnosti projekti lako mogu završiti upravo u navedenom stanju.
 
 Danas je kontinuirana integracija standardna praksa u razvoju programske potpore. Međutim, ona se značajno razlikuje od prakse koju je 1991. godine predložio Grady Booch. Danas se uz kontinuiranu integraciju usko vežu procesi automatizacije izgradnje i testiranja programske potpore. Ovi pojmovi su postali toliko standardan dio kontinuirane integracije da mnogi upravo njih nazivaju kontinuiranom integracijom. Drugim riječima, pojam kontinuirane integracije danas podrazumijeva barem neku razinu automatizacije procesa izgradnje i testiranje. S druge strane, učestalom spajanju radnih kopija se daje malo pozornosti.
 
-Kontinuiranu integraciju dijelim na tri faze: izgradnju, testiranje i osiguranje kvalitete. Podjelu kontinuirane integracije na faze s podfazama je prikazana na slici \ref{fig:CIFazes}. Svaka od faza je obrađena zasebnim odlomkom u nastavku poglavlja.
+Kontinuiranu integraciju je moguće podijeliti na tri generalne faze: izgradnju, testiranje i osiguranje kvalitete. Nadalje fazu izgradnje je moguće podijeliti na podfaze verzioniranja, pripreme sustava, pripreme ovisnosti i izgradnje projekta. Faze testiranja i osiguranja kvalitete uvelike ovise o tipu programske potpore koja se razvija. U sklopu ovog rada u fazi testiranja provodim unit i UI testove, dok u sklopu faze osiguranja kvalitete provodim provjeru pokrivenosti koda testovima te provjeru izvornog koda korištenjem alata Swiftlint. Podjela kontinuirane integracije na faze s podfazama je prikazana na slici \ref{fig:CIFazes}.
 
 \begin{figure}
 \centering
@@ -64,36 +86,98 @@ Kontinuiranu integraciju dijelim na tri faze: izgradnju, testiranje i osiguranje
 \label{fig:CIFazes}
 \end{figure}
 
-Proces verzioniranja se u praksi smatra dijelom procesa izgradnje. Zbog navedenog ću u sklopu odlomka \ref{Izgradnja} razmotriti i problem učestalosti obavljanja integracije.
+Svaka od faza je obrađena zasebnim odlomkom u nastavku poglavlja. Proces verzioniranja je u praksi dio procesa izgradnje zbog ćega je u sklopu odlomka \ref{header:Izgradnja} razmotren i problem učestalosti obavljanja integracije.
 
-Zadnji odlomak poglavlja prikazuje proces automatizacije faza korištenjem alata Xcode Server.
+Za automatizaciju izgradnje koristim alat Xcode Server. Alat je spoj dvije aplikacije, Xcode i macOS Server te implementira veliki broj funkcionalnosti korištenih u sklopu kontinuirane integracije. Alat se pokazao najboljim među nekoliko sličnih ispitanih alata. Razlog odabira Xcode Server alata je detaljnije prikazan u dodatku \ref{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}.
 
-\section{Izgradnja} \label{Izgradnja}
+\section{Priprema}
 
-Povijesno, pojam izgradnja se često koristio kao sinonim pojma kompajliranje. Kompajliranje \eng{compilation} je proces prevođenja koda iz jednog jezika u drugi uz očuvanje izvorne funkcionalnosti. Kod se prilikom prevođenja često optimizira. Najčešći razlog kompajliranja je prevođenje koda u jezik kojeg može razumjeti i time izvršiti procesor. Rezultat ovog tipa kompajliranja je izvršni program, odnosno program koji se može izvršiti. Kompajliranje je složena funkcija koja se najčešće obavlja u više prolaza. Jezici koji se kompajliraju se nazivaju kompajlirani jezici \eng{compiled languages}.
+Jedan od razloga implementacije kontinuirane integracije je i olakšanje cijelokupnog procesa izgradnje, testiranja i osiguranja kvalitete. Što je implementacije automatizacije zahtjevnija to više narušavam navedeni cilj. Zbog navedenog nastojim automatizirati instalaciju i konfiguraciju što većeg broja alata i time olakšati cijelokupan proces implementacije kontinuirane integracije. Dodatno, automatizacija procesa instalacije i konfiguracije nam omogućava veću kontrolu nad samim procesom. Na primjer, alat je moguće instalirati samo ako je i kad je to potrebno, dok se ručnim postupkom instalacija alata mora obaviti prije pokretanja automatizacije.
 
-Interpretirani jezici \eng{interpreted languages} se ne prevode već interpretiraju. Oni se izvršavaju na pomoćnom programu naziva interpreter koji naredbe izvornog jezika prevodi i izvršava na računalu. Danas gotovo niti jedan jezik nije u cijelosti kompajliran ili interpretiran, već koristi kombinaciju obje metode s ciljem optimizacije performansi.
+Međutim, macOS je vrlo siguran te zbog toga zatvoren operacijski sustav. Veliki broj alata zahtijeva korisničku interakciju zbog čega je njihovu instalaciju teško automatizirati. Ako se instalacija obavlja za više računa ili alat pristupa osjetljivim datotekama onda je instalaciju potrebno autorizirati lozinkom računa s administracijskim privilegijama. Postoji nekoliko načina za automatski upis lozinke, ali navedeni procesi narušavaju sigurnost operacijskog sustava te zbog tpga nije moguće u potpunosti automatizirati proces dohvata i pripreme alata.
+
+Ovaj odlomak priprema alate čiju instalaciju nije moguće automatizirati, dok odlomak \ref{header:PripremaSustava} prikazuje pripremu ostalih alata. Primjeri su napisani za macOS operacijski sustav te su testirani na \textit{Sierra 10.12.4} verziji. Minimalna preporučena verzija operacijskog sustava je \textit{Yosemite 10.10}.
+
+Za implementaciju kontinuirane integracije koristim brojne alate koji ne pružaju vizualno korisničkom sučelje. Navedenim se alatima pristupa korištenjem nardedbenog korisničkog sučelja - \textit{ljuske}. U sklopu rada koristim \textit{bash} ljusku. Pristup naredbenom korisničkom sučelju se ostvaruje korištenjem emulatora terminala, aplikacija s vizualnim sučeljem koje emuliraju terminal. U radu koristim aplikaciju \textit{Terminal} koja je dostupna u sklopu instalacije macOS operacijskog sustava.
+
+\subsection{Xcode Server}
 
 \begin{figure}
 \centering
+\includegraphics[scale=0.35]{XcodeServerSetup1}
+\caption{Povezivanje macOS Server i Xcode aplikacija}
+\label{fig:XcodeServerSetup1}
+\end{figure}
+
+Xcode Server je spoj dva alata - Xcodea i macOS Servera. Xcode je integrirani sustav razvoj programske potpore za iOS, macOS, tvOS i watchOS operacijske sustave. MacOS Server je alat za automatizaciju procesa na macOS operacijskom sustavu. Prije implementacije kontinuirane integracije je potrebno preuzeti oba alata, instalirati i konfigurirati oba alata.
+
+Oba alata je moguće preuzeti korištenjem App Store aplikacije koje je dostupna u sklopu svake instalacije macOS operacijskog sustava. Međutim, cijena macOS Server aplikacije je u trenutku pisanja ovog rada \$25. Međutim, aplikacija je besplatna za korisnike s Apple Developer računom koji se koristi i u razvoju iOS programskepotpore. Besplatnu verziju macOS Servera je moguće preuzeti na poveznici \path{https://developer.apple.com/download/}. Nakon preuzimanja slijediti upute za instalaciju obje aplikacije.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{XcodeServerSetup2}
+\caption{Kreiranje Xcode Server korisničkog računa}
+\label{fig:XcodeServerSetup2}
+\end{figure}
+
+Nakon instalacije alata je potrebno kreirati Xcode Server alat povezivanjem Xcode i macOS Server aplikacija. Pokrenuti macOS Server, u lijevom izborniku odabrati \textit{Xcode} te odabrati opciju \textit{Choose Xcode...}. U novo otvorenom izborniku odabrati željenu verziju Xcode aplikacije. Slika \ref{fig:XcodeServerSetup1} prikazuje proces povezivanja macOS Server i Xcode aplikacija.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.4]{DodavanjeCertifikata}
+\caption{Dodavanje certifikata korištenjem Keychain Access aplikacije}
+\label{fig:DodavanjeCertifikata}
+\end{figure}
+
+Preporučeno je zbog sigurnosnih razloga macOS Server pokrenuti na zasebnom računu operacijskog sustava te omogućiti korištenje samo potrebnih alata i datoteka. Nakon povezivanja Xcode aplikacije s macOS Serverom otvara se izbornik u kojem je moguće kreirati novi račun operacijskog sustava ili odabrati postojeći. U sklopu ovog rada kreiram novi račun predodređenog imena \textit{xcodeserver}. Slijediti upute nakon kreiranja računa za dovršetak spajanja.
+
+Proces potpisivanja koda osigurava autentičnost i ne izmijenjenost kreirane programske potpore. Proces je dateljnije objašnjen u \ref{header:PotpisivanjeKoda} odlomku. Za sada je dovoljno znati da proces zahtjeva postojanje tri artefakta: certifikat člana tima, identifikator aplikacije i pripremni profil aplikacije za tip isporuke koji se koristi. Navedene certifikate je moguće kreirati i preuzeti s web stranice \path{https://developer.apple.com/account}.
+
+Certifikat i identifikator se instaliraju korištenjem Keychain Access aplikacije. Dovoljno ih je jednostavno pokrenuti korištenjem navedene aplikacije. Pripremne profile je potrebno spremiti na lokaciji \path{~/Library/MobileDevice/Provisioning_Profiles}.
+
+Xcode Server automatizaciju izgradnje, testiranja i isporuke ostvaruje korištenjem alata nazvanog \textit{bot}. Bot se kreira i konfigurira korištenjem Xcode aplikacije a pokreće na macOS Server aplikaciji. Navedene aplikacije se ne moraju nalaziti na istom računalu ali moraju biti povezane.
+
+Pokrenuti željeni projekt u aplikaciji Xcode. Kreiranje kontinuirane integracije se pokreće odabirom opcije \textit{Product -> Create bot...}.
+
+Nakon odabira navedene opcije otvara se novi prozor u kojem je potrebno imenovati bot te odabrati macOS Server aplikaciju na kojoj će se bot izvršavati. Ukoliko macOS Server nije vidljiv, ponovno pokrenuti macOS Server aplikaciju i provjeriti povezanost s Xcode aplikacijom. Slika \ref{fig:BotServerSelection} prikazuje odabir macOS Server aplikacije kod kreiranja bota.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{BotServerSelection}
+\caption{Odabir macOS Servera aplikacije za obvljanje kontinuirane integracije}
+\label{fig:BotServerSelection}
+\end{figure}
+
+\subsection{Homebrew}
+
+Homebrew je alat za dohvat i upravljanje alatima za macOS operacijski sustav\citep{homebrew}. Dodatno, alat navedene funkcionalnosti prža korištenjem naredbenog korisničkog sučelja zbog čega ih je jednostavno automatizirati. Instalacija alata zahtijeva administrativna prava \eng{sudo user}, zbog čega istu nije moguće automatizirati. Skripta \ref{listing:homebrew} instalira Homebrew alat korištenjem alata \textit{ruby}. Nakon pokretanja naredbe slijediti upute instalacije.
+
+\begin{lstlisting}[caption=Instalacija Homebrew alata, label=listing:homebrew]
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+\end{lstlisting}
+
+\section{Izgradnja} \label{header:Izgradnja}
+
+Povijesno, pojam izgradnja se često koristio kao sinonim pojma kompajliranje. Kompajliranje \eng{compilation} je proces prevođenja koda iz jednog jezika u drugi uz očuvanje funkcionalnosti. Kod se uz prijevođenje često i optimizira . Najčešći razlog kompajliranja je prevođenje koda u jezik kojeg može razumjeti i time izvršiti procesor. Rezultat ovog tipa kompajliranja je izvršni program, odnosno program koji se može izvršiti. Kompajliranje je složena funkcija koja se najčešće obavlja u više prolaza. Jezici koji se kompajliraju se nazivaju kompajlirani jezici \eng{compiled languages}.
+
+Interpretirani jezici \eng{interpreted languages} se ne prevode već interpretiraju. Oni se izvršavaju na pomoćnom programu naziva interpreter koji naredbe izvornog jezika prevodi i izvršava. Danas gotovo niti jedan jezik nije u cijelosti kompajliran ili interpretiran, već koristi kombinaciju obje metode s ciljem poboljšanja performansi.
+
+\begin{figure}[b!]
+\centering
 \includegraphics[scale=0.5]{BuildProcess}
-\caption{Generalna podjela procesa izgradnje}
+\caption{Podfaze procesa izgradnje}
 \label{fig:BuildProcess}
 \end{figure}
 
-Danas s pojmom izgradnje vežemo sve procese koji su dio pretvaranja izvornog koda u željeni artefakt. Ovisno o jeziku i alatima koje koristimo, proces izgradnje može značajno oscilirati u svojoj veličini. Generalno proces izgradnje možemo podijeliti na verzioniranje, pripremu sustava za izgradnju, dohvat i pripremu ovisnosti \eng{dependancies} te kompajliranje. Verzioniranjem odabiremo željenu verziju izvornog koda koju koristimo za izgradnju artefakta. Priprema za izgradnju dovodi računalo u stanje potrebno za obavljanje izgradnje. Izvorni kod često sadržava upute za pripremu sustava kao što su potrebni alati, ovisnosti i postavke projekta. Dohvat i priprema ovisnosti osigurava postojanje ispravnih ovisnosti korištenih u izvornom kodu. Ovisnosti dijelimo na dva tipa, službene ovisnosti koje smatramo dijelom razvojne okoline i vanjske \eng{third party} ovisnosti, najčešće razvijene od strane zajednice. Kompajliranje prevodi izvorni kod u izvršivi artefakt. Kod interpretiranih jezika ovaj je proces često zamijenjen statičkom i dinamičkom provjerom izvedivosti programa. Zbog jednostavnijeg sporazumijevanja oba procesa nazivam izgradnja projekta. Proces izgradnje je prikazan na slici \ref{fig:BuildProcess}.
+Danas s pojmom izgradnje vežemo sve procese koji su dio pretvaranja izvornog koda u željeni artefakt. Ovisno o jeziku i alatima koje koristimo, proces izgradnje može značajno oscilirati u svojoj veličini. Generalno proces izgradnje možemo podijeliti na verzioniranje, pripremu sustava za izgradnju, dohvat i pripremu ovisnosti \eng{dependancies} te kompajliranje. Verzioniranjem odabiremo željenu verziju izvornog koda koju koristimo za izgradnju artefakta. Priprema za izgradnju dovodi računalo u stanje potrebno za obavljanje izgradnje. Izvorni kod često sadržava upute za pripremu sustava kao što su potrebni alati i postavke projekta. Dohvat i priprema ovisnosti osigurava postojanje ovisnosti koje zahtijeva izvorni kod. Ovisnosti dijelimo na dva tipa, ovisnosti koje su dio razvojne okoline i vanjske \eng{third party} ovisnosti, najčešće razvijene od strane zajednice. Kompajliranje prevodi izvorni kod u izvršivi artefakt. Kod interpretiranih jezika ovaj je proces često zamijenjen statičkom i dinamičkom provjerom izvedivosti programa. Zbog jednostavnijeg sporazumijevanja oba procesa nazivam izgradnja projekta. Slika \ref{fig:BuildProcess} prikazuje podjelu procesa izgradnje.
 
-Osim kreiranja željenog artefakta, izgradnja provjerava i je li zadana verzija izvornog koda izgradiva. Kod je izgradiv ako se u procesu izgradnje ne desi pogreška, odnosno ako se isti ispravno izvrši. Pogrešku može izazvati neispravnost u izvornom kodu, neispravna konfiguracija sustava, nepostojanje potrebnog alata ili neki drugi nedostatak. Izgradivost sustava je preduvjet za  testiranja i isporuku. Samim time je automatizacija izgradnje preduvjet za automatizaciju testiranja i automatizaciju isporuke.
-
-Nastavak odlomka promatra svaki dio izgradnje zasebno. Dodatak \ref{IntegracijaDodatakA} dublje ulazi u tehničke aspekte pojedinog procesa.
+Osim kreiranja artefakta, izgradnja provjerava i je li zadana verzija izvornog koda izgradiva. Kod je izgradiv ako se u procesu izgradnje ne izaziva pogrešku, odnosno ako se isti ispravno izvrši. Pogrešku može izazvati neispravnost u izvornom kodu, neispravna konfiguracija sustava, ne postojanje potrebnog alata ili neka druga neispravnost. Izgradivost sustava je preduvjet za  testiranja i isporuku. Samim time je automatizacija izgradnje preduvjet za automatizaciju testiranja i automatizaciju isporuke.
 
 \subsection{Verzioniranje}
 
-Verzioniranje je proces dodjele jedinstvene oznake stanju izvornog koda\citep{wiki:SoftwareVersioning}. Ova oznaka omogućava jedinstvenu identifikaciju pojedinog stanja programske potpore. Verzionirano stanje izvornog koda se naziva verzija.
+Verzioniranje je proces dodjele jedinstvene oznake \eng{id} stanju repozitorija\citep{wiki:SoftwareVersioning}. Repozitorij je verzioniran direktorij te može sadržavati sve od izvornog koda do certifikata i izvršnog programa. Jedinstvena oznaka omogućava identifikaciju pojedinog stanja repozitorija i izgradnju stabla promjena \eng{source tree} koje povezivanjem stanja prikazuje povijest izmjena repozitorija. Verzionirano stanje repozitorija se naziva verzija \eng{commit}.
 
-Uz jedinstvenu oznaku i stanje izvornog koda, proces verzioniranja pohranjuje i dodatne podatke kao što su autor, datum i lokacija kreiranja verzije. Navedeni podaci omogućavaju izgradnju stabla promjena. Ako verzije poredamo kronološki po datumu obavljanja izmjena, onda svaka pojedina verzija ne treba sadržavati cijelo stanje izvornog kod. Dovoljno je samo navesti sve promjene koje su obavljene nakon zadnjeg verzioniranja. Navedeni proces ne samo da značajno smanjuje veličinu repozitorija već olakšava i praćenje izmjena. Slika \ref{fig:VersioningTree} prikazuje primjer stabla promjena. Glavni repozitorij sadrži dvije verzije izvornog. Repozitorij u navedenom stanju preuzimaju dva programera čime kreiraju lokalne repozitorije nad kojima obavljaju izmjene. Globalno stablo promjena se kreira spajanjem stabla promjena pojedine osobe.
-
-\begin{figure}[h!]
+\begin{figure}[b!]
 \centering
 \begin{subfigure}{.24\textwidth}
 \centering
@@ -123,22 +207,26 @@ Uz jedinstvenu oznaku i stanje izvornog koda, proces verzioniranja pohranjuje i 
 \label{fig:VersioningTree}
 \end{figure}
 
-U razvoju programske potpore se najčešće koriste dvije različite sheme verzioniranja. Unutarnje, inkrementalno verzioniranje koje se osvježava i nekoliko puta dnevno te vanjsko verzioniranje koje obilježava specifičnu verziju koda, na primjer verziju koda spremnu za objavu. Kod unutarnjeg verzioniranja sam identifikator nije bitan dokle god je on jedinstven. S druge strane, kako vanjsko verzioniranje nosi neko značenje, proces dodjele identifikatora je puno složeniji i ovisi o svrsi koje se pokušava postići. Često se za postizanje vanjskog verzioniranja dodjeljuju posebne oznake \eng{tag} unutarnjim verzijama izvornog koda.
+Uz jedinstvenu oznaku i stanje repozitorija, proces verzioniranja pohranjuje i dodatne podatke kao što su autor i datum kreiranja verzije, te identifikator prijašnje verzije. Navedeni podaci omogućavaju izgradnju stabla promjena. Dodatno, ako verzije poredamo kronološki po datumu obavljanja izmjena, onda svaka pojedina verzija ne treba sadržavati cijelo stanje repozitorija. Dovoljno je samo navesti promjene obavljene nakon prijašnje verzije. Navedeni proces ne samo da značajno smanjuje veličinu cijele kopije, već olakšava i praćenje izmjena. Slika \ref{fig:VersioningTree} prikazuje primjer stabla promjena. Glavni repozitorij sadrži dvije verzije. Repozitorij u navedenom stanju preuzimaju dva člana tima čime kreiraju lokalne repozitorije nad kojima obavljaju izmjene. Globalno stablo promjena se kreira zajedničkim prikazom stabla promjena svih članova.
 
-Unutarnje verzioniranje koda se naziva kontrola verzija\citep{wiki:VersionControl}. Sustavi koji implementiraju proces kontrole verzija se nazivaju sustavi za kontrolu verzija. Kroz povijest je razvijen veliki broj sustava za kontrolu verzija te je danas timski razvoj programske potpore ne zamisliv bez korištenja jednog od ovih alata.
+Navedeni tip verzioniranja se naziva inkrementalno verzioniranje jer se zbog lakšeg praćenje promjena provodi vrlo često. Identifikatori ovog tipa verzioniranja su najčešće generirani pseudo-slučajno. U sklopu razvoja programske potpore najčešće koriste i dodatne sheme verzioniranja koje olakšavaju pračenje stanja projekta. Navedene sheme nastoje olakšati praćenje projekta zbog čega se ovaj tip verzioniranja se naziva vanjsko verzioniranje. Verzije se gotovo uvijek kreiraju dodavanjem posebnih oznaka postojećoj verziji inkrementalnog verzioniranja. Na primjer, u praksi je standardno označiti svaku verziju iz koje se kreira produkt koji se izdaje posebnom oznakom koja se naziva verzija izgradnje \eng{build number}. Kako vanjsko verzioniranje nosi neko značenje, proces dodjele identifikatora je puno složeniji i ovisi o svrsi koje se pokušava postići.
 
-Danas se u praksi koriste dva alata: Apach Subversion i git. Apache Subversion, poznat i pod skraćenicom svn, je kreiran 2000. godine u sklopu projekta Apache Software Foundation zajednice. Alat je otvorenog koda, centraliziran, siguran i jednostavan za korištenje. Obično postoji jedan glavni repozitorij kojeg programeri kloniraju, uređuju te zatim lokalne promjene sinkroniziraju s glavnim repozitorijem.
+Unutarnje verzioniranje koda se naziva kontrola verzija\citep{wiki:VersionControl}. Sustavi koji implementiraju proces kontrole verzija se nazivaju sustavi za kontrolu verzija. Kroz povijest je razvijen veliki broj sustava za kontrolu verzija te je danas timski razvoj programske potpore gotovo ne zamisliv bez korištenja jednog od njih.
 
-Git je kreirao Linus Torvalds 2005. godine zbog nezadovoljstva tadašnjim sustavima za kontrolu verzija. Git je izdan kao alat otvorenog koda te je ubrzo okupio veliku podršku u zajednici. Za razliku od svna, git je distribuirani sustav. Repozitoriji istog projekta mogu postojati na proizvoljnom broju uređaja u proizvoljnom broju stanja. Navedeni se repozitoriji mogu klonirati, usklađivati i uređivati neovisno jedan od drugom. Zbog navedenog je pomoću gita moguće implementirati proizvoljan tijek verzioniranja. Bio to centralizirani repozitorij nalik na svnov pristup, pristup s osobama zaduženim za odobravanje promjena, distribuirani model i drugi. Najvažnije, git je jednostavan ali vrlo moćan alat. Implementacija osnovnih funkcionalnosti je jednostavna dok istovremeno postoji podrška za vrlo kompleksne pothvate.
+Danas su u praksi najpopularnija dva alata: Apach Subversion i git.
 
-Svn je stariji, međutim još je uvijek široko korišten sustav. Koristi ga veliki broj starijih kompanija i projekata otvorenog koda. Git je značajno dobio na popularnosti u zadnjem desetljeću. Njegova jednostavnost i fleksibilnost ga čine lakšim za upoznavanje i korištenje. Danas git preuzima tržište te se koristi u većini novih projekata. Zbog navedenog u ostatku rada koristim git. Sve se funkcionalnosti mogu, uz manju modifikaciju, implementirati i u svnu.
+Apache Subversion, poznat i pod skraćenicom svn, je kreiran 2000. godine u sklopu projekta vođenog od Apache Software Foundation zajednice. Alat je centraliziran, siguran i jednostavan za korištenje te je danas objavljen kao alat otvorenog koda. Generalno postoji jedan glavni repozitorij kojeg članovi tima kloniraju, uređuju te zatim lokalne promjene sinkroniziraju s glavnim repozitorijem.
+
+Git je kreirao Linus Torvalds 2005. godine zbog nezadovoljstva tadašnjim sustavima za kontrolu verzija. Git je izdan kao alat otvorenog koda te je ubrzo okupio veliku podršku u zajednici. Za razliku od svna, git je distribuirani sustav. Repozitoriji istog projekta mogu postojati na proizvoljnom broju uređaja u proizvoljnom broju stanja. Navedeni se repozitoriji mogu klonirati, usklađivati i uređivati neovisno jedan od drugom. Zbog navedenog je pomoću gita moguće implementirati proizvoljan pristup verzioniranju. Bio to centralizirani repozitorij nalik na svnov pristup, pristup s osobama zaduženim za odobravanje promjena, distribuirani model i drugo. Najvažnije, git je jednostavan ali vrlo moćan alat. Implementacija osnovnih funkcionalnosti je intuitivna dok istovremeno postoji podrška za vrlo kompleksne pothvate.
+
+Svn je stariji, međutim još uvijek široko korišten sustav. Koristi ga veliki broj starijih kompanija i projekata otvorenog koda. Git je značajno popularniji na novijim projektima, posebno onim otvorenog koda. Njegova jednostavnost i fleksibilnost ga čine lakšim za upoznavanje i korištenje. Zbog navedenog u ovom rada koristim git. Sve se funkcionalnosti mogu, uz manju modifikaciju, implementirati i korištenjem svna.
 
 
-\subsection{Uvod u git} \label{uvodUGit}
+\paragraph{Uvod u git}
 
-Temeljne funkcionalnosti git alata su repozitoriji i grane. Repozitorij je direktorij koji je verzioniran korištenjem git sustava za kontrolu verzija. Ovaj repozitorij sadrži direktorij “.git” koji specificira na koji se način verzionira repozitori te sadrži informacije o repozitoriju.
+Temeljne funkcionalnosti git alata su repozitoriji i grane. Repozitorij je direktorij koji je verzioniran korištenjem git sustava za kontrolu verzija. Ovaj repozitorij sadrži direktorij \verb|.git| koji specificira na koji se način verzionira direktorij te sadrži informacije o repozitoriju.
 
-Repozitoriji se mogu klonirati na istom ili drugom uređaju. Klonirani repozitorij je novi repozitorij koji sadržava svu povijest kloniranog repozitorija. Promjene koje se obavljaju u kloniranom repozitoriju nemaju nikakvog utjecaja na izvorni repozitorij. Međutim, promjene obavljene u kloniranom repozitoriju se mogu, uz postojanje odgovarajuće autorizacije, prenijeti na izvorni repozitorij. Prijenos promjena se ne mora obavljati isključivo između izvornog i kloniranog repozitorija, već se može obaviti između bilo koja dva povezana repozitorija.
+Repozitoriji se mogu klonirati na istom ili drugom uređaju. Klonirani repozitorij je novi repozitorij identičan izvornom repozitoriju. Promjene koje se obavljaju u kloniranom repozitoriju nemaju nikakvog utjecaja na izvorni repozitorij. Međutim, promjene obavljene u kloniranom repozitoriju se mogu, uz postojanje odgovarajuće autorizacije, prenijeti na izvorni repozitorij. Prijenos promjena se ne mora obavljati isključivo između izvornog i kloniranog repozitorija, već se može obaviti između bilo koja dva povezana repozitorija.
 
 \begin{figure}[b!]
 \centering
@@ -156,7 +244,7 @@ Repozitoriji se mogu klonirati na istom ili drugom uređaju. Klonirani repozitor
 \end{minipage}
 \end{figure}
 
-Prilikom kreiranja git repozitorija stvara se i glavna grana (eng. master branch) repozitorija. Grana je definirana slijedom promjena koje su primijenjene na njoj. Modificiranje dokumenata u repozitorija ne uzrokuje samo po sebi stvaranje nove verzije. Obavljene modifikacije je potrebno potvrditi \eng{commit}. Potvrđivanje modifikacija kreira novu verziju izvornog koda na trenutnoj grani te osvježava njeno stanje. Potvrđivanje promjena je prikazano na slici \ref{fig:Initial_commit}. Repozitorij koda se stvara kreiranjem glavne grane i obavljanjem inicijalnog potvrđivanja \eng{initial commit}. Glavna grana je označena slovom A. Inicijalno potvrđivanje je označeno s A1, dok su naknadna potvrđivanja označena s A2 i A3.
+Prilikom kreiranja git repozitorija stvara se i glavna grana (eng. master branch) repozitorija. Grana je definirana slijedom verzija koje su obavljene na njoj. Stvaranje nove verzije na trenutnj grani se ostvarjuje potrvrđivanjem promjena \eng{commit} koje su dodane repozitoriju. Potvrđivanje promjena je prikazano na slici \ref{fig:Initial_commit}. Repozitorij koda se stvara kreiranjem glavne grane i obavljanjem inicijalnog potvrđivanja \eng{initial commit}. Glavna grana je označena slovom A. Inicijalno potvrđivanje je označeno identifikatorom A1, dok su naknadna potvrđivanja označena identifikatorima A2 i A3.
 
 \begin{figure}
 \centering
@@ -172,14 +260,17 @@ Prilikom kreiranja git repozitorija stvara se i glavna grana (eng. master branch
 \caption{Stanje nakon spajanja}
 \label{fig:FastForwardB}
 \end{subfigure}
-\caption{Spajanja dodavanje promjena}
+\caption{Spajanje dodavanje promjena}
 \label{fig:FastForward}
 \end{figure}
 
-Nova grana se može kreirati iz bilo kojeg stanja postojeće granje. Ovaj se postupak naziva grananje \eng{branching}. Izvorna i klonirana grana dijele zajedničku povijest do trenutka grananja. Daljnje promjene se primjenjuju samo na izvornu ili kloniranu granu. Slika \ref{fig:Branching} prikazuje postupak grananja. Grana B se kreira iz stanja A2 grane A. Grane A i B dijele dva zajednička stanja A1 i A2. Ova stanja nazivamo zajednička povijest grana. Nakon grananja na granu B dodajemo dva nova stanja B2 i B3.
+Nova grana se može kreirati iz bilo kojeg stanja postojeće granje. Ovaj se postupak naziva grananje \eng{branching}. Izvorna i kreirana grana dijele zajedničku povijest do trenutka grananja. Daljnje promjene se primjenjuju samo na jednu od postojećih grana. Slika \ref{fig:Branching} prikazuje postupak grananja. Grana B se kreira iz stanja A2 grane A. Grane A i B dijele dva zajednička stanja A1 i A2. Ova stanja nazivamo zajednička povijest grana A i B. Nakon grananja na granu B dodajemo novo stanje B3.
 
+Grane je također moguće spojiti. Spajanje grana dodaje promjene obavljene na izvornoj \eng{source} grani u odredišnu \eng{destionation} granu. Spajanje je moguće obaviti na nekoliko načina ovisno o odnosu dviju grana koje se spajaju. Slika \ref{fig:FastForward} prikazuje najjednostavniji odnos dviju grana kod spajanja. Nakon grananja grane B iz stanja A1 grane A na granu B se dodaju dva nova stanja, B2 i B3. U međuvremenu je grana A ostala nepromijenjena. Zbog navedenog je spajanje grana moguće obaviti jednostavno dodavanjem promjena B grane na vrh A grane, \eng{fast forward merge}. Slike \ref{fig:FastForwardA} prikazuje stanje prije spajanja dok slika \ref{fig:FastForwardB} prikazuje stanje nakon spajanja. Dodatno, samo spajanje je moguće označiti dodavanjem novog stanja na odredišnu granu.
 
-\begin{figure}[b!]
+Postupak se komplicira ako je odredišna grana modificirana nakon grananja. U navedenom slučaju nije moguće promjene obavljene u izvorišnoj gani samo dodati na vrh odredišne grane, nego je promjene potrebno spojiti. Proces spajanja ovisi o tome postoje li konflikti između promjena. Ako ne postoji, spajanje je moguće obaviti jednako kao na slici \ref{fig:FastForward}, jednostavno dodavanjem promjena na vrh odredišne grane.
+
+\begin{figure}
 \centering
 \begin{subfigure}{.49\textwidth}
 \centering
@@ -197,13 +288,9 @@ Nova grana se može kreirati iz bilo kojeg stanja postojeće granje. Ovaj se pos
 \label{fig:Conflict}
 \end{figure}
 
-Grane je također moguće spojiti. Spajanje grana dodaje promjene obavljene na izvornoj \eng{source} grani u odredišnu \eng{destionation} granu. Spajanje je moguće obaviti na nekoliko načina ovisno o odnosu dviju grana koje se spajaju. Slika \ref{fig:FastForward} prikazuje najjednostavniji odnos dviju grana kod spajanja. Nakon grananja grane B iz stanja A2 grane A na granu B se dodaju dva nova stanja, B2 i B3. U međuvremenu je grana A ostala nepromijenjena. Zbog navedenog je spajanje grana moguće obaviti jednostavno dodavanjem promjena B grane na vrh A grane, \eng{fast forward}. Slike \ref{fig:FastForwardA} prikazuje stanje prije spajanja dok slika \ref{fig:FastForwardB} prikazuje stanje nakon spajanja. Dodatno, samo spajanje je moguće označiti dodavanjem dodatnog stanja na granu na kojoj se obavlja spajanje.
+Međutim, ako promjene izazivaju konflikte, onda je te konflikte potrebno ručno razriješiti. Otklanjanje konflikata uzrokuje izmjenu verzija jedne ili obje grane. Proces otklanjanja konflikata se najčešće odrađuje dodavanjem jedne po jedne verzije izvorne grane na odredišnu granu. Ako dodana verzija ne izaziva konflikt, ona se jednostavno dodaje na vrh odredišne grane. Međutim, ako verzija izaziva konflikt, tada se isti otklanja modificirajući dodanu verziju. Slika \ref{fig:Conflict} prikazuje proces spajanja grana s konfliktom. Konflikt je nastao između verzija A2 i B2. Konflikt se otklanja dodavanjem verzije B2 na vrh A grane i njenim modificiranjem. Ovo je stanje označeno s B2'. Stanje B3 ne izaziva konflikt te se samo dodaje na vrh A grane. Rezultat spajanja su dvije grane A i B različitih povijesti.
 
-Postupak se komplicira ako je odredišna grana modificirana nakon grananja. U navedenom slučaju nije moguće promjene obavljene u izvorišnoj gani samo dodati na vrh odredišne grane, nego je promjene potrebno spojiti. Proces spajanja ovisi o tome postoje li konflikti između promjena. Ako ne postoji, spajanje je moguće obaviti jednako kao na slici \ref{fig:FastForward}, jednostavno dodavanjem promjena na vrh odredišne grane.
-
-Međutim, ako promjene izazivaju konflikte, onda je te konflikte potrebno ručno razriješiti. Otklanjanje konflikata uzrokuje izmjenom verzija jedne ili obje grane. Proces otklanjanja konflikata se najčešće odrađuje dodavanjem jedne po jedne verzije izvorne grane na odredišnu granu. Ako dodana verzija ne izaziva konflikt, ona se jednostavno dodaje na vrh odredišne grane. Međutim, ako verzija izaziva konflikt, tada se isti otklanja modificirajući dodanu verziju. Slika \ref{fig:Conflict} prikazuje proces spajanja grana s konfliktom. Konflikt je nastao između verzija A2 i B2. Konflikt se otklanja dodavanjem verzije B2 na vrh A grane i njenim modificiranjem. Ovo je stanje označeno s B2'. Stanje B3 ne izaziva konflikt te se samo dodaje na vrh A grane. Rezultat spajanja su dvije grane A i B različitih povijesti.
-
-\begin{figure}[h!]
+\begin{figure}[b!]
 \centering
 \begin{subfigure}{.3\textwidth}
 \centering
@@ -227,88 +314,288 @@ Međutim, ako promjene izazivaju konflikte, onda je te konflikte potrebno ručno
 \label{fig:Rebase}
 \end{figure}
 
-Gore naveden slučaj se često rješava postupkom pod nazivom \textit{rebase}. Postupak prije spajanja u povijest izvorišne grane dodaje sve verzije nastala u odredišnoj grani nakon grananja. Verzije se dodaju odmah nakon stare točke grananja čime se točka grananja pomiče na zadnju verziju A grane. Slika \ref{fig:RebaseB} prikazuje stanje nakon obavljanja \textit{rebase} postupka na grani B. Sada su grane u stanju jednakom onom na slici \ref{fig:FastForward} te je spajanje moguće obaviti dodavanjem promjena na vrh odredišne grane. Stanje B2 se još uvijek mijenja, međutim sada je povijest repozitorija linearna.
+Isti je slučaj moguće riješiti postupkom koji se naziva \textit{rebase}. Postupak prije spajanja u povijest izvorišne grane dodaje sve verzije nastala u odredišnoj grani nakon grananja. Verzije se dodaju odmah nakon stare točke grananja čime se točka grananja pomiče na zadnju verziju A grane. Slika \ref{fig:RebaseB} prikazuje stanje nakon obavljanja \textit{rebase} postupka na grani B. Sada su grane u stanju jednakom onom na slici \ref{fig:FastForward} te je spajanje moguće obaviti dodavanjem promjena na vrh odredišne grane. Stanje B2 se još uvijek mijenja, međutim sada je povijest repozitorija linearna.
 
 
-\subsection{Implementacija verzioniranja} \label{header:Implementacija_verzioniranja}
+\paragraph{Tijek verzioniranja} \label{header:Implementacija_verzioniranja}
 
 Ostaje otvoreno pitanje kako koristiti alat za kontrolu verzija. Koliko često kreirati novu verziju koda i koliko često promjene spajati sa zajedničkim repozitorijem. Kod korištenja gita se javljaju i pitanja kako organizirati repozitorije i sustav grananja.
 
 Programer koji samostalno radi na projektu najčešće koristi jedan javni repozitorij s jednom granom na kojoj obavlja promjene i proizvoljno sinkronizira lokalni s glavnim repozitorijem. Međutim, ovaj pristup je vrlo teško održiv u timskom radu. Učestalo preplitanje različitih tokova razvoja na jednoj grani značajno otežava praćenje razvoja i čini teškim poništavanje neželjenih promjena.
 
-Danas se u praksi koristi nekoliko različitih procesa verzioniranja \eng{versionining workflows}. Ovaj odlomak obrađuje centralizirani proces \eng{centralized workflow}, proces grananja funkcionalnosti \eng{feature branch workflow}, \textit{gitflow} proces \eng{gitflow workflow} i proces forkanja \eng{forking workflow}. Svaki od navedenih pristupa ima svoje prednosti i mane te se koristi u različitim tipovima projekta\citep{versioningWorkflows}.
+Danas se u praksi koristi nekoliko različitih tijeka rada verzioniranja \eng{versionining workflows}. Ovaj odlomak obrađuje centralizirani tijek rada \eng{centralized workflow}, tijek rada grananja funkcionalnosti \eng{feature branch workflow}, \textit{gitflow} tijek rada \eng{gitflow workflow} i tijek rada izdvajanja \eng{forking workflow}. Svaki od navedenih pristupa ima svoje prednosti i mane te se koristi u različitim tipovima projekta\citep{versioningWorkflows}.
 
-Centralizirani proces koristi jedan glavni i više lokalnih repozitorija. Najčešće se koristi samo jedna, glavna grana. Svaki programer kreira lokalnu kopiju glavnog repozitorija na kojoj obavlja promjene. Nakon obavljanja željenih promjena iste spaja s glavnom granom centralnog repozitorija. Na pojedinom je programeru da vlastitu, lokalnu verziju repozitorija drži usklađenom s glavnim repozitorijem. Glavni repozitorij predstavlja službeno stanje projekta zbog čega treba posebnu pažnju obratiti na održavanje njegove povijesti. Izmjena povijesti glavnog repozitorija može dovesti lokalne repozitorije u nekonzistentno stanje zbog čega se ona smatra vrlo lošom praksom. Zbog navedenog, ako lokalna kopija izaziva konflikt pri spajanju, konflikt je potrebno otkloniti na lokalnoj kopiji te promjene zatim spojiti s centralnim repozitorijem. Centralizirani proces je vrlo jednostavan te je sličan načinu rada svna.
+Centralizirani tijek rada koristi jedan glavni i više lokalnih repozitorija. Najčešće se koristi samo jedna, glavna grana. Svaki programer kreira lokalnu kopiju glavnog repozitorija na kojoj obavlja promjene. Nakon obavljanja željenih promjena iste spaja s glavnom granom centralnog repozitorija. Na pojedinom je programeru da vlastitu, lokalnu verziju repozitorija drži usklađenom s glavnim repozitorijem. Glavni repozitorij predstavlja službeno stanje projekta zbog čega treba posebnu pažnju obratiti na održavanje njegove povijesti. Izmjena povijesti glavnog repozitorija može dovesti lokalne repozitorije u nekonzistentno stanje zbog čega se ona smatra lošom praksom. Zbog navedenog, ako lokalna kopija izaziva konflikt pri spajanju, konflikt je potrebno otkloniti na lokalnoj kopiji te promjene zatim spojiti s centralnim repozitorijem. Centralizirani proces je vrlo jednostavan te je sličan načinu rada svna.
 
-\begin{figure}[b]
+\begin{figure}
 \centering
 \includegraphics[scale=0.5]{FeatureBranch}
-\caption{Primjer proces grananja funkcionalnosti}
+\caption{Primjer tijek rada grananja funkcionalnosti}
 \label{fig:FeatureBranch}
 \end{figure}
 
-Proces grananja funkcionalnosti nastoji otkloniti glavni nedostatak centraliziranog procesa, učestalo preplitanje različitih tokova razvoja. Proces grananja funkcionalnosti također ima jedan glavni i više lokalnih repozitorija. Razlika je u tome što se funkcionalnost implementira u grani kreiranoj specifično za nju. Programer za novu funkcionalnost kreira novu granu u lokalnom repozitoriju te u nju dodaje promjene. Po završetku implementacije funkcionalnosti programer granu spaja s glavnom granom centralnog repozitorija. Ovaj proces daje jasniji uvid u napredak projekta i implementirane funkcionalnosti. Dodatno, proces timu daje priliku revizije obavljenih promjena. Umjesto direktnog spajanja grane moguće je kreirati zahtjev za spajanjem \eng{merge request}. Zahtjev za spajanjem dodatno opisuje promjene ostvarene u sklopu grane te timu daje priliku za komunikaciju i reviziju obavljenih promjena.
+Tijek rada grananja funkcionalnosti nastoji otkloniti glavni nedostatak centraliziranog tijek rada, učestalo preplitanje različitih tokova razvoja. Grananje funkcionalnosti također ima jedan glavni i više lokalnih repozitorija. Razlika je u tome što se funkcionalnost implementira u grani kreiranoj specifično za nju. Programer za novu funkcionalnost kreira novu granu u lokalnom repozitoriju te u nju dodaje promjene. Po završetku implementacije funkcionalnosti programer granu spaja s glavnom granom centralnog repozitorija. Ovaj proces daje jasniji uvid u napredak projekta i implementirane funkcionalnosti. Dodatno, proces timu daje priliku revizije obavljenih promjena. Umjesto direktnog spajanja grane moguće je kreirati zahtjev za spajanjem \eng{merge request}. Zahtjev za spajanjem dodatno opisuje promjene ostvarene u sklopu grane te timu daje priliku za komunikaciju i reviziju obavljenih promjena.
 
-Gitflow proces također koristi jedan centralni i više lokalnih repozitorija. Za razliku od prijašnja dva procesa, gitflow proces povijest repozitorija prati kroz glavnu i razvojnu granu. Razvojna grana \eng{develop branch} je vrlo slična glavnoj grani u procesu grananja funkcionalnosti. Grana za novu funkcionalnost se kreira iz razvojne grane te se po završetku implementacije u nju spaja. S druge strane, glavna grana sadrži samo produkcijske verzije izvornog koda, odnosno one verzije projekta koje su obavljene korisniku. Kad tim odluči objaviti novu verziju projekta, kreira se nova grana iz trenutnog stanja razvojne grane. Nakon završetka provjere ispravnosti grana se spaja s glavnom, i po potrebi razvojnom granom. Nova verzija glavne grane se zatim objavljuje. Verzije na glavnoj grani se označavaju sa objavljenom verzijom projekta.
+Gitflow tijek rada također koristi jedan centralni i više lokalnih repozitorija. Za razliku od prijašnja dva tijeka rada, gitflow tijek rada povijest repozitorija prati kroz glavnu i razvojnu granu. Razvojna grana \eng{develop branch} je vrlo slična glavnoj grani u procesu grananja funkcionalnosti. Grana za novu funkcionalnost se kreira iz razvojne grane te se po završetku implementacije u nju spaja. S druge strane, glavna grana sadrži samo produkcijske verzije izvornog koda, odnosno one verzije projekta koje su obavljene korisniku. Kad tim odluči objaviti novu verziju projekta, kreira se nova grana iz trenutnog stanja razvojne grane. Nakon završetka provjere ispravnosti grana se spaja s glavnom, i po potrebi razvojnom granom. Nova verzija glavne grane se zatim objavljuje. Verzije na glavnoj grani se označavaju sa objavljenom verzijom projekta.
 
 Primjer korištenja gitflow procesa je prikazan na slici \ref{fig:Gitflow}. Crvenom bojom je prikazana glavna grana a plavom razvoja grana. Grane funkcionalnosti, prikazane zelenom i žutom bojom se granaju iz razvojne grane te u nju spajaju. Bijelom bojom je označena grana pripreme za objavu nove verzije projekta. Nakon obavljanja pripreme za objavu grana se spaja s glavnom granom tima kreirajući novu produkcijsku verziju, te s razvojnom granom kako bi promjene nastale kod pripreme za objavu bile dodane projektu.
 
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{Gitflow}
-\caption{Primjer gitflow procesa}
+\caption{Primjer gitflow tijek rada}
 \label{fig:Gitflow}
 \end{figure}
 
-Navedeni pristup olakšava upravljanje objavom projekta. Buduće da je krucijalno objaviti ispravan produkt sam proces objave treba biti kontroliran i a produkt temeljito testiran. Izdvajajući proces objave na glavnu granu omogućava istovremeno testiranje produkcijske verzije i nastavak rada na novim funkcionalnostima.
+Navedeni pristup olakšava upravljanje objavom projekta. Buduće da je krucijalno objaviti ispravan produkt sam proces objave treba biti kontroliran i a produkt temeljito testiran. Izdvajajući proces objave na pomoćnu granu omogućava istovremeno testiranje produkcijske verzije i nastavak rada na novim funkcionalnostima.
 
-Za razliku od ostalih procesa promatranih u ovom poglavlju, forking proces nema centralni repozitorij već svaki sudionik ima vlastiti javni i privatni repozitorij. Programer vlastiti javni repozitorij kreira kopiranjem nekog drugog javnog repozitorija. Zatim iz vlastitog javnog repozitorija kreira vlastiti privatni repozitorij. Promjene obavlja na privatnom repozitoriju te ih proizvoljno spaja s javnim repozitorijem. Navedene promjene zatim može iskoristiti netko drugi kloniranjem repozitorija ili spajanjem promjena s postojećim repozitorijem. Dodatno, programer može predložiti dodavanje promjena nekom drugom repozitoriju. Navedeni se proces naziva zahtjev za povlačenjem \eng{pull request}.
+Za razliku od ostalih tijekova rada promatranih u ovom poglavlju, forking tijek rada nema centralni repozitorij već svaki sudionik ima vlastiti javni i privatni repozitorij. Programer vlastiti javni repozitorij kreira kopiranjem drugog javnog repozitorija. Zatim iz vlastitog javnog repozitorija kreira vlastiti privatni repozitorij. Promjene obavlja na privatnom repozitoriju te ih proizvoljno spaja s javnim repozitorijem. Navedene promjene zatim može iskoristiti netko drugi kloniranjem repozitorija ili spajanjem promjena s postojećim repozitorijem. Dodatno, programer može predložiti dodavanje vlastitih promjena  drugom repozitoriju. Navedeni se proces naziva zahtjev za povlačenjem promjena \eng{pull request}.
 
-Forking proces se najčešće primjenjuje za projekte otvorenog koda. On omogućuje svakom članu zajednice kloniranje, modifikaciju i objavu promjena obavljenih na projektu. Dodatno, zahtjev za spajanje daje vrlo dobar uvid u obavljene promjene bez modifikacije izvornog repozitorija.
+Forking tijek rada se najčešće primjenjuje za projekte otvorenog koda. On omogućuje svakom članu zajednice kloniranje, modifikaciju i objavu promjena obavljenih na projektu. Dodatno, zahtjev za spajanje daje vrlo dobar uvid u obavljene promjene bez modifikacije izvornog repozitorija.
 
 Osnova kontinuirane integracije je kontinuirano, odnosno učestalo spajanje radnih kopija s glavnom kopijom. Kad bi se vodili samo ovim principom centralizirani repozitorij bi najbolje zadovoljavao postavljene zahtjeve. Međutim, centralizirani repozitorij se u praksi ne koristi za ništa osim najjednostavnijih projekata.
 
-Iako drugi procesi rjeđe obavljaju integraciju radnih kopija, prednosti koje pružaju nadilaze navedeni nedostatak. Na primjer, gitflow proces integraciju radne kopije s glavnom kopijom obavlja po završetku implementacije funkcionalnosti. Što je veća funkcionalnost koja se implementira, to će duže radna kopija ostati izdvojena. Zbog navedenog je potrebno posao razdijeliti na male dijelove. Navedeno se ne odražava pozitivno samo na proces kontinuirane integracije, već olakšava i praćenje projekta te je sastavni dio agilnog pristupa razvoja programske potpore. Prednosti koje napredniji pristupi verzioniranju pruža, kao što su lakše praćenje razvoja, zahtjevi za spajanjem i lakša objava projekta u produkciju nadilaze nešto duže vrijeme izdvojenosti radnih kopija.
+Iako drugi tijekovi rada rjeđe obavljaju integraciju radnih kopija, prednosti koje pružaju nadilaze navedeni nedostatak. Dodatno, moguće je smanjiti vrijeme između spajanja radnih kopija. Na primjer, gitflow tijek rada spajanje radne kopije s glavnom kopijom obavlja po završetku implementacije funkcionalnosti. Što je veća funkcionalnost koja se implementira, to će duže radna kopija ostati izdvojena. Zbog navedenog je potrebno posao razdijeliti na male dijelove. Navedeno se ne odražava pozitivno samo na proces kontinuirane integracije, već olakšava i praćenje projekta te je sastavni dio agilnog pristupa razvoja programske potpore. Prednosti koje napredniji pristupi verzioniranju pruža, kao što su lakše praćenje razvoja, zahtjevi za spajanjem i lakša objava projekta u produkciju nadilaze nešto duže vrijeme izdvojenosti radnih kopija.
 
-U praktičnom dijelu rada koristim gitflow proces. Ovaj proces najbolje odgovara zahtjevima i tipu projekta. Dodatno, gitflow proces omogućava jednostavniju implementaciju kontinuirane dostave i isporuke. Uz glavnu i radnu granu, repozitoriju ću po potrebi dodavati dodatne grane. Na primjer, isporuku verzija programske potpore za testiranje ću izdvojiti u zasebnu granu. Navedeni proces omogućava lako praćenje testnih verzija te olakšava implementaciju procesa isporuke testne verzije.
+U praktičnom dijelu rada koristim gitflow tijek rada. Ovaj tijek rada najbolje odgovara zahtjevima i tipu projekta. Dodatno, gitflow tijek rada omogućava jednostavniju implementaciju kontinuirane dostave i isporuke. Uz glavnu i radnu granu, repozitoriju ću po potrebi dodavati dodatne grane. Na primjer, isporuku verzija programske potpore za testiranje ću izdvojiti u zasebnu granu. Navedeni proces omogućava lako praćenje testnih verzija te olakšava implementaciju procesa isporuke testne verzije.
 
-Proces kontinuirane integracije će se obavljati na svim granama. Dodatno, spajanje bilo koje dvije grane neće biti moguće ako rezultat spajanja ne prolazi sve kriterije kontinuirane integracije.
+\paragraph{Verzioniranje u sklopu kontinuirane integracije}
 
-\subsection{Priprema sustava}
+Proces kontinuirane integracije započinje dohvatom željene verzije repozitorija. Kako bi dohvatio željenu verziju, proces kontinuirane integracije mora imati pristupiti repozitoriju. Xcode Server omogućava korištenje lokalnog ili udaljenog repozitorija verzioniranog svn ili git alatom. Ako se koristi udaljeni repozitorij, onda je isti potrebno zaštiti od neželjenog pristupa. Danas se u praksi koriste dva tipa zaštite: HTTPS i SSH autentifikacija.
 
-Priprema sustava za izgradnju se sastoji od dohvata i konfiguracije potrebnih alata te pripreme projekta za izgradnju.
+HTTPS autentifikacija pristup kontrolira korištenjem jedinstvenog korisničkog imena i lozinke. Budući da se proces integracije odvija automatski, potrebno je spremiti i automatizirati unošenje korisničkog imena i lozinke. Preporučeno je iste pohraniti korištenjem Keychain Access aplikacije.
 
-Dohvat i konfiguracija alata uvelike ovisi o alatima koji se koriste u procesu izgradnje. Cilj je instalaciju i konfiguraciju što većeg broja alata automatizirati kako bi olakšali proces implementacije kontinuirane integracije. Dodatno, automatizacija procesa instalacije i konfiguracije nam omogućava instalaciju alata samo ako je to potrebno.
+SSH autentifikacija pristup kontrolira korištenjem javnog i privatnog ključa najčešće generiranog korištenjem RSA prostokola. Ova tip autentifikacije je pogodniji za automatizaciju zbog čega ga koristim u sklopu ovog rada. Proces kreiranja i konfiguriranja SSH autentifikacije je detaljnije objašnjen u sljedećem odlomku.
 
-MacOS je vrlo siguran, i time zatvoren, operacijski sustav. Gotovo svi alati zahtijevaju korisničko dopuštenje te šifru računa koji obavlja instalaciju. Ako se instalacija obavlja za cijeli sustav ili više računa potrebno je instalaciju autorizirati računom s administracijskim privilegijama. Postoji nekoliko načina za automatski upis lozinke, ali navedeni procesi narušavaju sigurnost operacijskog sustava te ne rade za alate s grafičkim sučeljem. Zbog navedenog nije moguće u potpunosti automatizirati proces izgradnje.
+Xcode Server automatski detektira alat kojim je repozitorij verzioniran. Nakon autentifikacije pristupa je potrebno odabrati granu za koju se kreira proces integracije. Pojedin bot integraciju obavlja za samo jednu granu zbog čega je potrebno kreirati zaseban bot za svaku željenu granu. Slika \ref{fig:BotAddingSSH} prikazuje autentifikaciju detektiranog git repozitorija korištenjem postojećeg SSH ključa.
 
-Popis alata korištenih u izgradnji se nalazi u dodatku \ref{AlatiBuild}. Priprema alata čiju instalaciju nije moguće automatizirati se nalazi u dodatku \ref{header:dodatak_priprema_CI}.
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{BotAddingSSH}
+\caption{Dodavanje SSH ključa}
+\label{fig:BotAddingSSH}
+\end{figure}
 
-Xcode projekt, projekt pomoću kojeg implementiram iOS aplikaciju, omogućava specifikaciju postavka izgradnje korištenjem vizualnog sučelja. Postavke izgradnje Xcode sprema u teško čitljivu formatiranu datoteku. S ciljem lakše specifikacije i praćenja postavka izgradnje se mogu iskoristiti konfiguracijske datoteke. Prilikom izgradnje postavke definirane u datotekama nadjačavaju postavke specificirane u projektu.
+Xcode Server omogućava automatsko pokretanje integracije nakon kreiranja nove verzije na promatranoj grani. Navedenu funkcionalnost Xcode Server ostvaruje kontinuiranom provjerom stanja repozitorija. Proces integracije je također moguće provoditi periodično ili ga pokretati ručno. Slika \ref{fig:CIStartConfig} prikazuje navedene opcije.
 
-Za korištenje konfiguracijskih datoteka je dovoljno iste dodati projektu i repozitoriju izvornog koda. Ova je funkcionalnost posebno korisna kad je potrebno izdati više različitih verzija projekta. Na primjer, verziju za korisnika i verziju za testiranje.
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.5]{CIStartConfig}
+\caption{Odabir načina pokretanja procesa integracije}
+\label{fig:CIStartConfig}
+\end{figure}
+
+Korištenjem navedenih opcija kontinuirana integracija se pokreće nakon kreiranja novog stanja na odabranoj grani repozitorija.
+
+\paragraph{SSH autentifikacija}
+
+U sklopu rada koristim SSH autentifikaciju za pristup udaljenom git repozitoriju. SSH ključevi se obično pohranjuju u direktoriju \path{~/.ssh}. Ako SSH ključ već ne postoji u navedenom direktoriju, onda potrebno je kreirati isti. Skripta \ref{listing:ssh} prikazuje proces generiranja ključa. Naredba pod \#1 generira novi SSH ključ sa željenom e-mail adresom. Preporučeno je ključ u toku kreiranja zaštiti lozinkom.
+
+Nakon generiranja, ključ je potrebno dodati SSH agentu kako se šifra ključa ne bi morala unositi pri svakom korištenju. Naredbe \#2 i \#3 ostvaruju navedenu funkcionalnost. Na kraju, javni dio ključa je potrebno registrirati na platformi koja hosta repozitorij. Naredba \#4 kopira javni dio novo kreiranog kjuča.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.3]{GitHubSSH}
+\caption{Dodavanje SSH ključa na GitHub platformu}
+\label{fig:GitHubSSH}
+\end{figure}
+
+\begin{lstlisting}[caption=Postavljanje SSH autentifikacije, label=listing:ssh]
+ssh-keygen -t rsa -b 4096 -C "{e-mail adresa}" #1
+
+eval "$(ssh-agent -s)" #2
+
+ssh-add -K ~/.ssh/{ime_kljuca} #3
+
+pbcopy < ~/.ssh/{ime_kljuca}.pub #4
+\end{lstlisting}
+
+U sklopu rada koristim GitHub platformu. Slika \ref{fig:GitHubSSH} prikazuje proces registriranja SSH ključa na GitHub platformi. SSH ključ se dodaje odabirom opcije \textit{Settings -> SSH and GPG keys -> New SSH key} te dodavanjem kopiranog javnog dijela ključa u polje za ključ. Nakon spremanja ključa isti je moguće koristiti za autorizaciju komunikacije s GitHub platformom.
+
+
+\subsection{Priprema sustava} \label{header:PripremaSustava}
+
+Priprema sustava se sastoji od provjere postojanja, dohvata i konfiguracije potrebnih alata te od pripreme projekta za izgradnju.
+
+Provjeru postojanja alata obavljam korištenjem skripte \ref{listing:PripremaSustavaProvjera}. Naredba \#1 provjerava postojanje alata korištenjem alata \verb|which| koji je dostupan u sklopu instalacija macOS operacijskog sustava. U slučaju ne postojanja alata isti je potrebno dohvatiti i instalirati.
+
+\begin{lstlisting}[caption=Provjera postojanja alata, label=listing:PripremaSustavaProvjera]
+if !(which {ime_alata} >/dev/null); then #1
+    {naredba za instalaciju alata} #2
+fi
+\end{lstlisting}
+
+Na navedeni način provjeravam postojanje i instaliram tri alata, alate za dohvat ovisnosti CocoaPods i Carthage, te alat za provjeru ispravnosti koda Swiftlint. Skripta \ref{listing:PripremaSustavaInstalacija} prikazuje automatiziranu instalaciju navedenih alata.
+
+
+\begin{lstlisting}[caption=Automatizirana instalacija alata, label=listing:PripremaSustavaInstalacija]
+if !(which pod >/dev/null); then #1
+    echo "Installing CocoaPods"
+
+    gem install cocoapods --user-install
+    pod repo update
+fi
+
+if !(which carthage >/dev/null); then #2
+    echo "Instaling Carthage"
+
+    brew install carthage
+fi
+
+if !(which swiftlint >/dev/null); then #3
+    echo "Instaling Swiftlint"
+
+    brew install swiftlint
+fi
+\end{lstlisting}
+
+Naredba pod \#1 provjerava i instalira CocoaPods alat korištenjem alta \verb|gem| dostupnog u sklopu instalacije macOS operacijskog sustava. Kako bi izbjegao unošenje administrativne lozinke, kod instalacije koristim opciju \verb|--user-install| koja alat instalira samo za trenutnog korisnika. Naredbe \#2 i \#3 provjeravaju i instaliraju alate Carthage i Swiftlin korištenjem alata brew.
+
+
+Konfiguracija Xcode projekta je pohranjena unutar \verb|.xcodeproj| datoteke. Datoteka je namjenjena za modifikaciju i čitanje korištenjem alata Xcode. Datoteka nije pogodna za račnu izmjenu i čitanje. Kako bi se olakšalo nadgledanje i modifikacija postavka projekta često se koriste \verb|xcconfig| datoteke.
+
+Navedene datoteke su tekstualne datoteke s \verb|.xcconfig| nastavkom te sadrže listu \verb|{ključ} = {vrijednost}| linija koje specificiraju postavke projekta. Navedene dateteke je potrebno dodati projektu te iskoristiti za konfiguraciju željene sheme. Pomoću Xcode aplikacije otvoriti projekt te odabrati željenu shemu i sekciju \verb|Info|. U odjeljku \verb|Configurations| odabirom opcije \verb|Plus| kreirati novu konfiguraciju. Slika \ref{fig:XcodeConfigurations} prikazuje proces dodavanja nove konfiguracije.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{XcodeConfigurations}
+\caption{Kreiranje konfiguracije projekta}
+\label{fig:XcodeConfigurations}
+\end{figure}
+
+Korištenjem novo kreirane konfiguracije odabrati željenu \verb|xcconfig| datoteku.
 
 \subsection{Upravljanje ovisnostima}
 
-Prije izgradnje projekta je potrebno dohvatiti sve ovisnosti i alate koje projekt zahtjeva. Alat xcodebuild, kojeg koristimo za izgradnju programske potpore za iOS operacijske sustave, sadrži sve službene biblioteke i alate potrebne za izgradnju. Međutim, ako projekt koristi vanjske biblioteke iste je potrebno dohvatiti i pripremiti za korištenje. Za dohvaćanje vanjskih biblioteka se u iOS razvoju koriste dva alata: \textit{CocoaPods} i \textit{Carthage}.
+Prije izgradnje projekta je potrebno dohvatiti ovisnosti koje projekt koristi. Za dohvaćanje ovisnosti se u iOS razvoju koriste dva alata: \textit{CocoaPods} i \textit{Carthage}. Oba sustava se široko koriste te izbor uvelike ovisi o osobnom ukusu. Zbog navedenog u radu koristim oba alata.
 
-CocoaPods je vrlo jednostavan centralizirani sustav za upravljanje ovisnostima. Za dohvaćanje ovisnosti je potrebno samo specificirati iste u datoteci imena \textit{Cartfile}. Alat samostalno kreira i konfigurira novo radno okruženje u koje dodaje osnovni projekt i sve ovisnosti. Jedino što programer mora napraviti je razvoj obavljati u radnom okruženju a ne u osnovnom projektu.
+\paragraph{CocoaPods}
 
-Najveći problem alata je učestala modifikacija radnog okruženja i njegovih konfiguracija. Drugim riječima, alat mijena postavke izgranje što može uzrokovati neželjeno ponašanje. Dodatno, budući da je alat centraliziran, sve korištene biblioteke moraju biti registrirane u CocoaPods sustavu. Navedeno otežava korištenje privatnih biblioteka i biblioteka u razvoju.
+CocoaPods je stariji, široko prihvaćen, centraliziran alat za upravljanje ovisnostima iOS projekata. Alat je jednostavan i intuitivan za korištenje. Dovoljno je specificirati ovisnosti korištenjem \verb|Podfile| datoteke i pokrenuti proces dohvata ovisnosti. Alat samostalno kreira i konfigurira radno okruženje te time olakšava proces upravljanja ovisnostima.
 
-Carthage je decentralizirani alat za upravljanje ovisnostima. Sustav omogućava jednostavno dohvaćanje i izgradnju biblioteke. Za razliku od CocoaPods alata, Carthage ne modificira radno okruženje. Navedeno znači da je ovisnost potrebno samostalno uključiti u projekt ali u istom trenutku otklanja neželjene posljedice koje nosi CocoaPods.
+Međutim, najveći problem alata je upravo ova učestala modifikacija datoteka radnog okruženja. Alat pri svakom dohvatu izmjenjuje postavke izgranje što može uzrokovati neželjeno ponašanje. Dodatno, budući da je alat centraliziran, sve korištene biblioteke moraju biti registrirane u CocoaPods sustavu. Navedeno otežava korištenje privatnih biblioteka i biblioteka u razvoju.
 
-Oba sustava se široko koriste te izbor uvelike ovisi o osobnom ukusu. Zbog navedenog u radu koristim oba alata.
+Inicijalizacija CocoaPods alata je prikazana u skripti \ref{listing:CocoaPodsInit}. Naredbu je potrebno pokrenuti u direktoriju projekta.
+
+\begin{lstlisting}[caption=Inicijalizacija CocoaPods alata, label=listing:CocoaPodsInit]
+pod init
+\end{lstlisting}
+
+Naredba kreira \verb|Podfile| datoteku koja služi za specifikaciju ovisnosti. Skripta \ref{listing:PodfileExample} prikazuje primjer \verb|Podfile| datoteke. Datoteka za cilj \verb|Diplomski_rad| specificira dvije ovisnosti \verb|LayoutKit| i \verb|Fabric|.
+
+\begin{lstlisting}[caption=Primjer Podfile datoteke, label=listing:PodfileExample]
+use_frameworks!
+
+target 'Diplomski_rad' do
+    pod 'LayoutKit'
+    pod 'Fabric'
+end
+\end{lstlisting}
+
+Ovisnosti se dohvaćaju pokretanjem naredbe \verb|pod install| u direktoriju projekta.
+
+Skripta \ref{listing:cocoapods} automatizira dohvaćanje ovisnosi korištenjem CocoaPods alata. Naredba \#1 provjerava postojanja Podfile datoteke te u slučaju postojanja iste nastavlja s izvođenjem skripte. Naredba \#2 provjerava postojanje CocoaPods alata. Ako alat nije instaliran, isti se instalira korištenjem gem alata. Na kraju, naredba \#3 dohvaća ovisnosti korištenjem CocoaPods alata.
+
+\begin{lstlisting}[caption=Dohvat ovisnosti korištenjem alata CocoaPods, label=listing:cocoapods]
+if [ -f Podfile ]; then #1
+    echo "Podfile found. Starting CocoaPods"
+
+    if ! which pod >/dev/null; then #2
+        echo "Installing CocoaPods"
+
+        gem install cocoapods --user-install
+        pod repo update
+    fi
+
+    pod install #3
+
+    echo "Finished dependancy fetch using CocoaPods"
+fi
+\end{lstlisting}
+
+\paragraph{Carthage}
+
+Carthage je noviji, decentralizirani alat za upravljanje ovisnostima. Alat omogućava jednostavno dohvaćanje i izgradnju biblioteke bez potrebe njihove prijašnje registracije. Za razliku od CocoaPods alata, Carthage ne modificira radno okruženje. Ovisnosti je potrebno samostalno uključiti u projekt zbog čega je alat složeniji za korištenje od CocoaPods alata. Međutim, u istom trenutku alat otklanja neželjene posljedice koje nosi učestala izmjena datoteka razvojnog okruženja.
+
+Kreirati \verb|Cartfile| datoteku. Datoteka je jednostavna lista ovisnosti zajedno s lokacijom izvornog repozitorija. Skripta \ref{listing:Cartfile} prikazuje primjer \verb|Cartfile| datoteke.
+
+\begin{lstlisting}[caption=Primjer Cartfile datoteke, label=listing:Cartfile]
+github "JohnSundell/Unbox"
+git "https://gitlab.rep.com/Testni_projekt"
+\end{lstlisting}
+
+Primjer dohvača dvije ovisnosti. Javno objavljenu ovisnost \verb|Unbox| objavljenu na Github platformi te privatnu ovisnost objavljenu na Gitlab platformi.
+
+Dohvaćanje ovisnosti se pokreće naredbom \verb|carthage update|.
+
+Skripta \ref{listing:carthage} implementira dohvaćanje ovisnosti korištenjem Carthage alata. Naredba \#1 provjerava postojanje \verb|Cartfike| datoteke te u slučaju postojanja iste nastavlja obavljanje skripte. Naredba \#2 provjerava postojanje Carthage alata te ga dohvaća ako ne postoji. Naredba \#3 dohvaća ovisnosti korištenjem Carthage alata. Za bolje performanse operacije koristim dva argumenta. Argument \verb|--platform ios| specificira dohvaćanje ovisnosti samo za iOS platformu. Argument \verb|--cache-builds| dohvaća ovisnosti samo ako iste nisu već dostupne.
+
+\begin{lstlisting}[caption=Dohvat ovisnosti korištenjem alata Carthage, label=listing:carthage]
+if [ -f Cartfile ]; then #1
+    echo "Cartfile found. Starting Carthage"
+
+    if !(which carthage >/dev/null); then #2
+        echo "Instaling Carthage"
+
+        brew install carthage
+    fi
+
+    carthage update --platform ios --cache-builds #3
+
+    echo "Finished dependancy fetch using Carthage"
+fi
+\end{lstlisting}
+
+\paragraph{Automatizacija dohvaćanja ovisnosti}
+
+Obje skripte je potrebno pokrenuti prije obavljanja integracije. Za ostvarenje navedene funkcionalnosti botu dodajem skriptu koja se izvršava prije pokretanja integracije \eng{Pre-Integration Script}. Slika \ref{fig:PreIntegrationScript} prikazuje proces dodavanja nove skripte. Skripta se dodaje odabirom opcije \textit{Edit Bot... -> Triggers -> Pre Integration Script}.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.5]{PreIntegrationScript}
+\caption{Dodavanje skripte koja se izvršava prije integracije botu}
+\label{fig:PreIntegrationScript}
+\end{figure}
+
+Unutar novo kreirane skripte je potrebno pozvati sve naredbe koje se trebaju izvršiti prije integracije. Radi jednostavnosti i fleksibilnosti je navedene naredbe korisno izdvojiti u zasebnu datoteku. Korištenjem ovog pristupa olakšavam implementaciju kontinuirane integracije te omogućavam laku izmjenu skripte koja se izvršava prije integracije. Skripta \ref{listing:pre_integration_script_call} se korištenjem \path{XCS_PRIMARY_REPO_DIR} varijable okruženja navigira u početni direktorij projekta te provjerava postojanje datoteke \path{scripts/preintegration}. U slučaju postojanja datoteke ista se izvršava.
+
+\begin{lstlisting}[caption=Poziv skripte koja se izvršava prije integracije, label=listing:pre_integration_script_call]
+#!/bin/bash
+
+cd $XCS_PRIMARY_REPO_DIR
+
+if [ -f scripts/preintegration ]; then
+    ./scripts/preintegration
+fi
+\end{lstlisting}
+
+Skripta \ref{listing:pre_integration_script} se izvršava prije integracija. Skripta jednostavno poziva prije definirane skripte. Na isti je način moguće dodati proizvoljan broj naredaba. Dodatno, skripta u \textit{PATH} varijablu okruženja dodaje dvije putanje koje olakšavaju korištenje postojećih alata.
+
+\begin{lstlisting}[caption=Skripta koja se izvršava prije integracije, label=listing:pre_integration_script]
+#!/bin/bash
+
+export PATH="/usr/local/bin:~/.gem/ruby/2.0.0/bin/:$PATH"
+
+if [ -f scripts/cocoapods ]; then
+    ./scripts/cocoapods
+fi
+
+if [ -f scripts/carthage ]; then
+    ./scripts/carthage
+fi
+\end{lstlisting}
+
+Sve skripte se trebaju nalaziti u \path{scripts} direktoriju repozitorija.
 
 \subsection{Izgradnja}
 
-Izgradnja iOS aplikacija se obavlja korištenjem alat \textit{xcodebuild}\citep{xcodebuild}. Alat je razvio Apple za izgradnju programske potpore za macOS operacijski sustav. Alat je vrlo moćan te pruža veliki broj funkcionalnosti i mogućih konfiguracija. Alat je proširen te danas podržava izgradnju aplikacija za iOS, tvOS i watchOS operacijske sustave. Alat izgradnju obavlja na temelju Xcode projekta. Prije definiranje procesa izgradnje se je potrebno upoznati sa strukturom Xcode projekta.
+Izgradnja iOS aplikacija se obavlja korištenjem alat \textit{xcodebuild}\citep{xcodebuild}. Alat je razvio Apple za izgradnju programske potpore za macOS operacijski sustav. Alat je vrlo moćan te pruža veliki broj funkcionalnosti i mogućih konfiguracija. Alat je proširen te danas podržava izgradnju aplikacija za iOS, tvOS i watchOS operacijske sustave. Alat izgradnju obavlja na korištenjem Xcode projekta. Prije definiranja procesa izgradnje se je potrebno upoznati sa strukturom Xcode projekta.
 
 Xcode je službeni Appleov alat za razvoj programske potpore za iOS i macOS operacijske sustave. Na tržištu postoji nekoliko alternativa ali je Xcode daleko najkorišteniji. Svi alati koriste alat xocdebuild za izgradnju te zbog toga imaju vrlo sličnu strukturu projekta. Ovaj tip projekta se naziva Xcode projekt.
 
-Xcode projekt sadrži jedan ili više ciljeva \eng{target} i jednu ili više shema \eng{scheme}. Cilj definira postavke koji se koriste kod izvršavanja operacije za navedeni cilj.  Jedan projekt može sadržavati više ciljeva. Pomoću ciljeva je moguće isti kod distribuirati za različite verzije operacijskog sustava, različite operacijske sustave i testirati projekt. Shema definira koji se cilj koristi za koju operaciju. Projekt može implementirati više shema kako bi objedinio operacije za pojedinu distribuciju. Odnos cilja i sheme je prikazan na slici \ref{fig:TargetScheme}. Projekt sadrži tri cilja i dvije sheme. Sheme različito definiraju koji se cilj koristi za koju operaciju.
+Xcode projekt sadrži jedan ili više ciljeva \eng{target} i jednu ili više shema \eng{scheme}. Cilj definira postavke koji se koriste kod izvršavanja operacije za navedeni cilj.  Jedan projekt može sadržavati više ciljeva. Pomoću ciljeva je moguće isti kod distribuirati za različite verzije operacijskog sustava, različite operacijske sustave i testirati projekt. Shema definira koji se cilj koristi za koju operaciju. Projekt može koristiti više shema kako bi objedinio operacije za pojedinu distribuciju. Odnos cilja i sheme je prikazan na slici \ref{fig:TargetScheme}. Projekt sadrži tri cilja i dvije sheme. Sheme različito definiraju koji se cilj koristi za koju operaciju.
 
-\begin{figure}
+\begin{figure}[b!]
 \centering
 \includegraphics[scale=0.5]{TargetScheme}
 \caption{Xcode projekt s tri cilja i dvije sheme}
@@ -317,11 +604,27 @@ Xcode projekt sadrži jedan ili više ciljeva \eng{target} i jednu ili više she
 
 Xcode projekte je moguće grupirati u Xcode radno okruženje \eng{workspace}. Radno okruženje olakšava segmentiranje velikog projekta i olakšava upravljanje ovisnostima.
 
-Pri razvoju programske potpore, operacije pokrećemo korištenjem alata Xcode. Međutim, kod automatizacije procesa naredbe možemo pozivati samo korištenjem \verb|bash| ljuske. Zbog navedenog moramo koristiti alat xcodebuild. Pokretanje alata je vrlo jednostavno. Cijeli postupak izgradnje projekta pomoću alata xcodebuild alata je prikazan u dodatku \ref{IzgradnjeDodatak}.
+Izgradnja iOS projekta se u praksi pokreće gotovo isključivo korištenjem alata Xcode. Međutim, navedeni pristup nije moguće automatizirati. Zbog navedenog procesi koji automatiziraju izgradnju koriste alat xcodebuild, direktno ili korištenjem alata koji interno koristi alat xcodebuild. Alat je detaljnije specificiran u dodatku \ref{header:xcodebuild}.
 
-Ispis xcodebuild alata je vrlo detaljan. Ispis prikazuje sve izvršene naredbe te dojavljuje veliki broj međurezultata. Ovakav oblik ispisa je vrlo informativan ali je istovremeno vrlo teško čitljiv. Xcode Server, alat za automatizaciju koji koristim u ovom radu, već implementira parsiranje ispisa u lako razumljiv prikaz. U slučaju odabiri alata koji ne obavlja parsiranje  moguće je iskoristiti jedan od alata namijenjen za parsiranje xcodebuild ispisa. Trenutno je najpopularniji \textit{xcpretty} alat\citep{xcpretty}.
+Xcode Server značajno olakšava korištenje alata xcodebuild. Nakon povezivanja bota s repozitorijem izvornog koda je moguće konfigurirati opcije integracije. Moguće je odabrati shemu projekta za koju se provodi integracija, operacije koje će se izvršavati u sklopu integracije te postavke koje se koriste za izgradnju projekta. Slika \ref{fig:XcodeServerOptions} prikazuje opcije koje se mogu konfigurirati.
 
-Proces izgradnje ne rezultira izvršivim artefaktom već samo provjerava je li sustav izgradiv. Projekt koji je izgradiv je moguće instalirati na uređaju korištenjem xcodebuild alata uz specificiranje operacije \verb|install|.
+Kako bi se shema mogla iskoristiti za integraciju ista mora biti javno objavljena. Shema se može konfigurirati korištenjem Xcode aplikacije.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{XcodeServerOptions}
+\caption{Konfiguracija osnovnih opcija integracije}
+\label{fig:XcodeServerOptions}
+\end{figure}
+
+Ovako konfiguriran bot provodi kontinuiranu integraciju za odabranu granu. Rezultat integracije je moguće vidjeti na početnom ekranu bota. Slika \ref{fig:XcodeServerResult} prikazuje primjer rezultata integracije. Bot prikazuje veliki broj podataka od broja integracija, uspješnosti izgradnje i testiranja, do pokrivenosti koda testovima.
+    
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{XcodeServerResult}
+\caption{Rezultati obavljanja integracije}
+\label{fig:XcodeServerResult}
+\end{figure}
 
 \section{Testiranje}
 
@@ -419,7 +722,7 @@ Kontinuirana dostava je praksa koja automatizacijom procesa isporuke programske 
 
 Programsku potporu je prije isporuke potrebno izgraditi, testirati, provjeriti ispravnost te kreirati artefakt za distribuciju. Iako različiti razvojni procesi različito nazivaju artefakt za distribuciju, zbog jednostavnosti ga nazivam arhiva. Arhiviranje je proces kreiranje arhive programske potpore. Arhiva omogućava instalaciju programske potpore na operacijskom sustavu za kojeg je programska potpora namijenjena.
 
-Jednako tako je prije automatizacije isporuke produkta potrebno automatizirati izgradnju, testiranje, provjeru ispravnosti i arhiviranje programske potpore. Proces automatizacije izgradnje, testiranja i provjere ispravnosti se naziva kontinuirana integracija te je definiran u poglavlju \ref{KontinuiranaIntegracija}. Kontinuirana dostava obuhvaća proces kontinuirane integracije te proces automatizacije isporuke.
+Jednako tako je prije automatizacije isporuke produkta potrebno automatizirati izgradnju, testiranje, provjeru ispravnosti i arhiviranje programske potpore. Proces automatizacije izgradnje, testiranja i provjere ispravnosti se naziva kontinuirana integracija te je definiran u poglavlju \ref{Kontinuirana_Integracija}. Kontinuirana dostava obuhvaća proces kontinuirane integracije te proces automatizacije isporuke.
 
 Međutim, u praksi se pojam kontinuirana dostava češće koristi za proces automatizacije isporuke koji zahtijeva prethodnu implementaciju procesa kontinuirane integracije. Navedeni se pristup koristi u ovom radu. Proces izgradnje, testiranja i provjere ispravnosti implementiram u sklopu kontinuirane integracije na koju dodajem automatizaciju isporuke i time ostvarujem kontinuiranu dostavu.
 
@@ -438,7 +741,7 @@ Svaki od spomenutih tipova isporuke se koristi u razvoju programske potpore za i
 \label{fig:ContinuousDelivery}
 \end{figure}
 
-\section{Potpisivanje koda}
+\section{Potpisivanje koda} \label{header:PotpisivanjeKoda}
 
 Kako bi osigurao autentičnost i ne izmijenjenost objavljene programske potpore, Apple koristi sustav potpisivanja koda \eng{code signing}. Sustav se sastoji od dva tipa artefakta: certifikata i profila. Certifikati se sastoje od javnog i privatnog ključa te služe za potpisivanje i kriptiranje programske potpore. Profili sadrže informacije o aplikaciji i razvojnom timu te se prilikom arhiviranja dodaju programskoj potpori.
 
@@ -731,234 +1034,9 @@ Za implementaciju kontinuirane integracije koristim alat Xcode Server. Na trži�
 
 Xcode Server pruža velik broj unaprijed implementiranih funkcionalnosti. Iako ove funkcionalnosti olakšavaju implementaciju kontinuirane integracije, one otežavaju automatizaciju i migraciju kreiranja kontinuirane integracije na druge alate. Zbog navedenog na kraju dodatka specificiram prenosivu verziju kontinuirane integracije.
 
-\subsection{Priprema} \label{header:dodatak_priprema_CI}
 
-Za implementaciju i korištenje kontinuirane integracije koristim brojne alate koji ne pružaju vizualno sučelje. Navedenim se alatima može pristupiti isključivo korištenjem nardedbenog korisničkog sučelja - \textit{ljusku}. Moguće je koristiti proizvoljnju ljusku. U sklopu rada koristim \textit{bash} ljusku. Pristup naredbenom korisničkom sučelju se može ostvariti korištenjem proizvoljne aplikacije. U sklopu rada koristim aplikaciju Terminal koja je dostupna u sklopu instalacije macOS operacijskog sustava.
 
-\paragraph{Xcode Server}
 
-\begin{figure}
-\centering
-\includegraphics[scale=0.35]{XcodeServerSetup1}
-\caption{Povezivanje macOS Server i Xcode aplikacija}
-\label{fig:XcodeServerSetup1}
-\end{figure}
-
-Xcode Server je spoj dva alata - Xcodea i macOS Servera. Xcode je integrirani sustav razvoj programske potpore za iOS, macOS, tvOS i watchOS operacijske sustave. MacOS Server je alat za automatizaciju procesa na macOS operacijskom sustavu. Prije implementacije kontinuirane integracije je potrebno preuzeti oba alata, instalirati i konfigurirati oba alata.
-
-Oba alata je moguće preuzeti korištenjem App Store aplikacije koje je dostupna u sklopu svake instalacije macOS operacijskog sustava. Međutim, cijena macOS Server aplikacije je u trenutku pisanja ovog rada \$25. Međutim, aplikacija je besplatna za osobe s Apple Developer računom koji je potreban i za razvoj iOS aplikacije. Besplatnu verziju macOS Servera je moguće preuzeti na poveznici \path{https://developer.apple.com/download/}. Nakon preuzimanja slijediti upute za instalaciju obje aplikacije.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.35]{XcodeServerSetup2}
-\caption{Kreiranje Xcode Server korisničkog računa}
-\label{fig:XcodeServerSetup2}
-\end{figure}
-
-Nakon instalacije alata je potrebno kreirati Xcode Server povezivanjem Xcode i macOS Server aplikacija. Pokrenuti macOS Server, u lijevom izborniku odabrati \textit{Xcode} te odabrati opciju \textit{Choose Xcode...}. U novo otvorenom izborniku odabrati željenu verziju Xcode aplikacije. Slika \ref{fig:XcodeServerSetup1} prikazuje proces povezivanja macOS Server i Xcode aplikacija.
-
-\begin{figure}[b!]
-\centering
-\includegraphics[scale=0.4]{DodavanjeCertifikata}
-\caption{Dodavanje certifikata korištenjem Keychain Access aplikacije}
-\label{fig:DodavanjeCertifikata}
-\end{figure}
-
-MacOS Server uz automatizaciju procesa omogućava i udaljeno upravljanje računalom. Zbog navedenog je preporučeno macOS Server pokrenuti na zasebnom računu operacijskog sustava te dopustiti pristup samo potrebnim alatima i datotekama. Nakon povezivanja Xcode aplikacije s macOS Serverom otvara se izbornik u kojem je moguće kreirati novi račun operacijskog sustava ili odabrati postojeći. U sklopu ovog rada kreiram novi račun predodređenog imena \textit{xcodeserver}. Slijediti upute nakon kreiranja računa.
-
-
-U sklopu izgradnje i testiranja iOS projekta se obavlja i proces potpisivanja kod. Sam proces definiram u \ref{header:dodatak_potpisivanje_koda} dijelu ovog dodatka. Za sada je dovoljno znati da proces zahtjeva postojanje tri artefakta: osobni certifikat, certifikat aplikacije i pripremni profil aplikacije za tip isporuke koji se koristi. Navedene certifikate je moguće kreirati i preuzeti sa stranice na poveznici \path{https://developer.apple.com/account}. Certifikate je potrebno instalirati korištenjem Keychain Access aplikacije. Navedeno je najjednostavnije ostvariti pokretanjem certifikata korištenjem navedene aplikacije.
-
-Pripremne profile je potrebno spremiti na lokaciji \path{~/Library/MobileDevice/Provisioning Profiles}.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.4]{DodavanjePripravnihProfila}
-\caption{Dodavanje pripremnih profila}
-\label{fig:DodavanjePripravnihProfila}
-\end{figure}
-
-\paragraph{Homebrew}
-
-Homebrew je alat za dohvat i upravljanje alatima za macOS operacijski sustav\citep{homebrew}. Dodatno, alat ove funkcionalnosti omogućava putem naredbenog korisničkog sučelja zbog čega je dohvat i upravljanje moguće automatizirati. Instalacija alata zahtijeva administrativna prava \eng{sudo user}, zbog čega istu nije moguće automatizirati. Skripta \ref{listing:homebrew} instalira Homebrew alat korištenjem alata \textit{ruby}. Slijediti upute instalacije.
-
-\begin{lstlisting}[caption=Instalacija Homebrew alata, label=listing:homebrew]
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-\end{lstlisting}
-
-\paragraph{SSH autentifikacija}
-
-U sklopu rada koristim SSH autentifikaciju za pristup udaljenom git repozitoriju. Za početak je potrebno generirati novi SSH ključ. Nakon generiranja, ključ je potrebno dodati SSH agentu kako se šifra ključa ne bi morala unositi svaki put. Na kraju, javni dio ključa je potrebno registrirati na platformi koja pohranjuje repozitorij. Navedena funkcionalnost se najčešće nalazi u postavkama korisničkog računa.
-
-Skripta \ref{listing:ssh} automatizira cijeli proces. Naredba pod \#1 generira novi SSH ključ, naredba pod \#2 dodaje ključ SSH agentu, dok naredba pod \#3 kopira javni dio ključa koji potrebno dodati platformi koja pohranjuje repozitorij.
-
-\begin{figure}[b!]
-\centering
-\includegraphics[scale=0.4]{GitHubSSH}
-\caption{Dodavanje SSH ključa na GitHub platformu}
-\label{fig:GitHubSSH}
-\end{figure}
-
-\begin{lstlisting}[caption=Postavljanje SSH autentifikacije, label=listing:ssh]
-ssh-keygen -t rsa -b 4096 -C "{e-mail adresa}" #1
-
-eval "$(ssh-agent -s)" #2
-
-ssh-add -K ~/.ssh/{ime_kljuca}
-
-pbcopy < ~/.ssh/{ime_kljuca}.pub #3
-\end{lstlisting}
-
-U sklopu rada koristim GitHub platformu. Slika \ref{fig:GitHubSSH} prikazuje proces dodavanja SSH ključa na GitHub platformi. SSH ključ se dodaje odabirom opcije \textit{Settings -> SSH and GPG keys -> New SSH key} te dodavanjem kopiranog javnog dijela ključa u polje za ključ. Nakon spremanja ključa isti je moguće koristiti za autorizaciju komunikacije s GitHub platformom.
-
-\paragraph{Standardni alati}
-
-U sklopu implementacije i korištenja kontinuirane integracije koristim nekoliko alata koji su standardni u svakoj instalaciji macOS Servera. Zbog potpunosti ih ovdje navodim.
-
-\subparagraph{Ruby}
-
-Ruby je moderan, dinamički programski jezik koji olakšava implementaciju brojnih funkcionalnosti\citep{ruby}. U sklopu rada ga koristim za dohvat drugih alata.
-
-\subsection{Izgradnja}
-
-Xcode Server automatizaciju izgradnje, testiranja i isporuke ostvaruje korištenjem alata nazvanog \textit{bot}. Bot se kreira i konfigurira korištenjem Xcode aplikacije a pokreće na macOS Server aplikaciji. Dodatno, navedene aplikacije se ne moraju nalaziti na istom računalu.
-
-Bot se kreira korištenjem Xcode alata. Slika \ref{fig:BotCreation} prikazuje postupak kreiranja bota. Potrebno je odabrati opciju \textit{Product -> Create bot...}.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.4]{BotCreation}
-\caption{Kreiranje bota korištenjem Xcode aplikacije}
-\label{fig:BotCreation}
-\end{figure}
-
-Nakon odabira navedene opcije otvara se novi prozor u kojem je potrebno imenovati bot te odabrati macOS Server na kojem će se bot izvršavati. Ukoliko macOS Server nije vidljiv, ponovno pokrenuti macOS Server aplikaciju. Slika \ref{fig:BotServerSelection} prikazuje odabir macOS Server aplikacije kod kreiranja bota.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.4]{BotServerSelection}
-\caption{Odabir macOS Servera}
-\label{fig:BotServerSelection}
-\end{figure}
-
-\paragraph{Verzioniranje}
-
-Konačno dolazimo do verzioniranja projekta. Ako je projekt verzioniran git ili svn sustavom za kontrolu verzija, Xcode Server prepoznaje i ispravno konfigurira proces verzioniranja. Moguće je dodati i novi udaljeni ili lokalni repozitorij.
-
-Nakon odabira repozitorija je potrebno autentificirati vezu. Udaljenom git repozitoriju se može pristupiti korištenjem HTTPS ili SSH autentifikacije. SSH autentifikacija je pouzdanija te olakšava automatizaciju pristupa. Zbog navedenog u ovom radu koristim SSH autentifikaciju. Odabrati opciju \textit{Sing In... -> Existing SSH Keys}, odabrati odgovarajući ključ te unijeti šifru. Slika \ref{fig:BotAddingSSH} prikazuje proces dodavanja SSH ključa.
-
-\begin{figure}[b!]
-\centering
-\includegraphics[scale=0.4]{BotAddingSSH}
-\caption{Dodavanje SSH ključa}
-\label{fig:BotAddingSSH}
-\end{figure}
-
-\paragraph{Izgradnja projekta}
-
-Nakon povezivanja bota s repozitorijem izvornog koda je moguće konfigurirati opcije integracije. Moguće je odabrati shemu projekta te operacije koje će se izvršavati u sklopu integracije. Shema mora biti javna da bi se mogla automatizirati. Slika \ref{fig:XcodeServerOptions} prikazuje opcije koje se mogu konfigurirati.
-
-Dodatno, integraciju je moguće pokretati periodički, nakon promijene stanja ili ručno.
-
-\paragraph{Priprema ovisnosti}
-
-U sklopu pripreme ovisnosti koristim dva alata - CocoaPods i Carthage. CocoaPods je stariji, široko prihvaćen i centraliziran alat za upravljanje ovisnostima iOS projekata. Ovisnosti moraju biti unaprijed registrirane na CocoaPods platformi zbog čega je složeno koristiti privatne ovisnosti i ovisnosti koje su još u razvoju. Carthage je noviji alat. Za razliku od CocoaPods alata, Carthage ne mijenja datoteke projekta te je decentraliziran. Ovisnost nije potrebno registrirati te ih je moguće dohvatiti iz bilo kojeg repozitorija.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{XcodeServerOptions}
-\caption{Konfiguracija osnovnih opcija integracije}
-\label{fig:XcodeServerOptions}
-\end{figure}
-
-Oba alata omogućavaju jednostavnu automatizaciju pripreme ovisnosti. Uz automatizaciju pripreme ovisnosti, automatiziram i dohvat samih alata. Zbog navedenog iste nije potrebno unaprijed instalirati. Dodatno, priprema ovisnosti se može automatizirati i korištenjem Fastlane alata koji je specificiran u dodatku \ref{header:dodatak_fastlane}.
-
-Skripta \ref{listing:cocoapods} implementira dohvaćanje ovisnosti korištenjem CocoaPods alata. Naredba \#1 provjerava postojanja Podfile datoteke. Podfile datoteka specificira ovisnosti koje je potrebno dohvatiti korištenjem CocoaPods alata. Naredba \#2 provjerava postojanje CocoaPods alata kojem se u naredbenom korisničkom sučelju pristupa pod skraćenicom \textit{pod}. Ako alat nije instaliran, isti se instalira korištenjem gem alata. Na kraju, naredba \#4 dohvaća ovisnosti korištenjem CocoaPods alata.
-
-\begin{lstlisting}[caption=Dohvat ovisnosti korištenjem alata CocoaPods, label=listing:cocoapods]
-if [ -f Podfile ]; then #1
-    echo "Podfile found. Starting CocoaPods"
-
-    if ! which pod >/dev/null; then #2
-        echo "Installing CocoaPods"
-
-        gem install cocoapods --user-install #3
-        pod repo update
-
-        echo "CocoaPods installed"
-    fi
-
-    pod install #4
-
-    echo "Finished dependancy fetch using CocoaPods"
-fi
-\end{lstlisting}
-
-Skripta \ref{listing:carthage} implementira dohvaćanje ovisnosti korištenjem Carthage alata. Carthage ovisnosti specificira u Cartfile datoteci. Naredba \#1 provjerava postojanje navedene datoteke. Naredba \#2 provjerava postojanje Carthage alata te ga dohvaća ako ne postoji. Naredba \#3 dohvaća ovisnosti korištenjem Carthage alata. Za bolje performanse operacije koristim dva argumenta. Argument \verb|--platform ios| specificira dohvaćanje ovisnosti samo za iOS platformu. Argument \verb|--cache-builds| dohvaća ovisnosti samo ako iste nisu već dostupne.
-
-\begin{lstlisting}[caption=Dohvat ovisnosti korištenjem alata Carthage, label=listing:carthage]
-if [ -f Cartfile ]; then #1
-    echo "Cartfile found. Starting Carthage"
-
-    if !(which carthage >/dev/null); then #2
-        echo "Instaling Carthage"
-
-        brew install carthage
-    fi
-
-    carthage update --platform ios --cache-builds #3
-
-    echo "Finished dependancy fetch using Carthage"
-fi
-\end{lstlisting}
-
-Obje skripte je potrebno pokrenuti prije obavljanja integracije. Za ostvarenje navedene funkcionalnosti botu dodajem skriptu koja se izvršava prije pokretanja integracije \eng{Pre-Integration Script}. Slika \ref{fig:PreIntegrationScript} prikazuje proces dodavanja nove skripte. Odabrati opciju \textit{Edit Bot... -> Triggers} te kreirati novu skriptu.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{PreIntegrationScript}
-\caption{Dodavanje skripte koja se izvršava prije integracije botu}
-\label{fig:PreIntegrationScript}
-\end{figure}
-
-Unutar novo kreirane skripte je moguće dodati sve naredbe koje se trebaju izvršiti prije integracije. Međutim, radi jednostavnosti i fleksibilnosti je navedene naredbe korisno izdvojiti u zasebnu datoteku. Korištenjem ovog pristupa olakšavam implementaciju kontinuirane integracije te omogućavam laku izmjenu skripte koja se izvršava prije integracije. Skripta \ref{listing:pre_integration_script_call} se korištenjem \path{XCS_PRIMARY_REPO_DIR} varijable okruženja navigira u početni direktorij projekta te provjerava postojanje datoteke \path{scripts/preintegration}. U slučaju postojanja datoteke ista se izvršava.
-
-\begin{lstlisting}[caption=Poziv skripte koja se izvršava prije integracije, label=listing:pre_integration_script_call]
-#!/bin/bash
-
-cd $XCS_PRIMARY_REPO_DIR
-
-if [ -f scripts/preintegration ]; then
-    ./scripts/preintegration
-fi
-\end{lstlisting}
-
-Skripta \ref{listing:pre_integration_script} se izvršava prije integracija. Skripta jednostavno poziva prije definirane skripte. Na isti je način moguće dodati proizvoljan broj naredaba. Dodatno, skripta u \textit{PATH} varijablu okruženja dodaje dvije putanje koje olakšavaju korištenje postojećih alata.
-
-\begin{lstlisting}[caption=Skripta koja se izvršava prije integracije, label=listing:pre_integration_script]
-#!/bin/bash
-
-export PATH="/usr/local/bin:~/.gem/ruby/2.0.0/bin/:$PATH"
-
-if [ -f scripts/cocoapods ]; then
-    ./scripts/cocoapods
-fi
-
-if [ -f scripts/carthage ]; then
-    ./scripts/carthage
-fi
-\end{lstlisting}
-
-Sve skripte se trebaju nalaziti u \path{scripts} direktoriju repozitorija.
-
-Nakon dodavanja skripti je potrebno pokrenuti integraciju. Izgled rezultata izgradnje je prikazan na slici \ref{fig:XcodeServerBuildResult}.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.3]{XcodeServerBuildResult}
-\caption{Rezultati procesa izgradnje}
-\label{fig:XcodeServerBuildResult}
-\end{figure}
 
 \subsection{Testiranje}
 
@@ -1258,7 +1336,7 @@ Glavna grana i time cijeli projekt se osvježava spajanjem promjena razvojne gra
 
 Uz navedene grane koristim i testnu granu koja služi za isporuku testne aplikacije timu za osiguranje kvalitete. Navedena se grana kreira iz razvojne grane. Na grani se otklanjaju pronađene pogreške nakon čega se ista spaja s razvojnom granom.
 
-Isporuku produkcijske aplikacije obavljamo s glavne grane, isporuku razvojne aplikacije s razojne grane, testne aplikacije s testne grane, a pripremne aplikacije s pripremne grane. Slika \ref{fig:ModificiraniGitflowTokRaka} prikazuje modificirani Gitflow radni tok.
+Isporuku produkcijske aplikacije obavljamo s glavne grane, isporuku razvojne aplikacije s razvojne grane, testne aplikacije s testne grane, a pripremne aplikacije s pripremne grane. Slika \ref{fig:ModificiraniGitflowTokRaka} prikazuje modificirani Gitflow radni tok.
 
 \begin{figure}
 \centering
@@ -1267,7 +1345,7 @@ Isporuku produkcijske aplikacije obavljamo s glavne grane, isporuku razvojne apl
 \label{fig:ModificiraniGitflowTokRaka}
 \end{figure}
 
-Sada je vrlo jednostavno odrediti koju ispouku treba koristiti. Ukoliko se izmjena nalazi na razvojnoj grani potrebno je osvježiti razvojnu verziju aplikacije, ako se izmjena nalazi na testnoj grani potrebno je osvježiti testnu verziju, u sljučaju izmjene pripremne grane je potrebno osvježiti pripremnu verziju dok je u sljučaju izmjene glavne grane potrebno osvježiti javnu verziju aplikacije na App Store platformi.
+Sada je vrlo jednostavno odrediti koju isporuku treba koristiti. Ukoliko se izmjena nalazi na razvojnoj grani potrebno je osvježiti razvojnu verziju aplikacije, ako se izmjena nalazi na testnoj grani potrebno je osvježiti testnu verziju, u slučaju izmjene pripremne grane je potrebno osvježiti pripremnu verziju dok je u slučaju izmjene glavne grane potrebno osvježiti javnu verziju aplikacije na App Store platformi.
 
 Skripta \ref{listing:git_branch_creation} prikazuje proces kreiranja potrebnih grana.
 
@@ -1282,9 +1360,58 @@ git checkout -b test
 git push --set-upstream origin test
 \end{lstlisting}
 
+Za svaku granu je potrebno kreirati jedan bot. Najjednostavnije je duplicirati postojeći bot te promijeniti granu na kojoj bot pokreće integraciju. Slika \ref{fig:MultipleBots} prikazuje novo kreirane botove.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{MultipleBots}
+\caption{Novo kreirani botovi}
+\label{fig:MultipleBots}
+\end{figure}
+
+\subsection{Konfiguracija projekta}
+
+iOS operacijski sustav aplikacije razlikuje na temelju identifikatora aplikacije \eng{Bundle Identifier}. Kako bi na istom uređaju mogli instalirati sve četiri verzije aplikacije, navedene verzije moraju imati različite identifikatore aplikacije. Navedeno ostvarujem kreiranjem više konfiguracija sheme i korištenjem \verb|.xcconfig| datoteka.
+
+U sklopu projekta kreiram četiti \verb|.xcconfig| datoteke, jednu za svaki tip isporuke. Sadržaj datoteka je prikazan u skripti \ref{listing:xcconfig}. Naredba pod \#1 dodaje konfiguraciju CocoaPods projekta novo kreiranoj konfiguraciji. Naredba pod \#2 postavlja vrijednost identifirkatora aplikacije. Svaki od tipova isporuke mora imati jedinstven identifikator. Jedinstvenos ostvarjem korištnjem sufiksa.
+
+\begin{lstlisting}[caption=Sadržaj .xcconfig datoteke, label=listing:xcconfig]
+#include "Pods/Target Support Files/Pods-Diplomski_rad/Pods-Diplomski_rad.debug.xcconfig" #1
+
+PRODUCT_BUNDLE_IDENTIFIER = com.rep.Diplomski-rad.{sufix} #2
+\end{lstlisting}
+
+\subsection{Automatsko pokretanje isporuke}
+
+Za svaki tip isporuke je potrebno kreirati zaseban bot. Navedeno je najlakše ostvariti dupliciranjem postojećeg bota. Botovi se razlikuju u dva pogleda - u konfiguraciji koju koriste te u procesu isporuke koji pokreću.
+
+Konfiguraciju koju projekt koristi je moguće postviti u konfiguraciji bota. Odabrati opciju \textit{Edit Bot... -> Build Configurations} te odabrati odgovarajuću konfiguraciju.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{BotConfiguration}
+\caption{Odabir konfiguracije u postavkama bota}
+\label{fig:BotConfiguration}
+\end{figure}
+
+Za implementaciju isporuke koristim fastlane skriptu definiranu u prijašnjem odlomku. Skriptu pokrećem nakon obavljanja integracije. Odabrati opciju \textit{Edit Bot... -> Triggers} te dodati novu fazu nakon integracije. Skripta \ref{listing:bot_fastlane_call} prikazuje sadržaj koji je potrebno dodati novo kreiranoj fazi.
+
+\begin{lstlisting}[caption=Sadržaj faze nakon obavljanja isporuke, label=listing:bot_fastlane_call]
+#!/bin/bash
+
+cd $XCS_PRIMARY_REPO_DIR #1
+
+export PATH="~/.fastlane/bin:~/com.rep.Diplomski-rad.development:/usr/local/bin:~/.gem/ruby/2.0.0/bin/:$PATH" #2
+
+fastlane {ime_staze} #3
+\end{lstlisting}
+
+Naredba pod \#1 navigira proces u ispravni direktorij, naredba pod \#2 dodaje potrebne putanje u PATH varijablu okružtenja, dok nareba pod \#3 pokreće proces isporuke implementiran pomoću fastlane staze.
+
+Promjene obavljene na bilo kojoj od posebnih staza sada pokreću vlastiti proces isporuke.
 
 
-\chapter{Alat Xcodebuild}
+\chapter{Alat Xcodebuild} \label{header:xcodebuild}
 
 Za izgradnju, testiranje i arhiviranje iOS aplikacija koristim \textit{xcodebuild} alat. Alat je razvio Apple za izgradnju macOS aplikacija. U međuvremenu je alat proširen te danas podržava razvoj programske potpore za iOS, tvOS i watchOS operacijske sustave. Xcode i Xcode Server alati koriste xcodebuild za obavljanje svih operacija vezanih uz projekt. Iako se u procesu automatizacije nećemo direktno susretati s alatom, korisno je znati što se dešava u pozadini.
 

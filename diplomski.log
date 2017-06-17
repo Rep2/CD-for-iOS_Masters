@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  13 JUN 2017 01:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  18 JUN 2017 01:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -825,263 +825,349 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 Poglavlje 1.
 [1
 
-]
+] [2]
 Poglavlje 2.
-[2
+[3
 
-] <images/CIFazes.png, id=32, 503.8825pt x 358.33875pt>
+] <images/CIFazes.png, id=35, 503.8825pt x 358.33875pt>
 File: images/CIFazes.png Graphic file (type png)
 
 <use images/CIFazes.png>
-Package pdftex.def Info: images/CIFazes.png used on input line 62.
+Package pdftex.def Info: images/CIFazes.png used on input line 84.
 (pdftex.def)             Requested size: 302.33183pt x 215.0049pt.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 63.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 85.
+ [4 <./images/CIFazes.png>]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 71.
- [3 <./images/CIFazes.png>]
-<images/BuildProcess.png, id=38, 191.71625pt x 395.4775pt>
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 93.
+
+<images/XcodeServerSetup1.png, id=41, 1038.88126pt x 653.44125pt>
+File: images/XcodeServerSetup1.png Graphic file (type png)
+
+<use images/XcodeServerSetup1.png>
+Package pdftex.def Info: images/XcodeServerSetup1.png used on input line 107.
+(pdftex.def)             Requested size: 363.61389pt x 228.70786pt.
+ [5]
+<images/XcodeServerSetup2.png, id=45, 1038.88126pt x 651.43375pt>
+File: images/XcodeServerSetup2.png Graphic file (type png)
+
+<use images/XcodeServerSetup2.png>
+Package pdftex.def Info: images/XcodeServerSetup2.png used on input line 118.
+(pdftex.def)             Requested size: 363.61389pt x 228.00522pt.
+
+<images/DodavanjeCertifikata.png, id=46, 789.95125pt x 457.71pt>
+File: images/DodavanjeCertifikata.png Graphic file (type png)
+
+<use images/DodavanjeCertifikata.png>
+Package pdftex.def Info: images/DodavanjeCertifikata.png used on input line 127
+.
+(pdftex.def)             Requested size: 315.9749pt x 183.08075pt.
+ [6 <./images/XcodeServerSetup1.png>]
+[7 <./images/XcodeServerSetup2.png> <./images/DodavanjeCertifikata.png>]
+<images/BotServerSelection.png, id=57, 739.76375pt x 441.65pt>
+File: images/BotServerSelection.png Graphic file (type png)
+
+<use images/BotServerSelection.png>
+Package pdftex.def Info: images/BotServerSelection.png used on input line 146.
+(pdftex.def)             Requested size: 295.90025pt x 176.65686pt.
+ [8 <./images/BotServerSelection.png>]
+<images/BuildProcess.png, id=63, 191.71625pt x 395.4775pt>
 File: images/BuildProcess.png Graphic file (type png)
 
 <use images/BuildProcess.png>
-Package pdftex.def Info: images/BuildProcess.png used on input line 79.
+Package pdftex.def Info: images/BuildProcess.png used on input line 167.
 (pdftex.def)             Requested size: 95.85788pt x 197.73827pt.
- [4 <./images/BuildProcess.png>]
-
-LaTeX Warning: Reference `IntegracijaDodatakA' on page 5 undefined on input lin
-e 88.
-
-<images/VersioningTreeA.png, id=43, 75.78313pt x 435.6275pt>
+ [9 <./images/BuildProcess.png>]
+<images/VersioningTreeA.png, id=68, 75.78313pt x 435.6275pt>
 File: images/VersioningTreeA.png Graphic file (type png)
 
 <use images/VersioningTreeA.png>
-Package pdftex.def Info: images/VersioningTreeA.png used on input line 100.
+Package pdftex.def Info: images/VersioningTreeA.png used on input line 184.
 (pdftex.def)             Requested size: 30.3127pt x 174.24791pt.
 
-<images/VersioningTreeB.png, id=44, 76.78688pt x 436.12938pt>
+<images/VersioningTreeB.png, id=69, 76.78688pt x 436.12938pt>
 File: images/VersioningTreeB.png Graphic file (type png)
 
 <use images/VersioningTreeB.png>
-Package pdftex.def Info: images/VersioningTreeB.png used on input line 106.
+Package pdftex.def Info: images/VersioningTreeB.png used on input line 190.
 (pdftex.def)             Requested size: 30.7142pt x 174.44865pt.
 
-<images/VersioningTreeC.png, id=45, 76.78688pt x 436.63126pt>
+<images/VersioningTreeC.png, id=70, 76.78688pt x 436.63126pt>
 File: images/VersioningTreeC.png Graphic file (type png)
 
 <use images/VersioningTreeC.png>
-Package pdftex.def Info: images/VersioningTreeC.png used on input line 112.
+Package pdftex.def Info: images/VersioningTreeC.png used on input line 196.
 (pdftex.def)             Requested size: 30.7142pt x 174.6494pt.
 
-<images/VersioningTree.png, id=46, 210.7875pt x 435.12563pt>
+<images/VersioningTree.png, id=71, 210.7875pt x 435.12563pt>
 File: images/VersioningTree.png Graphic file (type png)
 
 <use images/VersioningTree.png>
-Package pdftex.def Info: images/VersioningTree.png used on input line 118.
+Package pdftex.def Info: images/VersioningTree.png used on input line 202.
 (pdftex.def)             Requested size: 84.3135pt x 174.04716pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[5] [6 <./images/VersioningTreeA.png> <./images/VersioningTreeB.png> <./images/
-VersioningTreeC.png> <./images/VersioningTree.png>]
-<images/Initial_commit.png, id=57, 115.43124pt x 220.825pt>
+ [10 <./images/VersioningTreeA.png> <./images/VersioningTreeB.png> <./images/Ve
+rsioningTreeC.png> <./images/VersioningTree.png>] [11] <images/Initial_commit.p
+ng, id=82, 115.43124pt x 220.825pt>
 File: images/Initial_commit.png Graphic file (type png)
 
 <use images/Initial_commit.png>
-Package pdftex.def Info: images/Initial_commit.png used on input line 147.
+Package pdftex.def Info: images/Initial_commit.png used on input line 235.
 (pdftex.def)             Requested size: 69.25926pt x 132.496pt.
 
-<images/Branching.png, id=58, 227.85126pt x 218.8175pt>
+<images/Branching.png, id=83, 227.85126pt x 218.8175pt>
 File: images/Branching.png Graphic file (type png)
 
 <use images/Branching.png>
-Package pdftex.def Info: images/Branching.png used on input line 153.
+Package pdftex.def Info: images/Branching.png used on input line 241.
 (pdftex.def)             Requested size: 136.71179pt x 131.2915pt.
 
-<images/FastForwardA.png, id=59, 226.8475pt x 221.82875pt>
+<images/FastForwardA.png, id=84, 226.8475pt x 221.82875pt>
 File: images/FastForwardA.png Graphic file (type png)
 
 <use images/FastForwardA.png>
-Package pdftex.def Info: images/FastForwardA.png used on input line 165.
+Package pdftex.def Info: images/FastForwardA.png used on input line 253.
 (pdftex.def)             Requested size: 136.10954pt x 133.09825pt.
 
-<images/FastForwardB.png, id=60, 131.49126pt x 222.8325pt>
+<images/FastForwardB.png, id=85, 131.49126pt x 222.8325pt>
 File: images/FastForwardB.png Graphic file (type png)
 
 <use images/FastForwardB.png>
-Package pdftex.def Info: images/FastForwardB.png used on input line 171.
+Package pdftex.def Info: images/FastForwardB.png used on input line 259.
 (pdftex.def)             Requested size: 78.89534pt x 133.70053pt.
-
-<images/ConflictA.png, id=61, 219.82124pt x 299.1175pt>
+ [12 <./images/Initial_commit.png> <./images/Branching.png>] <images/ConflictA.
+png, id=91, 219.82124pt x 299.1175pt>
 File: images/ConflictA.png Graphic file (type png)
 
 <use images/ConflictA.png>
-Package pdftex.def Info: images/ConflictA.png used on input line 186.
+Package pdftex.def Info: images/ConflictA.png used on input line 277.
 (pdftex.def)             Requested size: 131.89375pt x 179.47188pt.
 
-<images/ConflictB.png, id=62, 218.8175pt x 299.1175pt>
+<images/ConflictB.png, id=92, 218.8175pt x 299.1175pt>
 File: images/ConflictB.png Graphic file (type png)
 
 <use images/ConflictB.png>
-Package pdftex.def Info: images/ConflictB.png used on input line 192.
+Package pdftex.def Info: images/ConflictB.png used on input line 283.
 (pdftex.def)             Requested size: 131.2915pt x 179.47188pt.
- [7 <./images/Initial_commit.png> <./images/Branching.png>] [8 <./images/FastFo
-rwardA.png> <./images/FastForwardB.png> <./images/ConflictA.png> <./images/Conf
-lictB.png>]
-<images/RebaseA.png, id=76, 223.83624pt x 299.1175pt>
+ [13 <./images/FastForwardA.png> <./images/FastForwardB.png>] <images/RebaseA.p
+ng, id=98, 223.83624pt x 299.1175pt>
 File: images/RebaseA.png Graphic file (type png)
- <use images/RebaseA.png>
-Package pdftex.def Info: images/RebaseA.png used on input line 210.
+
+<use images/RebaseA.png>
+Package pdftex.def Info: images/RebaseA.png used on input line 297.
 (pdftex.def)             Requested size: 111.91785pt x 149.55838pt.
 
-<images/RebaseB.png, id=77, 223.83624pt x 300.12125pt>
+<images/RebaseB.png, id=99, 223.83624pt x 300.12125pt>
 File: images/RebaseB.png Graphic file (type png)
 
 <use images/RebaseB.png>
-Package pdftex.def Info: images/RebaseB.png used on input line 216.
+Package pdftex.def Info: images/RebaseB.png used on input line 303.
 (pdftex.def)             Requested size: 111.91785pt x 150.06026pt.
 
-<images/RebaseC.png, id=78, 123.46124pt x 300.12125pt>
+<images/RebaseC.png, id=100, 123.46124pt x 300.12125pt>
 File: images/RebaseC.png Graphic file (type png)
 
 <use images/RebaseC.png>
-Package pdftex.def Info: images/RebaseC.png used on input line 222.
+Package pdftex.def Info: images/RebaseC.png used on input line 309.
 (pdftex.def)             Requested size: 61.73045pt x 150.06026pt.
- [9 <./images/RebaseA.png> <./images/RebaseB.png> <./images/RebaseC.png>] <imag
-es/FeatureBranch.png, id=85, 566.115pt x 292.09125pt>
+ [14 <./images/ConflictA.png> <./images/ConflictB.png> <./images/RebaseA.png> <
+./images/RebaseB.png> <./images/RebaseC.png>]
+<images/FeatureBranch.png, id=110, 566.115pt x 292.09125pt>
 File: images/FeatureBranch.png Graphic file (type png)
 
 <use images/FeatureBranch.png>
-Package pdftex.def Info: images/FeatureBranch.png used on input line 245.
+Package pdftex.def Info: images/FeatureBranch.png used on input line 332.
 (pdftex.def)             Requested size: 283.05681pt x 146.04526pt.
- [10]
-<images/Gitflow.png, id=89, 700.6175pt x 428.60126pt>
+ [15]
+<images/Gitflow.png, id=114, 700.6175pt x 428.60126pt>
 File: images/Gitflow.png Graphic file (type png)
- <use images/Gitflow.png>
-Package pdftex.def Info: images/Gitflow.png used on input line 258.
+
+<use images/Gitflow.png>
+Package pdftex.def Info: images/Gitflow.png used on input line 345.
 (pdftex.def)             Requested size: 350.30789pt x 214.3001pt.
+ [16 <./images/FeatureBranch.png>] [17 <./images/Gitflow.png>]
+Overfull \hbox (9.67096pt too wide) in paragraph at lines 366--367
+[]\T1/ptm/m/n/12 HTTPS auten-ti-fi-ka-cija pris-tup kon-tro-lira ko-ri-²te-njem
+ je-dins-tve-nog ko-ris-ni£-kog imena
+ []
 
-[11 <./images/FeatureBranch.png>] [12 <./images/Gitflow.png>]
+<images/BotAddingSSH.png, id=123, 743.77875pt x 440.64626pt>
+File: images/BotAddingSSH.png Graphic file (type png)
 
-LaTeX Warning: Reference `AlatiBuild' on page 13 undefined on input line 285.
+<use images/BotAddingSSH.png>
+Package pdftex.def Info: images/BotAddingSSH.png used on input line 374.
+(pdftex.def)             Requested size: 371.88846pt x 220.32259pt.
+ [18]
+<images/CIStartConfig.png, id=127, 736.7525pt x 460.72125pt>
+File: images/CIStartConfig.png Graphic file (type png)
 
-[13] [14] <images/TargetScheme.png, id=105, 633.36626pt x 239.89626pt>
+<use images/CIStartConfig.png>
+Package pdftex.def Info: images/CIStartConfig.png used on input line 383.
+(pdftex.def)             Requested size: 368.37535pt x 230.36006pt.
+ [19 <./images/BotAddingSSH.png> <./images/CIStartConfig.png>] <images/GitHubSS
+H.png, id=133, 1010.77625pt x 850.17625pt>
+File: images/GitHubSSH.png Graphic file (type png)
+
+<use images/GitHubSSH.png>
+Package pdftex.def Info: images/GitHubSSH.png used on input line 398.
+(pdftex.def)             Requested size: 303.23521pt x 255.05484pt.
+ [20 <./images/GitHubSSH.png>] [21]
+<images/XcodeConfigurations.png, id=142, 575.14874pt x 233.87375pt>
+File: images/XcodeConfigurations.png Graphic file (type png)
+
+<use images/XcodeConfigurations.png>
+Package pdftex.def Info: images/XcodeConfigurations.png used on input line 461.
+
+(pdftex.def)             Requested size: 402.60138pt x 163.71048pt.
+ [22 <./images/XcodeConfigurations.png>]
+[23] [24]
+Overfull \hbox (1.88768pt too wide) in paragraph at lines 551--552
+ \T1/ptm/b/n/12 Auto-ma-ti-za-cija do-hva-¢a-nja ovis-nosti[] \T1/ptm/m/n/12 Ob
+je skripte je po-trebno po-kre-nuti prije obav-
+ []
+
+<images/PreIntegrationScript.png, id=153, 741.77126pt x 444.66125pt>
+File: images/PreIntegrationScript.png Graphic file (type png)
+
+<use images/PreIntegrationScript.png>
+Package pdftex.def Info: images/PreIntegrationScript.png used on input line 555
+.
+(pdftex.def)             Requested size: 370.88472pt x 222.33008pt.
+ [25 <./images/PreIntegrationScript.png>]
+[26] <images/TargetScheme.png, id=162, 633.36626pt x 239.89626pt>
 File: images/TargetScheme.png Graphic file (type png)
 
 <use images/TargetScheme.png>
-Package pdftex.def Info: images/TargetScheme.png used on input line 313.
+Package pdftex.def Info: images/TargetScheme.png used on input line 600.
 (pdftex.def)             Requested size: 316.68236pt x 119.94783pt.
+ [27 <./images/TargetScheme.png>]
+<images/XcodeServerOptions.png, id=167, 740.7675pt x 437.635pt>
+File: images/XcodeServerOptions.png Graphic file (type png)
 
+<use images/XcodeServerOptions.png>
+Package pdftex.def Info: images/XcodeServerOptions.png used on input line 615.
+(pdftex.def)             Requested size: 370.38284pt x 218.81696pt.
 
-LaTeX Warning: Reference `IzgradnjeDodatak' on page 15 undefined on input line 
-320.
+<images/XcodeServerResult.png, id=168, 1022.82124pt x 659.46375pt>
+File: images/XcodeServerResult.png Graphic file (type png)
 
-[15 <./images/TargetScheme.png>] [16] [17] [18] [19]
+<use images/XcodeServerResult.png>
+Package pdftex.def Info: images/XcodeServerResult.png used on input line 624.
+(pdftex.def)             Requested size: 409.12125pt x 263.78082pt.
+ [28 <./images/XcodeServerOptions.png>]
+[29 <./images/XcodeServerResult.png>] [30] [31] [32]
 
-LaTeX Warning: Reference `PripremaAlata' on page 20 undefined on input line 402
+LaTeX Warning: Reference `PripremaAlata' on page 33 undefined on input line 705
 .
 
 
-LaTeX Warning: Reference `KontinuiranaIntegracija_DodatakB' on page 20 undefine
-d on input line 406.
+LaTeX Warning: Reference `header:dodatak_priprema_CI' on page 33 undefined on i
+nput line 707.
 
-[20] [21]
+
+LaTeX Warning: Reference `KontinuiranaIntegracija_DodatakB' on page 33 undefine
+d on input line 709.
+
+[33] [34]
 Poglavlje 3.
-[22
 
-] <images/ContinuousDelivery.png, id=133, 177.66376pt x 310.15875pt>
+LaTeX Warning: Reference `Kontinuirana_Integracija' on page 35 undefined on inp
+ut line 725.
+
+[35
+
+] <images/ContinuousDelivery.png, id=196, 177.66376pt x 310.15875pt>
 File: images/ContinuousDelivery.png Graphic file (type png)
 
 <use images/ContinuousDelivery.png>
-Package pdftex.def Info: images/ContinuousDelivery.png used on input line 436.
+Package pdftex.def Info: images/ContinuousDelivery.png used on input line 739.
 (pdftex.def)             Requested size: 106.59906pt x 186.09668pt.
- [23 <./images/ContinuousDelivery.png>]
-[24] <images/CodeSigning.png, id=141, 199.74625pt x 303.1325pt>
+ [36 <./images/ContinuousDelivery.png>]
+[37] <images/CodeSigning.png, id=204, 199.74625pt x 303.1325pt>
 File: images/CodeSigning.png Graphic file (type png)
 
 <use images/CodeSigning.png>
-Package pdftex.def Info: images/CodeSigning.png used on input line 463.
+Package pdftex.def Info: images/CodeSigning.png used on input line 766.
 (pdftex.def)             Requested size: 119.84866pt x 181.8809pt.
- [25 <./images/CodeSigning.png>]
-Overfull \hbox (0.155pt too wide) in paragraph at lines 474--475
+ [38 <./images/CodeSigning.png>]
+Overfull \hbox (0.155pt too wide) in paragraph at lines 777--778
 []\T1/ptm/m/n/12 Automatizaciju kon-fi-gu-ra-cije pro-jekta je naj-lak²e os-tva
 -riti de-fi-ni-ra-njem sheme ime-
  []
 
 
 LaTeX Warning: Reference `header:header:dodatak:AutomatizacijaPotpisivanjaKoda'
- on page 26 undefined on input line 476.
+ on page 39 undefined on input line 779.
 
-[26] [27] [28] [29] [30]
+[39] [40] [41] [42] [43]
 
-LaTeX Warning: Reference `header:CrashlyticsImplementacija' on page 31 undefine
-d on input line 543.
+LaTeX Warning: Reference `header:CrashlyticsImplementacija' on page 44 undefine
+d on input line 846.
 
 
-LaTeX Warning: Reference `header:AppStoreObjava' on page 31 undefined on input 
-line 547.
+LaTeX Warning: Reference `header:AppStoreObjava' on page 44 undefined on input 
+line 850.
 
-[31]
+[44]
 Poglavlje 4.
-<images/CDDifferences.png, id=165, 722.7pt x 286.06876pt>
+<images/CDDifferences.png, id=229, 722.7pt x 286.06876pt>
 File: images/CDDifferences.png Graphic file (type png)
 
 <use images/CDDifferences.png>
-Package pdftex.def Info: images/CDDifferences.png used on input line 557.
+Package pdftex.def Info: images/CDDifferences.png used on input line 860.
 (pdftex.def)             Requested size: 397.48622pt x 157.3383pt.
 
-Overfull \hbox (1.94426pt too wide) in paragraph at lines 562--563
+Overfull \hbox (1.94426pt too wide) in paragraph at lines 865--866
 []\T1/ptm/m/n/12 Kontinuirana is-po-ruka auto-mat-skom is-po-ru-kom pro-mjena u
  pro-duk-ciju nas-toji sma-
  []
 
-<images/IntercomShipsPerDay.png, id=166, 521.95pt x 187.70125pt>
+<images/IntercomShipsPerDay.png, id=230, 521.95pt x 187.70125pt>
 File: images/IntercomShipsPerDay.png Graphic file (type png)
 
 <use images/IntercomShipsPerDay.png>
-Package pdftex.def Info: images/IntercomShipsPerDay.png used on input line 566.
+Package pdftex.def Info: images/IntercomShipsPerDay.png used on input line 869.
 
 (pdftex.def)             Requested size: 365.3625pt x 131.38997pt.
- [32
+ [45
 
  <./images/CDDifferences.png>]
-<images/DeploymentStages.png, id=172, 685.56125pt x 319.1925pt>
+<images/DeploymentStages.png, id=236, 685.56125pt x 319.1925pt>
 File: images/DeploymentStages.png Graphic file (type png)
 
 <use images/DeploymentStages.png>
-Package pdftex.def Info: images/DeploymentStages.png used on input line 579.
+Package pdftex.def Info: images/DeploymentStages.png used on input line 882.
 (pdftex.def)             Requested size: 411.33992pt x 191.51697pt.
- [33 <./images/IntercomShipsPerDay.png> <./images/DeploymentStages.png>] [34] [
-35]
-<images/FeatureBranchCD.png, id=184, 695.59875pt x 400.49625pt>
+ [46 <./images/IntercomShipsPerDay.png> <./images/DeploymentStages.png>] [47] [
+48]
+<images/FeatureBranchCD.png, id=248, 695.59875pt x 400.49625pt>
 File: images/FeatureBranchCD.png Graphic file (type png)
 
 <use images/FeatureBranchCD.png>
-Package pdftex.def Info: images/FeatureBranchCD.png used on input line 618.
+Package pdftex.def Info: images/FeatureBranchCD.png used on input line 921.
 (pdftex.def)             Requested size: 347.79852pt x 200.24763pt.
- [36 <./images/FeatureBranchCD.png>]
-<images/GitFlowCD.png, id=189, 780.9175pt x 518.93875pt>
+ [49 <./images/FeatureBranchCD.png>]
+<images/GitFlowCD.png, id=253, 780.9175pt x 518.93875pt>
 File: images/GitFlowCD.png Graphic file (type png)
 
 <use images/GitFlowCD.png>
-Package pdftex.def Info: images/GitFlowCD.png used on input line 635.
+Package pdftex.def Info: images/GitFlowCD.png used on input line 938.
 (pdftex.def)             Requested size: 390.4578pt x 259.46873pt.
 
-<images/HotfixGitflow.png, id=190, 477.785pt x 400.49625pt>
+<images/HotfixGitflow.png, id=254, 477.785pt x 400.49625pt>
 File: images/HotfixGitflow.png Graphic file (type png)
 
 <use images/HotfixGitflow.png>
-Package pdftex.def Info: images/HotfixGitflow.png used on input line 642.
+Package pdftex.def Info: images/HotfixGitflow.png used on input line 945.
 (pdftex.def)             Requested size: 238.8919pt x 200.24763pt.
- [37 <./images/GitFlowCD.png>]
-Overfull \hbox (2.69272pt too wide) in paragraph at lines 656--657
+ [50 <./images/GitFlowCD.png>]
+Overfull \hbox (2.69272pt too wide) in paragraph at lines 959--960
 \T1/ptm/m/n/12 Zbog na-ve-de-nog se umjesto broja upo-zo-re-nja £esto ko-ris-ti
 m [][]\T1/pcr/m/n/12 XCS_WARNING_CHANGE
  []
 
-[38 <./images/HotfixGitflow.png>] [39]
+[51 <./images/HotfixGitflow.png>] [52]
 Poglavlje 5.
-(./diplomski.bbl [40
+(./diplomski.bbl [53
 
 ]
 Underfull \hbox (badness 5667) in paragraph at lines 9--14
@@ -1117,7 +1203,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--41
 ptm/m/n/12 .
  []
 
-[41
+[54
 
 ]
 Underfull \hbox (badness 1014) in paragraph at lines 116--121
@@ -1137,239 +1223,149 @@ Underfull \hbox (badness 1902) in paragraph at lines 137--142
 ptm/m/n/12 .  [Online;
  []
 
-) [42] [43] [44
+) [55] [56] [57
 
 
 ]
 Dodatak A.
-[45
+[58
 
-] <images/XcodeServerSetup1.png, id=223, 1038.88126pt x 653.44125pt>
-File: images/XcodeServerSetup1.png Graphic file (type png)
-
-<use images/XcodeServerSetup1.png>
-Package pdftex.def Info: images/XcodeServerSetup1.png used on input line 742.
-(pdftex.def)             Requested size: 363.61389pt x 228.70786pt.
-
-Overfull \hbox (15.42392pt too wide) in paragraph at lines 749--750
-\T1/ptm/m/n/12 platnu ver-ziju ma-cOS Ser-vera je mo-gu¢e pre-uzeti na po-vez-n
-ici $\T1/pcr/m/n/12 https : / / developer .
- []
-
-<images/XcodeServerSetup2.png, id=224, 1038.88126pt x 651.43375pt>
-File: images/XcodeServerSetup2.png Graphic file (type png)
-
-<use images/XcodeServerSetup2.png>
-Package pdftex.def Info: images/XcodeServerSetup2.png used on input line 753.
-(pdftex.def)             Requested size: 363.61389pt x 228.00522pt.
- [46 <./images/XcodeServerSetup1.png>]
-<images/DodavanjeCertifikata.png, id=229, 789.95125pt x 457.71pt>
-File: images/DodavanjeCertifikata.png Graphic file (type png)
-
-<use images/DodavanjeCertifikata.png>
-Package pdftex.def Info: images/DodavanjeCertifikata.png used on input line 762
-.
-(pdftex.def)             Requested size: 315.9749pt x 183.08075pt.
- [47 <./images/XcodeServerSetup2.png> <./images/DodavanjeCertifikata.png>]
-
-LaTeX Warning: Reference `header:dodatak_potpisivanje_koda' on page 48 undefine
-d on input line 770.
-
-
-Overfull \hbox (5.92921pt too wide) in paragraph at lines 772--773
-[]\T1/ptm/m/n/12 Pripremne pro-file je po-trebno spre-miti na lo-ka-ciji $\T1/p
-cr/m/n/12 ~ / Library / MobileDevice /
- []
-
-<images/DodavanjePripravnihProfila.png, id=235, 803.0pt x 103.38625pt>
-File: images/DodavanjePripravnihProfila.png Graphic file (type png)
-
-<use images/DodavanjePripravnihProfila.png>
-Package pdftex.def Info: images/DodavanjePripravnihProfila.png used on input li
-ne 776.
-(pdftex.def)             Requested size: 321.1943pt x 41.35376pt.
-
-<images/GitHubSSH.png, id=236, 1010.77625pt x 850.17625pt>
-File: images/GitHubSSH.png Graphic file (type png)
-
-<use images/GitHubSSH.png>
-Package pdftex.def Info: images/GitHubSSH.png used on input line 797.
-(pdftex.def)             Requested size: 404.30333pt x 340.06447pt.
- [48 <./images/DodavanjePripravnihProfila.png>]
-[49 <./images/GitHubSSH.png>]
-Overfull \hbox (0.29012pt too wide) in paragraph at lines 824--825
-\T1/ptm/m/n/12 Xcode Ser-ver auto-ma-ti-za-ciju iz-grad-nje, tes-ti-ra-nja i is
--po-ruke os-tva-ruje ko-ri-²te-njem alata
- []
-
-<images/BotCreation.png, id=245, 791.95876pt x 360.34625pt>
-File: images/BotCreation.png Graphic file (type png)
-
-<use images/BotCreation.png>
-Package pdftex.def Info: images/BotCreation.png used on input line 830.
-(pdftex.def)             Requested size: 316.7779pt x 144.13594pt.
-
-<images/BotServerSelection.png, id=246, 739.76375pt x 441.65pt>
-File: images/BotServerSelection.png Graphic file (type png)
-
-<use images/BotServerSelection.png>
-Package pdftex.def Info: images/BotServerSelection.png used on input line 839.
-(pdftex.def)             Requested size: 295.90025pt x 176.65686pt.
- [50 <./images/BotCreation.png>]
-<images/BotAddingSSH.png, id=252, 743.77875pt x 440.64626pt>
-File: images/BotAddingSSH.png Graphic file (type png)
-
-<use images/BotAddingSSH.png>
-Package pdftex.def Info: images/BotAddingSSH.png used on input line 852.
-(pdftex.def)             Requested size: 297.50623pt x 176.25537pt.
- [51 <./images/BotServerSelection.png> <./images/BotAddingSSH.png>]
-<images/XcodeServerOptions.png, id=258, 740.7675pt x 437.635pt>
-File: images/XcodeServerOptions.png Graphic file (type png)
-
-<use images/XcodeServerOptions.png>
-Package pdftex.def Info: images/XcodeServerOptions.png used on input line 869.
-(pdftex.def)             Requested size: 370.38284pt x 218.81696pt.
- [52 <./images/XcodeServerOptions.png>]
-[53] <images/PreIntegrationScript.png, id=266, 741.77126pt x 444.66125pt>
-File: images/PreIntegrationScript.png Graphic file (type png)
-
-<use images/PreIntegrationScript.png>
-Package pdftex.def Info: images/PreIntegrationScript.png used on input line 919
-.
-(pdftex.def)             Requested size: 370.88472pt x 222.33008pt.
- [54 <./images/PreIntegrationScript.png>]
-<images/XcodeServerBuildResult.png, id=271, 1187.43625pt x 422.57875pt>
-File: images/XcodeServerBuildResult.png Graphic file (type png)
-
-<use images/XcodeServerBuildResult.png>
-Package pdftex.def Info: images/XcodeServerBuildResult.png used on input line 9
-58.
-(pdftex.def)             Requested size: 356.23363pt x 126.7746pt.
-
-<images/AddingTests.png, id=272, 902.37125pt x 507.8975pt>
+] <images/AddingTests.png, id=286, 902.37125pt x 507.8975pt>
 File: images/AddingTests.png Graphic file (type png)
 
 <use images/AddingTests.png>
-Package pdftex.def Info: images/AddingTests.png used on input line 971.
+Package pdftex.def Info: images/AddingTests.png used on input line 1049.
 (pdftex.def)             Requested size: 360.94211pt x 203.1554pt.
- [55 <./images/XcodeServerBuildResult.png>]
-<images/XcodeServerTestResult.png, id=277, 956.57375pt x 436.63126pt>
+
+<images/XcodeServerTestResult.png, id=287, 956.57375pt x 436.63126pt>
 File: images/XcodeServerTestResult.png Graphic file (type png)
 
 <use images/XcodeServerTestResult.png>
-Package pdftex.def Info: images/XcodeServerTestResult.png used on input line 98
-0.
+Package pdftex.def Info: images/XcodeServerTestResult.png used on input line 10
+58.
 (pdftex.def)             Requested size: 382.62271pt x 174.6494pt.
- [56 <./images/AddingTests.png> <./images/XcodeServerTestResult.png>] [57]
-<images/AppleDeveloperCertificateCreation.png, id=287, 689.57625pt x 361.35pt>
+ [59 <./images/AddingTests.png> <./images/XcodeServerTestResult.png>] [60]
+<images/AppleDeveloperCertificateCreation.png, id=296, 689.57625pt x 361.35pt>
 File: images/AppleDeveloperCertificateCreation.png Graphic file (type png)
 
 <use images/AppleDeveloperCertificateCreation.png>
 Package pdftex.def Info: images/AppleDeveloperCertificateCreation.png used on i
-nput line 1021.
+nput line 1099.
 (pdftex.def)             Requested size: 275.8256pt x 144.53743pt.
-
-<images/KeychainAccessRequest.png, id=288, 872.25874pt x 285.065pt>
+ [61 <./images/AppleDeveloperCertificateCreation.png>]
+<images/KeychainAccessRequest.png, id=301, 872.25874pt x 285.065pt>
 File: images/KeychainAccessRequest.png Graphic file (type png)
 
 <use images/KeychainAccessRequest.png>
-Package pdftex.def Info: images/KeychainAccessRequest.png used on input line 10
-34.
+Package pdftex.def Info: images/KeychainAccessRequest.png used on input line 11
+12.
 (pdftex.def)             Requested size: 348.89731pt x 114.02397pt.
- [58 <./images/AppleDeveloperCertificateCreation.png>] <images/PrivateKeyExport
-.png, id=293, 884.30376pt x 204.765pt>
+
+<images/PrivateKeyExport.png, id=302, 884.30376pt x 204.765pt>
 File: images/PrivateKeyExport.png Graphic file (type png)
 
 <use images/PrivateKeyExport.png>
-Package pdftex.def Info: images/PrivateKeyExport.png used on input line 1047.
+Package pdftex.def Info: images/PrivateKeyExport.png used on input line 1125.
 (pdftex.def)             Requested size: 353.71524pt x 81.90454pt.
-
-<images/AppIdentifierCreation.png, id=294, 979.66pt x 612.2875pt>
+ [62 <./images/KeychainAccessRequest.png> <./images/PrivateKeyExport.png>]
+<images/AppIdentifierCreation.png, id=309, 979.66pt x 612.2875pt>
 File: images/AppIdentifierCreation.png Graphic file (type png)
 
 <use images/AppIdentifierCreation.png>
-Package pdftex.def Info: images/AppIdentifierCreation.png used on input line 10
-58.
+Package pdftex.def Info: images/AppIdentifierCreation.png used on input line 11
+36.
 (pdftex.def)             Requested size: 391.85706pt x 244.91066pt.
- [59 <./images/KeychainAccessRequest.png> <./images/PrivateKeyExport.png>]
-<images/SigningArtefactsSetup.png, id=300, 490.83376pt x 247.92625pt>
+
+<images/SigningArtefactsSetup.png, id=310, 490.83376pt x 247.92625pt>
 File: images/SigningArtefactsSetup.png Graphic file (type png)
 
 <use images/SigningArtefactsSetup.png>
-Package pdftex.def Info: images/SigningArtefactsSetup.png used on input line 10
-67.
+Package pdftex.def Info: images/SigningArtefactsSetup.png used on input line 11
+45.
 (pdftex.def)             Requested size: 294.50252pt x 148.7569pt.
- [60 <./images/AppIdentifierCreation.png> <./images/SigningArtefactsSetup.png>]
-
-<images/iTunesUUID.png, id=306, 662.475pt x 215.80624pt>
+ [63 <./images/AppIdentifierCreation.png>] <images/iTunesUUID.png, id=315, 662.
+475pt x 215.80624pt>
 File: images/iTunesUUID.png Graphic file (type png)
 
 <use images/iTunesUUID.png>
-Package pdftex.def Info: images/iTunesUUID.png used on input line 1080.
+Package pdftex.def Info: images/iTunesUUID.png used on input line 1158.
 (pdftex.def)             Requested size: 331.2367pt x 107.90285pt.
 
-<images/XcodeArchiveOptions.png, id=307, 589.20125pt x 358.33875pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<images/XcodeArchiveOptions.png, id=316, 589.20125pt x 358.33875pt>
 File: images/XcodeArchiveOptions.png Graphic file (type png)
 
 <use images/XcodeArchiveOptions.png>
-Package pdftex.def Info: images/XcodeArchiveOptions.png used on input line 1097
+Package pdftex.def Info: images/XcodeArchiveOptions.png used on input line 1175
 .
 (pdftex.def)             Requested size: 294.5999pt x 179.16893pt.
- [61 <./images/iTunesUUID.png>] [62 <./images/XcodeArchiveOptions.png>]
-Overfull \hbox (3.51799pt too wide) in paragraph at lines 1139--1140
+ [64 <./images/SigningArtefactsSetup.png>]
+[65 <./images/iTunesUUID.png> <./images/XcodeArchiveOptions.png>] [66]
+Overfull \hbox (3.51799pt too wide) in paragraph at lines 1217--1218
 []\T1/ptm/m/n/12 Kreiranje pro-fila se obav-lja na $\T1/pcr/m/n/12 https : / / 
 itunesconnect . apple . com/$ \T1/ptm/m/n/12 stra-
  []
 
-<images/iTunesConnectAppCreation.png, id=317, 470.75874pt x 541.02126pt>
+<images/iTunesConnectAppCreation.png, id=329, 470.75874pt x 541.02126pt>
 File: images/iTunesConnectAppCreation.png Graphic file (type png)
 
 <use images/iTunesConnectAppCreation.png>
 Package pdftex.def Info: images/iTunesConnectAppCreation.png used on input line
- 1143.
+ 1221.
 (pdftex.def)             Requested size: 188.30016pt x 216.40466pt.
- [63] [64 <./images/iTunesConnectAppCreation.png>] [65] [66]
-Overfull \hbox (0.71437pt too wide) in paragraph at lines 1216--1217
+ [67 <./images/iTunesConnectAppCreation.png>] [68] [69]
+Overfull \hbox (0.71437pt too wide) in paragraph at lines 1294--1295
 \T1/ptm/m/n/12 nicu $\T1/pcr/m/n/12 https : / / www . fabric . io / settings / 
 organizations$\T1/ptm/m/n/12 . Na-kon pri-jave
  []
 
-<images/FabricKeys.png, id=331, 674.52pt x 347.2975pt>
+<images/FabricKeys.png, id=341, 674.52pt x 347.2975pt>
 File: images/FabricKeys.png Graphic file (type png)
 
 <use images/FabricKeys.png>
-Package pdftex.def Info: images/FabricKeys.png used on input line 1220.
+Package pdftex.def Info: images/FabricKeys.png used on input line 1298.
 (pdftex.def)             Requested size: 337.25917pt x 173.64832pt.
- [67 <./images/FabricKeys.png>] [68]
-<images/ModificiraniGitflowTokRaka.png, id=340, 975.645pt x 643.40375pt>
+ [70 <./images/FabricKeys.png>] [71]
+<images/ModificiraniGitflowTokRaka.png, id=349, 975.645pt x 643.40375pt>
 File: images/ModificiraniGitflowTokRaka.png Graphic file (type png)
 
 <use images/ModificiraniGitflowTokRaka.png>
 Package pdftex.def Info: images/ModificiraniGitflowTokRaka.png used on input li
-ne 1265.
-(pdftex.def)             Requested size: 487.8213pt x 321.70108pt.
+ne 1343.
+(pdftex.def)             Requested size: 390.25108pt x 257.35693pt.
+ [72]
+<images/MultipleBots.png, id=353, 396.48125pt x 107.40125pt>
+File: images/MultipleBots.png Graphic file (type png)
 
-Overfull \hbox (75.25633pt too wide) in paragraph at lines 1265--1266
- [][] 
- []
+<use images/MultipleBots.png>
+Package pdftex.def Info: images/MultipleBots.png used on input line 1367.
+(pdftex.def)             Requested size: 277.53497pt x 75.18034pt.
+ [73 <./images/ModificiraniGitflowTokRaka.png> <./images/MultipleBots.png>]
+<images/BotConfiguration.png, id=359, 737.75626pt x 463.7325pt>
+File: images/BotConfiguration.png Graphic file (type png)
 
-[69] [70 <./images/ModificiraniGitflowTokRaka.png>]
+<use images/BotConfiguration.png>
+Package pdftex.def Info: images/BotConfiguration.png used on input line 1392.
+(pdftex.def)             Requested size: 368.87723pt x 231.86568pt.
+ [74 <./images/BotConfiguration.png>] [75]
 Dodatak B.
-[71
+[76
 
 ]
-Overfull \hbox (8.79755pt too wide) in paragraph at lines 1330--1331
+Overfull \hbox (8.79755pt too wide) in paragraph at lines 1473--1474
 []\T1/ptm/m/n/12 Provjeru po-kri-ve-nosti koda do-bi-vamo ko-ris-te¢i pa-ra-me-
 tar [][]\T1/pcr/m/n/12 -showBuildSettings
  []
 
-[72] [73]
+[77] [78]
 Dodatak C.
-[74
+[79
 
-] [75] [76]
+] [80] [81]
 Dodatak D.
-[77
+[82
 
 ] (./diplomski.aux)
 
@@ -1377,13 +1373,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 9389 strings out of 492995
- 135161 string characters out of 6132704
- 248642 words of memory out of 5000000
- 12698 multiletter control sequences out of 15000+600000
+ 9408 strings out of 492995
+ 135637 string characters out of 6132704
+ 241793 words of memory out of 5000000
+ 12715 multiletter control sequences out of 15000+600000
  62260 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,9n,42p,1274b,1644s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,9n,42p,1236b,1640s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2
 017/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2017/tex
@@ -1392,10 +1388,10 @@ mf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2017/texmf-dist
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on diplomski.pdf (82 pages, 2176020 bytes).
+Output written on diplomski.pdf (87 pages, 2217618 bytes).
 PDF statistics:
- 402 PDF objects out of 1000 (max. 8388607)
- 209 compressed objects within 3 object streams
+ 422 PDF objects out of 1000 (max. 8388607)
+ 220 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 246 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 256 words of extra memory for PDF output out of 10000 (max. 10000000)
 
