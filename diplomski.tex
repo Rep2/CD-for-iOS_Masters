@@ -606,10 +606,6 @@ Xcode projekte je moguće grupirati u Xcode radno okruženje \eng{workspace}. Ra
 
 Izgradnja iOS projekta se u praksi pokreće gotovo isključivo korištenjem alata Xcode. Međutim, navedeni pristup nije moguće automatizirati. Zbog navedenog procesi koji automatiziraju izgradnju koriste alat xcodebuild, direktno ili korištenjem alata koji interno koristi alat xcodebuild. Alat je detaljnije specificiran u dodatku \ref{header:xcodebuild}.
 
-Xcode Server značajno olakšava korištenje alata xcodebuild. Nakon povezivanja bota s repozitorijem izvornog koda je moguće konfigurirati opcije integracije. Moguće je odabrati shemu projekta za koju se provodi integracija, operacije koje će se izvršavati u sklopu integracije te postavke koje se koriste za izgradnju projekta. Slika \ref{fig:XcodeServerOptions} prikazuje opcije koje se mogu konfigurirati.
-
-Kako bi se shema mogla iskoristiti za integraciju ista mora biti javno objavljena. Shema se može konfigurirati korištenjem Xcode aplikacije.
-
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{XcodeServerOptions}
@@ -617,14 +613,31 @@ Kako bi se shema mogla iskoristiti za integraciju ista mora biti javno objavljen
 \label{fig:XcodeServerOptions}
 \end{figure}
 
-Ovako konfiguriran bot provodi kontinuiranu integraciju za odabranu granu. Rezultat integracije je moguće vidjeti na početnom ekranu bota. Slika \ref{fig:XcodeServerResult} prikazuje primjer rezultata integracije. Bot prikazuje veliki broj podataka od broja integracija, uspješnosti izgradnje i testiranja, do pokrivenosti koda testovima.
-    
-\begin{figure}
+\begin{figure}[b!]
 \centering
-\includegraphics[scale=0.4]{XcodeServerResult}
-\caption{Rezultati obavljanja integracije}
+\includegraphics[scale=0.5]{XcodeServerResult}
+\caption{Primjer prikaza rezultata kontinuirane integracije}
 \label{fig:XcodeServerResult}
 \end{figure}
+
+Xcode Server značajno olakšava korištenje alata xcodebuild. Nakon povezivanja bota s repozitorijem izvornog koda je moguće konfigurirati opcije integracije. Moguće je odabrati shemu projekta za koju se provodi integracija, operacije koje će se izvršavati u sklopu integracije te postavke koje se koriste za izgradnju projekta. Slika \ref{fig:XcodeServerOptions} prikazuje opcije koje se mogu konfigurirati.
+
+Kako bi se shema mogla iskoristiti za integraciju ista mora biti javno objavljena. Shema se može konfigurirati korištenjem Xcode aplikacije.
+
+Ovako konfiguriran bot provodi kontinuiranu integraciju za odabranu granu. Rezultat integracije je moguće vidjeti na otvaranjem početnog ekranu bota. Slika \ref{fig:XcodeServerResult} prikazuje primjer rezultata integracije. Prvi redak slike prikazuje opće informacije o kontinuiranoj integraciji kao što broj obavljenih integracija, postotak uspješnosti te broj verzija repozitorija. Drugi redak slike prikazuje uspješnost izvođenja procesa izgradnje za svaku pojedinu integraciju.
+
+Prve dvije prikazane integracije su završile greškom koja je u trećoj integraciji otklonjena. Četvrta integracije otklanja upozorenje dojavljeno u prve tri integracije. Integracija broj 20 dojavljuje novu grešku koju otklanja sljedeća integracija.
+
+Odabirom pojedine integracije se otvara ekran s detaljima odabrane integracije. Detalji integracije su podjeljeni u nekoliko sekcija od kojih svaka pruža vrlo detaljne informacije o integraciji. Prva sekcija \verb|Summary| prikazuje najvažnije podatke na jednom, sažetom ekranu. Slika \ref{fig:XcodeServerSingleIntegration} prikazuje primjer navedene sekcije za integraciju koja je dojavila pet novih pogrešaka u procesu izgradnje. Detalji novo pronađenih pogrešaka su prikazani na ekranu što olakšava pronalaženje i otklanjanje pogrešaka.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{XcodeServerSingleIntegration}
+\caption{Detaljan prikaz integracije}
+\label{fig:XcodeServerSingleIntegration}
+\end{figure}
+
+Zadnja sekcija detalnog prikaza integracije prikazuje ispis svih faza integracije, uključujući i ručno definirane faze. Sekcija je vrlo korisna za provjeru ponašanja pojedine faze.
 
 \section{Testiranje}
 

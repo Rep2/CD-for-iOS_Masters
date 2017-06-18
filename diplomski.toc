@@ -16,9 +16,9 @@
 \contentsline {paragraph}{Carthage}{24}
 \contentsline {paragraph}{Automatizacija dohva\IeC {\'c}anja ovisnosti}{25}
 \contentsline {subsection}{\numberline {2.2.4}Izgradnja}{27}
-\contentsline {section}{\numberline {2.3}Testiranje}{28}
-\contentsline {section}{\numberline {2.4}Osiguranje kvalitete}{30}
-\contentsline {section}{\numberline {2.5}Implementacija kontinuirane integracije}{31}
+\contentsline {section}{\numberline {2.3}Testiranje}{29}
+\contentsline {section}{\numberline {2.4}Osiguranje kvalitete}{31}
+\contentsline {section}{\numberline {2.5}Implementacija kontinuirane integracije}{32}
 \contentsline {chapter}{\numberline {3}Kontinuirana dostava}{35}
 \contentsline {section}{\numberline {3.1}Potpisivanje koda}{36}
 \contentsline {subsection}{\numberline {3.1.1}Automatizacija potpisivanja koda}{38}
