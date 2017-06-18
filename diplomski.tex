@@ -643,42 +643,74 @@ Zadnja sekcija detalnog prikaza integracije prikazuje ispis svih faza integracij
 
 Testiranje je sastavni dio razvoja programske potpore. Implementacijom kvalitetnih testova ne samo da osiguravamo ispravan rad programske potpore, već sprječavamo nazadovanje koda \eng{code regression} i značajno smanjujemo potrebu za ručnim testiranjem ispravnosti\citep{wiki:SoftwareTesting}.
 
-Pogrešno je mišljenje da implementacija testova produljuje vrijeme razvoja. Svaku implementiranu funkcionalnosti i obavljenu izmjenu je potrebno testirati. Jedino je pitanje hoće li se navedeno testiranje automatizirati ili ne. Jednom napisan kvalitetan test može se može pokrenuti beskonačan broj puta. Ručano testiranje, s druge strane, svaki put zahtijeva vrijeme zaposlenika. Bilo to u sklopu razvoja ili s ciljem provjere ispravnosti, ručna provjera ispravnosti zahtjeva više vremena i daje lošije rezultate.
+Pogrešno je mišljenje da implementacija testova produljuje vrijeme razvoja. Svaku implementiranu funkcionalnosti i obavljenu izmjenu je potrebno testirati. Jedino je pitanje hoće li se navedeno testiranje obavljati automatski. Jednom napisan kvalitetan test se može pokrenuti proizvoljan broj puta. S druge strane, provođenje ručanog testiranje svaki put zahtijeva vrijeme člana tima. Bilo to u sklopu razvoja ili s ciljem provjere ispravnosti, ručna provjera ispravnosti zahtjeva više resursa i daje lošije rezultate.
 
 Navedenu konstataciju ne treba zamijeniti s potpunim isključenjem ručnog testiranja aplikacije. Bez obzira na kvalitetu testova pogreške se uvijek mogu dogoditi. Međutim, pisanjem kvalitetnih testova se vjerojatnost pojave pogreške značajno smanjuje.
 
 Ovaj odlomak ne ulazi u proces pisanja testova, već samo automatizira pokretanje istih. Implementacija kvalitetnih testova je vrlo složeno područje te nadilazi okvire ovog rada.
 
-Alat xcodebuild omogućuje implementaciju dva tipa testova: Unit i UI testove.
+Proces razvoja programske potpore za iOS operacijski sustav definira dva tipa testova: \verb|unit| i \verb|UI| testove.
 
 Unit testovi su nesretno imenovani. Oni ne predstavljaju standardne unit testove, već se koriste kao ime za testove koji imaju pristup kodu koji testiraju. Testovi direktno komuniciraju s kodom koji testiraju i kroz ovu komunikaciju provjeravaju ispravnost izvođenja. Ovaj tip testa se pokreće kao omotač oko izvorne aplikacije.
 
 S druge strane, UI testovi nemaju pristup izvornom kodu aplikacije. Oni programsku potporu testiraju njezinim pokretanjem i simuliranjem korisničke interakcije. Programer specificira korisničke akcije i ponašanje koje očekuje od aplikacije nakon primanja navede akcije. UI testovi pokreću dvije aplikacije: aplikaciju koju testiraju i aplikaciju koja simulira korisničku interakciju.
 
-Oba tipa testova su implementirani kao testni ciljevi Xcode projekta. Kod testnog cilja nije dio produkcijskog te se ne koristi u procesu izgradnje. Testni cilj referencira cilj koji testira. Dodatno, cilj može specificirati koji se testni ciljevi pokreću prilikom pokretanja operacije testiranja. Na ovaj način jedan cilj može specificirati više testnih ciljeva te pokretanjem operacije testiranja pokrenuti sve navedene testne ciljeve. Navedeni proces olakšava pokretanje testova korištenjem xcodebuild alata.
+Oba tipa testova su implementirani kao testni ciljevi Xcode projekta. Kod testnog cilja nije dio produkcijskog te se ne koristi u procesu izgradnje. Testni cilj referencira cilj koji testira. Dodatno, shema može specificirati koji se testni ciljevi pokreću prilikom pokretanja operacije testiranja. Na ovaj način jedana shema može u procesu testiranja prokrenuti više testnih ciljeva.
 
-U sklopu razvoja testiranje pokrećemo korištenjem Xcode alata. Alat obavlja sve potrebne operacije i dojavljuje rezultate procesa. Ručno pokretanje testiranja se također obavlja korištenjem alat xcodebuild.
+Proces testiranja se može pokrenuti na na iOS Simulatoru, aplikaciji koja simulira iOS operacijski sustav na macOS operacijskom sustavu, ili stvarnom uređaju. Simulator se instalira u sklopu instalacije Xcode aplikacije.
 
-Proces testiranja se pokreće na iOS Simulatoru, aplikaciji koja simulira iOS operacijski sustav na macOS operacijskom sustavu. Zbog navedenog je potrebno preuzeti barem jedan iOS simulator željene verzije.
+\subsection{Automatizacija testiranja}
 
-Primjer naredbe koja pokreće testni proces se nalazi u dodatku \ref{TestiranjeXcodeBuild}. Ispis naredbe je sličan ispisu izgradnje te je preporučeno koristiti jedan od parsera ispisa.
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.5]{XcodeServerTestAction}
+\caption{Uključivanje pokretanja testova u sklopu integracije}
+\label{fig:XcodeServerTestAction}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{XcodeServerTestDevices}
+\caption{Odabir uređaja na kojima se pokreću testovi}
+\label{fig:XcodeServerTestDevices}
+\end{figure}
+
+Xcode Server detektira testne ciljeve sheme za koju obavlja proces integracije. Za pokretanje testova u sklopu integracije odabrati opciju \verb|Edit bot...| te u sekciji \verb|Build configuration| označiti opciju \verb|Perform test action|. Slika \ref{fig:XcodeServerTestAction} prikazuje navedeni proces. Sljedeća obavljena integracija će pokrenuti sve testne ciljeve koje definira odabrana shema.
+
+Dodatno, moguće je odabrati uređaje na kojima se pokreću testovo. Testove je moguće pokrenuti na svim dostupnim uređajima, samo na dostupnim iOS simulatorima, samo na dostupnim stvarnim uređajima ili na samo odabranim uređajima. Slika \ref{fig:XcodeServerTestDevices} prikazuje navedeni izbornik. Izborniku se pristupa odabirom opcije \verb|Edit bot...| te otvaranjem sekcije \verb|Devices|.
+
+Novi testni cilj je shemi moguće dodati korištenjem Xcode aplikacije. Pokrenuti iOS projekt te odabrati željenu shemu iz padajućeg izbornika u gornjoj alatnoj traci aplikacije. Odabirom opcije \verb|Edit scheme| se otvara prozor prikazan na slici. U lijevom izborniku odabrati opciju \verb|Test| te pritiskom na plus ikonu dodati željeni testni cilj postojećoj shemi. Nakon spremanja promjene integracija u sljedećem izvršavanju obavlja i novo dodani testni cilj.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.4]{XcodeServerTestResult}
+\caption{Rezultati procesa testiranja i osiguranja kvalitete}
+\label{fig:XcodeServerTestResult}
+\end{figure}
+
+Rezultati obavljanja testova su također na početnom ekranu bota u sekciji \verb|Test History|. Osim broja uspješnih i neuspješnih testova, alat omogućuje i prikaz detaljnih rezultata testiranja. Odabirom rezultata testiranja pojedine integracije se prikazuju detalji odabranog testiranja.
 
 
 \section{Osiguranje kvalitete}
 
-Osiguranje kvalitete služi za provjeru dodatnih restrikcija koje samostalno namećemo na izvorni kod. Navedene restrikcije nastoje poboljšati kvalitetu koda, konačnog produkta i procesa razvoja. Osiguranje kvalitete može sadržavati jednostavna pravila, kao što su zahtijevanje postojanja komentara za svako spajanje, ili vrlo složena pravila koje provjeravaju specijalizirani alati.
+Osiguranje kvalitete \eng{code quality} je proces u sklopu programskog inženjerstva koje postavljanjem umjetnih restrikcija nastoji poboljšati kvalitetu koda i konačnog produkta. Restrikcije se najčešće definiraju u obliku pravila koja moraju biti zadovoljena. Pravila se mogu kretati od jednostavnih do vrlo složenih te uvelike ovise o korištenim alatima i potrebama tima.
 
-Dodatno, moguće je obavljati različite provjere za različite tipove konačnog produkta. Na primjer, produkt koji izdajemo u produkciju mora biti vrlo kvalitetan i strogo istestiran. S druge strane, kod isporuke produkta za testiranje želimo samo isporučiti trenutno stanje programske potpore ma kakva ona bila. Zbog navedenog će ova dva primjera postavljati značajno različite kriterije osiguranja kvalitete.
+U sklopu rada implementiram dvije provjere: provjeru pokrivenosti koda testovima i provjeru ispravnosti koda korištenjem alata Swiftlint.
 
-Navedenu je fleksibilnost moguće ostvariti na nekoliko načina. Jedan od jednostavnijih načija je unaprijed automatizirati procese osiguranja kvalitete za sve željene slučajeve te ih pozivati na temelju neke predodređene oznake, na primjer imena grane na kojoj se obavlja integracija.
-
-U sklopu osiguranja kvalitete implementiram dvije provjere: pokrivenost koda testovima i provjeru koda korištenjem alata Swiftlint.
-
-Pokrivenost koda testovima \eng{code coverage} je mjera koja govorili u kolikom je postotku izvorni kod pokriven testovima. Svaki redak koda koji je barem jednom izvršen u procesu testiranja je pokriven testovima. Što je navedena mjera veća to je više koda testirano. Zbog toga možemo reći da veća pokrivenost koda testovima, u generalnom slučaju, vodi k boljoj kvaliteti konačnog produkta.
+Pokrivenost koda testovima \eng{code coverage} je mjera koja govori u kolikom je postotku izvorni kod pokriven testovima. Svaki redak koda koji je barem jednom izvršen u procesu testiranja je pokriven testovima. Što je navedena mjera veća to je više koda testirano. Zbog toga možemo reći da veća pokrivenost koda testovima, u generalnom slučaju, vodi k boljoj kvaliteti konačnog produkta.
 
 Međutim, navedena se mjera može vrlo lako zloupotrijebiti. Na primjer, moguće je napisati vrlo jednostavan test koji samo pokreće aplikaciju i time poziva značajan postotak koda. Zbog navedenog se u praksi često koriste modificirane verzije mjerenja pokrivenosti koda testovima koje procesu dodaju dodatna pravila te time nastoje utvrditi stvarnu kvalitetu testiranja\citep{wiki:CodeCoverage}.
 
-Alat xcodebuild implementira mjerenje pokrivenosti koda testovima. Dovoljno je naredbi za pokretanje testova dodati argument \verb|-showBuildSettings|. Ispis naredbe se pohranjuje kao skup datoteka koje služe za prikazivanje pokrivenosti koda testovima u alatu Xcode. Uz sam postotak pokrivenosti koda testovima, Xcode prikazuje i pokrivenost pojedinog dokumenta te broj poziva svake pojedine linije koda. Navedene datoteke nisu namijenjene za ljudsko čitanje. Primjer naredbe se nalazi u dodatku \ref{OsiguranjeKvaliteteImplementacija}.
+Alat xcodebuild implementira mjerenje pokrivenosti koda testovima. Dovoljno je naredbi za pokretanje testova dodati argument \verb|-showBuildSettings|. Ispis naredbe se pohranjuje kao skup datoteka koje služe za vizualan prikaz pokrivenosti koda testovima u Xcode aplikaciji. Uz sam postotak pokrivenosti koda testovima, Xcode prikazuje i pokrivenost pojedinog dokumenta te broj poziva svake pojedine linije koda.
+
+Xcode Server također pruža navedenu opciju ali u reduciranom obliku. Prikupljanje podatka o pokrivenosti koda testovima se uključuje odabirom opcije \path{Code Coverage -> Enabled} u postavkama bota. Slično Xcode aplikaciji, Xcode Server uz postotak pokrivenosti koda testovima prikazuje i pokrivenost pojedinog dokumenta. Slika \ref{fig:XcodeServerTestCoverage} prikazuje pokrivenost datoteka testnog projekta testovima.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{XcodeServerTestCoverage}
+\caption{Pokrivenost datoteka testnog projekta testovima}
+\label{fig:XcodeServerTestCoverage}
+\end{figure}
 
 Swiftlint je alat za statičku analizu koda napisanog u programskom jeziku Swift. Alat definira veliki broj pravila kojima nastoji osigurati praćenje stila i konvencija jezika pri pisanju koda u Swiftu\citep{SwiftLint}. Većina pravila se odnosi na izgled i format koda, ali postoje i pravila koja nastoje izbjeći pojavu grešaka. Ne poštivanje pravila izaziva dojavu upozorenja \eng{warning} ili greške \eng{error} jednake onima procesa izgradnje. Pravila je moguće modificirati, u potpunosti isključiti ili dodati nova.
 
@@ -1048,36 +1080,6 @@ Za implementaciju kontinuirane integracije koristim alat Xcode Server. Na trži�
 Xcode Server pruža velik broj unaprijed implementiranih funkcionalnosti. Iako ove funkcionalnosti olakšavaju implementaciju kontinuirane integracije, one otežavaju automatizaciju i migraciju kreiranja kontinuirane integracije na druge alate. Zbog navedenog na kraju dodatka specificiram prenosivu verziju kontinuirane integracije.
 
 
-
-
-
-\subsection{Testiranje}
-
-Testovi se pokreću odabirom opcije \path{Perform test action} u postavkama integracije bota. U sklopu testiranja se pokreću svi testovi koje definira odabrana shema.
-
-Slika \ref{fig:AddingTests} prikazuje proces dodavanja testnog cilja postojećoj shemi projekta. Odabrati željenu shemu te opciju \textit{Edit scheme}. U lijevom izborniku odabrati opciju \textit{Test} te pritiskom na plus ikonu dodati testni cilj postojećoj shemi. Nakon spremanja promjene integracija u sljedećem izvršavanju obavlja i novo dodane testove.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.4]{AddingTests}
-\caption{Dodavanje novog testnog cilja postojećoj shemi}
-\label{fig:AddingTests}
-\end{figure}
-
-Rezultati obavljanja testova su također vidljivi na prvom ekranu bota u sekciji \textit{Test History}. Osim broja uspješnih i neuspješnih testova, alat omogućuje i prikaz detaljnih rezultata testiranja.
-
-\begin{figure}[b!]
-\centering
-\includegraphics[scale=0.4]{XcodeServerTestResult}
-\caption{Rezultati procesa testiranja i osiguranja kvalitete}
-\label{fig:XcodeServerTestResult}
-\end{figure}
-
-\subsection{Osiguranje kvalitete}
-
-U sklopu osiguranja kvalitete provodim dva procesa: provjeru pokrivenosti koda testovima i statičku provjeru koda alatom \textit{Swiftlint}.
-
-Prikupljanje podatka o pokrivenosti koda testovima se uključuje odabirom opcije \path{Code Coverage -> Enabled} u postavkama integracije. Trenutno ne postoji efektivan način usporedbe dva podatka o pokrivenosti koda testovima. Složeni format koji Xcode Server proizvodi pruža veliki broj informacija, ali trenutno je vrlo teško čitljiv. Međutim, rezultate je moguće ručno usporediti na temelju sekcije \textit{Code Coverage} na početnom ekranu bota.
 
 Switlint je alat za statičku analizu koda napisanog u programskom jeziku Swift. Alat definira veliki broj pravila kojim nastoji osigurati praćenje stila i konvencija jezika Swift. Većina pravila se odnosi na izgled i format koda, ali postoje i pravila koja nastoje izbjeći pojavu grešaka.
 
