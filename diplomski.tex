@@ -703,62 +703,32 @@ Međutim, navedena se mjera može vrlo lako zloupotrijebiti. Na primjer, moguće
 
 Alat xcodebuild implementira mjerenje pokrivenosti koda testovima. Dovoljno je naredbi za pokretanje testova dodati argument \verb|-showBuildSettings|. Ispis naredbe se pohranjuje kao skup datoteka koje služe za vizualan prikaz pokrivenosti koda testovima u Xcode aplikaciji. Uz sam postotak pokrivenosti koda testovima, Xcode prikazuje i pokrivenost pojedinog dokumenta te broj poziva svake pojedine linije koda.
 
-Xcode Server također pruža navedenu opciju ali u reduciranom obliku. Prikupljanje podatka o pokrivenosti koda testovima se uključuje odabirom opcije \path{Code Coverage -> Enabled} u postavkama bota. Slično Xcode aplikaciji, Xcode Server uz postotak pokrivenosti koda testovima prikazuje i pokrivenost pojedinog dokumenta. Slika \ref{fig:XcodeServerTestCoverage} prikazuje pokrivenost datoteka testnog projekta testovima.
+Xcode Server omogućava prikupljanje podataka o pokrivenosti koda testovima u sklopu integracije projekta. Prikupljanje podatka o pokrivenosti koda testovima se uključuje odabirom opcije \verb|Code Coverage -> Enabled| u postavkama bota. Slično Xcode aplikaciji, Xcode Server uz postotak pokrivenosti koda testovima prikazuje i pokrivenost pojedinog dokumenta. Slika \ref{fig:XcodeServerTestCoverage} prikazuje pokrivenost datoteka testnog projekta testovima. Međutim, vrlo je teško automatizirati provjeru pokrivenosti koda testovima. Trenutno ne postoji mogućnost dohvata podataka prikazanih na slici izvan alata Xcode Server. Zbog navedenog provjeru pokrivenosti koda testovima obavljam ručno.
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
-\includegraphics[scale=0.4]{XcodeServerTestCoverage}
+\includegraphics[scale=0.45]{XcodeServerTestCoverage}
 \caption{Pokrivenost datoteka testnog projekta testovima}
 \label{fig:XcodeServerTestCoverage}
 \end{figure}
 
-Swiftlint je alat za statičku analizu koda napisanog u programskom jeziku Swift. Alat definira veliki broj pravila kojima nastoji osigurati praćenje stila i konvencija jezika pri pisanju koda u Swiftu\citep{SwiftLint}. Većina pravila se odnosi na izgled i format koda, ali postoje i pravila koja nastoje izbjeći pojavu grešaka. Ne poštivanje pravila izaziva dojavu upozorenja \eng{warning} ili greške \eng{error} jednake onima procesa izgradnje. Pravila je moguće modificirati, u potpunosti isključiti ili dodati nova.
+Swiftlint je alat za statičku analizu koda napisanog u programskom jeziku Swift. Alat definira veliki broj pravila kojima nastoji osigurati praćenje stila i konvencija jezika Swift\citep{SwiftLint}. Većina pravila se odnosi na izgled i format koda, ali postoje i pravila koja nastoje izbjeći pojavu grešaka. Slični alati su kreirani za gotovo svaki programski jezik koji se koristi u praksi. Ovi alati se nazivaju alati za uređivanje koda \eng{linting tools}. Navedene alate uglavnom kreira i održava zajednica.
 
-Swiftlint je vrlo koristan alat. Pridržavanje strogog formata pisanja koda olakšava timski rad, poboljšava čitljivost koda i izbjegava pojavu lako izbjegnutih grešaka.
+Ne poštivanje pravila izaziva dojavu upozorenja \eng{warning} ili greške \eng{error}. Moguće je kreirati nova pravila i modificirati ili isključiti postojeća. Veliki broj timova definira vlastiti stil pisanja koda koji je moguće osigurati korištenjem navedenih funkcionalnosti.
 
-Alat se pokreće pozivanjem naredbe \verb|swiftlint| u početnom direktoriju projekta. Dodatno, moguće je Xcode projektu dodati novu \verb|Run Script| fazu koja će alat pozivati prilikom svake izgradnje te će upozorenja i greške alata Swiftlint dojaviti zajedno s ostalim upozorenjima i greškama. Navedenim postupkom izbjegavamo ručnu provjeru ispisa alata. Primjer korištenja alata je dostupan u dodatku \ref{OsiguranjeKvaliteteImplementacija}.
+Alati za uređivanje koda postaju nezaobilazni u praksi. Pridržavanje strogog formata pisanja koda olakšava timski rad, poboljšava čitljivost koda i izbjegava pojavu lako izbjegnutih grešaka.
 
+Alat se pokreće pozivom naredbe \path{swiftlint} u početnom direktoriju projekta. Naredbu je moguće ukljućiti u proces izgradnje korištenjem \verb|Run Script| faze. Pomoću Xcode aplikacije otvoriti željeni projekt te odabrati cilj koji izvršava izgradnju. U sekciji \verb|Build Phases| odabirom opcije \verb|Plus -> New Run Script Faze| kreirati novu fazu. Fazi dodati sadržaj skripte \ref{listing:swiftlint}.
 
-\section{Implementacija kontinuirane integracije} \label{XcodeServerCI}
+\begin{lstlisting}[caption=Provjera postojanja i pokretanje Swiftlint alata, label=listing:swiftlint]
+if which swiftlint >/dev/null; then
+    swiftlint
+else
+    echo "warning: Swiftlint nije instaliran"
+fi
+\end{lstlisting}
 
-Za ostvarenjen kontinuirane integracije je potrebno automatizirati procese navedene u ovom poglavlju. Automatizaciju procesa možemo ostvariti ručno. Potrebno bi bilo implementirati proces koji osluškuje javni git repozitorij te prilikom detekcije promjene pokreće proces integracije.
-
-Proces integracije bi preuzeo novu verziju izvornog koda, pomoću alata CocoaPods i Carthage dohvatio ovisnosti te pomoću alata xcodebuild obavio izgradnju, testiranje i provjeru pokrivenosti koda testovima. Rezultat integracije je moguće formatirati korištenjem alata xcpretty te poslati zainteresiranim osobama korištenjem email poruke ili nekog drugog oblika komunikacije.
-
-Međutim, na tržištu već postoji veliki broj alata koji već implementiraju navedene funkcionalnosti. Dodatno, navedeni alati pružaju i brojne funkcionalnosti kao što su formatirani prikaz rezultata, udaljeno kreiranje i konfiguriranje procesa te testiranje na stvarnim uređajima. Korištenjem ovih alata olakšavamo implementaciju kontinuirane integracije.
-
-Za implementaciju kontinuirane integracije, dostave i isporuke koristim alat Xcode Server. Na tržištu postoji vrlo velik broj sličnih alata. Dodatak \ref{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju} objašnjava zašto sam od svih alata odabrao upravo Xcode Server.
-
-Xcode Server je izgrađen specifično za implementaciju kontinuirane integracije za Xcode projekte. Zbog navedenog je proces implementacije značajno jednostavniji u usporedbi s većinom sličnih alata.
-
-Xcode Server je kombinacija dva alata, Xcodea i macOS Servera. Xcode je alat za razvoj programske podrške za iOS, macOS, tvOS i watchOS operacijske sustave. Alat Xcode već koristim u razvoj programske potpore. MacOS Server je alat za automatizaciju procesa na macOS operacijskom sustavu. Prvenstveno je izgrađen za lakšu automatizaciju procesa, ulančavanje poziva skripta i upravljanje udaljenim pristupom računalu. Danas brojni alati koriste macOS Server za lakše ostvarenje automatizacije. Među njima je i Xcode.
-
-Pomoću alata Xcode kreiramo, konfiguriramo i pratimo automatizirane procese. Procesi se pohranjuju i izvršavaju na macOS Serveru. MacOS Server na kojem se pokreću procesi može biti na lokalnom ili udaljenom računalu.
-
-Oba alata razvija Apple zbog čega su aplikacije usklađene te su nove funkcionalnosti dostupne na dan njihovog izdavanja. Dodatno, inzistiranje na jednostavnosti korištenja, bogatstvo funkcionalnosti i laka proširivost čine ovaj alat jednim od najboljih za ostvarenje kontinuirane integracije, dostave i isporuke za razvoj iOS aplikacija.
-
-Glavni manjak Xcode Servera je ograničenost na isključivo Xcode projekte. Kako razvoj mobilnih aplikacija gotovo uvijek uključuje iOS i Android operacijske sustave, timovi se češće odluče na implementaciju zajedničkog rješenja. Dodatno, kako je svijet mobilnih aplikacija vrlo mlad, većina se timova još uvijek drži općih rješenja kao što su Jenkins ili CircleCI.
-
-Za početak implementacije kontinuirane integracije je potrebno preuzeti alate macOS Server i Xcode. Alate je moguće preuzeti korištenjem aplikacije App Store. Cijena macOS Servera je \$25 ali je besplatan za osobe s Apple Developer računom. Navedeni račun je potreban i za izgradnju iOS aplikacija zbog čega ga već ima većina iOS programera.
-
-Nakon instalacije je potrebno povezati alate. Povezivanje se ostvaruje odabirom opcije \verb|Xcode| u macOS Server alatu. Odabir opcije otvara novi prozor u kom je potrebno locirati i odabrati željenu verziju Xcode alata. Ovime je kreiran alat Xcode Server.
-
-Moguće je odabrati račun operacijskog sustava na kojem će se izvršavati integracije. Zbog sigurnosti je preporučeno Xcode Server pokrenuti na zasebnom račun koji nema administrativna prava. Budući da se Xcode Serveru može pristupiti iz vanjske mreže, važno je ograničiti prava koja alat posjeduje. Izdvajanjem procesa na zasebni račun osiguravamo da alat ima samo ona prava koja su mu potrebna. Moguće je kreirati račun proizvoljnog imena, ali je standardno koristiti ime \textit{xcodeserver}. Računu na kojem se obavlja integracija je potrebno dati potrebna prava te osigurati postojanje potrebnih alata.
-
-Budući da želimo automatizirati što veću količinu posla, poželjno je što više potrebnih alate instalirati u sklopu integracije, a ne zahtijevati njihovo prethodno postojanje na računalu. Međutim, što više funkcionalnosti nastojimo automatizirati to se implementacija integracije više komplicira. Dodatno, brojni alati za instalaciju zahtijevaju posebno dopuštenje i interakciju korisnika. Instalaciju takvih alata nije moguće automatizirati bez značajnog narušavanja sigurnosti operacijskog sustava.
-
-U procesu integracije koristimo tri alata za olakšavanje dohvaćanja i konfiguracije drugih alata: ruby, gem i Homebrew. Alati ruby i gem su dostupni na svim instalacijama macOS operacijskog sustava. Međutim, ako su lokacije njihove instalacije promijenjena, onda je potrebno istu dodati u \verb|PATH| varijablu računa operacijskog sustava ili izmijeniti skripte kako bi iste pokazivale na ispravnu lokaciju. Alat Homebrew je potrebno ručno dohvatiti i konfigurirati. Proces je prikazan u dodatku \ref{PripremaAlata}.
-
-Za olakšavanje implementacije kontinuirane integracije koristim alate CocoaPods, Carthage i Swiftlint. Instalacija i konfiguracija navedenih alata je prikazana u dodatku \ref{header:dodatak_priprema_CI}.
-
-Automatizaciju izgradnje, testiranja i osiguranja kvalitete implementiram korištenjem alata \verb|bot| koji je dio Xcode alata. Bot se kreira u alatu Xcode odabirom opcije \verb|Product -> Create bot...|. Za kreiranje je potrebno specificirati repozitorij izvornog koda te odabirati opcije integacije. Sve potrebne funkcionalnosti su već implementirane te je potrebno samo ukljućiti njihovo korištenje. Proces kreiranja bota je prikazan u dodatku \ref{KontinuiranaIntegracija_DodatakB}.
-
-Budući da dohvat ovisnosti implementiram korištenjem alata CocoaPods i Carthage, instalaciju, konfiguraciji i pokretanje alata je potrebno samostalno automatizirati. Za automatizaciju naredba možemo iskoristiti funkcionalnost bot alata, akciju koja se obavlja prije izgradnje \eng{pre-build action}. Ove se akcije pozivaju u sklopi integracije nakon dohvaćanja izvornog koda a prije obavljanja izgradnje.
-
-Sve naredbe koje se pozivaju u sklopu akcije je korisno izdvojiti u zasebnu skriptu. Drugim riječima, akcija jednostavno poziva skriptu koja zatim definira naredbe koje se izvršavaju. Navedeni pristup olakšava izmjenu i nadopunu naredba te ne zahtijeva izmjenu procesa integracije.
-
-
-
+Ako je poziv \path{swiftlint} naredbe dodan kao faza izgradnje, onda se naredba obavlja prilikom svake izgradnje. Ispis naredbe se parsira zajedno s ispisom xcodebuild alata te se rezultati dojavljuju zajedno. Ako naredba nije dodana projektu onda je poziv potrebno ručno implementirati nakon obavljanja integracije.
 
 
 \chapter{Kontinuirana dostava}
@@ -767,7 +737,7 @@ Kontinuirana dostava je praksa koja automatizacijom procesa isporuke programske 
 
 Programsku potporu je prije isporuke potrebno izgraditi, testirati, provjeriti ispravnost te kreirati artefakt za distribuciju. Iako različiti razvojni procesi različito nazivaju artefakt za distribuciju, zbog jednostavnosti ga nazivam arhiva. Arhiviranje je proces kreiranje arhive programske potpore. Arhiva omogućava instalaciju programske potpore na operacijskom sustavu za kojeg je programska potpora namijenjena.
 
-Jednako tako je prije automatizacije isporuke produkta potrebno automatizirati izgradnju, testiranje, provjeru ispravnosti i arhiviranje programske potpore. Proces automatizacije izgradnje, testiranja i provjere ispravnosti se naziva kontinuirana integracija te je definiran u poglavlju \ref{Kontinuirana_Integracija}. Kontinuirana dostava obuhvaća proces kontinuirane integracije te proces automatizacije isporuke.
+Jednako tako je prije automatizacije isporuke produkta potrebno automatizirati izgradnju, testiranje, provjeru ispravnosti i arhiviranje programske potpore. Proces automatizacije izgradnje, testiranja i provjere ispravnosti se naziva kontinuirana integracija te je definiran u poglavlju \ref{header:Kontinuirana_Integracija}. Kontinuirana dostava obuhvaća proces kontinuirane integracije te proces automatizacije isporuke.
 
 Međutim, u praksi se pojam kontinuirana dostava češće koristi za proces automatizacije isporuke koji zahtijeva prethodnu implementaciju procesa kontinuirane integracije. Navedeni se pristup koristi u ovom radu. Proces izgradnje, testiranja i provjere ispravnosti implementiram u sklopu kontinuirane integracije na koju dodajem automatizaciju isporuke i time ostvarujem kontinuiranu dostavu.
 
@@ -821,7 +791,7 @@ Konfiguriranje projekta je potrebno obaviti samo nakon kreiranja novog artefakta
 
 Automatizaciju konfiguracije projekta je najlakše ostvariti definiranjem sheme imenovanja artefakta koji se koriste u pojedinom tipu isporuke. Definiranjem sheme nazivanja i njenom primjenom proces unaprijed zna nazive potrebnih artefakta pomoću čega može konfigurirati projekt.
 
-Automatizaciju potpisivanja koda je moguće implementirati ručno ili korištenjem nekog od postojećih alata. U sklopu ovog rada koristim alata \verb|match| koji je dio \verb|fastlane| familije. Alat implementira sve potrebne funkcionalnosti te pruža veliki broj opcija konfiguracije. Implementacija automatizacije potpisivanja koda korištenjem \verb|match| alata je prikazana u dodatku \ref{header:header:dodatak:AutomatizacijaPotpisivanjaKoda}.
+Automatizaciju potpisivanja koda je moguće implementirati ručno ili korištenjem nekog od postojećih alata. U sklopu ovog rada koristim alata \verb|match| koji je dio \verb|fastlane| familije. Alat implementira sve potrebne funkcionalnosti te pruža veliki broj opcija konfiguracije.
 
 \section{Isporuka programske potpore} \label{header:RucnaIsporuka}
 
@@ -888,11 +858,11 @@ Umjesto direktnog korištenja naredbe \verb|xcodebuild|, moguće je koristiti i 
 
 Objavu \textit{ad hoc} i unutarnje verzije arhiva ostvarujem korištenjem Crashlytics platforme. Platforma omogućava jednostavnu objavu arhiva, kontrolu pristupa i osvježenje verzija. Jednostavno je na platformu dodati nove korisnike i istima dopustiti preuzimanje aplikacije. Dodatno, korisnici korištenjem aplikacije \verb|Beta| mogu jednostavno vidjeti, preuzeti i osvježiti sve aplikacije kojima je dobio pristup.
 
-Crashlytics platforma pruža javan API koji je moguće iskoristiti za kreiranje profila i dodavanje nove verzije aplikacije. Dodatno, moguće je korisnicima dati pristup profilu aplikacije te iste obavijestiti o novoj verziji. Za ostvarenje navedenih funkcionalnosti koristim alat \verb|crashlytics| familije \verb|fastlane|. Korištenje alata je prikazano u dodatku \ref{header:CrashlyticsImplementacija}.
+Crashlytics platforma pruža javan API koji je moguće iskoristiti za kreiranje profila i dodavanje nove verzije aplikacije. Dodatno, moguće je korisnicima dati pristup profilu aplikacije te iste obavijestiti o novoj verziji. Za ostvarenje navedenih funkcionalnosti koristim alat \verb|crashlytics| familije \verb|fastlane|.
 
 Aplikaciju za javne korisnike objavljujem na App Store platformi. Prije objave aplikacije je potrebno kreirati njen profil. Profil se kreira korištenjem iTunes Connect aplikacije. Nakon kreiranja profila je moguće dodati prvu verziju aplikacije. Budući da prva verzija aplikacije prolazi strogu provjeru, nije preporučeno njeno automatizirano dodavanje. Prva se verzija najčešće ručno provjerava, arhivira u objavljuje.
 
-Automatizacije objave se ostvaruje korištenjem javnog APIja iTunes Connect platforme. Za jednostavniju implementaciju koristim \verb|deliver| alat \verb|fastlane| familije. Alat specificiranu arhivu objavljuje na iTunes Connect platformi. Nova verzija također prolazi provjeru Apple time. U slučaju odobrenja nove verzije istu je potrebno objaviti u produkciji. Navedeno je moguće ostvariti korištenjem iTunes Connect platforme ili APIja. Proces objave je prikazan u dodatku \ref{header:AppStoreObjava}.
+Automatizacije objave se ostvaruje korištenjem javnog APIja iTunes Connect platforme. Za jednostavniju implementaciju koristim \verb|deliver| alat \verb|fastlane| familije. Alat specificiranu arhivu objavljuje na iTunes Connect platformi. Nova verzija također prolazi provjeru Apple time. U slučaju odobrenja nove verzije istu je potrebno objaviti u produkciji. Navedeno je moguće ostvariti korištenjem iTunes Connect platforme ili APIja.
 
 
 
@@ -1073,27 +1043,6 @@ Dodatak je podijeljen prema procesima koji se implementiraju. Prvo je obrađena 
 
 Primjeri su napisani za macOS operacijski sustav te su testirani na \textit{Sierra 10.12.4} verziji. Minimalna preporučena verzija operacijskog sustava je \textit{Yosemite 10.10}.
 
-\section{Kontinuirana integracija}
-
-Za implementaciju kontinuirane integracije koristim alat Xcode Server. Na tržištu postoji veliki broj sličnih alata. Razlog odabira upravo Xcode Server alata je obrazložen u dodatku \ref{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}.
-
-Xcode Server pruža velik broj unaprijed implementiranih funkcionalnosti. Iako ove funkcionalnosti olakšavaju implementaciju kontinuirane integracije, one otežavaju automatizaciju i migraciju kreiranja kontinuirane integracije na druge alate. Zbog navedenog na kraju dodatka specificiram prenosivu verziju kontinuirane integracije.
-
-
-
-Switlint je alat za statičku analizu koda napisanog u programskom jeziku Swift. Alat definira veliki broj pravila kojim nastoji osigurati praćenje stila i konvencija jezika Swift. Većina pravila se odnosi na izgled i format koda, ali postoje i pravila koja nastoje izbjeći pojavu grešaka.
-
-Alat se pokreće pozivanjem naredbe \path{swiftlint} u početnom direktoriju projekta. Ispis alata je sličan onome xcodebuild alata. Za pokretanje Swiftlint alata kod svakog procesa izgradnje je moguće Xcode projektu dodati novu \path{RunScript} fazu s naredbom \ref{listing:swiftlint}.
-
-\begin{lstlisting}[caption=Provjera postojanja i pokretanje Swiftlint alata, label=listing:swiftlint]
-if which swiftlint >/dev/null; then
-    swiftlint
-else
-    echo "warning: Swiftlint nije instaliran"
-fi
-\end{lstlisting}
-
-Ako je poziv \path{swiftlint} naredbe dodan kao \path|RunScript| faza u projektu, onda se isti poziva prilikom svake izgradnje i nije potrebno obavljati modifikacije bota. Ispis naredbe se parsira zajedno s ispisom xcodebuild alata te se rezultati dojavljuju zajedno. Ako naredba nije dodana projektu onda je poziv potrebno ručno implementirati nakon obavljanja integracije. Kod korištenja ovog pristupa je potrebno ispis samostalno parsirati.
 
 \section{Kontinuirana dostava}
 
