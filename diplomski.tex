@@ -42,32 +42,32 @@ Profesionalna izrada iOS programske potpore za iOS operacijski sustav zahtjeve �
 
 Kako je iOS operacijski sustav relativno mlad, isporuka se još uvijek uglavnom obavlja ručno. Ručna isporuka programske potpore je vremenski zahtjevna te je podložna ljudskoj pogrešci. Zbog navedenog se izbjegava često obavljanje isporuke što dovodi do zajedničke isporuke većeg broja promjena što zatim dovodi do većeg broja pogrešaka, lošije kvalitete programske potpore te sporije isporuke novih funkcionalnosti.
 
-Ovaj problem je moguće rješiti automatizacijom cijelog ili većeg dijela isporuke programske potpore za iOS operacijski sustav. Međutim, kako bi isporučili programsku potporu, prvo ju moramo arhivirati te zatim dobivenu arhivu objaviti na željenoj platformi. Arhiviranje je proces pripreme iOS projekta za isporuku. Dodano, i proces arhiviranja i proces objave značajno ovise o platformi na kojoj objavljujemo programsku potporu.
+Ovaj problem je moguće riješiti automatizacijom cijelog ili većeg dijela isporuke programske potpore za iOS operacijski sustav. Međutim, kako bi isporučili programsku potporu, prvo ju moramo arhivirati te zatim dobivenu arhivu objaviti na željenoj platformi. Arhiviranje je proces pripreme iOS projekta za isporuku. Dodano, i proces arhiviranja i proces objave značajno ovise o platformi na kojoj objavljujemo programsku potporu.
 
-Prije arhiviranja programske potpore je istu potrebno izgraditi te utvrditi da zadovoljave sve postavljene uvjete. Uvjeti se najčešće izražavaju u obliku testova ali mogu poprimiti i druge oblike.
+Prije arhiviranja programske potpore je istu potrebno izgraditi te utvrditi da zadovoljava sve postavljene uvjete. Uvjeti se najčešće izražavaju u obliku testova ali mogu poprimiti i druge oblike.
 
 Na kraju, potrebno je utvrditi pomoću kojeg je tipa isporuke potrebno isporučiti pojedinu verziju programske potpore.
 
-Navedene funckionalnosti možemo svrstati u tri dobro prihvaćene prakse u sklopu računalnog inženjerstva: kontinuiranu integraciju, kontinuiranu dostavu i kontinuiranu isporuku.
+Navedene funkcionalnosti možemo svrstati u tri dobro prihvaćene prakse u sklopu računalnog inženjerstva: kontinuiranu integraciju, kontinuiranu dostavu i kontinuiranu isporuku.
 
-Kontinuirana integracija automatizira procese izgradnje, testiranaja i osiguranja kvalitete prvenstveno kako bi poboljšala kvalitetu programske potpore. Ovako automatizirani proces se provodi nad svakom novom verzijom programske potpore čime se osigurava njena ispravnost. Dodatno, kontinuirana integracija potiče učestalu integraciju radnih kopija s glavnom kopijom kako bi se izbjegla pojava konflikat pri integraciji.
+Kontinuirana integracija automatizira procese izgradnje, testiranja i osiguranja kvalitete prvenstveno kako bi poboljšala kvalitetu programske potpore. Ovako automatizirani proces se provodi nad svakom novom verzijom programske potpore čime se osigurava njena ispravnost. Dodatno, kontinuirana integracija potiče učestalu integraciju radnih kopija s glavnom kopijom kako bi se izbjegla pojava konflikt pri integraciji.
 
-Kontinuirana dostava automatizira proces isporuke programske potpore. U sklopu razvoja programske potpore za iOS operacijski sustav, praksa uključuje automatizaciju potpisivanja koda, arhiviranja i objave. Praksa automatiziranjem navedenih procesa nastoji olakšati proces isporuke te time povečati učestalost objave novih funkcionalnosti. Svaka funkcionalnos koja je razvijena a nije objavljena predstvlja gubitak timu. Dokle god razvijena funkcionalnost sjedi ne objavljena, ona ne donosi korist zbog koje je razvijena. Dodatno, pokazano je da isporuka manjeg broja promjena pozitivno utječe na kvalitetu isporučene programske potpore.
+Kontinuirana dostava automatizira proces isporuke programske potpore. U sklopu razvoja programske potpore za iOS operacijski sustav, praksa uključuje automatizaciju potpisivanja koda, arhiviranja i objave. Praksa automatiziranjem navedenih procesa nastoji olakšati proces isporuke te time povećati učestalost objave novih funkcionalnosti. Svaka funkcionalnost koja je razvijena a nije objavljena predstavlja gubitak timu. Dokle god razvijena funkcionalnost sjedi neobjavljena, ona ne donosi korist zbog koje je razvijena. Dodatno, pokazano je da isporuka manjeg broja promjena pozitivno utječe na kvalitetu isporučene programske potpore.
 
-Kontinuirana isporuka nastoji što više smanjiti vrijeme koje protekne od završetka razvoja do objave funkcionalnosti, pa ga čak i u potpunosti eliminirati. Kontinuirana isporuka ovo ostvaruje automatskom isporukom promjena. Međutim, promjene se ne isporučuju direktno u produkciju već prolaze više faza isporuke. Prvo se isporučuju razvojnom timu, zatim timu za osiguranje kvalitete, vanjskim testerima a nekad čak i ograničenom broju stvarnih korisnika. Tek nakon svih ovih faza se promjena isporučuje u produkciju. Kontinuirana integracija ovime nastoji povečati kvalitetu programske potpore, ubrzati isporuku promjena te smanjiti opterečenje razvojnog tima.
+Kontinuirana isporuka nastoji što više smanjiti vrijeme koje protekne od završetka razvoja do objave funkcionalnosti, pa ga čak i u potpunosti eliminirati. Kontinuirana isporuka ovo ostvaruje automatskom isporukom promjena. Međutim, promjene se ne isporučuju direktno u produkciju već prolaze više faza isporuke. Prvo se isporučuju razvojnom timu, zatim timu za osiguranje kvalitete, vanjskim testerima a nekad čak i ograničenom broju stvarnih korisnika. Tek nakon svih ovih faza se promjena isporučuje u produkciju. Kontinuirana integracija ovime nastoji povećati kvalitetu programske potpore, ubrzati isporuku promjena te smanjiti opterećenje razvojnog tima.
 
 U sklopu ovog rada definiram i implementiram navedene prakse za iOS operacijski sustav.
 
-Cilj rada nije samo u teoriji ispitati mogućnost implementacije navedenih procesa, već ih iskoristiti na stvarnim projektima. Zbog navedenog, implementacija mora biti jednostavno prenosiva na drugi projekt. Zbog ovog ograničenja ne samo da nastojim automatizirati isporuku, već nastojim automatizirati i proces dodadavanja automatske isporuke iOS projektu.
+Cilj rada nije samo u teoriji ispitati mogućnost implementacije navedenih procesa, već ih iskoristiti na stvarnim projektima. Zbog navedenog, implementacija mora biti jednostavno prenosiva na drugi projekt. Zbog ovog ograničenja ne samo da nastojim automatizirati isporuku, već nastojim automatizirati i proces dodavanja automatske isporuke iOS projektu.
 
-Rad je strukturiran po praksama u redosljedu koji je korišten u ovom uvodu. Svaku od praksi prvo promatram iz opće perspektive te zatim definiram i implementiram za iOS operacijski sustav. Rad završava pregledom ostvarenih funkcionalnosti i kratkim zaključkom.
+Rad je strukturiran po praksama u redoslijedu koji je korišten u ovom uvodu. Svaku od praksi prvo promatram iz opće perspektive te zatim definiram i implementiram za iOS operacijski sustav. Rad završava pregledom ostvarenih funkcionalnosti i kratkim zaključkom.
 
 
 \chapter{Kontinuirana integracija} \label{header:Kontinuirana_Integracija}
 
 Kontinuirana integracija je praksa spajanja razvojnih kopija koda s glavnom kopijom nekoliko puta dnevno. Termin je prvi predložio i iskoristio Grady Booch 1991. godine tijekom opisa metode danas poznate kao Boochova metoda \eng{Booch method}\citep{wiki:BoochMethod}.
 
-Glavni cilj metode je smanjivanje broja konflikata prilikom spajanja različitih verzija koda. Tijekom razvoja članovi tima preuzimaju zajedničku \eng{master} kopiju izvornog koda \eng{source code} te nad njom obavljaju promjene. Lokalnu kopiju izvornog koda nazivamo \textit{razvojnom kopijom izvornog koda}. Članovi tima pomoću zajedničke kopije izvornog koda stvaraju razvojnu kopiju izvornog koda na vlastitiom računalu.
+Glavni cilj metode je smanjivanje broja konflikata prilikom spajanja različitih verzija koda. Tijekom razvoja članovi tima preuzimaju zajedničku \eng{master} kopiju izvornog koda \eng{source code} te nad njom obavljaju promjene. Lokalnu kopiju izvornog koda nazivamo \textit{razvojnom kopijom izvornog koda}. Članovi tima pomoću zajedničke kopije izvornog koda stvaraju razvojnu kopiju izvornog koda na vlastitom računalu.
 
 Nakon implementacije željenih promjena programer vlastitu razvojnu kopiju spaja s izvornom kopijom. Ovaj postupak nazivamo integracija izvornog koda. Ako zajednička kopija izvornog koda nije bila mijenjana od kako ju je programer preuzeo, onda je promjene moguće jednostavno dodati zajedničkoj kopiji. Međutim, ako je zajednička kopija izvornog koda izmijenjena, onda je potrebno na neki način spojiti lokalne i promjene koje se već nalaze na glavnoj kopiji izvornog koda.
 
@@ -86,19 +86,19 @@ Kontinuiranu integraciju je moguće podijeliti na tri generalne faze: izgradnju,
 \label{fig:CIFazes}
 \end{figure}
 
-Svaka od faza je obrađena zasebnim odlomkom u nastavku poglavlja. Proces verzioniranja je u praksi dio procesa izgradnje zbog ćega je u sklopu odlomka \ref{header:Izgradnja} razmotren i problem učestalosti obavljanja integracije.
+Svaka od faza je obrađena zasebnim odlomkom u nastavku poglavlja. Proces verzioniranja je u praksi dio procesa izgradnje zbog čega je u sklopu odlomka \ref{header:Izgradnja} razmotren i problem učestalosti obavljanja integracije.
 
 Za automatizaciju izgradnje koristim alat Xcode Server. Alat je spoj dvije aplikacije, Xcode i macOS Server te implementira veliki broj funkcionalnosti korištenih u sklopu kontinuirane integracije. Alat se pokazao najboljim među nekoliko sličnih ispitanih alata. Razlog odabira Xcode Server alata je detaljnije prikazan u dodatku \ref{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}.
 
 \section{Priprema}
 
-Jedan od razloga implementacije kontinuirane integracije je i olakšanje cijelokupnog procesa izgradnje, testiranja i osiguranja kvalitete. Što je implementacije automatizacije zahtjevnija to više narušavam navedeni cilj. Zbog navedenog nastojim automatizirati instalaciju i konfiguraciju što većeg broja alata i time olakšati cijelokupan proces implementacije kontinuirane integracije. Dodatno, automatizacija procesa instalacije i konfiguracije nam omogućava veću kontrolu nad samim procesom. Na primjer, alat je moguće instalirati samo ako je i kad je to potrebno, dok se ručnim postupkom instalacija alata mora obaviti prije pokretanja automatizacije.
+Jedan od razloga implementacije kontinuirane integracije je i olakšanje cjelokupnog procesa izgradnje, testiranja i osiguranja kvalitete. Što je implementacije automatizacije zahtjevnija to više narušavam navedeni cilj. Zbog navedenog nastojim automatizirati instalaciju i konfiguraciju što većeg broja alata i time olakšati cjelokupan proces implementacije kontinuirane integracije. Dodatno, automatizacija procesa instalacije i konfiguracije nam omogućava veću kontrolu nad samim procesom. Na primjer, alat je moguće instalirati samo ako je i kad je to potrebno, dok se ručnim postupkom instalacija alata mora obaviti prije pokretanja automatizacije.
 
-Međutim, macOS je vrlo siguran te zbog toga zatvoren operacijski sustav. Veliki broj alata zahtijeva korisničku interakciju zbog čega je njihovu instalaciju teško automatizirati. Ako se instalacija obavlja za više računa ili alat pristupa osjetljivim datotekama onda je instalaciju potrebno autorizirati lozinkom računa s administracijskim privilegijama. Postoji nekoliko načina za automatski upis lozinke, ali navedeni procesi narušavaju sigurnost operacijskog sustava te zbog tpga nije moguće u potpunosti automatizirati proces dohvata i pripreme alata.
+Međutim, macOS je vrlo siguran te zbog toga zatvoren operacijski sustav. Veliki broj alata zahtijeva korisničku interakciju zbog čega je njihovu instalaciju teško automatizirati. Ako se instalacija obavlja za više računa ili alat pristupa osjetljivim datotekama onda je instalaciju potrebno autorizirati lozinkom računa s administracijskim privilegijama. Postoji nekoliko načina za automatski upis lozinke, ali navedeni procesi narušavaju sigurnost operacijskog sustava te zbog toga nije moguće u potpunosti automatizirati proces dohvata i pripreme alata.
 
 Ovaj odlomak priprema alate čiju instalaciju nije moguće automatizirati, dok odlomak \ref{header:PripremaSustava} prikazuje pripremu ostalih alata. Primjeri su napisani za macOS operacijski sustav te su testirani na \textit{Sierra 10.12.4} verziji. Minimalna preporučena verzija operacijskog sustava je \textit{Yosemite 10.10}.
 
-Za implementaciju kontinuirane integracije koristim brojne alate koji ne pružaju vizualno korisničkom sučelje. Navedenim se alatima pristupa korištenjem nardedbenog korisničkog sučelja - \textit{ljuske}. U sklopu rada koristim \textit{bash} ljusku. Pristup naredbenom korisničkom sučelju se ostvaruje korištenjem emulatora terminala, aplikacija s vizualnim sučeljem koje emuliraju terminal. U radu koristim aplikaciju \textit{Terminal} koja je dostupna u sklopu instalacije macOS operacijskog sustava.
+Za implementaciju kontinuirane integracije koristim brojne alate koji ne pružaju vizualno korisničkom sučelje. Navedenim se alatima pristupa korištenjem naredbenog korisničkog sučelja - \textit{ljuske}. U sklopu rada koristim \textit{bash} ljusku. Pristup naredbenom korisničkom sučelju se ostvaruje korištenjem emulatora terminala, aplikacija s vizualnim sučeljem koje emuliraju terminal. U radu koristim aplikaciju \textit{Terminal} koja je dostupna u sklopu instalacije macOS operacijskog sustava.
 
 \subsection{Xcode Server}
 
@@ -111,7 +111,7 @@ Za implementaciju kontinuirane integracije koristim brojne alate koji ne pružaj
 
 Xcode Server je spoj dva alata - Xcodea i macOS Servera. Xcode je integrirani sustav razvoj programske potpore za iOS, macOS, tvOS i watchOS operacijske sustave. MacOS Server je alat za automatizaciju procesa na macOS operacijskom sustavu. Prije implementacije kontinuirane integracije je potrebno preuzeti oba alata, instalirati i konfigurirati oba alata.
 
-Oba alata je moguće preuzeti korištenjem App Store aplikacije koje je dostupna u sklopu svake instalacije macOS operacijskog sustava. Međutim, cijena macOS Server aplikacije je u trenutku pisanja ovog rada \$25. Međutim, aplikacija je besplatna za korisnike s Apple Developer računom koji se koristi i u razvoju iOS programskepotpore. Besplatnu verziju macOS Servera je moguće preuzeti na poveznici \path{https://developer.apple.com/download/}. Nakon preuzimanja slijediti upute za instalaciju obje aplikacije.
+Oba alata je moguće preuzeti korištenjem App Store aplikacije koje je dostupna u sklopu svake instalacije macOS operacijskog sustava. Međutim, cijena macOS Server aplikacije je u trenutku pisanja ovog rada \$25. Međutim, aplikacija je besplatna za korisnike s Apple Developer računom koji se koristi i u razvoju iOS programske potpore. Besplatnu verziju macOS Servera je moguće preuzeti na poveznici \path{https://developer.apple.com/download/}. Nakon preuzimanja slijediti upute za instalaciju obje aplikacije.
 
 \begin{figure}
 \centering
@@ -131,7 +131,7 @@ Nakon instalacije alata je potrebno kreirati Xcode Server alat povezivanjem Xcod
 
 Preporučeno je zbog sigurnosnih razloga macOS Server pokrenuti na zasebnom računu operacijskog sustava te omogućiti korištenje samo potrebnih alata i datoteka. Nakon povezivanja Xcode aplikacije s macOS Serverom otvara se izbornik u kojem je moguće kreirati novi račun operacijskog sustava ili odabrati postojeći. U sklopu ovog rada kreiram novi račun predodređenog imena \textit{xcodeserver}. Slijediti upute nakon kreiranja računa za dovršetak spajanja.
 
-Proces potpisivanja koda osigurava autentičnost i ne izmijenjenost kreirane programske potpore. Proces je dateljnije objašnjen u \ref{header:PotpisivanjeKoda} odlomku. Za sada je dovoljno znati da proces zahtjeva postojanje tri artefakta: certifikat člana tima, identifikator aplikacije i pripremni profil aplikacije za tip isporuke koji se koristi. Navedene certifikate je moguće kreirati i preuzeti s web stranice \path{https://developer.apple.com/account}.
+Proces potpisivanja koda osigurava autentičnost i neizmjenjenost kreirane programske potpore. Proces je detaljnije objašnjen u \ref{header:PotpisivanjeKoda} odlomku. Za sada je dovoljno znati da proces zahtjeva postojanje tri artefakta: certifikat člana tima, identifikator aplikacije i pripremni profil aplikacije za tip isporuke koji se koristi. Navedene certifikate je moguće kreirati i preuzeti s web stranice \path{https://developer.apple.com/account}.
 
 Certifikat i identifikator se instaliraju korištenjem Keychain Access aplikacije. Dovoljno ih je jednostavno pokrenuti korištenjem navedene aplikacije. Pripremne profile je potrebno spremiti na lokaciji \path{~/Library/MobileDevice/Provisioning_Profiles}.
 
@@ -150,7 +150,7 @@ Nakon odabira navedene opcije otvara se novi prozor u kojem je potrebno imenovat
 
 \subsection{Homebrew}
 
-Homebrew je alat za dohvat i upravljanje alatima za macOS operacijski sustav\citep{homebrew}. Dodatno, alat navedene funkcionalnosti prža korištenjem naredbenog korisničkog sučelja zbog čega ih je jednostavno automatizirati. Instalacija alata zahtijeva administrativna prava \eng{sudo user}, zbog čega istu nije moguće automatizirati. Skripta \ref{listing:homebrew} instalira Homebrew alat korištenjem alata \textit{ruby}. Nakon pokretanja naredbe slijediti upute instalacije.
+Homebrew je alat za dohvat i upravljanje alatima za macOS operacijski sustav\citep{homebrew}. Dodatno, alat navedene funkcionalnosti pruža korištenjem naredbenog korisničkog sučelja zbog čega ih je jednostavno automatizirati. Instalacija alata zahtijeva administrativna prava \eng{sudo user}, zbog čega istu nije moguće automatizirati. Skripta \ref{listing:homebrew} instalira Homebrew alat korištenjem alata \textit{ruby}. Nakon pokretanja naredbe slijediti upute instalacije.
 
 \begin{lstlisting}[caption=Instalacija Homebrew alata, label=listing:homebrew]
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -158,7 +158,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 \section{Izgradnja} \label{header:Izgradnja}
 
-Povijesno, pojam izgradnja se često koristio kao sinonim pojma kompajliranje. Kompajliranje \eng{compilation} je proces prevođenja koda iz jednog jezika u drugi uz očuvanje funkcionalnosti. Kod se uz prijevođenje često i optimizira . Najčešći razlog kompajliranja je prevođenje koda u jezik kojeg može razumjeti i time izvršiti procesor. Rezultat ovog tipa kompajliranja je izvršni program, odnosno program koji se može izvršiti. Kompajliranje je složena funkcija koja se najčešće obavlja u više prolaza. Jezici koji se kompajliraju se nazivaju kompajlirani jezici \eng{compiled languages}.
+Povijesno, pojam izgradnja se često koristio kao sinonim pojma kompajliranje. Kompajliranje \eng{compilation} je proces prevođenja koda iz jednog jezika u drugi uz očuvanje funkcionalnosti. Kod se uz prevođenje često i optimizira . Najčešći razlog kompajliranja je prevođenje koda u jezik kojeg može razumjeti i time izvršiti procesor. Rezultat ovog tipa kompajliranja je izvršni program, odnosno program koji se može izvršiti. Kompajliranje je složena funkcija koja se najčešće obavlja u više prolaza. Jezici koji se kompajliraju se nazivaju kompajlirani jezici \eng{compiled languages}.
 
 Interpretirani jezici \eng{interpreted languages} se ne prevode već interpretiraju. Oni se izvršavaju na pomoćnom programu naziva interpreter koji naredbe izvornog jezika prevodi i izvršava. Danas gotovo niti jedan jezik nije u cijelosti kompajliran ili interpretiran, već koristi kombinaciju obje metode s ciljem poboljšanja performansi.
 
@@ -171,9 +171,9 @@ Interpretirani jezici \eng{interpreted languages} se ne prevode već interpretir
 
 Danas s pojmom izgradnje vežemo sve procese koji su dio pretvaranja izvornog koda u željeni artefakt. Ovisno o jeziku i alatima koje koristimo, proces izgradnje može značajno oscilirati u svojoj veličini. Generalno proces izgradnje možemo podijeliti na verzioniranje, pripremu sustava za izgradnju, dohvat i pripremu ovisnosti \eng{dependancies} te kompajliranje. Verzioniranjem odabiremo željenu verziju izvornog koda koju koristimo za izgradnju artefakta. Priprema za izgradnju dovodi računalo u stanje potrebno za obavljanje izgradnje. Izvorni kod često sadržava upute za pripremu sustava kao što su potrebni alati i postavke projekta. Dohvat i priprema ovisnosti osigurava postojanje ovisnosti koje zahtijeva izvorni kod. Ovisnosti dijelimo na dva tipa, ovisnosti koje su dio razvojne okoline i vanjske \eng{third party} ovisnosti, najčešće razvijene od strane zajednice. Kompajliranje prevodi izvorni kod u izvršivi artefakt. Kod interpretiranih jezika ovaj je proces često zamijenjen statičkom i dinamičkom provjerom izvedivosti programa. Zbog jednostavnijeg sporazumijevanja oba procesa nazivam izgradnja projekta. Slika \ref{fig:BuildProcess} prikazuje podjelu procesa izgradnje.
 
-Osim kreiranja artefakta, izgradnja provjerava i je li zadana verzija izvornog koda izgradiva. Kod je izgradiv ako se u procesu izgradnje ne izaziva pogrešku, odnosno ako se isti ispravno izvrši. Pogrešku može izazvati neispravnost u izvornom kodu, neispravna konfiguracija sustava, ne postojanje potrebnog alata ili neka druga neispravnost. Izgradivost sustava je preduvjet za  testiranja i isporuku. Samim time je automatizacija izgradnje preduvjet za automatizaciju testiranja i automatizaciju isporuke.
+Osim kreiranja artefakta, izgradnja provjerava i je li zadana verzija izvornog koda izgradiva. Kod je izgradiv ako se u procesu izgradnje ne izaziva pogrešku, odnosno ako se isti ispravno izvrši. Pogrešku može izazvati neispravnost u izvornom kodu, neispravna konfiguracija sustava, nepostojanje potrebnog alata ili neka druga neispravnost. Izgradivost sustava je preduvjet za  testiranja i isporuku. Samim time je automatizacija izgradnje preduvjet za automatizaciju testiranja i automatizaciju isporuke.
 
-\subsection{Verzioniranje}
+\subsection{Verzioniranje} \label{header:Verzioniranje}
 
 Verzioniranje je proces dodjele jedinstvene oznake \eng{id} stanju repozitorija\citep{wiki:SoftwareVersioning}. Repozitorij je verzioniran direktorij te može sadržavati sve od izvornog koda do certifikata i izvršnog programa. Jedinstvena oznaka omogućava identifikaciju pojedinog stanja repozitorija i izgradnju stabla promjena \eng{source tree} koje povezivanjem stanja prikazuje povijest izmjena repozitorija. Verzionirano stanje repozitorija se naziva verzija \eng{commit}.
 
@@ -209,9 +209,9 @@ Verzioniranje je proces dodjele jedinstvene oznake \eng{id} stanju repozitorija\
 
 Uz jedinstvenu oznaku i stanje repozitorija, proces verzioniranja pohranjuje i dodatne podatke kao što su autor i datum kreiranja verzije, te identifikator prijašnje verzije. Navedeni podaci omogućavaju izgradnju stabla promjena. Dodatno, ako verzije poredamo kronološki po datumu obavljanja izmjena, onda svaka pojedina verzija ne treba sadržavati cijelo stanje repozitorija. Dovoljno je samo navesti promjene obavljene nakon prijašnje verzije. Navedeni proces ne samo da značajno smanjuje veličinu cijele kopije, već olakšava i praćenje izmjena. Slika \ref{fig:VersioningTree} prikazuje primjer stabla promjena. Glavni repozitorij sadrži dvije verzije. Repozitorij u navedenom stanju preuzimaju dva člana tima čime kreiraju lokalne repozitorije nad kojima obavljaju izmjene. Globalno stablo promjena se kreira zajedničkim prikazom stabla promjena svih članova.
 
-Navedeni tip verzioniranja se naziva inkrementalno verzioniranje jer se zbog lakšeg praćenje promjena provodi vrlo često. Identifikatori ovog tipa verzioniranja su najčešće generirani pseudo-slučajno. U sklopu razvoja programske potpore najčešće koriste i dodatne sheme verzioniranja koje olakšavaju pračenje stanja projekta. Navedene sheme nastoje olakšati praćenje projekta zbog čega se ovaj tip verzioniranja se naziva vanjsko verzioniranje. Verzije se gotovo uvijek kreiraju dodavanjem posebnih oznaka postojećoj verziji inkrementalnog verzioniranja. Na primjer, u praksi je standardno označiti svaku verziju iz koje se kreira produkt koji se izdaje posebnom oznakom koja se naziva verzija izgradnje \eng{build number}. Kako vanjsko verzioniranje nosi neko značenje, proces dodjele identifikatora je puno složeniji i ovisi o svrsi koje se pokušava postići.
+Navedeni tip verzioniranja se naziva inkrementalno verzioniranje jer se zbog lakšeg praćenje promjena provodi vrlo često. Identifikatori ovog tipa verzioniranja su najčešće generirani pseudo-slučajno. U sklopu razvoja programske potpore najčešće koriste i dodatne sheme verzioniranja koje olakšavaju praćenje stanja projekta. Navedene sheme nastoje olakšati praćenje projekta zbog čega se ovaj tip verzioniranja se naziva vanjsko verzioniranje. Verzije se gotovo uvijek kreiraju dodavanjem posebnih oznaka postojećoj verziji inkrementalnog verzioniranja. Na primjer, u praksi je standardno označiti svaku verziju iz koje se kreira produkt koji se izdaje posebnom oznakom koja se naziva verzija izgradnje \eng{build number}. Kako vanjsko verzioniranje nosi neko značenje, proces dodjele identifikatora je puno složeniji i ovisi o svrsi koje se pokušava postići.
 
-Unutarnje verzioniranje koda se naziva kontrola verzija\citep{wiki:VersionControl}. Sustavi koji implementiraju proces kontrole verzija se nazivaju sustavi za kontrolu verzija. Kroz povijest je razvijen veliki broj sustava za kontrolu verzija te je danas timski razvoj programske potpore gotovo ne zamisliv bez korištenja jednog od njih.
+Unutarnje verzioniranje koda se naziva kontrola verzija\citep{wiki:VersionControl}. Sustavi koji implementiraju proces kontrole verzija se nazivaju sustavi za kontrolu verzija. Kroz povijest je razvijen veliki broj sustava za kontrolu verzija te je danas timski razvoj programske potpore gotovo nezamisliv bez korištenja jednog od njih.
 
 Danas su u praksi najpopularnija dva alata: Apach Subversion i git.
 
@@ -244,7 +244,7 @@ Repozitoriji se mogu klonirati na istom ili drugom uređaju. Klonirani repozitor
 \end{minipage}
 \end{figure}
 
-Prilikom kreiranja git repozitorija stvara se i glavna grana (eng. master branch) repozitorija. Grana je definirana slijedom verzija koje su obavljene na njoj. Stvaranje nove verzije na trenutnj grani se ostvarjuje potrvrđivanjem promjena \eng{commit} koje su dodane repozitoriju. Potvrđivanje promjena je prikazano na slici \ref{fig:Initial_commit}. Repozitorij koda se stvara kreiranjem glavne grane i obavljanjem inicijalnog potvrđivanja \eng{initial commit}. Glavna grana je označena slovom A. Inicijalno potvrđivanje je označeno identifikatorom A1, dok su naknadna potvrđivanja označena identifikatorima A2 i A3.
+Prilikom kreiranja git repozitorija stvara se i glavna grana (eng. master branch) repozitorija. Grana je definirana slijedom verzija koje su obavljene na njoj. Stvaranje nove verzije na trenutnoj grani se ostvaruje potvrđivanjem promjena \eng{commit} koje su dodane repozitoriju. Potvrđivanje promjena je prikazano na slici \ref{fig:Initial_commit}. Repozitorij koda se stvara kreiranjem glavne grane i obavljanjem inicijalnog potvrđivanja \eng{initial commit}. Glavna grana je označena slovom A. Inicijalno potvrđivanje je označeno identifikatorom A1, dok su naknadna potvrđivanja označena identifikatorima A2 i A3.
 
 \begin{figure}
 \centering
@@ -365,9 +365,9 @@ Proces kontinuirane integracije započinje dohvatom željene verzije repozitorij
 
 HTTPS autentifikacija pristup kontrolira korištenjem jedinstvenog korisničkog imena i lozinke. Budući da se proces integracije odvija automatski, potrebno je spremiti i automatizirati unošenje korisničkog imena i lozinke. Preporučeno je iste pohraniti korištenjem Keychain Access aplikacije.
 
-SSH autentifikacija pristup kontrolira korištenjem javnog i privatnog ključa najčešće generiranog korištenjem RSA prostokola. Ova tip autentifikacije je pogodniji za automatizaciju zbog čega ga koristim u sklopu ovog rada. Proces kreiranja i konfiguriranja SSH autentifikacije je detaljnije objašnjen u sljedećem odlomku.
+SSH autentifikacija pristup kontrolira korištenjem javnog i privatnog ključa najčešće generiranog korištenjem RSA protokola. Ova tip autentifikacije je pogodniji za automatizaciju zbog čega ga koristim u sklopu ovog rada. Proces kreiranja i konfiguriranja SSH autentifikacije je detaljnije objašnjen u sljedećem odlomku.
 
-Xcode Server automatski detektira alat kojim je repozitorij verzioniran. Nakon autentifikacije pristupa je potrebno odabrati granu za koju se kreira proces integracije. Pojedin bot integraciju obavlja za samo jednu granu zbog čega je potrebno kreirati zaseban bot za svaku željenu granu. Slika \ref{fig:BotAddingSSH} prikazuje autentifikaciju detektiranog git repozitorija korištenjem postojećeg SSH ključa.
+Xcode Server automatski detektira alat kojim je repozitorij verzioniran. Nakon autentifikacije pristupa je potrebno odabrati granu za koju se kreira proces integracije. Pojedini bot integraciju obavlja za samo jednu granu zbog čega je potrebno kreirati zaseban bot za svaku željenu granu. Slika \ref{fig:BotAddingSSH} prikazuje autentifikaciju detektiranog git repozitorija korištenjem postojećeg SSH ključa.
 
 \begin{figure}
 \centering
@@ -391,7 +391,7 @@ Korištenjem navedenih opcija kontinuirana integracija se pokreće nakon kreiran
 
 U sklopu rada koristim SSH autentifikaciju za pristup udaljenom git repozitoriju. SSH ključevi se obično pohranjuju u direktoriju \path{~/.ssh}. Ako SSH ključ već ne postoji u navedenom direktoriju, onda potrebno je kreirati isti. Skripta \ref{listing:ssh} prikazuje proces generiranja ključa. Naredba pod \#1 generira novi SSH ključ sa željenom e-mail adresom. Preporučeno je ključ u toku kreiranja zaštiti lozinkom.
 
-Nakon generiranja, ključ je potrebno dodati SSH agentu kako se šifra ključa ne bi morala unositi pri svakom korištenju. Naredbe \#2 i \#3 ostvaruju navedenu funkcionalnost. Na kraju, javni dio ključa je potrebno registrirati na platformi koja hosta repozitorij. Naredba \#4 kopira javni dio novo kreiranog kjuča.
+Nakon generiranja, ključ je potrebno dodati SSH agentu kako se šifra ključa ne bi morala unositi pri svakom korištenju. Naredbe \#2 i \#3 ostvaruju navedenu funkcionalnost. Na kraju, javni dio ključa je potrebno registrirati na platformi koja hosta repozitorij. Naredba \#4 kopira javni dio novo kreiranog ključa.
 
 \begin{figure}[b!]
 \centering
@@ -417,7 +417,7 @@ U sklopu rada koristim GitHub platformu. Slika \ref{fig:GitHubSSH} prikazuje pro
 
 Priprema sustava se sastoji od provjere postojanja, dohvata i konfiguracije potrebnih alata te od pripreme projekta za izgradnju.
 
-Provjeru postojanja alata obavljam korištenjem skripte \ref{listing:PripremaSustavaProvjera}. Naredba \#1 provjerava postojanje alata korištenjem alata \verb|which| koji je dostupan u sklopu instalacija macOS operacijskog sustava. U slučaju ne postojanja alata isti je potrebno dohvatiti i instalirati.
+Provjeru postojanja alata obavljam korištenjem skripte \ref{listing:PripremaSustavaProvjera}. Naredba \#1 provjerava postojanje alata korištenjem alata \verb|which| koji je dostupan u sklopu instalacija macOS operacijskog sustava. U slučaju nepostojanja alata isti je potrebno dohvatiti i instalirati.
 
 \begin{lstlisting}[caption=Provjera postojanja alata, label=listing:PripremaSustavaProvjera]
 if !(which {ime_alata} >/dev/null); then #1
@@ -452,9 +452,9 @@ fi
 Naredba pod \#1 provjerava i instalira CocoaPods alat korištenjem alta \verb|gem| dostupnog u sklopu instalacije macOS operacijskog sustava. Kako bi izbjegao unošenje administrativne lozinke, kod instalacije koristim opciju \verb|--user-install| koja alat instalira samo za trenutnog korisnika. Naredbe \#2 i \#3 provjeravaju i instaliraju alate Carthage i Swiftlin korištenjem alata brew.
 
 
-Konfiguracija Xcode projekta je pohranjena unutar \verb|.xcodeproj| datoteke. Datoteka je namjenjena za modifikaciju i čitanje korištenjem alata Xcode. Datoteka nije pogodna za račnu izmjenu i čitanje. Kako bi se olakšalo nadgledanje i modifikacija postavka projekta često se koriste \verb|xcconfig| datoteke.
+Konfiguracija Xcode projekta je pohranjena unutar \verb|.xcodeproj| datoteke. Datoteka je namijenjena za modifikaciju i čitanje korištenjem alata Xcode. Datoteka nije pogodna za račnu izmjenu i čitanje. Kako bi se olakšalo nadgledanje i modifikacija postavka projekta često se koriste \verb|xcconfig| datoteke.
 
-Navedene datoteke su tekstualne datoteke s \verb|.xcconfig| nastavkom te sadrže listu \verb|{ključ} = {vrijednost}| linija koje specificiraju postavke projekta. Navedene dateteke je potrebno dodati projektu te iskoristiti za konfiguraciju željene sheme. Pomoću Xcode aplikacije otvoriti projekt te odabrati željenu shemu i sekciju \verb|Info|. U odjeljku \verb|Configurations| odabirom opcije \verb|Plus| kreirati novu konfiguraciju. Slika \ref{fig:XcodeConfigurations} prikazuje proces dodavanja nove konfiguracije.
+Navedene datoteke su tekstualne datoteke s \verb|.xcconfig| nastavkom te sadrže listu \verb|{ključ} = {vrijednost}| linija koje specificiraju postavke projekta. Navedene datoteke je potrebno dodati projektu te iskoristiti za konfiguraciju željene sheme. Pomoću Xcode aplikacije otvoriti projekt te odabrati željenu shemu i sekciju \verb|Info|. U odjeljku \verb|Configurations| odabirom opcije \verb|Plus| kreirati novu konfiguraciju. Slika \ref{fig:XcodeConfigurations} prikazuje proces dodavanja nove konfiguracije.
 
 \begin{figure}[h!]
 \centering
@@ -473,7 +473,7 @@ Prije izgradnje projekta je potrebno dohvatiti ovisnosti koje projekt koristi. Z
 
 CocoaPods je stariji, široko prihvaćen, centraliziran alat za upravljanje ovisnostima iOS projekata. Alat je jednostavan i intuitivan za korištenje. Dovoljno je specificirati ovisnosti korištenjem \verb|Podfile| datoteke i pokrenuti proces dohvata ovisnosti. Alat samostalno kreira i konfigurira radno okruženje te time olakšava proces upravljanja ovisnostima.
 
-Međutim, najveći problem alata je upravo ova učestala modifikacija datoteka radnog okruženja. Alat pri svakom dohvatu izmjenjuje postavke izgranje što može uzrokovati neželjeno ponašanje. Dodatno, budući da je alat centraliziran, sve korištene biblioteke moraju biti registrirane u CocoaPods sustavu. Navedeno otežava korištenje privatnih biblioteka i biblioteka u razvoju.
+Međutim, najveći problem alata je upravo ova učestala modifikacija datoteka radnog okruženja. Alat pri svakom dohvatu izmjenjuje postavke izgradnje što može uzrokovati neželjeno ponašanje. Dodatno, budući da je alat centraliziran, sve korištene biblioteke moraju biti registrirane u CocoaPods sustavu. Navedeno otežava korištenje privatnih biblioteka i biblioteka u razvoju.
 
 Inicijalizacija CocoaPods alata je prikazana u skripti \ref{listing:CocoaPodsInit}. Naredbu je potrebno pokrenuti u direktoriju projekta.
 
@@ -494,7 +494,7 @@ end
 
 Ovisnosti se dohvaćaju pokretanjem naredbe \verb|pod install| u direktoriju projekta.
 
-Skripta \ref{listing:cocoapods} automatizira dohvaćanje ovisnosi korištenjem CocoaPods alata. Naredba \#1 provjerava postojanja Podfile datoteke te u slučaju postojanja iste nastavlja s izvođenjem skripte. Naredba \#2 provjerava postojanje CocoaPods alata. Ako alat nije instaliran, isti se instalira korištenjem gem alata. Na kraju, naredba \#3 dohvaća ovisnosti korištenjem CocoaPods alata.
+Skripta \ref{listing:cocoapods} automatizira dohvaćanje ovisnosti korištenjem CocoaPods alata. Naredba \#1 provjerava postojanja Podfile datoteke te u slučaju postojanja iste nastavlja s izvođenjem skripte. Naredba \#2 provjerava postojanje CocoaPods alata. Ako alat nije instaliran, isti se instalira korištenjem gem alata. Na kraju, naredba \#3 dohvaća ovisnosti korištenjem CocoaPods alata.
 
 \begin{lstlisting}[caption=Dohvat ovisnosti korištenjem alata CocoaPods, label=listing:cocoapods]
 if [ -f Podfile ]; then #1
@@ -524,7 +524,7 @@ github "JohnSundell/Unbox"
 git "https://gitlab.rep.com/Testni_projekt"
 \end{lstlisting}
 
-Primjer dohvača dvije ovisnosti. Javno objavljenu ovisnost \verb|Unbox| objavljenu na Github platformi te privatnu ovisnost objavljenu na Gitlab platformi.
+Primjer dohvaća dvije ovisnosti. Javno objavljenu ovisnost \verb|Unbox| objavljenu na Github platformi te privatnu ovisnost objavljenu na Gitlab platformi.
 
 Dohvaćanje ovisnosti se pokreće naredbom \verb|carthage update|.
 
@@ -628,7 +628,7 @@ Ovako konfiguriran bot provodi kontinuiranu integraciju za odabranu granu. Rezul
 
 Prve dvije prikazane integracije su završile greškom koja je u trećoj integraciji otklonjena. Četvrta integracije otklanja upozorenje dojavljeno u prve tri integracije. Integracija broj 20 dojavljuje novu grešku koju otklanja sljedeća integracija.
 
-Odabirom pojedine integracije se otvara ekran s detaljima odabrane integracije. Detalji integracije su podjeljeni u nekoliko sekcija od kojih svaka pruža vrlo detaljne informacije o integraciji. Prva sekcija \verb|Summary| prikazuje najvažnije podatke na jednom, sažetom ekranu. Slika \ref{fig:XcodeServerSingleIntegration} prikazuje primjer navedene sekcije za integraciju koja je dojavila pet novih pogrešaka u procesu izgradnje. Detalji novo pronađenih pogrešaka su prikazani na ekranu što olakšava pronalaženje i otklanjanje pogrešaka.
+Odabirom pojedine integracije se otvara ekran s detaljima odabrane integracije. Detalji integracije su podijeljeni u nekoliko sekcija od kojih svaka pruža vrlo detaljne informacije o integraciji. Prva sekcija \verb|Summary| prikazuje najvažnije podatke na jednom, sažetom ekranu. Slika \ref{fig:XcodeServerSingleIntegration} prikazuje primjer navedene sekcije za integraciju koja je dojavila pet novih pogrešaka u procesu izgradnje. Detalji novo pronađenih pogrešaka su prikazani na ekranu što olakšava pronalaženje i otklanjanje pogrešaka.
 
 \begin{figure}
 \centering
@@ -637,7 +637,7 @@ Odabirom pojedine integracije se otvara ekran s detaljima odabrane integracije. 
 \label{fig:XcodeServerSingleIntegration}
 \end{figure}
 
-Zadnja sekcija detalnog prikaza integracije prikazuje ispis svih faza integracije, uključujući i ručno definirane faze. Sekcija je vrlo korisna za provjeru ponašanja pojedine faze.
+Zadnja sekcija detaljnog prikaza integracije prikazuje ispis svih faza integracije, uključujući i ručno definirane faze. Sekcija je vrlo korisna za provjeru ponašanja pojedine faze.
 
 \section{Testiranje}
 
@@ -655,9 +655,9 @@ Unit testovi su nesretno imenovani. Oni ne predstavljaju standardne unit testove
 
 S druge strane, UI testovi nemaju pristup izvornom kodu aplikacije. Oni programsku potporu testiraju njezinim pokretanjem i simuliranjem korisničke interakcije. Programer specificira korisničke akcije i ponašanje koje očekuje od aplikacije nakon primanja navede akcije. UI testovi pokreću dvije aplikacije: aplikaciju koju testiraju i aplikaciju koja simulira korisničku interakciju.
 
-Oba tipa testova su implementirani kao testni ciljevi Xcode projekta. Kod testnog cilja nije dio produkcijskog te se ne koristi u procesu izgradnje. Testni cilj referencira cilj koji testira. Dodatno, shema može specificirati koji se testni ciljevi pokreću prilikom pokretanja operacije testiranja. Na ovaj način jedana shema može u procesu testiranja prokrenuti više testnih ciljeva.
+Oba tipa testova su implementirani kao testni ciljevi Xcode projekta. Kod testnog cilja nije dio produkcijskog te se ne koristi u procesu izgradnje. Testni cilj referencira cilj koji testira. Dodatno, shema može specificirati koji se testni ciljevi pokreću prilikom pokretanja operacije testiranja. Na ovaj način jedna shema može u procesu testiranja pokrenuti više testnih ciljeva.
 
-Proces testiranja se može pokrenuti na na iOS Simulatoru, aplikaciji koja simulira iOS operacijski sustav na macOS operacijskom sustavu, ili stvarnom uređaju. Simulator se instalira u sklopu instalacije Xcode aplikacije.
+Proces testiranja se može pokrenuti na iOS Simulatoru, aplikaciji koja simulira iOS operacijski sustav na macOS operacijskom sustavu, ili stvarnom uređaju. Simulator se instalira u sklopu instalacije Xcode aplikacije.
 
 \subsection{Automatizacija testiranja}
 
@@ -677,7 +677,7 @@ Proces testiranja se može pokrenuti na na iOS Simulatoru, aplikaciji koja simul
 
 Xcode Server detektira testne ciljeve sheme za koju obavlja proces integracije. Za pokretanje testova u sklopu integracije odabrati opciju \verb|Edit bot...| te u sekciji \verb|Build configuration| označiti opciju \verb|Perform test action|. Slika \ref{fig:XcodeServerTestAction} prikazuje navedeni proces. Sljedeća obavljena integracija će pokrenuti sve testne ciljeve koje definira odabrana shema.
 
-Dodatno, moguće je odabrati uređaje na kojima se pokreću testovo. Testove je moguće pokrenuti na svim dostupnim uređajima, samo na dostupnim iOS simulatorima, samo na dostupnim stvarnim uređajima ili na samo odabranim uređajima. Slika \ref{fig:XcodeServerTestDevices} prikazuje navedeni izbornik. Izborniku se pristupa odabirom opcije \verb|Edit bot...| te otvaranjem sekcije \verb|Devices|.
+Dodatno, moguće je odabrati uređaje na kojima se pokreću testovi. Testove je moguće pokrenuti na svim dostupnim uređajima, samo na dostupnim iOS simulatorima, samo na dostupnim stvarnim uređajima ili na samo odabranim uređajima. Slika \ref{fig:XcodeServerTestDevices} prikazuje navedeni izbornik. Izborniku se pristupa odabirom opcije \verb|Edit bot...| te otvaranjem sekcije \verb|Devices|.
 
 Novi testni cilj je shemi moguće dodati korištenjem Xcode aplikacije. Pokrenuti iOS projekt te odabrati željenu shemu iz padajućeg izbornika u gornjoj alatnoj traci aplikacije. Odabirom opcije \verb|Edit scheme| se otvara prozor prikazan na slici. U lijevom izborniku odabrati opciju \verb|Test| te pritiskom na plus ikonu dodati željeni testni cilj postojećoj shemi. Nakon spremanja promjene integracija u sljedećem izvršavanju obavlja i novo dodani testni cilj.
 
@@ -733,21 +733,33 @@ Ako je poziv \path{swiftlint} naredbe dodan kao faza izgradnje, onda se naredba 
 
 \chapter{Kontinuirana dostava}
 
-Kontinuirana dostava je praksa koja automatizacijom procesa isporuke programske podrške nastoji omogućiti čestu i pouzdanu isporuku ispravnog produkta u produkciju. Automatizacija procesa isporuke značajno smanjuje količinu vremena koje tim mora uložiti na proces i time potiče češće izdavanje. Dodatno, implementacija jednostavnog i automatiziranog procesa isporuke smanjuje mogućnost pojave ljudske pogreške. Proces u isto vrijeme nastoji smanjiti trošak, rizik i vrijeme uloženo u razvoj te poboljšati ispravnost produkta\citep{wiki:ContinuousDelivery}.
+Kontinuirana dostava je praksa u sklopu programskog inženjerstva koja automatiziranjem procesa isporuke programske podrške nastoji olaškati i time povećati učestalost isporuke produkta u produkciju. Proces isporuke može biti kompleksan i vremenski zahtjevan. Prije isporuke je produkt potrebno izgraditi, testitirati, kreirati artefakt koji se isporučuje te ga objaviti na željenoj platformi. Za izgradnju je potrebno dohvatiti željenu verziju repozitorija, pripremiti sustav te dohvatiti sve potrebne ovisnosti.
 
-Programsku potporu je prije isporuke potrebno izgraditi, testirati, provjeriti ispravnost te kreirati artefakt za distribuciju. Iako različiti razvojni procesi različito nazivaju artefakt za distribuciju, zbog jednostavnosti ga nazivam arhiva. Arhiviranje je proces kreiranje arhive programske potpore. Arhiva omogućava instalaciju programske potpore na operacijskom sustavu za kojeg je programska potpora namijenjena.
+Navedeni proces je vremenski zahtjevan zbog čega se on ne provodi često. Rijetko provođenje procesa isporuke uzrokuje nekoliko problema. Prvo, rijetkom isporukom se veći broj funkcionalnosti grupira i isporučuje zajedno. Što je veći broj funkcionalnosti isporučen zajedno i što duže te funkcionalnosti nisu isporučene, to je teže osigurati ispravnost isporučenih funkcionalnosti. Dodatno, što duže funkcionalnost nije objavljena to je veći propušteni dobitak koji je funkcionalnost mogla donjeti. Svaka funkcionalnost se razvija s određenim ciljem. Nakon što je funkcionalnost razvijena a prije nego što je objavljena navedeni cilj ostaje bespotrebno ne ispunjen.
+
+Automatizacija procesa isporuke značajno olakšava navedeni proces i time potiče češću isporuku. Dodatno, implementacija jednostavnog i automatiziranog procesa isporuke smanjuje mogućnost pojave ljudske pogreške. Kontinuirana dostava na navedeni naćin nastoji smanjiti trošak, rizik i vrijeme razvoja programske potpore te isto vrijeme poboljšati kvalitetu i osigurati ispravnost programskog produkta\citep{wiki:ContinuousDelivery}.
+
+Kao što je navedeno u uvodu poglavlja, programsku potporu je prije isporuke potrebno izgraditi, testirati te kreirati artefakt za isporuku. Iako različiti razvojni procesi različito nazivaju artefakt za distribuciju, zbog konzistentnosti ga nazivam arhiva. Arhiviranje je proces kreiranje arhive programske potpore. Arhiva omogućava instalaciju programske potpore na operacijskom sustavu za kojeg je programska potpora izgrađena.
 
 Jednako tako je prije automatizacije isporuke produkta potrebno automatizirati izgradnju, testiranje, provjeru ispravnosti i arhiviranje programske potpore. Proces automatizacije izgradnje, testiranja i provjere ispravnosti se naziva kontinuirana integracija te je definiran u poglavlju \ref{header:Kontinuirana_Integracija}. Kontinuirana dostava obuhvaća proces kontinuirane integracije te proces automatizacije isporuke.
 
-Međutim, u praksi se pojam kontinuirana dostava češće koristi za proces automatizacije isporuke koji zahtijeva prethodnu implementaciju procesa kontinuirane integracije. Navedeni se pristup koristi u ovom radu. Proces izgradnje, testiranja i provjere ispravnosti implementiram u sklopu kontinuirane integracije na koju dodajem automatizaciju isporuke i time ostvarujem kontinuiranu dostavu.
+Međutim, u praksi se pojam kontinuirana dostava češće koristi za proces automatizacije isporuke koji zahtijeva odvojenu implementaciju procesa kontinuirane integracije. Zbog jednostavnosti se navedeni pristup koristi u ovom radu. Proces izgradnje, testiranja i provjere ispravnosti implementiram u sklopu kontinuirane integracije na koju dodajem automatizaciju isporuke i time ostvarujem kontinuiranu dostavu.
 
-Važno je napomenuti da kontinuirana dostava ne isporučuje produkt automatski, već samo automatizira proces isporuke. Osoba zadužena za isporuku produkta još uvijek mora pokrenuti proces isporuke za željenu verziju produkta. Automatska objava programske potpore je obrađena u sljedećem, \ref{header:KontinuiranaIsporuka} poglavlju.
+Važno je napomenuti da kontinuirana dostava ne isporučuje produkt automatski, već samo automatizira proces isporuke. Tim još uvijek mora pokrenuti proces isporuke za željenu verziju produkta. Automatska objava programske potpore je obrađena u sljedećem, \ref{header:KontinuiranaIsporuka} poglavlju.
 
-Programsku potporu je moguće objaviti na više načina. Samim time postoji i više procesa isporuke. Programsku potporu je moguće isporučiti ručnom distribucijom njenih arhiva, objavom arhive na privatnom poslužitelju ili objavom arhiva na nekoj javnoj distribucijskoj platformi. Navedeni načini isporuke se značajno razliku. Samim time se i automatizacije navedenih načina isporuke značajno razlikuju.
+Programsku potporu je moguće isporučiti na više načina - direktnom instalacijom na mobilni uređaj, ručnom distribucijom arhive, objavom arhiva korištenjem distribucijske platforme ili objavom arhive koriptenjem App Store platforme. Navedeni tipovi isporuke dijele sličan proces izgradnje i arhiviranja ali se značajno razlikuju u procesu objave arhive. Samim time se i automatizacije navedenih načina isporuke značajno razlikuju.
 
-Programsku potporu za iOS operacijski sustav isporučujemo na sljedeće načine: direktna isporuka \eng{direct distribution}, \textit{ad hoc} isporuka \eng{ad hoc distribution}, unutarnja isporuka \eng{in-house distribution} i isporuka korištenjem App Store platforme. Odabir načina uglavnom ovisi o klijentu za koji obavljamo isporuku. Na primjer, za isporuku programske potpore unutar tima možemo koristiti direktnu isporuku. Jednostavno povežemo mobilni uređaj s računalom koje obavlja isporuku i instaliramo aplikaciju. Isto naravno nije moguće te ne bi bilo praktično raditi za javne korisnike. Njima programsku potporu isporučujemo korištenjem javne App Store platforme odakle je oni mogu samostalno preuzeti. Primjer implementacije svakog od pristupa je dostupan u dodatku \ref{header:RučnaImplementacijaIsporuke}.
+iOS operacijski sustav podržava četiri tipa isporuke: direktnu isporuku \eng{direct distribution}, \textit{ad hoc} isporuku \eng{ad hoc distribution}, unutarnju isporuku \eng{in-house distribution} i isporuku korištenjem App Store platforme. Odabir načina isporuke ovisi o korisnicima za koje se obavlja isporuka.
 
-Svaki od spomenutih tipova isporuke se koristi u razvoju programske potpore za iOS operacijski sustav. Zbog navedenog ću u sklopu automatizacije isporuke, odnosno kontinuirane dostave, obraditi sve navedene tipove isporuke. Iako se procesi razlikuju u implementaciji, sastoje se od istih koraka: pripreme za distribuciju, odnosno arhiviranja programske potpore i objave. Slika \ref{fig:ContinuousDelivery} prikazuje proces isporuke.
+Direktna isporuka progrmsku potporu instalira direktno na povezani mobilni uređaj. Mobilni uređaj mora biti povezan s računalom koje obavlja isporuku te mora biti registriran kao testni uređaj na Apple Developer platformi. Ovaj tip isporuke programsku potporu instalira na jedan uređaj koji mora biti direktno povezan s računalom zbog čega se koristi gotovo isključivo u sklopu razvoja i za isporuku programske potpore unutar razvojnog tima. Dodatno, ovaj se tip isporuke se nemože niti bi ga bilo pogodno automatizirati. Zbog sigurnosnih razloga Apple nije objavio proces direktne isporuke već ju je moguće obaviti isključivo korištenjem Xcode aplikacije.
+
+Ad hoc i unutarnja isporuka su vrlo slične. Obje proizvode arhivu koju je potrebno samostalno dostaviti željenim korisnicima. Arhiva se može dostaviti ručno, na primjer korištenjem e-mail poruke ili se može objaviti na platformi za distribuciju programske potpore. Moguće je kreirati vlastitu platformu ili iskoristiti neku velikog broja već postojećih. Isporuke se razlikuju u tome što uređaji na koje se instalira programska potpora isporučena ad hoc načinom isporuke moraju biti registrirani kao testni uređaju na Apple Developer platformi dok to nije potrebno za unutanju isporuku. Zbog navedenog je korištenjem unutranje isporuke programsku potporu moguće isporučiti neograničenom broju korisnika. Za korištenje unutarnje isporuke je potrebno posjedovati \textit{Enterprise} Apple Developer račun, skuplju verziju običnog Apple Developer računa.
+
+Ad hoc isporuka se najčešće koristi za isporuku programske potpore unutar tima, na primjer za isporuku testne verzije aplikacije timu za osiguranje kvalitete. Unutarnja isporuka se koristi gotovo isključivo za isporuku aplikacija razvijenih za unutarnje potrebe kompanije. Ovaj tip isporuke se nesmije iskoristiti za objavu aplikacija namijenjenih za javno tržište.
+
+App Store isporuka se koristi za objavu programske potpore namijenjene za javno tržište. Za razliku od ostalih tipova isporuke, Apple strogo nadzire aplikacije objavljene ovim tipom isporuke. Svaka aplikacija koja zatraži objavu prolazi kroz strog proces provjere kvalitete i podudaranja s velikim brojem Appleovih smjernica. Ovaj proces može trajati i nekoliko tjedana zbog čega je nužno osigurati ispravnost aplikacije prije pokretanja procesa. Svaka izmjena aplikacije prolazi nešto kroz kraći proces provjere koji može trajati od nekoliko sati do nekoliko dana.
+
+Iako se navedeni tipovi isporuke razlikuju u implementaciji, moguće ih je generalno podijeliti u tri ista koraka: potpisivanja koda, arhiviranja programske potpore i objave arhive. Svaki od koraka je definiran i automatiziran odvojeno u nastavku poglavlja. Slika \ref{fig:ContinuousDelivery} prikazuje navedenu podjelu.
 
 \begin{figure}
 \centering
@@ -758,23 +770,9 @@ Svaki od spomenutih tipova isporuke se koristi u razvoju programske potpore za i
 
 \section{Potpisivanje koda} \label{header:PotpisivanjeKoda}
 
-Kako bi osigurao autentičnost i ne izmijenjenost objavljene programske potpore, Apple koristi sustav potpisivanja koda \eng{code signing}. Sustav se sastoji od dva tipa artefakta: certifikata i profila. Certifikati se sastoje od javnog i privatnog ključa te služe za potpisivanje i kriptiranje programske potpore. Profili sadrže informacije o aplikaciji i razvojnom timu te se prilikom arhiviranja dodaju programskoj potpori.
+Kako bi osigurao autentičnost i neizmjenjenost programske potpore, iOS operacijski sustav implementira proces potpisivanja koda \eng{code signing}. Proces korištenjem certifikata, identifikatora aplikacije \eng{application identificator} i pripremnih profila \eng{provisioning profiles} potpisuje i enkriptira kreiranu arhivu. Prije kreiranja arhive je potrebno kreirati i dohvatiti navedene artefakte te ispravno konfigurirati proces arhiviranja.
 
-Za kreiranje arhive, a samim time i isporuku programske potpore, je potrebno posjedovati odgovarajuće certifikate i profile. U sklopu isporuke se koriste dva certifikata i jedan profil: certifikat programera koji obavlja isporuku, certifikat aplikacije koja se isporučuju te profil za aplikaciju koji odgovara tipu isporuke koji se obavlja\citep{codesigning}. Postoje četiri tipa profila od kojih svaki odgovara svom tipu isporuke: razvojni, ad hoc, unutarnji i App Store profil. Za kreiranje razvojnog, ad hoc i App Store profila je potrebno posjedovati Apple Developer račun dok je za unutarnji profil, pa samim time i unutarnju isporuku, potrebno posjedovati Apple Enterprise račun.
-
-Certifikati i profili se kreiraju korištenjem Apple Developer platforme. Proces kreiranja i pripreme artefakta je prikazan u dodatku \ref{header:dodatak:RucnoPotpisivanjaKoda}.
-
-Ručno kreiranje i održavanje certifikati i profila se može vrlo lako zakomplicirati. Certifikati se sastoje od dva dijela, javnog i privatnog ključa. Javni ključ je moguće slobodno distribuirati. Međutim, tajni ključ je nužno održati tajnim. Drugim riječima, pristup tajnom ključu moraju imati samo osobe zadužene za njegovo korištenje. Profili su također potpisani certifikatom. Profili za razvoj su potpisani generalnim certifikatom za razvoj, dok su certifikati za isporuku potpisani certifikatima aplikacije. Zbog navedenog je uz profile potrebno distribuirati i pripadajuće privatne ključeve.
-
-Postoji nekoliko pristupa koji olakšavaju proces potpisivanja koda. Novije verzije Xcode alata automatiziraju kreiranje i održavanje certifikati i profila koji se koriste u razvoju. Međutim, za isporuku je još uvijek potrebno samostalno kreirati potrebne artefakte. Budući da u sklopu automatiziranja kontinuirane isporuke automatiziramo i proces potpisivanja koda, moramo pronaći postupak koji automatizira kreiranje i upravljanje certifikatima i profilima.
-
-Kako bi automatizirali potpisivanje koda moramo riješiti dva pitanja, kreiranje i dohvat profila i certifikata te kreiranje, sigurna pohrana i dohvat privatnih ključeva. Apple Developer platforma omogućava kreiranje i dohvat certifikata i profila korištenjem javnog programskog sučelja. Dodatno, nekoliko postojećih alata omogućava vrlo jednostavno korištenje programskog sučelja. Za pohranu i dohvat privatnih ključeva koristim privatni repozitorij objaven na javno dostupnoj platformi. Navedeni pristup značajno olakšava proces distribucije i kontrole pristupa privatnim ključevima.
-
-\subsection{Automatizacija potpisivanja koda}
-
-Kako bi automatizirali proces arhiviranja projekta, moramo automatizirati proces potpisivanja koda. U svrhu jednostavnije automatizacije razdvajamo potpisivanje koda na konfiguriranje projekta te dohvat i kreiranje artefakta potrebnih za potpisivanje.
-
-Potpisivanje koda konfigurira projekt kako bi proces arhiviranja koristio ispravne artefakte za kreiranje arhive. Različiti tipovi isporuke zahtijevaju arhive potpisane različitim artefaktima. Zbog navedenog razloga je na temelju tipa isporuke potrebno projekt konfigurirati ispravnim artefaktima. Prije konfiguriranja projekta je artefakte potrebno dohvatiti, te ako ne postoje kreirati. Svaki od tipova isporuke zahtijeva dva certifikata, pripadajuće privatne ključeve i profil za tip isporuke koji se ostvaruje. Slika \ref{fig:CodeSigning} prikazuje podjelu potpisivanja koda.
+Proces postpisivanja koda se može podijeliti na tri faze: kreiranje artefakata, dohvat artefakata i konfiguracija procesa arhiviranja. Slika \ref{fig:CodeSigning} prikazuje navedenu podjelu.
 
 \begin{figure}
 \centering
@@ -783,78 +781,269 @@ Potpisivanje koda konfigurira projekt kako bi proces arhiviranja koristio isprav
 \label{fig:CodeSigning}
 \end{figure}
 
-Apple Developer platforma pruža javni API koji je moguće iskoristiti za kreiranje artefakta potrebnih za potpisivanje koda. Nekoliko javno dostupnih alata koriste ovaj API kako bi olakšali implementaciju kreiranja artefakta.
+Ako potrebni artefakti ne postoje iste je potrebno kreirati te nakon toga preuzeti i instalirati na računalu. Proces arhiviranja je zatim potrebno konfigurirati kako bi koristio ispravne artefakte.
 
-Kao što je navedeno u prošloj sekciji, kreirane artefakte pohranjujem u privatnom repozitoriju. Ne samo da ovaj pristup olakšava upravljanje artefaktima, već i značajno olakšava automatizaciju dohvata. Dovoljno je dohvatiti repozitorij i provjeriti postoji li potreban artefakt. Ako artefakt ne postoji isti se kreira i pohranjuje u repozitoriju.
+Svi artefakti se kreiraju i dohvaćaju korištenjem \path|https://developer.apple.com| platforme. Potrebno se je prijaviti na platformu korištenjem Apple Developer računa, odabrati opciju \verb|Certificates, Identifiers & Profiles| i željeni tip artefakta iz lijevog bočnog izbornika.
 
-Konfiguriranje projekta je potrebno obaviti samo nakon kreiranja novog artefakta. Zbog navedenog se proces najčešće obavlja ručno. Nakon automatskog kreiranja i dohvata artefakta, projekt se ručno konfigurira kako bi koristio ispravne artefakte. Međutim, navedeni pristup ne omogućava automatsko osvježavanje i zamjenu artefakta. Ova funkcionalnost je korisna u dva slučaja: istjecanje i ugroženost artefakta. Nakon isticanja artefakta je iste potrebno obnoviti, odnosno kreirati nove artefakte koji mijenjaju postojeće. U slučaju ugroženosti artefakta je iste potrebno povući iz uporabe te kreirati nove. Budući da su ova dva slučaja vrlo rijetka, procesa konfiguracije projekta se najčešće ne automatizira.
+Certifikati se koriste za osiguranje nekoliko različitih procesa zbog čega postoji nekoliko tipova certifikata. U sklopu isporuke nas zanimaju dva tipa certifikata: razvojni \eng{development} i produkcijski \eng{production} certifikati. Razvojni certifikati se koriste u razvoju i za direktnu isporuku programske potpore. Uobičajno je kreirati zaseban certifikat za svakog člana tima. Produkcijski certifikati se koriste za ad hoc, unutarnju i App Store isporuku. Standardno je kreirati jedan certifikat po timu koji obavlja isporuku. Certifikat se kreira pomoću \verb|CSR| datoteke koju je moguće kreirati korištenjem Keychain Access aplikacije.
 
-Automatizaciju konfiguracije projekta je najlakše ostvariti definiranjem sheme imenovanja artefakta koji se koriste u pojedinom tipu isporuke. Definiranjem sheme nazivanja i njenom primjenom proces unaprijed zna nazive potrebnih artefakta pomoću čega može konfigurirati projekt.
+Pokrenuti Keychain Access aplikaciju te u izborniku na vrhu ekrana odabrati opciju \verb|Certificate Assistant -> Request a Certificate|. U novo otvorenom prozoru unijeti e-mail adresu Apple Developer računa, odabrati \verb|Save to disk| opciju i lokaciju spremanja novo kreirane datoteke. Kreiranu datoteku dostaviti u formu za kreiranje certifikate na Apple Developer platformi te nakon toga obrisati datoteku.
 
-Automatizaciju potpisivanja koda je moguće implementirati ručno ili korištenjem nekog od postojećih alata. U sklopu ovog rada koristim alata \verb|match| koji je dio \verb|fastlane| familije. Alat implementira sve potrebne funkcionalnosti te pruža veliki broj opcija konfiguracije.
+Za korištenje certifikata je potrebno posjedovati certifikat i privatni ključ kojim je on kreiran. Certifikat je moguće preuzeti s Apple Developer platforme dok je privatni ključ potrebno dohvatiti s računala koje posjeduje privatan ključ. Nakon kreiranja certifikata to je isključivo uređaj koji je kreirao CSR datoteku. Za dohvat privatnog ključa pokrenuti Keychain Access aplikaciju te pronaći željeni certifikat. Ako na uređaju postoji privatni ključ navedenog certifikata, isti je moguće izdvojiti korištenjem opcije \textit{Export}. Slika \ref{fig:PrivateKeyExport} prikazuje izdvajanje privatnog ključa certifikata.
 
-\section{Isporuka programske potpore} \label{header:RucnaIsporuka}
+\begin{figure}
+\centering
+\includegraphics[scale=0.47]{PrivateKeyExport}
+\caption{Izdvajanje privatnog ključa certifikata}
+\label{fig:PrivateKeyExport}
+\end{figure}
 
-U sklopu razvoja programske potpore za iOS operacijski sustav se koristi četiri tipa isporuke: direktna isporuka, ad hoc isporuka, unutarnja isporuka i isporuka korištenjem App Store platforme.
+Ovako izdvojeni privatni ključ certifikata je moguće distribuirati. Nužno je osigurati tajnost privatnog ključa jer suprotno narušava sigurnost svih aplikacija koje koriste navedeni certifikat.
 
-Direktna isporuka aplikaciju instalira direktno na uređaj, odakle i dobiva svoje ime. Za obavljanje direktne isporuke je potrebno uređaj povezati s računalnom koje obavlja isporuku direktnom vezom, najčešće USB kabelom. Apple zbog zaštite operacijskog sustava nastoji proces direktne instalacija održati tajnim. Apple službeno podržava isključivo proces direktne isporuke programske potpore za iOS operacijski sustav korištenjem Xcode alata. Dostupno je nekoliko javno objavljenih alata koji u određenom dijelu omogućavaju direktnu isporuku. Međutim, navedeni alati su vrlo ograničeni i ne podržavaju novije verzije operacijskog sustava.
+Identifikator aplikacije identificira i opisuje servise koje koristi aplikacija koja se isporučuje. Identifikator aplikacije je definiran pomoću identifikatora paketa \eng{bundle identifier}, niza znakova jedinstvenog za svaku aplikaciju. Identifikator paketa je najčešće oblika \path{com.ime_kompanije.ime_aplikacije}. Postoje dva tipa identifikatora aplikacije: \textit{wildcard} i eksplicitni identifikatori aplikacije. Wildcard identifikatori aplikacije specificiraju samo dio identifikatora paketa te ih karakterizira asterisk (*) u sklopu imena, na primjer \path{com.rep.*}. Sve aplikacije čiji identifikator paketa započinje navedenim nizom znakova mogu biti isporućene korištenjem navedenog identifikatora. Wildcard identifikatori se koriste u razvoju programske potpore. Eksplicitni identifikatori jedinstveno identificiraju aplikaciju, na primjer \path{com.rep.testna_aplikacija} te se koriste za isporuku specifične aplikacije.
 
-Prije instaliranja programske potpore korištenjem direktne isporuke je mobilni uređaj na koji se instalira aplikacija potrebno registrirati kao testni uređaj na Apple Developer platformi. Na računalu koje obavlja isporuku je potrebno dohvatiti željenu verziju izvornog koda, dohvatiti certifikate programera i aplikacije te profil za direktnu objavu navedene aplikacije. Proces isporuke se obavlja korištenjem Xcode alata pokretanjem opcije \verb|Run| uz odabrani željeni mobilni uređaj.
+Za kreiranja identifikatra aplikacija je potrebno specificirati ime identifikatora, dodati identifikator paketa i odabrati servise koje aplikacija koristi. Nakon kreiranja je identifikator potrebno preuzeti i pokrenuti korištenjem Keychain Access aplikacije.
 
-Budući da direktna isporuka zahtijeva direktnu vezu mobilnog uređaja i računala, ona se koristi isključivo za isporuku produkta osobama do čijeg mobilnog uređaja je jednostavno doći, najčešće članovima tima. Dodatno, navedeni tip isporuke ne optimizira produkt. S ciljem ubrzanja izgradnje, alat xcodebuild izgradnju može obaviti na nekoliko načina. Predodređeno se koristi ne optimizirana izgradnja. Ovaj tip izgradnje je brz ali rezultira lošijim performansama produkta. Zbog navedenog direktan tip isporuke nije preporučeno koristiti za isporuku klijentima ili za prezentaciju programske podrške.
+Pripremni profil povezuje identifikator aplikacije i certifikat. Svaki od četiri tipa isporuke definira vlastiti tip pripremnog profila. Kreiranje pripremnog profila započinje odabirom tipa profila i odabirom odgovarajućeg identifikatora aplikacije i certifikata. Pripremni profil za direktnu isporuku zahtijeva razvojni certifikat, dok pripremni profili ostalih tipova isporuka zahtijevaju produkcijski certifikat.
 
-Ad hoc isporuka se koristi za isporuku produkta unutar kompanije u kojoj se obavlja razvoj produkta. Za razliku od direktne isporuke, ad hoc isporuka ne zahtijeva povezanost mobilnog uređaja i računala koje obavlja isporuku. Osoba koja je zadužena za isporuku dohvaća, izgrađuje i arhivira željenu verziju programske potpore te ju objavljuje na platformi s koje je mogu preuzeti druge osobe.
+\begin{figure}
+\centering
+\includegraphics[scale=0.6]{SigningArtefactsSetup}
+\caption{Postavljanje artefakta za potpisivanje koda}
+\label{fig:SigningArtefactsSetup}
+\end{figure}
 
-Arhiviranje je proces kreiranja artefakta koji se koristi za instalaciju aplikacije na korisničkom uređaju. Artefakt se naziva arhiva aplikacije te je označena \verb|.ipa| nastavkom. Za instalaciju aplikacije je uz arhivu potrebna i datoteka koja opisuje, verificira i locira arhivu. Navedena se datoteka naziva manifest te je označena \verb|.plist| nastavkom. Navedene je artefakte potrebno objaviti negdje odakle ih ovlaštene osobe mogu preuzeti i instalirati na mobilni uređaj. Za objavu je moguće koristiti neku od brojnih postojećih platformi ili implementirati vlastito rješenje. Mobilni uređaj na kojem se instalira aplikacija mora biti registriran kao testni uređaj na Apple Developer platformi. Dodatno, ovaj tip isporuke je optimiziran zbog čega su performanse aplikacije bolje od onih isporučenih korištenjem direktne isporuke.
+Novo kreirana artefakte je potrebno preuzeti i pripremiti za korištenje. Profile je potrebno spremiti na računalu koje obavlja isporuku u direktoriju \path|~/Library/MobileDevice/Provisioning Profiles/| a certifikate je potrebno pokrenuti korištenjem Keychain Access aplikacije.
 
-Ad hoc isporuka se koristi u slučajevima kad je ona jednostavnija ili brža u usporedbi s direktnom isporukom. Na primjer, kod isporuke aplikacije udaljenom timu. Direktna isporuka aplikacije udaljenom timu nije moguća jer nije moguće doći do mobilnih uređaja koje tim koristi. Dodatno, ad hoc isporuka omogućava samostalnu instalaciju aplikacije na uređaj. U slučaju postojanja velikog broja uređaja direktna isporuka može biti vrlo zamorna. Omogućavanje instalacije osobi po potrebi rješava ovaj problem.
+Prije pokretanja arhiviranja je potrebno konfigurirati projekt kako bi se u sklopu arhiviranja koristili ispravni artefakti. Otvoriti Xcode projekt, odabrati željen cilj u sekciji \textit{General} podstaviti \textit{Debug} i \textit{Release} certifikate za potpisivanje koda.
 
-Unutarnja isporuka se koristi za isporuku produkta ograničenom skupu vanjskih osoba. Unutarnja isporuka se od ad hoc isporuke razlikuje u tome što ne zahtijeva prethodnu registraciju mobilnih uređaj kao testnih uređaja zbog čega nije ograničena na konačan skup uređaja. Jednako kao i kod ad hoc isporuke, osoba zadužena za isporuku priprema i objavljuje produkt. Sve osobe s potrebnim pravima pristupa mogu preuzeti i instalirati produkt. Unutarnja isporuka zahtijeva Apple Enterprise račun koji je nešto skuplja verzija Apple Developer računa zbog čega se ne koristi za isporuku unutar kompanije.
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.5]{iTunesUUID}
+\caption{Dohvat UUIDa uređaja korištenjem iTunes aplikacije}
+\label{fig:iTunesUUID}
+\end{figure}
 
-Ovaj tip isporuke se koristi kada objavljena programska potpora ne smije biti javno dostupna, a u isto vrijeme mora biti lako dostupna određenom skupu osoba. Ovi se zahtjevi najčešće javljaju kod programske potpore koja se koristi u internom poslovanju kompanije. Zabranjeno je aplikacije za javno tržište objaviti korištenjem ovog načina isporuke. Apple strogo nadzire i kažnjava sve aplikacije koje su javno objavljene na ovaj način.
+Direktna i ad hoc isporuka zahtijevaju registraciju mobilnog uređaja kao testnog uređaja korištenjem Apple Developer platforme. Uređaj se registrira korištenjem njegovog UUID identifikatora. UUID se može dohvatiti korištenjem iTunes aplikacije dostupne u sklopu instalacije macOS operacijskom sustavu. Potrebno je povezati mobilni uređaj s računalom korištenjem USB kabela te u iTunes aplikaciji odabrati povezani mobilni uređaj i kopirati njegov UUID. Slika \ref{fig:iTunesUUID} prikazuje lokaciju UUID broja u iTunes aplikacije.
 
-Programsku potporu je korištenjem ad hoc i unutarnje isporuke moguće objaviti na \textit{Mobile Device Management} platformi, privatnoj platformi ili na nekoj od javno dostupnih platformi.
+\subsection{Automatizacija potpisivanja koda}
 
-Mobile Device Management je službena Appleova platforma za privatnu objavu programske potpore za macOS, iOS, tvOS i watchOS operacijskih sustava. Platforma pruža slične funkcionalnosit App Store platformi, ali za privatne korisnike. Uz jednostavnu objavu i kontrolu pristupa, platforma omogućava automatsko instaliranje nove verzije aplikacije i praćenje ponašanja korisnika. Međutim, platforma je poprilično skupa zbog čega se rijetko koristi.
+Ručno kreiranje i održavanje certifikati i profila se može vrlo lako zakomplicirati. Ne samo da je proces kreiranja sam po sebi složen, već je potrebno i ispravno distribuirati artefakte bez ugrožavanja njihove sigurnosti. Artefakte se mogu slobodno distribuirati, ali je njihove privatne ključeve nužno održati tajnim. Do prije nekoliko godina se je cijeli proces odrađivao ručno. Nakon kreiranja artefakata isti su se zajedno s privatnim ključem pohranili na sigurnu lokaciju te distribuirali po potrebi.
 
-Programska potpora se može objaviti korištenjem privatnog poslužitelja. Kreiranu arhivu i manifest je moguće objaviti na proizvoljnoj lokaciji kojoj je moguće pristupiti korištenjem mobilnog uređaja. Objava navedenih artefakta je jednostavna, međutim, zahtijeva samostalno održavanje objavljenih aplikacija, kontrolu pristupa i instaliranje novih verzija.
+Danas na tržištu postoji nekoliko pristupa i alata koji olakšavaju i automatiziraju proces potpisivanja koda. Automatizacija potpisivanja koda se oslanjaju na javan API Apple Developer platforme koji omogućuje kreiranje, modificiranje i dohvat svih artefakata navedenih u prošlom odlomku.
 
-Na tržištu postoji veliki broj platformi koje već implementiraju navedene procese. Dodatno, navedene platforme su besplate ili vrlo povoljne u usporedbi s MDM platformom. Trenutno je najpopularnija od ovih platformi platforma Crashlytics. Platforma je jednostavna, besplatna te omogućava jednostavnu automatizaciju procesa isporuke. Navedenu platformu koristim u ovom radu.
+Dodatno, večina alata se zalaže za pohranu artefakata zajedno s pripadajučim privatnim ključevima u jednom tajnom git repozitoriju. Na ovaj se način njihova pohrana i dohvat značajno pojednostavljuju te je cijeli proces moguće jednostavno automatizirati. Međutim, pohrana sigurnosnih podataka u git repozitoriju donosi i određeni sigurnosni rizik. Pristup repozitoriju je nužno detaljno nadzirati. Preporuća se SSH protokol definirana u \ref{header:Verzioniranje} odlomku. Dodatno, korisno je repozitorij pokrenuti unutar lokalne mreže kako on ne bi bio vidljiv izvan mreže\citep{codesigningguide}.
 
-Za objavu aplikacija koje su javno dostupne korisnicima se koristi App Store platforma. Isporuka započinje slično kao i prijašnja dva tipa isporuke. Osoba zadužena za isporuku priprema aplikaciju za isporuku te izgrađuje arhivu aplikacije. Za razliku od prijašnja dva tipa isporuke, ovaj tip isporuke ne zahtijeva implementaciju vlastitog sustava za distribuciju aplikacije, već se za distribuciju koristi App Store platforma. Nakon objave aplikacije na App Store platformi korisnik ju može pronaći, preuzeti i instalirati korištenjem App Store aplikacije za iOS operacijski sustav koja se nalazi na svakom iOS mobilnom uređaju. App Store pruža i brojne druge prednosti kao što su jednostavno dodavanje novih verzija aplikacije, praćenje ponašanja korisnika te komentari i ocjene.
+Automatizaciju potpisivanja koda u ovom radu ostvarujem korištenjem alata \verb|match| koji je dio \verb|fastlane| familije\citep{fastlane:match}. Alat samostalno kreira, dohvaća i priprema potrebne artefakte i time značajno olakšava proces potpisivanja koda.
 
-Iako isporuka aplikacija korištenjem App Store platforme donosi brojne prednosti, ona donosi i brojne nedostatke. Ovaj tip isporuke je poprilično složen te traje puno duže u usporedbi s ostalim tipovima. Apple vrlo strogo regulira aplikacije koje se nalaze na App Store platformi. Aplikaciju je prvo potrebno registrirati i dodati prvu verziju. Nakon registracije Apple provjerava aplikaciju. Ovaj proces zna trajati od tjedan dana do nekoliko tjedana te često rezultira odbijanjem aplikacije. Aplikacija može biti odbijena jer je previše slična već postojećoj aplikacije, jer se ne slaže s nekom od Appleovih politika, zbog loše implementacije i brojnih drugih razloga. Nakon otklanjanja razloga odbijanja je potrebno ponovno proći cijeli proces.
+Alat match se inicijalizira pozivanjem naredbe \verb|fastlane match init| u početnom direktoriju projekta. Proces inicijalizacije zahtijeva unos lokacije git repozitorija te autorizaciju pristupa repoztoriju. Lokacija repozitorija se zajedno s ostalim parametrima alata sprema u \verb|Matchfile| datoteku gdje je iste moguće modificirati..
 
-Za objavu nove verzije aplikacije je potrebno proći nešto blažu provjeru. Ona može trajati od nekoliko sati do nekoliko dana te najčešće završava odobrenjem promjena. Odbijanje promjena je vrlo rijetko te služi prvenstveno za prevenciju očitog narušavanja Appleovih politika.
+Match radi povećanja sigurnosti zahtjeva da SSH ključ korišten u procesu SSH autentifikacije bude vidljiv samo trenutnom korisniku operacijskog sustava. Skripta \ref{listing:ssh_chmod} modificira prava pristupa za odabrani ključ kako bi njegovo korištenje bilo dostupno samo trenutnom korisničkom računu operacijskog sustava.
 
-Ovaj proces isporuke je vrlo složen i dugotrajan. Iako se u zadnjih nekoliko godina značajno poboljšao, veliki broj članova industrije je još uvijek vrlo nezadovoljan. Međutim, Apple zabranjuje isporuku aplikacija za javnu uporabu korištenjem bilo koje druge metode. Ako navedeni proces usporedimo s procesom isporuke web aplikacija, onda su njegovi nedostaci jasno vidljivi. Nova verzija web aplikacije se isporučuje jednostavno promjenom verzije koja se nalazi na poslužitelju. Prvi sljedeći korisnik koji pristupi služitelju automatski koristi sljedeću verziju. Ne samo da je proces isporuke iOS aplikacija daleko teži i sporiji, već korisnik mora samostalno preuzeti novu verziju aplikacije.
+\begin{lstlisting}[caption=Ograničavanje prava pristupa SSH ključu na samo trenutnog korisnika, label=listing:ssh_chmod]
+chmod 600 ~/.ssh/{imekljuca}.pub
+\end{lstlisting}
 
-Apple nastoji što jednostavnije i neprimjetnije osvježiti verzije aplikacije. Aplikacije se automatski osvježuju kad je uređaj spojen na WiFi mrežu te je dovoljno napunjen. Međutim, određeni broj korisnika isključuje ovu funkcionalnost ili ručno odobrava svaku novu verziju aplikacije. Zbog navedenog uvijek postoji određeni postotak korisnika koji vrlo dugo koriste starije verzije aplikacije. Navedeno iziskuje dugoročnu podršku starijih verzija aplikacije što značajno otežava razvoj.
+Dodatno, potrebno je konfigurirati SSH protokol kako bi isti koristi željeni ključ. Kreirati novu datoteku \path|.ssh/config| sa sadržajem skripte \ref{listing:SSH_match}.
 
-Zbog navedenih razloga prominenti pojedinci u iOS zajednici predviđaju ubrzu zamjenu App Store platforme nekim boljim načinom isporuke. Međutim, Apple nije objavio nikakvu naznaku ovog te smo za sad ograničeni sustavom koji imamo.
+\begin{lstlisting}[caption=Postavke SSH protokola za alat match, label=listing:SSH_match]
+Host *
+UseKeychain yes
+AddKeysToAgent yes
+IdentityFile ~/.ssh/{imekljuca}
+\end{lstlisting}
+
+Alata match sve potrebne certifikate i profile kreira i dohvaća automatski. Dovoljno je pokrenuti alat i specificirati tip isporuke koji se koristi. Alat definira četiri tipa koji odgovaraju prethodno definiranim tipovima isporuke: \verb|development|, \verb|adhoc|, \verb|enterprise| i \verb|appstore|. Naredba u nastavku dohvaća i po potrebi kreira artefakte za ad hoc isporuku.
+
+\begin{lstlisting}[caption=Dohvćanje artefakta pomoću dodatka match za ad hoc isporuku]
+match(type: 'adhoc')
+\end{lstlisting}
+
+Alat ne obavlja konfiguraciju procesa arhiviranja, međutim, budući da je istu potrebno napraviti samo jednom ona se najčešće obavlja ručno. Pomoću match alata kreirati sve potrebne artefakte odnosno pozvati match naredbe za svaki tip isporuke koja se koristi. Navedene će naredbe kreirati i dohvatiti potrebne artefakte. Zatim otvoriti Xcode aplikaciju i odabrati željenu shemu. Na početnoj, \verb|General| sekciji sheme u odlomku \verb|Signing| za svaku konfiguraciju postaviti odgovarajući pripremni profil.
+
+Nakon spremanja promjena se cijeli proces potpisivanja koda svodi na poziv alata match sa željenim tipom isporuke.
 
 
-\section{Automatizacija isporuke} \label{header:Automatizacija_isporuke}
+\section{Arhiviranje} \label{header:RucnaIsporuka}
 
-Kao što je navedeno u uvodu poglavlja, automatizacija isporuke donosi brojne pozetivne aspekte. Prvo, ručna isporuka zahtijeva određeno vrijeme programera. Ovo vrijeme je potrebno uložiti za svaku pojedinu isporuku. Što se više puta programska potpora isporuči, to je ukupna količina vremena utrošenog u isporuku veća. S druge strane, automatizacija isporuke zahtijeva ulog većeg dijela vremena u fazi automatizacije procesa, ali značajno smanjuje količinu vremena potrebnog za isporuku.
+Arhiviranje je proces kreiranja artefakta pomoću kojeg se aplikacija instalira na korisničkom uređaju. Artefakt se naziva arhiva aplikacije te je označena \verb|.ipa| nastavkom. Za instalaciju aplikacije je uz arhivu potrebna i datoteka koja opisuje, verificira i locira arhivu. Navedena se datoteka naziva manifest te je označena \verb|.plist| nastavkom.
 
-Dodatno, proces isporuke je dugotrajan te zahtjeva veliku količinu računalnih resursa. Proces koristi brojne optimizacijske procesa kojima nastoji optimizirati performanse konačnog produkta. Proces je on dugotrajan te zauzima veliku količinu resursa čak i najjačih komercijalnih računala. Zbog navedenog je računalo na kojem se obavlja isporuka teško uporabivo za vrijeme obavljanja isporuke. Ako se isporuka obavlja na računalu koje osoba koristi za rad, onda je pad u produktivnosti osobe značajan. Automatizacijom procesa isporuke isti možemo pokrenuti na bilo kojem računalu te time umanjiti ovaj efekt.
+Proces arhiviranja se za ad hoc, unutarnju isporuku i App Store ispruku razlikuje jedino u odabiru tipa isporuke. Arhiviranje obavlja alat xcodebuild. Međutim, alat je vrlo složen i pruža veliki broj opcija zbog čega na tržištu postoji nekoliko alata koji olakšavanju njegovo korištenje. U sklopu rada za ručno arhiviranje koristim aplikaciju Xcode a za automatizirano arhiviranje alat fastlane odnosno njegov dodatak \verb|gym|. Proces arhiviranja korištenjem alata xcodebuild je prikazan u dodatku \ref{header:xcodebuild}.
 
-Navedeni nedostaci ručne isporuke rezultiraju rjeđom isporukom programske potpore. Rijetka isporuka programske potpore može uzrokovati brojne probleme. Prvo, što rijeđe isporučujemo programsku potporu, to veći broj funksionalnosti isporučujemo zajedno. Veliki broj funkcionalnosti otežava korisničko upoznavanje i usporava izdavanje novih funkcionalnosti. Dodatno, rijetka isporuka povećava vjerojatnost izgranje funkcionalnosti koju klijent ne želi. Učestala isporuka značajno smanjuje navedene probleme, a automatizacija isporuke potiće čestu isporuku.
+Korištenjem aplikacije Xcode odabrati opciju \verb|Product -> Archive| iz izbornika na vrhu ekrana. Nakon kračeg perioda se otvara novi prozor koji prikazuje sve dosad kreirane arhive. Jedino što je potrebno je arhivu izdvojiti za objavu. U prozoru odabrati opciju \verb|Export...|. Otvara se novi prozor u kojem je potrebno odabrati željeni tip isporuke te odabrati između nekoliko opcija kreiranja arhive. Slika \ref{fig:XcodeArchiveOptions} prikazuje početni ekran prozora odnosno odabir tipa isporuke arhive. Nakon odabira željene opcije slijediti upute za dovršenje izdvajanja arhive.
 
-Zbog navedenog nastojim automatizirati što veći dio isporuke. Direktnu isporuku nije praktično automatizirati zbog dva razloga. Prvo, za obavljanje direktne isporuke mobilni uređaj i računalo koje obavlja isporuku moraju biti direktno povezani što u stvarnom svijetu nije praktično. Čak ako i dediciramo određeni broj mobilnih uređaja specifično za testiranje zaposlenici će ih često koristiti za testiranje te tada neće biti povezani s računalom koje obavlja integraciju. Zbog navedenog pomoću direktne isporuke ne možemo sa sigurnošću tvrditi da je nova verzija aplikacije instalirana mobilnom uređaju. Drugo, jedini način obavljanja direktne isporuke je korištenjem Xcode alata što nije moguće automatizirati. Druge tipove isporuke je moguće automatizirati.
+\begin{figure}
+\centering
+\includegraphics[scale=0.6]{XcodeArchiveOptions}
+\caption{Odabir tipa isporuke u procesu kreiranja arhive}
+\label{fig:XcodeArchiveOptions}
+\end{figure}
 
-Isporuka se sastoji od potpisivanja koda, arhiviranja i objave. Procesi potpisivanja koda i arhiviranja su vrlo slični za sve tipove isporuke. Potpisivanje koda se razlikuje u  certifikatima i profilima koji se koriste za potpisivanje. Proces arhiviranja se razlikuje u argumentima koji se prosljeđuje operaciji arhiviranja xcodebuild alata. Proces objave ne ovisi o tipu isporuke, već o platformi na kojoj se obavlja isporuka. Zbog navedenog proces objave automatiziram iz perspektive platforme koja se koristi.
+Proces generira dvije datoteke prethodno definirane datoteke. Arhivu aplikacije s \verb|.ipa| nastavkom i manifest aplikacije s \verb|.plist| nastavkom.
 
+Direktna isporuka aplikaciju instalira na mobilni uređaj koji je direktno povezan s računalom koje obavlja isporuku. Zbog navedenog proces arhiviranja u sklopu direktne isporuke ne rezultira arhivom već istu direktno instalira na uređaj. Dodatno, ovaj tip arhiviranja je moguće ostvariti isključivo korištenjem Xcode aplikacije. Apple zbog sigurnosnih razloga ne želi objaviti proces direktne instalacije aplikacije na uređaj. Arhiviranje i instalacija se obavlja odabirom željenog povezanog mobilnog uređaja i pokretanjem \verb|run| operacije na željenoj shemi.
 
 \subsection{Automatizacija arhiviranja}
 
-Ako je projekt ispravno konfiguriran te su potrebni certifikati i profili ispravno instalirani na uređaju, dovoljno je pozvati naredbu \verb|xcodebuild| uz korištenjen opcije \verb|archive|. Shema i time cilj na temelju kojeg se izgrađuje arhiva se definira jedna kao i kod svih drugih opcija naredbe \verb|xcodebuild|. Rezultat uspješnog izvođenja naredbe su dva artefakta: arhiva i manifest.
+Xcode Server implementira funkcionalnost arhiviranja aplikacije u sklopu obavljanja integracije. Međutim, funkcionalnost je vrlo ograničena. Nije moguće dinamički konfigurirati artefakte koji se koriste za potpisivanje koda niti podesiti argumente arhiviranja.
 
-Umjesto direktnog korištenja naredbe \verb|xcodebuild|, moguće je koristiti i neki od javno dostupnih alata za arhiviranje. Navedeni alati nastoje pojednostavniti arhiviranje i pružaju brojne napredne funkcionalnosti. U skloopu ovog rada koristim alat \verb|gym| koji je dio \verb|fastlane| familije. Alat za izgradnju koristi naredbu \verb|xcodebuild|, ali značajno pojednostavljuje njezino korištenje. Dodatno, ukoliko za objavu arhive također koristimo \verb|fastlane| familiju, onda alat \verb|gym| značajno olakšava implementaciju.
+Zbog navedenog automatizaciju arhiviranja ostvarujem korištenjem fastlane dodatak \verb|gym|. Alat za izgradnju interno koristi alat xcodebuild i na prvi pogled se od njega ne razlikuje značajno. Međutim, ako se za cijeli proces isporuke koristi \verb|fastlane| familija, onda korištenje alata \verb|gym| značajno olakšava implementaciju.
+
+Alat izgrađuje i arhivira aplikaciju te omogućava vrlo jednostavnu konfiguraciju oba procesa. Dodatno, alat automatski detektira i koristi artefakte za potpisivanje koda dohvaćene korištenjem dodatka match. Skripta \ref{listing:gym_archive} prikazuje arhiviranje projekta za ad hoc tip isporuke.
+
+\begin{lstlisting}[caption=Arhiviranje aplikacije za ad hoc isporuku pomoću dodatka gym, label=listing:gym_archive]
+gym(scheme: "Diplomski_rad", export_method: "ad-hoc")
+\end{lstlisting}
+
+Kreiranje arhive pomoću xcodebuild alata se ostvaruje pozivanjem naredbe uz korištenje opcije \verb|archive|. Shema i time cilj na temelju kojeg se izgrađuje arhiva se definira jedna kao i kod drugih opcija naredbe \verb|xcodebuild|.
 
 
-\subsection{Automatizacija objave}
+\section{Objava}
+
+Za dovršetak isporuke je željenim korisnicima potrebno omogućiti instalaciju aplikacije korištenjem kreirane arhive. Navedeni se proces naziva objava programske potpore. Isporuka programske potpore korištenjem App Store platforme arhivu naravno objavljuje na App Store platformi. S druge strane, ad hoc i unutarnja isporuka arhivu mogu objaviti na nekoliko načina.
+
+Kako bi pokrenuo instalaciju ili osvježenje verzije aplikacije, korisnik mora preuzeti ispravno konfigurirani manifest. Manifest uz podatke o aplikaciji sadrži i lokaciju arhive. Nakon preuzimanja manifesta operacijski sustav samostalno pokreće dohvat arhive i instalaciju aplikacije.
+
+Najjednostavniji ali i najograničeniji način objave je manifest i arhivu objaviti na generalnoj platformi za dijeljne podataka kao što su Dropbox i Goole Drive. Navedene platforme omogućavaju kreiranje URIa za pojedinu datoteke. Potrebno je kreirati URI za objavljenu arhivu i istu dodati manifestu. Iako je ovaj način isporuke na prvi pogled jednostavan, on je vremenski vrlo zahtjevan. Svaku novu verziju je potrebno ručno dodati na platformu, konfigurirati te zatim obavijestiti korisnike o novoj verziji.
+
+Za objavu je moguće kreirati vlastitu platformu. Na primjer, jednostavnu HTML stranicu koja omogućava preuzimanje manifesta koji referencira arhivu obavljenu na vlastitom poslužitelju. Međutim, na tržištu postoji nekoliko platformi koje već implementiraju navedenu funkcionalnost. U sklopu rada promatram dvije platforme ovog tipa, \textit{Mobile Device Management} i \textit{Crashlytics} platforme.
+
+Za objavu programskog produkta za iOS operacijski sustav je moguće koristi službeni Appleov alat \textit{Mobile Device Management, MDM}. Alat je namijenjen za jednostavnu isporuku i distribuciji aplikacija koje nisu namijenjene za javnu objavu. Po funkcionalnosti koje pruža je platforma vrlo sličan App Store platformi. MDM omogućava jednostavnu objavu aplikacije i kontrolu pristupa te omogućava automatsku izgradnju i osvježenje verzije aplikacije. Međutim, alat je skup te nije popularan u zajednici.
+
+\subsection{Crashlytics}
+
+Crashlytics je trenutno najpopularnija od svih platformi za objavu programske potpore za iOS operacijski sustav. Platforma je jednostavna, besplatna te omogućava automatizaciju procesa isporuke. Navedenu platformu koristim u ovom radu. Razvoj platforme je započet 2011. godine. Platforma je osnovana s ciljem jednostavnog praćenja i dojave pogreška pri izvršavanju mobilnih aplikacija. Kompaniju je 2013. godine kupio Twitter a početkom 2017. godine preuzeo Google. Danas alat uz praćenje pogrešaka olakšava distribuciju aplikacija i pračenje velikog broja metrika.
+
+Prije implementacije isporuke je potrebno kreirati profil aplikacije na platformi. Kreiranje profila odrađuje Crashlytics biblioteka koju je potrebno dodati i pokrenuti zajedno s aplikacijom.
+
+Prvo, dodati ovisnosti definirane u skripti \ref{listing:crashlytics} u \verb|Podfile| datoteku.
+
+\begin{lstlisting}[caption=Ovisnosti potrebne za objavu korištenjem Crashlytisc platforme, label=listing:crashlytics]
+pod 'Fabric'
+pod 'Crashlytics'
+\end{lstlisting}
+
+Nakon toga kreirati novu \verb|Run scrip| fazu za željeni cilj te joj dodati skriptu \ref{listing:fabric_run_script}.
+
+\begin{lstlisting}[caption=Fabric Run Script faza, label=listing:fabric_run_script]
+"${PODS_ROOT}/Fabric/run" {api_kljuc} {tajni_kljuc}
+\end{lstlisting}
+
+API i tajni ključ je potrebno dohvatiti korištenjem Fabric platforme. Otvoriti poveznicu \path{https://www.fabric.io/settings/organizations}. Nakon prijave odabrati željenu organizaciju te preuzeti ključeve.
+
+Na kraju, dodati naredbu \verb|Fabric.with([Crashlytics.self])| na početak \verb|application(application: didFinishLaunchingWithOptions:)| metode klase \verb|AppDelegate|. Registracija aplikacije će se dogoditi prilikom prvog pokretanja aplikacije. Profil aplikacije se nakon pokretanja aplikacije nalazi na stranici \path|https://fabric.io/home|.
+
+Nakon kreiranja profila je arhivu i manifest moguće ručno dodati na Crashlytics platformu.
+
+\paragraph{Automatizacije objave}
+
+Za automatizacije objave korištenjem Crashlytics platforme koristim fastlane dodatak \verb|crashlytics|. Dodatak omogućava jednostavnu objavu aplikacije uz minimalnu konfiguraciju projekta te se nadovezuje direktno na dodatak gym. Za pokretanje dostavje je potrebno pokrenuti naredbu nakon arhiviranja projekta. Skripta \ref{listing:crashlytics_deploy} prikazuje fastlane stazu koja izgrađuje, arhivira i objavljuje aplikaciju na Crashlytics platformi.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[scale=0.3]{CrashlyticsEmail}
+\caption{Crashlytics e-mail poruka izdana nakon objave nove verzije aplikacije}
+\label{fig:CrashlyticsEmail}
+\end{figure}
+
+\begin{lstlisting}[caption=Fastlane staza za isporuku korištenjem Crashlytics platforme, label=listing:crashlytics_deploy]
+lane :develop do
+    increment_build_number
+
+    match(app_identifier: "com.rep.Diplomski-rad.development", type: "development")
+    gym(scheme: "Diplomski_rad", export_method: "development")
+
+    crashlytics(
+        api_token: {api_kljuc},
+        build_secret: {tajni_kljuc},
+        groups: 'Rep'
+    )
+
+end
+\end{lstlisting}
+
+Dodatno, kako prilikom pokretanja naredbe ne bi morao unositi crashlytics API i tajni ključ, iste je moguće specificirati kao argumente crashlytics naredbe.
+
+Nakon isporuke je aplikaciju moguće preuzeti direktno s Crashlytics platforme. Kako bi korisnik mogao preuzeti aplikaciju, potrebno ga je prvo dodati kao testera pojedine aplikacije. Na Crashlytics profilu aplikacije odabrati \verb|Add testers| opciju te unijeti email adresu željene osobe. Na uređaju otvoriti dobivenu e-mail poruku te odabrati opciju \verb|Let Me In|. Slika \ref{fig:CrashlyticsEmail} prikazuje dobivenu e-mail poruku.
+
+Crashlytics instalaciju aplikacija objavljenih na Crashlytics platformi obavlja pomoću aplikacije \textit{Beta}. Ako ista nije instalirana poveznica pokreće proces instalacije i konfiguracije pomočne aplikacije. Slika \ref{fig:Beta} prikazuje ekran za preuzimanje aplikacije. Odabirom opcije \verb|Install| se pokreće instalacija nanovije verzije aplikacije. Moguće je također preuzeti neku od starijih verzija aplikacije.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.3]{Beta}
+\caption{Preuzimanje aplikacije s Crashlytics platforme korištenjem aplikacije Beta}
+\label{fig:Beta}
+\end{figure}
+
+Ako je aplikacija isporučena korištenjem ad hoc isporuke, uređaj korisnika mora biti registriran kao testni uređaj te dodan ad hoc profilu. Kako ne bi morali svakoj verziji aplikacije dodavati testere, grupa testera se može dodati kao argument Crashlytics naredbi \verb|groups: {ime_grupe}|.
+
+
+\subsection{App Store}
+
+Objava javnih iOS aplikacija se ostvaruje korištenjem App Store platforme. App Store je službena platforma za distribuciju programske potpore za macOS, iOS, tvOS i watchOS operacijske sustave. Uz dostupnost aplikacije svim korisnicima navedenih operacijskih sustava, platforma pruža i brojne druge funkcionalnosti kao što su automatsko instaliranje novih verzija aplikacija i praćenje ponašanja korisnika.
+
+Objava programske potpore na App Store platformu se obavlja korištenjem iTunes Connect web stranice. iTunes Connect omogućava kreiranje, modificiranje i praćenje objavljene programske potpore. Prije objave je potrebno kreirati profil aplikacije korištenjem iTunes Connect alata.
+
+Kreiranje profila se obavlja na \path|https://itunesconnect.apple.com/| stranici. Nakon prijave je potrebno odabrati opciju \verb|My Apps| te kreirati novi profil. Slika \ref{fig:iTunesConnectAppCreation} prikazuje formu za kreiranje profila aplikacije.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.4]{iTunesConnectAppCreation}
+\caption{Forma za kreiranje profila aplikacije na iTunes Connect web stranici}
+\label{fig:iTunesConnectAppCreation}
+\end{figure}
+
+Nakon kreiranja profila aplikacije je potrebno ispuniti dodatne podatke o aplikaciji kao što su opis i kategorija aplikacije. Slično kao i kod Crashlytics platforme, sada je moguće jednostavno dostaviti arhivu i manifest aplikacije.
+
+Iako isporuka aplikacija korištenjem App Store platforme donosi brojne prednosti, ona donosi i brojne nedostatke. Ovaj tip isporuke je poprilično složen te traje puno duže u usporedbi s ostalim tipovima isporuke. Apple vrlo strogo regulira aplikacije koje se nalaze na App Store platformi.
+
+Proces provjere aplikacije zna trajati i do nekoliko tjedana te često rezultira odbijanjem aplikacije. Aplikacija može biti odbijena jer je previše slična već postojećoj aplikacije, jer se ne slaže s nekom od Appleovih politika, zbog loše implementacije i brojnih drugih razloga. Nakon otklanjanja razloga odbijanja je potrebno ponovno proći cijeli proces.
+
+Za objavu nove verzije aplikacije je potrebno proći nešto blažu provjeru. Ona može trajati od nekoliko sati do nekoliko dana te najčešće završava odobrenjem promjena. Odbijanje promjena je vrlo rijetko te služi prvenstveno za prevenciju očitog narušavanja Appleovih politika.
+
+Ovaj proces isporuke je složen i dugotrajan. Iako se u zadnjih nekoliko godina proces značajno poboljšao, veliki broj članova industrije je još uvijek vrlo nezadovoljan. Međutim, Apple zabranjuje isporuku aplikacija za javnu uporabu korištenjem bilo koje druge metode. Ako navedeni proces usporedimo s procesom isporuke web aplikacija, onda su njegovi nedostaci jasno vidljivi. Nova verzija web aplikacije se isporučuje jednostavno promjenom verzije koja se nalazi na poslužitelju. Prvi sljedeći korisnik koji pristupi služitelju automatski koristi sljedeću verziju. Ne samo da je proces isporuke iOS aplikacija daleko teži i sporiji, već korisnik mora samostalno preuzeti novu verziju aplikacije.
+
+Apple nastoji što jednostavnije i neprimjetnije osvježiti verzije aplikacije. Aplikacije se automatski osvježuju kad je uređaj spojen na WiFi mrežu te je dovoljno napunjen. Međutim, određeni broj korisnika isključuje ovu funkcionalnost ili ručno odobrava svaku novu verziju aplikacije. Zbog navedenog uvijek postoji određeni postotak korisnika koji vrlo dugo koriste starije verzije aplikacije. Navedeno iziskuje dugoročnu podršku starijih verzija aplikacije što značajno otežava razvoj.
+
+Zbog navedenih razloga prominenti pojedinci u iOS zajednici predviđaju skoru zamjenu App Store platforme nekim boljim načinom isporuke. Međutim, Apple nije objavio nikakvu naznaku ovog te smo za sad ograničeni sustavom koji imamo.
+
+\paragraph{Automatizacija objave}
+
+Isporuku programske potpore za App Store platformu implementiram pomoću fastlane dodatak \verb|deliver|\citep{fastlane:deliver}. Dodatak korištenjem javnog APIa iTunes Connect platforme automatizira dostavu arhive i manifesta. Alat se direktno nadovezuje na alat gym, samostalno detektira potrebne artefakte te omogućava jednostavnu konfiguraciju procesa.
+
+Inicijalizacija deliver dodataka je prikazana u skripti \ref{listing:deliverInit}. Naredba projekt povezuje s iTunes Connect platformom kako bi ubuduće dodatak mogao samostalno obaviti objavu. Za autorizaciju pristupa je potrebno je korisničko ime i lozinku Apple Developer računa. Inicijalizaciju dovršiti unosom iTunes identifikatora profila aplikacije. Identifikator je moguće dohvatiti korištenjem iTunes Connect platforme. Nakon prijave na web stranicu \path{https://itunesconnect.apple.com} odabrati opciju \verb|My Apps| te odabrati željenu aplikaciju. Slika \ref{fig:iTunesConnectAppId} prikazuje lokaciju identifikatora aplikacije na profilu aplikacije.
+
+\begin{lstlisting}[caption=Inicijalizacija deliver dodatka, label=listing:deliverInit]
+fastlane deliver init
+\end{lstlisting}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{iTunesConnectAppId}
+\caption{iTunes Connect profil aplikacije s označenim identifikatorm aplikacije}
+\label{fig:iTunesConnectAppId}
+\end{figure}
+
+Naredba kreira nekoliko datoteka u \verb|fastlane| direktoriju. Tekstualna datoteka \verb|Deliverfile| pohranjuje podatke vezane uz objavu aplikacije na App Store platformi kao što su korisničko ime Apple Developer računa te identifikator aplikacije. Direktorij \verb|metadata| sadrži nekoliko dokumenata koji omogućavaju jednostavan unos podataka koji će se koristiti prilikom isporuke aplikacije na App Store platformu. Na primjer, pomoću dokumenta \verb|description.txt| je moguće specificirati opis aplikacije. Dodatno, moguće je kreirati zaseban opis za svaki jezik koji Apple podržava.
+
+Sada je isporuku moguće obaviti jednostavno pozivom \verb|deliver| alata. Naravno, kreirana arhiva mora biti potpisana certifikatima i profilima za distribuciju na App Store platformi. Zbog navedenog kreiram novu shemu pomoću koje specificiram korištenje ispravnih certifikata i profila.
+
+Staza u nastavku implementira objavu aplikacije na App Store platformu.
+
+\begin{lstlisting}[caption=Isporuka na App Store platformu korištenjem dodatka deliver]
+lane :release do
+match(type: "appstore")
+gym(scheme: "Production", export_method: "app-store")
+deliver
+end
+\end{lstlisting}
+
+Staza prvo dohvaća potrebne certifikate i profile, izgrađuje arhivu aplikacije te na kraju arhivu objavljuje koristeći deliver dodatak.
+
+Nakon isporuke aplikacije je moguće pokrenuti proces objave. Prije objave, aplikacija mora proći Appleov pregled koji može trajati i do nekoliko tjedana. Zbog navedenog je preporučeno prije pokretanja procesa detaljno provjeriti ispravnost aplikacije te pročitati službene smjernice. Ako aplikacija prođe provjeru, onda ju je moguće objaviti korištenjem iTunes Connect web stranice.
+
+
+
 
 Objavu \textit{ad hoc} i unutarnje verzije arhiva ostvarujem korištenjem Crashlytics platforme. Platforma omogućava jednostavnu objavu arhiva, kontrolu pristupa i osvježenje verzija. Jednostavno je na platformu dodati nove korisnike i istima dopustiti preuzimanje aplikacije. Dodatno, korisnici korištenjem aplikacije \verb|Beta| mogu jednostavno vidjeti, preuzeti i osvježiti sve aplikacije kojima je dobio pristup.
 
@@ -899,7 +1088,7 @@ Umjesto da se programska podrška isporuči direktno korisnicima, ona prolazi ni
 \label{fig:DeploymentStages}
 \end{figure}
 
-Termin kontinuirana isporuka je prvi puta iskoristio poznati autor Kent Beck u razgovoru o agilnom razvoju. Kent Beck je ne isporučenu funkcionalnost usporedio s inventarom koji nije prikazan korisniku. Termin je prvi puta definiran u članku \textit{The Deployment Production Line} autora Jez Humblea, Chris Reada i Dan Northa. Praksa je postala posebno prihvaćena zajednici. Danas praksu razvija i unaprjeđuje uglavnom zajednica web programera koji ju, zbog jednostavnosti isporuke programske podrške za web poslužitelje, mogu jednostavno implementirati.
+Termin kontinuirana isporuka je prvi puta iskoristio poznati autor Kent Beck u razgovoru o agilnom razvoju. Kent Beck je neisporučenu funkcionalnost usporedio s inventarom koji nije prikazan korisniku. Termin je prvi puta definiran u članku \textit{The Deployment Production Line} autora Jez Humblea, Chris Reada i Dan Northa. Praksa je postala posebno prihvaćena zajednici. Danas praksu razvija i unaprjeđuje uglavnom zajednica web programera koji ju, zbog jednostavnosti isporuke programske podrške za web poslužitelje, mogu jednostavno implementirati.
 
 Isporuka programske podrške za web poslužitelje ima značajnu prednost u usporedbi s ostalom programskom potporom. Najvažnije, web aplikacije nije potrebno instalirati na uređaj. Korisnik promjene vidi čim su one dodane na poslužitelju. Dodatno, razvojni tim može direktno upravljati koju će verziju programske potpore korisnik vidjeti. U usporedbi, isporuka iOS aplikacija prvo mora proći provjeru Apple tima te je korisnik mora preuzeti na uređaj. Zbog navedenog se kontinuirana isporuka programske potpore za iOS operacijski sustav značajno razlikuje od tradicionalne kontinuirane isporuke.
 
@@ -927,7 +1116,7 @@ Iz navedenog je jasno da trenutan proces ne slijedi principe kontinuirane isporu
 
 Iako je cilj kontinuirane integracije svaku promjenu što brže isporučiti, nema smisla za svaku promjenu linije koda graditi novu verziju aplikacije. Ne samo da to ne bi bilo resursno isplativo, već većina verzija ne bi prošla nit proces automatskog testiranja i provjere kvalitete. Pametnije je verziju prilikom spremanja promjena u repozitoriju izvornog koda.
 
-Dodatno, u praksi se često jedna funkcionalnost razdvaja na više manjih promjena. Svaka od ovih promjena sama prolazi automatska testiranja i osiguranje kvalitete, međutim često dovodi aplikaciju u ne koristivo stanje. Zbog navedenog nema smisla osvježavati verziju kada se ona nalazi u navedenom među stanju. Dodatno, razvojni tim može istovremeno raditi na nekoliko različitih funkcionalnosti.
+Dodatno, u praksi se često jedna funkcionalnost razdvaja na više manjih promjena. Svaka od ovih promjena sama prolazi automatska testiranja i osiguranje kvalitete, međutim često dovodi aplikaciju u neupotrebljivo stanje. Zbog navedenog nema smisla osvježavati verziju kada se ona nalazi u navedenom među stanju. Dodatno, razvojni tim može istovremeno raditi na nekoliko različitih funkcionalnosti.
 
 Za rješavanje navedenog problema se u praksi najčešće koristi proces verzioniranja poz nazivom grananje funkcionalnosti \eng{feature branch} opisana u odlomku \ref{header:Implementacija_verzioniranja}. Umjesto pokretanja procesa isporuke aplikacije prilikom svake promjene repozitorija izvornog koda, proces isporuke se pokreče samo prilikom izmjene glavne grane. Ovaj pristup smanjuje opterećenje sustava te rezultira isporukom upotrebljivog produkta. Dodatno, prilikom spajanja razvojne grane je moguće obaviti dodatne kontrole ispravnosti kao što su timski pregled koda. Slika \ref{fig:FeatureBranchCD} prikazuje proces automatskog pokretanja isporuke nakon spajanja razvojne grane.
 
@@ -975,7 +1164,7 @@ Ispravnost izgradnje provjeravam korištenjem varijabli \verb|XCS_ERROR_COUNT|, 
 
 Ispravnost testiranja provjeravam korištenjem \verb|XCS_TEST_FAILURE_COUNT| varijable. Testiranje smatram uspješnim isključivo ako je broj neuspješnih testova 0.
 
-Ispravnost provjere ispravnosti ovisi o definiranim provjerama ispravnosti. Swiftlint nepoštivanje pravila dojavljuje koriste'i standardne pogreške i upozorenja. Trenutno nije moguće razaznati je li pogreška ili upozorenje generirano izgradnjom ili Swiftlint provjerom. Zbog navedenog se držim pravila definiranog u sklopu ispravnosti izgradnje. Pokrivenost koda trenutno nije dostupna putem varijable okruženja. Međutim, moguće ju je dohvatiti korištenjem javnog Xcode Server APIja pozivom \verb|GET HTTPS| metode:
+Ispravnost provjere ispravnosti ovisi o definiranim provjerama ispravnosti. Swiftlint nepoštivanje pravila dojavljuje koristeći standardne pogreške i upozorenja. Trenutno nije moguće razaznati je li pogreška ili upozorenje generirano izgradnjom ili Swiftlint provjerom. Zbog navedenog se držim pravila definiranog u sklopu ispravnosti izgradnje. Pokrivenost koda trenutno nije dostupna putem varijable okruženja. Međutim, moguće ju je dohvatiti korištenjem javnog Xcode Server APIja pozivom \verb|GET HTTPS| metode:
 
 \begin{verbatim}
 /integration/{id}/coverage{?include_methods}
@@ -1037,256 +1226,15 @@ Abstract.
 
 \chapter{Tehnički detalji implementacije kontinuirane integracije, dostave i isporuke}
 
-Ovaj dodatak je tehnički usmjeren pregled implementacije kontinuirane integracije, dostave i isporuke za programsku potporu za iOS operacijski sustav. Cilj rada nije samo implementirati naveden procese, već omogućiti njihovo jednostavno korištenje i replikaciju na drugim projektima. Zbog navedenog implementacija mora biti prenosiva i jednostavno replicirana.
-
-Dodatak je podijeljen prema procesima koji se implementiraju. Prvo je obrađena kontinuirana integracija, zatim kontinuirana dostava i na kraju dodatka kontinuirana isporuka. Navedena podjela odgovara redoslijedu koji se obično koristi u praksi. Dodatno, nije potrebno implementirati sve procesa, ali treba imati na umu da kontinuirana dostava zahtijeva kontinuiranu integraciju, dok kontinuirana isporuka zahtijeva kontinuiranu dostavu.
-
-Primjeri su napisani za macOS operacijski sustav te su testirani na \textit{Sierra 10.12.4} verziji. Minimalna preporučena verzija operacijskog sustava je \textit{Yosemite 10.10}.
-
-
-\section{Kontinuirana dostava}
-
-Kontinuirana dostava je praksa u sklopu programskog inženjerstva koja automatizira proces isporuke programske potpore. Automatizacijom isporuke nastojimo olakšati proces isporuke i tima ga češće obavljati.
-
-Isporuku programske potpore za iOS operacijske sustave možemo podijeliti na četiri tipa: direktna isporuka, \textit{ad hoc} isporuka, unutarnja isporuka i isporuka korištenjem App Store platforme. Svaki od navedenih tipova isporuke možemo podijeliti u tri faze: potpisivanje koda, arhiviranje i objavu.
-
-Prvi dio poglavlja prikazuje ručnu implementaciju isporuke. Cilj navedenog dijela je upoznavanje sa standardnim procesom isporuke programske potpore za iOS operacijski sustav. Drugi dio poglavlja se bavi automatizacijom isporuke odnosno ostvarenjem kontinuirane dostave.
 
 \subsection{Ručna isporuka} \label{header:RučnaImplementacijaIsporuke}
 
-Za ručnu implementaciju isporuke koristim Xcode aplikaciju. Xcode pruža intuitivno i jednostavno vizualno sučelje za ostvarenje isporuke, međutim navedeni proces nije moguće automatizirati. Dodatno, Xcode ne implementira proces objave koje je potrebno odraditi odvojeno.
-
-\paragraph{Potpisivanje koda} \label{header:dodatak:RucnoPotpisivanjaKoda}
-
-\begin{figure}[b!]
-\centering
-\includegraphics[scale=0.4]{AppleDeveloperCertificateCreation}
-\caption{Odabir tipa certifikata koji se kreira}
-\label{fig:AppleDeveloperCertificateCreation}
-\end{figure}
-
-Postupak potpisivanja koda zahtjeva tri artefakta: certifikat, identifikator aplikacije i pripremni profil za tip isporuke koja se koristi. Dodatno, direktna i ad hoc isporuka zahtijevaju i identifikator uređaja na koji se obavlja isporuka te se navedena registracija dodaje pripremnom profilu.
-
-Svi artefakti se kreiraju korištenjem \path|https://developer.apple.com| platforme. Nakon prijave odabrati \verb|Certificates, Identifiers & Profiles| opciju.
-
-Apple definira veliki broj tipova certifikata. U sklopu isporuke nas zanimaju samo dva tipa: razvojni i produkcijski certifikati. Razvojni certifikati se koriste u razvoju i za direktnu isporuku. Standardno je kreirati zaseban certifikat za svakog programera. Produkcijski certifikati se koriste za ad hoc, unutarnju i App Store isporuku. Standardno je kreirati jedan certifikat po razvojnom timu. Slika \ref{fig:AppleDeveloperCertificateCreation} prikazuje odabir tipa certifikata u procesu kreiranja. Za dovršenje kreiranja certifikata je potrebno kreirati i dostaviti CSR datoteku korištenjem Keychain Access aplikacije. Navedena datoteka sadrži informacije potrebne za kreiranje certifikata kao što su javi i privatni ključ.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.4]{KeychainAccessRequest}
-\caption{Kreiranje nove CSR datoteke}
-\label{fig:KeychainAccessRequest}
-\end{figure}
-
-Pokrenuti Keychain Access aplikaciju te odabrati opciju \textit{Keychain Access -> Certificate Assistant -> Request a Certificate from a Certificate Authority}. Slika \ref{fig:KeychainAccessRequest} prikazuje odabir navedene opcije.
-
-Slijediti upute novo otvorenog prozora i time kreirani novu CSR datoteku. Datoteku dostaviti u formu za kreiranje certifikate te nakon toga obrisati. Proces je isti za sve tipove certifikata.
-
-Za korištenje certifikata je potrebno posjedovati certifikat i privatni ključ kojim je on kreiran. Certifikat je moguće preuzeti s Apple Developer platforme dok je privatni ključ dostupan isključivo na uređaju koji je kreirao CSR datoteku. Za dohvat privatnog ključa otvoriti Keychain Access aplikaciju te pronaći željeni certifikat. Ako na uređaju postoji privatni ključ navedenog certifikata, isti je moguće izdvojiti korištenjem opcije \textit{Export}. Slika \ref{fig:PrivateKeyExport} prikazuje izdvajanje privatnog ključa certifikata.
-
-\begin{figure}[b!]
-\centering
-\includegraphics[scale=0.4]{PrivateKeyExport}
-\caption{Izdvajanje privatnog ključa certifikata}
-\label{fig:PrivateKeyExport}
-\end{figure}
-
-Ovako izdvojeni privatni ključ certifikata je moguće distribuirati. Nužno je osigurati tajnost privatnog ključa jer suprotno narušava sigurnost svih aplikacija koje koriste navedeni certifikat.
-
-Identifikator aplikacije specificira aplikaciju koja se isporučuje. Postoje dva tipa identifikatora aplikacije: \textit{wildcard} i eksplicitni identifikatori aplikacije. Wildcard identifikatori aplikacije registriraju više od jedne aplikacije te ih karakterizira asterisk (*) u sklopu imena, na primjer "com.*". S druge strane, eksplicitni identifikatori jedinstveno identificiraju aplikaciju, na primjer "com.rep.testna\_aplikacija". Uz specificiranje aplikacije, potrebno je dodati ime identifikatora te odabrati servise koje aplikacija koristi. Slika \ref{fig:AppIdentifierCreation} prikazuje ekran za kreiranje identifikator aplikacije.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.4]{AppIdentifierCreation}
-\caption{Kreiranje identifikatora aplikacije}
-\label{fig:AppIdentifierCreation}
-\end{figure}
-
-Na kraju, pripremni profil povezuje identifikator aplikacije i certifikat. Svaki tip isporuke zahtijeva odgovarajući tip pripremnog profila zbog čega postoje četiri tipa pripremnog profila. Nakon odabira željenog profila je potrebno odabrati identifikator aplikacije i željeni certifikat. Moguće je koristiti isključivo eksplicitne identifikatore. Pripremni profil za direktnu isporuku zahtijeva razvojni certifikat, dok pripremni profili ostalih tipova isporuka zahtijevaju produkcijski certifikat.
-
-\begin{figure}[b!]
-\centering
-\includegraphics[scale=0.6]{SigningArtefactsSetup}
-\caption{Postavljanje artefakta za potpisivanje koda}
-\label{fig:SigningArtefactsSetup}
-\end{figure}
-
-Novo kreirana artefakte je potrebno preuzeti i pripremiti za korištenje. Profile je potrebno spremiti na računalu koje obavlja isporuku u direktoriju \path|~/Library/MobileDevice/Provisioning Profiles/| a certifikate je potrebno pokrenuti korištenjem Keychain Access aplikacije.
-
-Prije pokretanja arhiviranja je potrebno konfigurirati projekt kako bi se u sklopu arhiviranja koristili ispravni artefakti. Otvoriti Xcode projekt, odabrati željen cilj u sekciji \textit{General} podstaviti \textit{Debug} i \textit{Release} certifikate za potpisivanje koda.
-
-Uređaj se registrira pomoću UUID identifikatora. UUID se može dohvatiti korištenjem iTunes aplikacije dostupne u sklopu instalacije macOS operacijskom sustavu. Potrebno je povezati mobilni uređaj s računalom korištenjem USB kabela. U iTunes aplikaciji odabrati povezani mobilni uređaj te kopirati UUID uređaja. Slika \ref{fig:iTunesUUID} prikazuje lokaciju UUID broja u iTunes aplikacije.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.5]{iTunesUUID}
-\caption{Dohvat UUIDa uređaja korištenjem iTunes aplikacije}
-\label{fig:iTunesUUID}
-\end{figure}
-
-\paragraph{Arhiviranje}
-
-Direktna isporuka aplikaciju instalira na mobilni uređaj koji je direktno povezan s računalom koje obavlja isporuku. Uređaj je prije isporuke potrebno registrirati kao testni uređaj na Apple developer računu.
-
-Instalaciju aplikacije na uređaj ostvarujem korištenjem Xcode aplikacije. Potrebno je odabrati željeni spojen uređaj i pokrenuti \verb|run| operaciju na željenoj shemi. Operacija izgrađuje i instalira aplikaciju na odabranom uređaju. Apple zbog sigurnosnih razloga drži tajnim proces isporuke aplikacije na uređaj zbog čega je navedeni proces moguće ostvariti samo korištenjem Xcode alata.
-
-Proces arhiviranja je jednak za ad hoc, unutarnju i App Store isporuku. Arhiviranje je moguće ostvariti korištenjem alata xcodebuild ili aplikacije Xcode. Kod arhiviranja pomoću alata xcodebuild je potrebno iskoristiti operaciju \verb|archive| te u odabranoj shemi specificirati željene opcije. Proces arhiviranja korištenjem alata Xcode je jednostavniji ali ga nije moguće automatizirati.
-
-Korištenjem aplikacije Xcode odabrati opciju \verb|Product -> Archive|. U novo otvorenom prozoru odabrati opciju \verb|Export...|. Slika \ref{fig:XcodeArchiveOptions} prikazuje moguće tipove isporuke koji odgovaraju ranije navedenim tipovima isporuke. Nakon odabira željene opcije slijediti upute za kreiranje arhive.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{XcodeArchiveOptions}
-\caption{Opcije arhiviranja korištenjem Xcode aplikacije}
-\label{fig:XcodeArchiveOptions}
-\end{figure}
-
-Proces generira dvije datoteke. Arhivu aplikacije s \verb|.ipa| nastavkom i manifest aplikacije s \verb|.plist| nastavkom. Arhiva aplikacije se koristi za instalaciju aplikacije na mobilni uređaj, dok se manifest može koristiti za jednostavnije preuzimanje arhive. Unutar manifesta je moguće specificirati lokaciju arhive. Budući da je manifest vrlo mala xml datoteka, jednostavno ju je moguće podijeliti sa svim potrebnim osobama. Na temelju preuzetog manifesta sustav preuzima povezanu arhivu i instalira aplikaciju.
 
 \paragraph{Objava} \label{header:rucna_objaca}
 
-Arhivu i manifest je moguće objaviti na nekoliko načina. Najjednostavnije ali i najograničenije je napraviti jednostavnu HTML stranicu koja sadrži poveznicu na manifest. Manifest je moguće distribuirati i korištenjem drugih metoda dijeljena kao što su email ili Dropbox, ali je arhivu potrebno objaviti na poslužitelju.
 
-Za objavu je moguće koristi službeni Appleov alat \textit{Mobile Device Management, MDM}. Alat je namijenjen za jednostavnu isporuku i distribuciji aplikacija koje nisu namijenjene za javnu objavu. Po funkcionalnosti je vrlo sličan App Store platformi. MDM omogućava jednostavnu objavu aplikacije i novih verzija te omogućava automatsku izgradnju i osvježenje verzije aplikacije. Međutim, alat je vrlo skup te ga koriste gotovo isključivo velike kompanije.
-
-Danas je na tržištu dostupan veliki broj alata koji implementiraju funkcionalnosti slične MDMu za značajno manju cijenu. Najpopularniji od ovih alata je alat Crashlytics. Kompanija je osnovana 2011 godine s ciljem praćenja i dojave pogreška i rušenja mobilnih aplikacija. Kompaniju je 2013 godine kupio Twitter a početkom 2017 kupio Google. Danas alat uz praćenje pogrešaka olakšava distribuciju aplikacija i automatizaciju procesa.
-
-Crashlytics platformu je moguće iskoristiti za ad hoc i unutarnju isporuku. Prije implementacije isporuke je potrebno registrirati aplikaciju na platformi. Registraciju automatski odrađuje Crashlytics biblioteka koja se dodaje i pokreće zajedno s aplikacijom.
-
-Za dodavanje biblioteke je potrebno preuzeti i slijediti upute Fabric aplikacije dostupne na \path|https://fabric.io/downloads/apple| stranici. Nakon pokretanja aplikacije odabrati željeni projekt te slijediti upute za dodavanje Crashlytics biblioteke.
-
-Prvo, dodati ovisnosti u skripti \ref{listing:crashlytics} u \verb|Podfile| datoteku.
-
-\begin{lstlisting}[caption=Ovisnosti potrebne za objavu korištenjem Crashlytisc platforme, label=listing:crashlytics]
-pod 'Fabric'
-pod 'Crashlytics'
-\end{lstlisting}
-
-Nakon toga kreirati novu \verb|Run scrip| fazu za željeni cilj te joj dodati skriptu \ref{listing:fabric_run_script}.
-
-\begin{lstlisting}[caption=Fabric Run Script faza, label=listing:fabric_run_script]
-"${PODS_ROOT}/Fabric/run" {api_kljuc} {tajni_kljuc}
-\end{lstlisting}
-
-API i tajni ključevi su dostupni putem Fabric aplikacije.
-
-Zadnje, dodati naredbu \verb|Fabric.with([Crashlytics.self])| u datoteku \verb|AppDelegate|. Registracija aplikacije se odvija prilikom prvog pokretanja aplikacije. Profil aplikacije se nakon pokretanja aplikacije nalazi na stranici \path|https://fabric.io/home|.
-
-Nakon kreiranja profila je kreiranu arhivu i manifest moguće jednostavno dodati korištenjem Crashlytics platforme.
-
-Isporuku javnih iOS aplikacija je dozvoljeno implementirati isključivo korištenjem App Store platforme. App Store je službena platforma za distribuciju programske potpore za macOS, iOS, tvOS i watchOS operacijske sustave. Uz jednostavnost distribucije svim korisnicima navedenih operacijskih sustava, platforma pruža i brojne druge funkcionalnosti kao što su automatsko instaliranje novih verzija i praćenje ponašanja korisnika.
-
-Objava programske potpore na App Store platformu se obavlja korištenjem iTunes Connect web stranice. iTunes Connect omogućava kreiranje, modificiranje i praćenje objavljene programske potpore. Prije objave je potrebno kreirati profil aplikacije korištenjem iTunes Connect alata.
-
-Kreiranje profila se obavlja na \path|https://itunesconnect.apple.com/| stranici. Nakon prijave je potrebno odabrati opciju \verb|My Apps| te kreirati novi profil. Slika \ref{fig:iTunesConnectAppCreation} prikazuje formu za kreiranje profila aplikacije.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.4]{iTunesConnectAppCreation}
-\caption{Forma za kreiranje profila aplikacije na iTunes Connect web stranici}
-\label{fig:iTunesConnectAppCreation}
-\end{figure}
-
-Nakon kreiranja profila aplikacije je potrebno ispuniti dodatne podatke o aplikaciji kao što su opis i kategorija aplikacije te ikone u različitim veličinama. Slično kao i kod Crashlytics platforme, sada je moguće jednostavno dostaviti arhivu i manifest aplikacije. Međutim, aplikaciju prije objave na App Store platformi provjerava tim Appleovih stručnjaka. Proces provjere je vrlo strog zbog čega treba pažljivo pratiti Appleove naputke kod izrade i objave aplikacije.
-
-\subsection{Automatizacija isporuke}
-
-Za automatizaciju isporuke koristim alata fastlane. Fastlane je služben Googleov alat izvorno kreiran za automatizaciju isporuke. Alat se sastoji od većeg broja dodataka od kojih je svaki pojedini dodatak zadužen za automatizaciju zasebne funkcionalnosti. Osim isporuke, fastlane danas podržava i procese izgradnje, testiranja, praćenja i drugo. Dodatno, alat podržava i veliki broj platformi među kojima su iOS, Android, macOS i Windows. Alat je detaljnije definiran u dodatku \ref{header:dodatak_fastlane}.
-
-\paragraph{Potpisivanje koda} \label{header:dodatak:AutomatizacijaPotpisivanjaKoda}
-
-Ručni proces implementacije potpisivanja koda opisan u odjeljku \ref{header:dodatak:RucnoPotpisivanjaKoda} nije moguće automatizirati. Dodatno, navedeni proces zahtijeva ručnu distribuciju certifikata, njihovih privatnih ključeva, identifikatora i pripremnih profila. Ovakva se distribucija vrlo brzo može zakomplicirati te nije poželjna u praksi.
-
-Automatizacija potposivanja koda riješava oba problema. Međutim, automatizaciju je moguće ostvariti na nekoliko načina. Trenutno najpopularnije rješenje je sve certifikate i profile držati u jednom tajnom repozitoriju\citep{codesigningguide}. Dodatno, preporučeno je koristiti samo jedan programerski \eng{developer} certifikat po timu. Umjesto kreiranja certifikata za svakog pojedinog člana tima, kreira se samo jedan certifikat kojeg svi članovi koriste za isporuku. Umjesto ručnog kreiranja i održavanja certifikata i profila koristim fastlane dodatak \verb|match|\citep{fastlane:match}. Alat samostalno kreira, dohvaća i priprema certifikate i profile čime značajno olakšava proces potpisivanja koda.
-
-Inicijalizacija match dodatka se obavlja naredbom \verb|fastlane match init|. Potrebno je unijeti URL repozitorija te autorizirati pristup. URL repozitoriji se zajedno s ostalim parametrima sprema u \verb|Matchfile| datoteku.
-
-Preporučeno je za autentifikaciju repozitorija koristiti SSH protokol. Match zbog sigurnosti zahtjeva da korišteni SSH ključ bude dostupan samo trenutnom korisniku operacijskog sustava zbog čega je potrebno podesiti prava pristupa. Skripta \ref{listing:ssh_chmod} modificira prava pristupa za zadani ključ kako bi njegovo korištenje bilo dostupno samo trenutnom korisničkom računu operacijskog sustava.
-
-\begin{lstlisting}[caption=Ograničavanje prava pristupa SSH ključu na samo trenutnog korisnika, label=listing:ssh_chmod]
-chmod 600 ~/.ssh/{imekljuca}.pub
-\end{lstlisting}
-
-Dodatno, potrebno je konfigurirati SSH protokol kako bi isti koristi željeni ključ. Kreirati novu datoteku \path|.ssh/config| sa sadržajem skripte \ref{listing:SSH_match}.
-
-\begin{lstlisting}[caption=Postavke SSH protokola za alat match, label=listing:SSH_match]
-Host *
-UseKeychain yes
-AddKeysToAgent yes
-IdentityFile ~/.ssh/{imekljuca}
-\end{lstlisting}
-
-Nakon inicijalizacije alata match je sve potrebne certifikate i profile moguće dohvatiti automatski. Dovoljno je pozvati match dodatak i specificirati tip isporuke koji se koristi. Opcije su \verb|development|, \verb|adhoc|, \verb|enterprise| i \verb|appstore| od kojih svaka odgovara pojedinom tipu isporuke. Naredba u nastavku dohvaća certifikate i profil za ad hoc isporuku.
-
-\begin{lstlisting}[caption=Dohvćanje artefakta pomoću dodatka match za ad hoc isporuku]
-match(type: 'adhoc')
-\end{lstlisting}
-
-\paragraph{Arhviranje}
-
-Xcode Server pruža mogućnost arhiviranja aplikacije u sklopu kontinuirane integracije. Međutim, funkcionalnost je vrlo ograničena. Na primjer, nije moguće dinamički konfigurirati artefakte koji se koriste za potpisivanje koda niti podesiti argumente arhiviranja.
-
-Zbog navedenog automatizaciju arhiviranja ostvarujem korištenjem fastlane dodatak gym. Dodatak izgrađuje i arhivira aplikaciju te omogućava vrlo jednostavnu konfiguraciju oba procesa. Dodatno, alat automatski detektira i koristi artefakte za potpisivanje koda dohvaćene korištenjem dodatka match. Skripta \ref{listing:gym_archive} prikazuje arhiviranje projekta za ad hoc tip isporuke.
-
-\begin{lstlisting}[caption=Arhiviranje aplikacije za ad hoc isporuku pomoću dodatka gym, label=listing:gym_archive]
-gym(scheme: "Diplomski_rad", export_method: "ad-hoc")
-\end{lstlisting}
 
 \paragraph{Dostava}
-
-Kao što sam utvrdio u odlomku \ref{header:rucna_objaca}, Crashlytic je platforma najpogodnija za implementaciju isporuke koja nije namijenjena za javnost. Za isporuku javne aplikacije je nužno koristiti App Store platformu. Zbog navedenog automatiziram navedena dva tipa dostave. Fastlane podržava oba tipa isporuke.
-
-Za dostavu aplikacije korištenjem Crashlytics platforme koristim fastlane dodatak \verb|crashlytics|. Dodatak omogućava jednostavnu objavu aplikacije uz minimalnu konfiguraciju projekta te se nadovezuje direktno na dodatak gym. Za pokretanje dostavje je dovoljno pokrenuti dodatak crashlytics nakon arhiviranja projetka. Skripta \ref{listing:crashlytics_deploy} prikazuje fastlane stazu koja izgrađuje, arhivira i objavljuje aplikaciju na Crashlytics platformi.
-
-\begin{lstlisting}[caption=Fastlane staza za isporuku korištenjem Crashlytics platforme, label=listing:crashlytics_deploy]
-lane :develop do
-    increment_build_number
-
-    match(app_identifier: "com.rep.Diplomski-rad.development", type: "development")
-    gym(scheme: "Diplomski_rad", export_method: "development")
-
-    crashlytics(
-        api_token: {api_kljuc},
-        build_secret: {tajni_kljuc},
-        groups: 'Rep')
-
-end
-\end{lstlisting}
-
-Dodatno, kako prilikom pokretanja naredbe ne bi morao unositi crashlytics API i tajni ključ, iste je moguće specificirati kao argumente crashlytics naredbe.
-
-API i tajni ključ je moguće dohvatiti korištenjem Fabric platforme. Slijediti poveznicu \path{https://www.fabric.io/settings/organizations}. Nakon prijave odabrati željenu organizaciju. Slika \ref{fig:FabricKeys} prikazuje lokaciju ključeva.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{FabricKeys}
-\caption{API i tajni ključ}
-\label{fig:FabricKeys}
-\end{figure}
-
-Nakon isporuke je aplikaciju moguće preuzeti direktno s Crashlytics platforme. Kako bi korisnik mogao preuzeti aplikaciju, potrebno ga je prvo dodati kao testera pojedine verzije aplikacije. Na Crashlytics profilu aplikacije odabrati \verb|Add testers| opciju te unijeti email adresu željene osobe. Na uređaju osobe otvoriti poslanu email poruku te odabrati opciju \verb|Let Me In|. Po potrebi instalirati \verb|Beta| aplikaciju pomoću koje se obavlja instalacija. Ako je aplikacija isporučena korištenjem ad hoc isporuke, uređaj korisnika mora biti registriran kao testni uređaj te dodan ad hoc profilu. Kako ne bi morali svakoj verziji aplikacije dodavati testere, grupa testera se može dodati kao argument Crashlytics naredbi \verb|groups: {ime_grupe}|.
-
-Isporuku programske potpore za App Store platformu implementiram pomoću fastlane dodatak \verb|deliver|\citep{fastlane:deliver}. Alat se inicijalizira pozivom \verb|fastlane deliver| \verb|init| naredbe. Naredba zahtijeva unos korisničkog imena i lozinke Apple Developer računa te unos identifikatora profila aplikacije. Identifikator je moguće dohvatiti korištenjem iTunes Connect stranice. Korištenjem stranice otvoriti profil aplikacije te locirati identifikator. Identifikator profila se nalazi pod poljem \verb|Apple ID|.
-
-Naredba kreira nekoliko datoteka u \verb|fastlane| direktoriju. Tekstualna datoteka \verb|Deliverfile| pohranjuje podatke vezane uz objavu aplikacije na App Store platformi kao što su korisničko ime Apple Developer računa te identifikator aplikacije. Direktorij \verb|metadata| sadrži nekoliko dokumenata koji omogućavaju jednostavan unos podataka koji će se koristiti prilikom isporuke aplikacije na App Store platformu. Na primjer, pomoću dokumenta \verb|description.txt| je moguće specificirati opis aplikacije. Dodatno, moguće je kreirati zaseban opis za svaki jezik koji Apple podržava.
-
-Sada je isporuku moguće obaviti jednostavno pozivom \verb|deliver| alata. Naravno, kreirana arhiva mora biti potpisana certifikatima i profilima za distribuciju na App Store platformi. Zbog navedenog kreiram novu shemu pomoću koje specificiram korištenje ispravnih certifikata i profila.
-
-Staza u nastavku implementira objavu aplikacije na App Store platformu.
-
-\begin{lstlisting}[caption=Isporuka na App Store platformu korištenjem dodatka deliver]
-lane :release do
-    match(type: "appstore")
-    gym(scheme: "Production", export_method: "app-store")
-    deliver
-end
-\end{lstlisting}
-
-Staza prvo dohvaća potrebne certifikate i profile, izgrađuje arhivu aplikacije te na kraju arhivu objavljuje koristeći deliver dodatak.
-
-Nakon isporuke aplikacije je moguće pokrenuti proces objave. Prije objave, aplikacija mora proći Appleov pregled koji može trajati i do nekoliko tjedana. Zbog navedenog je preporučeno prije pokretanja procesa detaljno provjeriti ispravnost aplikacije te pročitati službene smjernice. Ako aplikacija prođe provjeru, onda ju je moguće objaviti korištenjem iTunes Connect web stranice.
-
-\section{Kontinuirana isporuka}
 
 Kontinuirana isporuka automatski isporučuje novo izgrađene funkcionalnosti. Funkcionalnosti se isporučuju u četiri faze. Prvo se izdaju samo članovima tima, zatim u dva navrata timu za osiguranje kvalitete te na kraju na javno na App Store platformu. Funkcionalnost se prvi puta isporučuje testnom timu radi provjere novo razvijenih funkcionalnosti, a drugi puta radi verifikacije ispravnosti verzije aplikacije koja će se izdati za javnost.
 
@@ -1337,7 +1285,7 @@ Za svaku granu je potrebno kreirati jedan bot. Najjednostavnije je duplicirati p
 
 iOS operacijski sustav aplikacije razlikuje na temelju identifikatora aplikacije \eng{Bundle Identifier}. Kako bi na istom uređaju mogli instalirati sve četiri verzije aplikacije, navedene verzije moraju imati različite identifikatore aplikacije. Navedeno ostvarujem kreiranjem više konfiguracija sheme i korištenjem \verb|.xcconfig| datoteka.
 
-U sklopu projekta kreiram četiti \verb|.xcconfig| datoteke, jednu za svaki tip isporuke. Sadržaj datoteka je prikazan u skripti \ref{listing:xcconfig}. Naredba pod \#1 dodaje konfiguraciju CocoaPods projekta novo kreiranoj konfiguraciji. Naredba pod \#2 postavlja vrijednost identifirkatora aplikacije. Svaki od tipova isporuke mora imati jedinstven identifikator. Jedinstvenos ostvarjem korištnjem sufiksa.
+U sklopu projekta kreiram četiri \verb|.xcconfig| datoteke, jednu za svaki tip isporuke. Sadržaj datoteka je prikazan u skripti \ref{listing:xcconfig}. Naredba pod \#1 dodaje konfiguraciju CocoaPods projekta novo kreiranoj konfiguraciji. Naredba pod \#2 postavlja vrijednost identifikatora aplikacije. Svaki od tipova isporuke mora imati jedinstven identifikator. Jedinstvenos ostvarjem korištnjem sufiksa.
 
 \begin{lstlisting}[caption=Sadržaj .xcconfig datoteke, label=listing:xcconfig]
 #include "Pods/Target Support Files/Pods-Diplomski_rad/Pods-Diplomski_rad.debug.xcconfig" #1
@@ -1350,6 +1298,7 @@ PRODUCT_BUNDLE_IDENTIFIER = com.rep.Diplomski-rad.{sufix} #2
 Za svaki tip isporuke je potrebno kreirati zaseban bot. Navedeno je najlakše ostvariti dupliciranjem postojećeg bota. Botovi se razlikuju u dva pogleda - u konfiguraciji koju koriste te u procesu isporuke koji pokreću.
 
 Konfiguraciju koju projekt koristi je moguće postviti u konfiguraciji bota. Odabrati opciju \textit{Edit Bot... -> Build Configurations} te odabrati odgovarajuću konfiguraciju.
+Konfiguraciju koju projekt koristi je moguće postaviti u konfiguraciji bota. Odabrati opciju \textit{Edit Bot... -> Build Configurations} te odabrati odgovarajuću konfiguraciju.
 
 \begin{figure}
 \centering
@@ -1371,6 +1320,7 @@ fastlane {ime_staze} #3
 \end{lstlisting}
 
 Naredba pod \#1 navigira proces u ispravni direktorij, naredba pod \#2 dodaje potrebne putanje u PATH varijablu okružtenja, dok nareba pod \#3 pokreće proces isporuke implementiran pomoću fastlane staze.
+Naredba pod \#1 navigira proces u ispravni direktorij, naredba pod \#2 dodaje potrebne putanje u PATH varijablu okruženja, dok naredba pod \#3 pokreće proces isporuke implementiran pomoću fastlane staze.
 
 Promjene obavljene na bilo kojoj od posebnih staza sada pokreću vlastiti proces isporuke.
 
@@ -1423,9 +1373,9 @@ Testiranje se pokreće naredbom:
 
 \begin{verbatim}
 xcodebuild test -workspace Diplomski_rad.xcworkspace
-    -scheme Diplomski_rad
-    -destination 'platform=iOS Simulator,OS=10.3,
-    name=iPhone 7'
+-scheme Diplomski_rad
+-destination 'platform=iOS Simulator,OS=10.3,
+name=iPhone 7'
 \end{verbatim}
 
 Naredba će pokrenuti testni cilj odabrane sheme na odabranom radnom okruženju. Odabir drugog projekta, cilja i sheme se radi jednako kao i kod izgradnje. Za pokretanje drugog testnog cilja je potrebno kreirati novu shemu te joj kao cilj testne operacije postaviti željeni testni cilj.
@@ -1438,7 +1388,7 @@ Provjeru pokrivenosti koda dobivamo koristeći parametar \verb|-showBuildSetting
 
 \begin{verbatim}
 xcodebuild -workspace Diplomski_rad.xcworkspace
-    -scheme Diplomski_rad -showBuildSettings
+-scheme Diplomski_rad -showBuildSettings
 \end{verbatim}
 
 Naredba podatke o pokrivenosti koda sprema u \verb|~/Library/Developer/|\\\verb|Xcode/DerivedData/{ime_projekta+slučajan_identifikator}/|\\\verb|Build/Intermediates/CodeCoverage| direktoriju. Generirani dokumenti su teško čitljivi. Postoji nekoliko alata koji ih obrađuju i generiraju čitljive rezultati. Budući da u razvoju koristim Xcode, neću u njih dublje ulaziti.
@@ -1449,9 +1399,9 @@ Alat se pokreće pozivanjem naredbe \verb|swiftlint| u početnom direktoriju pro
 
 \begin{verbatim}
 if which swiftlint >/dev/null; then
-    swiftlint
+swiftlint
 else
-    echo "warning: Swiftlint nije instaliran"
+echo "warning: Swiftlint nije instaliran"
 fi
 \end{verbatim}
 
@@ -1483,7 +1433,7 @@ Primjer staze je prikazan u nastavku.
 
 \begin{verbatim}
 lane :{imestaze} do
-    {naredbe}
+{naredbe}
 end
 \end{verbatim}
 
@@ -1501,7 +1451,7 @@ Staza koja pokreće dohvat ovisnosti alatom Carthage je prikazana u nastavku. Na
 
 \begin{verbatim}
 lane :carthageCustom do
-    carthage(platform: 'iOS', cache_builds: true)
+carthage(platform: 'iOS', cache_builds: true)
 end
 \end{verbatim}
 
@@ -1509,7 +1459,7 @@ Za dohvat ovisnosti pomoću cocoapods dodatke ne koristim dodatne argumente. Dov
 
 \begin{verbatim}
 lane :cocoapodsCustom do
-    cocoapods
+cocoapods
 end
 \end{verbatim}
 
@@ -1517,8 +1467,8 @@ Budući da dohvat ovisnosti želimo pozivati za svaku stazu, navedene se naredbe
 
 \begin{verbatim}
 before_all do |lane|
-    cocoapods
-    carthage(platform: 'iOS', cache_builds: true)
+cocoapods
+carthage(platform: 'iOS', cache_builds: true)
 end
 \end{verbatim}
 
