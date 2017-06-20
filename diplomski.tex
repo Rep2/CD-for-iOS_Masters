@@ -1019,41 +1019,26 @@ fastlane deliver init
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.4]{iTunesConnectAppId}
+\includegraphics[scale=0.45]{iTunesConnectAppId}
 \caption{iTunes Connect profil aplikacije s označenim identifikatorm aplikacije}
 \label{fig:iTunesConnectAppId}
 \end{figure}
 
-Naredba kreira nekoliko datoteka u \verb|fastlane| direktoriju. Tekstualna datoteka \verb|Deliverfile| pohranjuje podatke vezane uz objavu aplikacije na App Store platformi kao što su korisničko ime Apple Developer računa te identifikator aplikacije. Direktorij \verb|metadata| sadrži nekoliko dokumenata koji omogućavaju jednostavan unos podataka koji će se koristiti prilikom isporuke aplikacije na App Store platformu. Na primjer, pomoću dokumenta \verb|description.txt| je moguće specificirati opis aplikacije. Dodatno, moguće je kreirati zaseban opis za svaki jezik koji Apple podržava.
+Naredba kreira nekoliko datoteka u \verb|fastlane| direktoriju. Tekstualna datoteka \verb|Deliverfile| pohranjuje podatke vezane uz objavu aplikacije na App Store platformi kao što su korisničko ime Apple Developer računa te identifikator aplikacije. Direktorij \verb|metadata| sadrži nekoliko dokumenata koji omogućavaju jednostavan unos podataka koji će se koristiti prilikom isporuke aplikacije na App Store platformu. Na primjer, pomoću dokumenta \verb|description.txt| je moguće unijeti opis aplikacije. Dodatno, moguće je kreirati zaseban opis za svaki jezik koji Apple podržava.
 
-Sada je isporuku moguće obaviti jednostavno pozivom \verb|deliver| alata. Naravno, kreirana arhiva mora biti potpisana certifikatima i profilima za distribuciju na App Store platformi. Zbog navedenog kreiram novu shemu pomoću koje specificiram korištenje ispravnih certifikata i profila.
+Nakon inicijalizacije dodatka je isporuku moguće obaviti jednostavno pozivom \verb|deliver| alata. Naravno, kreirana arhiva mora biti potpisana certifikatima i profilima za isporuku na App Store platformi.
 
-Staza u nastavku implementira objavu aplikacije na App Store platformu.
+Staza \ref{listing:AppStoreLane} implementira cijeli proces isporuke aplikacije na App Store platformu.
 
-\begin{lstlisting}[caption=Isporuka na App Store platformu korištenjem dodatka deliver]
+\begin{lstlisting}[caption=Isporuka na App Store platformu korištenjem dodatka deliver, label=listing:AppStoreLane]
 lane :release do
-match(type: "appstore")
-gym(scheme: "Production", export_method: "app-store")
-deliver
+    match(type: "appstore")
+    gym(scheme: "Production", export_method: "app-store")
+    deliver
 end
 \end{lstlisting}
 
-Staza prvo dohvaća potrebne certifikate i profile, izgrađuje arhivu aplikacije te na kraju arhivu objavljuje koristeći deliver dodatak.
-
-Nakon isporuke aplikacije je moguće pokrenuti proces objave. Prije objave, aplikacija mora proći Appleov pregled koji može trajati i do nekoliko tjedana. Zbog navedenog je preporučeno prije pokretanja procesa detaljno provjeriti ispravnost aplikacije te pročitati službene smjernice. Ako aplikacija prođe provjeru, onda ju je moguće objaviti korištenjem iTunes Connect web stranice.
-
-
-
-
-Objavu \textit{ad hoc} i unutarnje verzije arhiva ostvarujem korištenjem Crashlytics platforme. Platforma omogućava jednostavnu objavu arhiva, kontrolu pristupa i osvježenje verzija. Jednostavno je na platformu dodati nove korisnike i istima dopustiti preuzimanje aplikacije. Dodatno, korisnici korištenjem aplikacije \verb|Beta| mogu jednostavno vidjeti, preuzeti i osvježiti sve aplikacije kojima je dobio pristup.
-
-Crashlytics platforma pruža javan API koji je moguće iskoristiti za kreiranje profila i dodavanje nove verzije aplikacije. Dodatno, moguće je korisnicima dati pristup profilu aplikacije te iste obavijestiti o novoj verziji. Za ostvarenje navedenih funkcionalnosti koristim alat \verb|crashlytics| familije \verb|fastlane|.
-
-Aplikaciju za javne korisnike objavljujem na App Store platformi. Prije objave aplikacije je potrebno kreirati njen profil. Profil se kreira korištenjem iTunes Connect aplikacije. Nakon kreiranja profila je moguće dodati prvu verziju aplikacije. Budući da prva verzija aplikacije prolazi strogu provjeru, nije preporučeno njeno automatizirano dodavanje. Prva se verzija najčešće ručno provjerava, arhivira u objavljuje.
-
-Automatizacije objave se ostvaruje korištenjem javnog APIja iTunes Connect platforme. Za jednostavniju implementaciju koristim \verb|deliver| alat \verb|fastlane| familije. Alat specificiranu arhivu objavljuje na iTunes Connect platformi. Nova verzija također prolazi provjeru Apple time. U slučaju odobrenja nove verzije istu je potrebno objaviti u produkciji. Navedeno je moguće ostvariti korištenjem iTunes Connect platforme ili APIja.
-
-
+Staza korištenjem dodatka match dohvaća potrebne certifikate i profile, pomoću dodatka gym izgrađuje arhivu aplikacije te na kraju arhivu objavljuje koristeći deliver dodatak.
 
 \chapter{Kontinuirana isporuka} \label{header:KontinuiranaIsporuka}
 
