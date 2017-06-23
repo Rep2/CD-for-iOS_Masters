@@ -6,6 +6,9 @@
 \usepackage{subcaption}
 \usepackage{listings}
 \usepackage[toc,page]{appendix}
+\usepackage[ampersand]{easylist}
+\usepackage{pdfpages}
+\usepackage{pdflscape}
 
 \usepackage{listings}
 \lstset{
@@ -731,7 +734,7 @@ fi
 Ako je poziv \path{swiftlint} naredbe dodan kao faza izgradnje, onda se naredba obavlja prilikom svake izgradnje. Ispis naredbe se parsira zajedno s ispisom xcodebuild alata te se rezultati dojavljuju zajedno. Ako naredba nije dodana projektu onda je poziv potrebno ručno implementirati nakon obavljanja integracije.
 
 
-\chapter{Kontinuirana dostava}
+\chapter{Kontinuirana dostava} \label{header:KontinuiranaDostava}
 
 Kontinuirana dostava je praksa u sklopu programskog inženjerstva koja automatiziranjem procesa isporuke programske podrške nastoji olaškati i time povećati učestalost isporuke produkta u produkciju. Proces isporuke može biti kompleksan i vremenski zahtjevan. Prije isporuke je produkt potrebno izgraditi, testitirati, kreirati artefakt koji se isporučuje te ga objaviti na željenoj platformi. Za izgradnju je potrebno dohvatiti željenu verziju repozitorija, pripremiti sustav te dohvatiti sve potrebne ovisnosti.
 
@@ -939,13 +942,6 @@ Nakon kreiranja profila je arhivu i manifest moguće ručno dodati na Crashlytic
 
 Za automatizacije objave korištenjem Crashlytics platforme koristim fastlane dodatak \verb|crashlytics|. Dodatak omogućava jednostavnu objavu aplikacije uz minimalnu konfiguraciju projekta te se nadovezuje direktno na dodatak gym. Za pokretanje dostavje je potrebno pokrenuti naredbu nakon arhiviranja projekta. Skripta \ref{listing:crashlytics_deploy} prikazuje fastlane stazu koja izgrađuje, arhivira i objavljuje aplikaciju na Crashlytics platformi.
 
-\begin{figure}[t!]
-\centering
-\includegraphics[scale=0.3]{CrashlyticsEmail}
-\caption{Crashlytics e-mail poruka izdana nakon objave nove verzije aplikacije}
-\label{fig:CrashlyticsEmail}
-\end{figure}
-
 \begin{lstlisting}[caption=Fastlane staza za isporuku korištenjem Crashlytics platforme, label=listing:crashlytics_deploy]
 lane :develop do
     increment_build_number
@@ -962,21 +958,7 @@ lane :develop do
 end
 \end{lstlisting}
 
-Dodatno, kako prilikom pokretanja naredbe ne bi morao unositi crashlytics API i tajni ključ, iste je moguće specificirati kao argumente crashlytics naredbe.
-
-Nakon isporuke je aplikaciju moguće preuzeti direktno s Crashlytics platforme. Kako bi korisnik mogao preuzeti aplikaciju, potrebno ga je prvo dodati kao testera pojedine aplikacije. Na Crashlytics profilu aplikacije odabrati \verb|Add testers| opciju te unijeti email adresu željene osobe. Na uređaju otvoriti dobivenu e-mail poruku te odabrati opciju \verb|Let Me In|. Slika \ref{fig:CrashlyticsEmail} prikazuje dobivenu e-mail poruku.
-
-Crashlytics instalaciju aplikacija objavljenih na Crashlytics platformi obavlja pomoću aplikacije \textit{Beta}. Ako ista nije instalirana poveznica pokreće proces instalacije i konfiguracije pomočne aplikacije. Slika \ref{fig:Beta} prikazuje ekran za preuzimanje aplikacije. Odabirom opcije \verb|Install| se pokreće instalacija nanovije verzije aplikacije. Moguće je također preuzeti neku od starijih verzija aplikacije.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.3]{Beta}
-\caption{Preuzimanje aplikacije s Crashlytics platforme korištenjem aplikacije Beta}
-\label{fig:Beta}
-\end{figure}
-
-Ako je aplikacija isporučena korištenjem ad hoc isporuke, uređaj korisnika mora biti registriran kao testni uređaj te dodan ad hoc profilu. Kako ne bi morali svakoj verziji aplikacije dodavati testere, grupa testera se može dodati kao argument Crashlytics naredbi \verb|groups: {ime_grupe}|.
-
+Dodatno, kako prilikom pokretanja naredbe ne bi morao unositi crashlytics API i tajni ključ, iste je moguće specificirati kao argumente crashlytics naredbe. Grupa testera kojoj će aplikacija biti vidljiva se može dodati kao argument Crashlytics naredbi - \verb|groups: {ime_grupe}|.
 
 \subsection{App Store}
 
@@ -1040,9 +1022,13 @@ end
 
 Staza korištenjem dodatka match dohvaća potrebne certifikate i profile, pomoću dodatka gym izgrađuje arhivu aplikacije te na kraju arhivu objavljuje koristeći deliver dodatak.
 
+
+
 \chapter{Kontinuirana isporuka} \label{header:KontinuiranaIsporuka}
 
-Kontinuirana isporuka \eng{continuous deployment} je praksa u programskom inženjerstvu koja nastoji smanjiti vrijeme između razvoja i objave funkcionalnosti u produkciju. Kontinuirana dostava automatizira proces isporuke, međutim, ne isporučuje programsku potporu automatski. Svaku isporuku nove verziju programske potpore je potrebno ručno pokrenuti. S druge strane, kontinuirana isporuka automatski isporučuju svaku novu verziju. Razlika između kontinuirane dostave i kontinuirane isporuke je prikazana na slici \ref{fig:CDDifferences}\citep{cd:whats_the_diff}.
+Kontinuirana isporuka \eng{continuous deployment} je praksa u sklopu programskog inženjerstva koja automatskom isporukom programske potpore nastoji olakšati proces i povečati učestalost isporuke razvijenih funkcionalnosti. Slično kao što kontinuirana integracija automatski obavlja proces integracije za svaku novu verziju repozitorija, tako i kontinuirana isporuka automatski obavlja proces isporuke za svaku novu verziju repozitorija. Međutim, dok kontinuirana integracija nad svakom verzijom obavlja isti proces integracije, kontinuirana isporuka provodi nekoliko različitih procesa isporuke.
+
+Automatizacija procesa isporuke zahtjeva prethodnu implementaciju procesa isporuke. U sklopu rada koristim proces isporuke definiran u sklopu kontinuirane dostave, odnosno u poglavlju \ref{header:KontinuiranaDostava}. Jednako tako proces isporuke zahtijeva prethodnu implementaciju procesa integracije. Zbog navedenog se kontinuirana isporuka može smatrati nastavkom kontinuirane dostave i samim time nastavkom na kontinuiranu integraciju. Razlika između kontinuirane dostave i kontinuirane isporuke je prikazana na slici \ref{fig:CDDifferences}\citep{cd:whats_the_diff}.
 
 \begin{figure}
 \centering
@@ -1051,7 +1037,11 @@ Kontinuirana isporuka \eng{continuous deployment} je praksa u programskom inžen
 \label{fig:CDDifferences}
 \end{figure}
 
-Kontinuirana isporuka automatskom isporukom promjena u produkciju nastoji smanjiti vrijeme između razvoja funkcionalnosti i njene objave u produkciju te samim time ukupno vrijeme trajanja razvoja. Kontinuirana isporuka ova obavlja na dva načina. Prvo, automatizacijom isporuke i automatskom isporukom promjena, kontinuirana isporuka značajno smanjuje vrijeme koje tim mora uložiti za obavljanje isporuke. Druga stavka je direktna posljedica prve. Zbog smanjenja opterećenja koje isporuka nanosi na tim, obavljanje isporuke postaje puno lakše. Lakše obavljanje isporuke dovodi do češćeg obavljanja isporuke. Irska kompanije \textit{Intercom} u svom blogu bilježi stabilan porast broja dnevnih isporuka promjenu od produkcija. Od ispod 20 isporuka u 2012. godini, do preko 80 isporuka u 2015. godini. Slika \ref{fig:IntercomShipsPerDay} prikazuje broj dnevnih isporuka promjena u produkciju kompanije \textit{Intercom}\citep{intercom:cd}.
+Kontinuirana isporuka je vrlo mlada praksa. Termin je prvi puta iskoristio poznati autor Kent Beck u raspravi o agilnom razvoju programske potpore. Kent Beck je neisporučenu funkcionalnost usporedio s inventarom koji nije prikazan korisniku. Termin kontinuirana isporuka je prvi puta definiran u članku \textit{The Deployment Production Line} autora Jez Humblea, Chris Reada i Dan Northa\citep{mics:DPT}. Danas praksu razvija i unaprjeđuje uglavnom zajednica web programera koji ju, zbog jednostavnosti isporuke programske podrške za web poslužitelje, mogu jednostavno implementirati.
+
+Isporuka programske podrške za web poslužitelje ima značajnu prednost u usporedbi s ostalom programskom potporom. Najvažnije, web aplikacije nije potrebno instalirati na uređaj. Korisnik promjene vidi čim su one dodane na poslužitelju. Dodatno, razvojni tim može direktno upravljati koju će verziju programske potpore korisnik vidjeti. U usporedbi, isporuka iOS aplikacija prvo mora proći provjeru Apple tima te zatim korisnik mora novu verziju preuzeti na uređaj.
+
+\textit{Intercom}, novonastala kompanije bazirana u Irskoj je proces kontinuirane isporuke implementirala krajem 2012. godine. Uz automatizirano obavljanje isporuke, kompanija u sklopu procesa implementira i brojne složeniji funkcionalnosti. Na primjer, kompanija isporuku obavlja u fazama. Umjesto isporuke nove promjene svim korisnicima, promjene vidi samo manji postotak iskusnih korisnika. U blogu objavljenom 2016. godine bilježi stabilan porast broja dnevnih isporuka promjenu od produkcija. Od ispod 10 isporuka u 2012. godini, do preko 80 isporuka u 2015. godini. Slika \ref{fig:IntercomShipsPerDay} prikazuje broj dnevnih isporuka promjena u produkciju kompanije \textit{Intercom}\citep{intercom:cd}.
 
 \begin{figure}
 \centering
@@ -1060,11 +1050,11 @@ Kontinuirana isporuka automatskom isporukom promjena u produkciju nastoji smanji
 \label{fig:IntercomShipsPerDay}
 \end{figure}
 
-Iako kontinuirana isporuka nastoji promjene automatski isporučiti u produkciju, navedeno ne znači da se svaka promjena koda automatski isporučuju direktno korisniku. Prvo, svaka promjena prolazi cijeli proces automatskog testiranja i provjere kvalitete. Dodatno, promjene u praksi često prolaze brojna ručna testiranja prije objave u produkciju. Ručna testiranja možemo generalno podijeliti na testiranja razvojnog tima, testiranja tima za osiguranje kvalitete i testiranja vanjskih korisnika koja po broju korisnika dijelimo na \textit{alpha} i |textit{beta} testove.
+Na žalost, praksa je puno slabije zastupljena u razvoju programske potpore za iOS operacijski sustav. Postoji nekoliko neslužbenih objava u kojima članovi zajednici raspravljaju o procesu automatizacije, međutim navedeni su procesi značajno reducirani u usporedbi s procesima koji se kriste u razvoju programske potpore za web platformu.
 
-Dok se \textit{alpha} testiranja provode na vrlo malom broju korisnika, \textit{beta} testiranja mogu sadržavati i do 10% korisnika. Testiranja razvojnog tima provodi tim koji razvija aplikaciju. Ovi testovi nastoje potvrditi ispravnost razvijene funkcionalnosti ali ne ulaze dulje u ispravnost cijele programske podrške. Testiranja tima za osiguranje kvalitete nastoje osigurati ispravnost cijele programske podrške. Način, raspored i provođenje testiranja je strogo definiran te po opsegu daleko nadmašuje testiranje razvojnog tima. S druge strane, testiranja na vanjskim korisnicima ne provode zaposlenici već potencijalni budući korisnici. Korisnici ne testiraju programsku podršku već ju normalno koriste. Međutim, velik broj korisnika omogućava pronalazak i najmanje greške u programskoj podršci. Dodatno, ovaj tip testiranja se može iskoristiti i za praćenje ponašanja korisnika na temelju čega se mogu uvoditi poboljšanja produkta.
+\section{Tipovi isporuke}
 
-Umjesto da se programska podrška isporuči direktno korisnicima, ona prolazi niz ručnih testiranja. Primjer procesa isporuke produkta različitim skupinama korisnika je prikazana na slici \ref{fig:DeploymentStages}.
+Ovisno o potrebama tima, kontinuirana isporuka može automatsku isporuku obavljati i za do desetak različitih verzija programske potpore. Navedeni broj verzija se koristi zbog osiguranja kvalitete programske potpore. Nema smisla tek razvijenu funkcionalnost objaviti direktno krajnjim korisnicima. Funkcionalnost je prvo potrebno testirati te osigurati njenju spremnost za objavu u produkciji. Umjesto direktne isporuke nove verzije u produkciju, ista prolazi nekoliko stupnjeva provjere ispravnosti. Drugim riječima, verzija se isporučuje korištenjem nekoliko različitih procesa isporuke. U sklopu rada isporučujem četiri verzije programske potpore: produkcijsku, pripremnu, testnu i razvojnu verziju. Tipovi i redoslijed isporuke verzija je prikazana na slici \ref{fig:DeploymentStages}.
 
 \begin{figure}[h]
 \centering
@@ -1073,63 +1063,35 @@ Umjesto da se programska podrška isporuči direktno korisnicima, ona prolazi ni
 \label{fig:DeploymentStages}
 \end{figure}
 
-Termin kontinuirana isporuka je prvi puta iskoristio poznati autor Kent Beck u razgovoru o agilnom razvoju. Kent Beck je neisporučenu funkcionalnost usporedio s inventarom koji nije prikazan korisniku. Termin je prvi puta definiran u članku \textit{The Deployment Production Line} autora Jez Humblea, Chris Reada i Dan Northa. Praksa je postala posebno prihvaćena zajednici. Danas praksu razvija i unaprjeđuje uglavnom zajednica web programera koji ju, zbog jednostavnosti isporuke programske podrške za web poslužitelje, mogu jednostavno implementirati.
-
-Isporuka programske podrške za web poslužitelje ima značajnu prednost u usporedbi s ostalom programskom potporom. Najvažnije, web aplikacije nije potrebno instalirati na uređaj. Korisnik promjene vidi čim su one dodane na poslužitelju. Dodatno, razvojni tim može direktno upravljati koju će verziju programske potpore korisnik vidjeti. U usporedbi, isporuka iOS aplikacija prvo mora proći provjeru Apple tima te je korisnik mora preuzeti na uređaj. Zbog navedenog se kontinuirana isporuka programske potpore za iOS operacijski sustav značajno razlikuje od tradicionalne kontinuirane isporuke.
-
-
-\section{Kontinuirana isporuka za iOS operacijski sustav}
-
-Kontinuirana isporuka za iOS operacijski sustav se značajno razlikuje od tradicionalne prakse kontinuirane isporuke. Glavni razlog ove razlike je App Store platforma. Dok se nova verzija web aplikacije može isporučiti u nekoliko minuta, nova verzija iOS aplikacije mora proći službenu provjeru Apple tima te ju potom korisnik mora preuzeti. Dodatno, App Store je zatvorena platforma s ograničenim skupom funkcionalnosti. Iako Apple konstantno dodaje nove funkcionalnosti, platforma je u velikom zaostatku u usporedbi s web razvojem. Navedena ograničenost App Store platforme je glavni razlog zbog kojeg veliki broj poznatih članova iOS zajednice prognozira njenu postupnu eliminaciju. Iako App Store platforma ima navedena ograničenja, još uvijek je moguće automatizirati veliki dio procesa.
-
-Isporuka programske potpore za ograničene skupove korisnika je puno jednostavnija. Budući da za ovaj tip isporuke nije potrebno koristiti App Store platformu, moguće je ostvariti puno veći set funkcionalnosti. U sklopu ovog rada koristim Crashlytics platformu koja pruža brojne funkcionalnosti kao što su automatsko osvježenje i postupna isporuka aplikacije korisnicima.
-
-Vratimo se sada na projekt za koji implementiram kontinuiranu isporuku. U sklopu razvoja isporučujem četiri različite verzije aplikacije pod nazivima: razvoja \eng{develop}, testna \eng{test}, pripremna \eng{release candidate} i produkcijska \eng{production} aplikacija.
-
-Razvojna aplikacije prikazuje trenutno stanje aplikacije. Koriste je članovi tima kako bi mogli isprobati novo razvije funkcionalnosti te kako bi mogli pratiti napredak projekta. Svaka završena izmjena treba biti u što kraćem roku vidljiva na ovoj verziji aplikacije.
+Razvojna verzija programske potpore prikazuje najnovije stanje aplikacije. Razvojna verzija sadrži najnovije implementirane izmjene koje još nisu nužno prošle proces osiguranja kvalitete. Ovu verziju aplikacije koriste članovi tima za provjeru razvijenih funkcionalnost.
 
 Testnu aplikaciju koristi tim za osiguranje kvalitete kako bi osigurao ispravnost novo razvijenih funkcionalnosti. Kako bi osigurao ispravnost tim provjerava sve izmjene ostvare od zadnje verzije aplikacije. Zbog navedenog je poželjno da je broj izmjena između verzija mali ali dobro dokumentiran. Verzija ovog tipa aplikacije se osvježava otprilike jednom tjedno.
 
-Pripremna aplikacije služi za pripremu aplikacije za izdavanje u produkciju. Sve izmjene obavljene od zadnje verzije se još jednom provjeravaju kako bi izbjegli pojavu grešaka u produkcijskoj aplikaciji. Osim tima za osiguranje kvalitete, pristup ovom tipu aplikacije često imaju i vanjski korisnici. Nova verzija ovog tipa aplikacije se kreira kada je potrebno isporučiti aplikaciju u produkciju.
+Pripremna verzija aplikacije služi za završnu provjeru aplikacije koja se izdaje u produkciju. Za razliku od testne verzije aplikacije koja sadrži funkcionalnosti korištenje samo u testiranju, pripremna aplikacija mora biti identična onoj koja se želi isporučiti. Jedino na ovaj način možemo provjeriti ispravnost aplikacije u produkcijskom okruženju. Verzija aplikacije se kreira jednom kad tim odluči objaviti novu produkcijsku verziju.
 
-Produkcijska aplikacija je aplikacija trenutno dostupna korisniku. Verzija se osvježava jednom do dva put u tri mjeseca.
+Produkcijska aplikacija je aplikacija trenutno dostupna korisniku. Učestalost isporuke ovisi o timu ali je se zbog Appleovog procesa provjere gotovo nikad ne obavlja češće od jednom tjedno.
 
-Iz navedenog je jasno da trenutan proces ne slijedi principe kontinuirane isporuke. Između dvije produkcijske verzije može proći i tri mjeseca. Ovaj spor proces izdavanja promjena u produkciju rezultira većim brojem ljudskih pogrešaka i lošijim iskustvom korisnika. Zbog navedenog automatizacijom procesa ne samo da pokušavam smanjiti vrijeme koje tim ulaže u isporuku, već i smanjiti period između dvije isporuke.
+Iz navedenog je jasno da trenutan proces ne slijedi principe kontinuirane isporuke. Spor proces izdavanja promjena u produkciju rezultira većim brojem ljudskih pogrešaka i lošijim iskustvom korisnika. Zbog navedenog automatizacijom procesa ne samo da pokušavam smanjiti vrijeme koje tim ulaže u isporuku, već i smanjiti period između dvije isporuke.
 
 
-\section{Pokretanje isporuke}
+\section{Odabir tipa isporuke}
 
-Iako je cilj kontinuirane integracije svaku promjenu što brže isporučiti, nema smisla za svaku promjenu linije koda graditi novu verziju aplikacije. Ne samo da to ne bi bilo resursno isplativo, već većina verzija ne bi prošla nit proces automatskog testiranja i provjere kvalitete. Pametnije je verziju prilikom spremanja promjena u repozitoriju izvornog koda.
+Međutim, kako odrediti koju verziju repozitorija objaviti kojim tipom isporuke? Kako bi istovremeno implementirao isporuku različitih verzija aplikacije te zadržao fleksibilnost razvoja koristm modificirani Gitflow tok rada.
 
-Dodatno, u praksi se često jedna funkcionalnost razdvaja na više manjih promjena. Svaka od ovih promjena sama prolazi automatska testiranja i osiguranje kvalitete, međutim često dovodi aplikaciju u neupotrebljivo stanje. Zbog navedenog nema smisla osvježavati verziju kada se ona nalazi u navedenom među stanju. Dodatno, razvojni tim može istovremeno raditi na nekoliko različitih funkcionalnosti.
+Standardni Gitflow proces sadrži tri grane: glavnu, razvojnu i pripremnu granu. Glavna grana \eng{master branch} predstavlja trenutno stanje programske potpore u produkciji. Svaka verzija ove grane je obilježena oznakom koja sadrži ljudski čitljivu verziju aplikacije i popis promjena obavljenih od prošle verzije. Razvojna grana \eng{develop branch} predstavlja trenutno stanje aplikacije u razvoju. Objava promjena u produkciju se obavlja korištenjem pomoćne pripremne grane koja se kreira iz razvojne grane. Nakon provjere ispravnosti promjena iste se dodaju glavnoj grani i time objavljuju u produkciju. Nove funkcionalnosti se razvijaju u zasebnoj grani koja se za potrebe razvoja funkcionalnosti kreira iz razvojne grane te se po završetku razvoja u nju spaja. Pregled cijelog procesa je dostupan u odlomku \ref{header:Implementacija_verzioniranja}.
 
-Za rješavanje navedenog problema se u praksi najčešće koristi proces verzioniranja poz nazivom grananje funkcionalnosti \eng{feature branch} opisana u odlomku \ref{header:Implementacija_verzioniranja}. Umjesto pokretanja procesa isporuke aplikacije prilikom svake promjene repozitorija izvornog koda, proces isporuke se pokreče samo prilikom izmjene glavne grane. Ovaj pristup smanjuje opterećenje sustava te rezultira isporukom upotrebljivog produkta. Dodatno, prilikom spajanja razvojne grane je moguće obaviti dodatne kontrole ispravnosti kao što su timski pregled koda. Slika \ref{fig:FeatureBranchCD} prikazuje proces automatskog pokretanja isporuke nakon spajanja razvojne grane.
+Uz navedene grane koristim i testnu granu koja služi za održavanje i isporuku testne aplikacije. Kako bi olakšali i poboljšali proces testiranja, korisno je testne verzije objavljivati sistematizirano. Nova testna verzija se kreira spajanjem svih verzija dodanih razvojnoj grani od zadnjeg kreiranja testne verzije. Sve promjene dodane u sklopu ove testne verzije je potrebno jasno specficirati. Greške koje se otkriju u sklopu testiranja se otklanjaju na testnoj grani te se po završetku testiranja spajaju s razvojnom granom. Slika \ref{fig:GitFlowCD} prikazuje proces automatizirane isporuke korištenjem \textit{gitflow} procesa.
 
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{FeatureBranchCD}
-\caption{Automatska isporuka nakon promjene glavne grane}
-\label{fig:FeatureBranchCD}
-\end{figure}
-
-Ovaj pristup je vrlo jednostavan te omogućava automatiziranje isporuke promjena na produkciju. Ako projekta ne zahtijeva testnu i pripremnu verziju aplikacije, isporuku u produkciju je moguće ostvariti korištenjem oznaka \eng{tag}. Oznake dodaju dodatno značenje stanju u sustavu za kontrolu verzija. Umjesto isporuke na temelju novog stanja, isporuku u produkciju je moguće pokrenuti nakon kreiranja oznake.
-
-Međutim, ovaj tip automatske isporuke je vrlo limitiran. Glavna mana je limitiranost u broju tipova aplikacija. Za otklananje navedenog problema možemo koristiti \textit{gitflow} proces verzioniranja. Umjesto postojanja jedne glavne grane, \textit{gitflow} proces koristi nekoliko grana s posebnim značenjem.
-
-Glavna grana \eng{master branch} predstavlja trenutno stanje programske potpore u produkciji. Svaka verzija ove grane je obilježena oznakom koja sadrži ljudski čitljivu verziju aplikacije i popis promjena obavljenih od prošle verzije. Razvojna grana \eng{develop branch} predstavlja trenutno stanje aplikacije u razvoju. Objava promjena u produkciju se obavlja pomoću pomoćne grane koja se kreira iz razvojne grane. Nakon provjere ispravnosti promjena iste se dodaju glavnoj grani i time objavljuju u produkciju. Pregled cijelog procesa je dostupan u odlomku \ref{header:Implementacija_verzioniranja}.
-
-Za potrebe našeg projekta koristim modificiranu verziju \textit{gitflow} procesa. Uz glavnu i razvojnu granu koristim još dvije posebne grane. Testna grana služi za isporuku testne aplikacije timu za osiguranje kvalitete. U testnu se granu promjene dodaju iz razvojne grane. Nakon pronalaska pogreške iste se otklanjaju direktno na ovoj grani. Nakon potvrde ispravnosti funkcionalnosti započinje testiranje novonastalih funkcionalnosti.
-
-Pripremna grana služi za pripremu isporuke aplikacije u produkciju. Grana se kreira iz željenog ispravnog stanja testne grane. Nakon završne provjere ispravnosti promjene se dodaju na glavnu granu čime se objavljuju u produkciju. Slika \ref{fig:GitFlowCD} prikazuje proces automatizirane isporuke korištenjem \textit{gitflow} procesa.
-
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[scale=0.5]{GitFlowCD}
 \caption{Automatska isporuka primjenom \textit{gitflow} procesa}
 \label{fig:GitFlowCD}
 \end{figure}
 
-\begin{figure}
+Sada je vrlo jednostavno odrediti koji tip isporuke iskoristiti za koju verziju repozitorija. Ukoliko se izmjena nalazi na razvojnoj grani potrebno je osvježiti razvojnu verziju aplikacije a ako se izmjena nalazi na testnoj grani potrebno je osvježiti testnu verziju.
+
+\begin{figure}[b!]
 \centering
 \includegraphics[scale=0.5]{HotfixGitflow}
 \caption{Automatska isporuka otklananja pogreške u produkciji}
@@ -1138,52 +1100,141 @@ Pripremna grana služi za pripremu isporuke aplikacije u produkciju. Grana se kr
 
 U praksi se često javljaju novi, neočekivani zahtjevi. Jedan od primjera ovog tipa zahtjeva je otkrivanje pogreške u produkcijskoj verziji koju je odmah potrebno ukloniti. Budući da razvojna grana sadrži promjene koje još nisu objavljene na produkciji, grešku nije moguće otkloniti sljedeći standardnu praksu. Međutim, moguće je granu za otklanjanje pogreške kreirati direktno iz glavne grane. Nakon otklanjanja pogreške i testiranja, promjena se spaja s glavnom granom čime se ista objavljuje u produkciju i s radnom granom. Primjer otklanjanja greške u produkciji se nalazi na slici \ref{fig:HotfixGitflow}. Važno je prilikom pojave zahtjeva ovog tipa iskoristiti postojeće procese isporuke.
 
+Skripta \ref{listing:git_branch_creation} prikazuje proces kreiranja potrebnih grana.
+
+\begin{lstlisting}[caption=Kreiranje potrebnih grana Gitflow radnog toka, label=listing:git_branch_creation]
+git checkout -b develop
+git push --set-upstream origin develop
+
+git checkout -b release-candidate
+git push --set-upstream origin release-candidate
+
+git checkout -b test
+git push --set-upstream origin test
+\end{lstlisting}
+
+\section{Priprema projekta za automatsku isporuku}
+
+Uz različiti proces isporuke, različite verzije aplikacije mogu zahtijevati i različitu konfiguraciju projekta. Na primjer, standardno je testnoj verziji aplikacije dodati funkcionalnosti koje olakšavaju testiranje a nisu dostupne stvarnom korisniku. Dodatno, kako bi na isti uređaj mogli imati više različitih verzija aplikacije, navedene verzije se moraju na neki način razlikovati. iOS operacijski sustav aplikacije razlikuje na temelju identifikatora aplikacije \eng{Bundle Identifier}.
+
+Navedeni tipovi funkcionalnosti se implementiraju konfiguracijom postavka projekta. Svaki cilj iOS projekta sadrži najmanju jednu konfiguraciju projekta \eng{configuration}. Konfiguracija omogućava modifikaciju velikog broja opcija definiranih u procesu kreiranja projekta. Konfiguracija je pohranjena u \verb|.xcodeproj| datoteci zajedno s ostatkom informacija o projektu koja nije pogodna za ručnu izmjenu. Datoteku je najlakše modificirati korištenjem Xcode aplikacije koja konfiguraciju prikazuje u jednostavnom i intuitivnom grafičkom sučelju. Slika \ref{fig:XcodeConfiguration} prikazuje dio opcija konfiguracije prikazanih pomoću Xcode alata.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.37]{XcodeConfiguration}
+\caption{Dio opcija konfiguracije iOS projekta}
+\label{fig:XcodeConfiguration}
+\end{figure}
+
+Dodatno, projekt može sadržavati više od jedne konfiguracije. Standardno se koristi jedna glavna i više specifičnih konfiguracija. Glavna konfiguracija definira standardna pravila za cijeli projekt. Specifične konfiguracije nasljeđuju glavnu konfiguraciju, izmijenjuju željene postavke te se koriste za konfiguraciju operacija projekta. Slika \ref{fig:XcodeConfigurationCreation} prikazuje proces kreiranja specifične konfiguracije. Kreiranja konfiguracije se ostvaruje dupliciranjem postojećem konfiguracije. Pokrenuti projekt korištenjem Xcode aplikacije te odabrati željenu shemu. U sekciji \verb|Info| te u odjeljku \verb|Configurations| odabirom opcije \verb|Plus| i željene postojeće konfiguracije kreirati konfiguraciju.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.6]{XcodeConfigurationCreation}
+\caption{Kreiranje nove konfiguracije Xcode projekta}
+\label{fig:XcodeConfigurationCreation}
+\end{figure}
+
+Modifikacija postavka pomoću specifične konfiguracije je jednostavna ali je teško pronaći sve specificirane postavke. Dodatno, vrlo je teško pratiti promjenu postavka budući da se iste dodaju \verb|.xcodeproj| datoteci. Zbog navedenog se u praksi često koriste zasebne tekstualne \verb|.xcconfig| datoteke koje specificiraju samo željene opcije. U sklopu rada kreiram četiri \verb|.xcconfig| datoteke. Sadržaj datoteka je prikazan u skripti \ref{listing:xcconfig}. Naredba \#1 dodaje konfiguraciju CocoaPods projekta novo kreiranoj konfiguraciji dok naredba \#2 postavlja vrijednost identifikatora aplikacije. Testna konfiguracija sadrži dodatnu \verb|IS_TEST| opciju koja se koristi za dodavanje testnih funkcionalnosti.
+
+\begin{lstlisting}[caption=Sadržaj .xcconfig datoteke, label=listing:xcconfig]
+#include "Pods/Target Support Files/Pods-Diplomski_rad/Pods-Diplomski_rad.debug.xcconfig" #1
+
+PRODUCT_BUNDLE_IDENTIFIER = com.rep.Diplomski-rad.{sufix} #2
+
+IS_TEST = 1 #3
+\end{lstlisting}
+
+Kreirane \verb|.xcconfig| datoteke je potrebno dodati konfiguraciji. U sekciji \verb|Info| te u odjeljku \verb|Configurations| odabrati željenu konfiguraciju te za sve ciljeve iskoristiti istu \verb|.xcconfig| datoteku. Slika \ref{fig:XcodeXCConfigSet} prikazuje dodavanje datoteka razvojnoj konfiguraciji.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.6]{XcodeXCConfigSet}
+\caption{Dodavanje .xcconfig datoteke postojećoj konfiguraciji projekta}
+\label{fig:XcodeXCConfigSet}
+\end{figure}
+
 
 \section{Implementacija kontinuirane isporuke}
 
-Za ostvarenje kontinuirane isporuke je potrebno pokrenuti odgovarajući proces kontinuirane dostave ako se proces kontinuirane integracije uspješno izvrši. Budući da su kontinuirana integracija i kontinuirana dostava već implementirani, potrebno je samo detektirati uspješnost izvršenja kontinuirane integracije i pokrenuti odgovarajući proces kontinuirane dostave.
+Za dovršenje implementacije je potrebno isporuku pokrenuti korištenjem bota. Prvo je za svaki tip isporuke potrebno kreirati zaseban bot. Najjednostavnije je duplicirati već postojeći bot te promijeniti na kojoj bot pokreće integraciju. Slika \ref{fig:MultipleBots} prikazuje botove korištene u radu.
 
-Provjeru ispravnog izvršenja kontinuirane integracije obavljam korištenjem varijabli okruženja koje Xcode Server generira u procesu integracije.
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.7]{MultipleBots}
+\caption{Novo kreirani botovi}
+\label{fig:MultipleBots}
+\end{figure}
 
-Ispravnost izgradnje provjeravam korištenjem varijabli \verb|XCS_ERROR_COUNT|, \\ \verb|XCS_WARNING_COUNT| i \verb|XCS_WARNING_CHANGE|. \verb|XCS_ERROR_COUNT| i \\ \verb|XCS_WARNING_COUNT| varijable definiraju broj pogrešaka i upozorenja generiranih u procesu integracije. Za ispravnost izgradnje broj grešaka mora biti 0. Poželjno je da i broj upozorenja bude 0, ali zbog vanjskih biblioteka to često nije moguće ostvariti. Zbog navedenog se umjesto broja upozorenja često koristim \verb|XCS_WARNING_CHANGE| varijablu koja definira promjenu u broju upozorenja. U sklopu ovog projekta definiram da je izgradnja uspješna ako se broj upozorenja nije povećao.
+Nakon kreiranja botova je potrebno promijeniti konfiguraciju koju botovi koriste te pozvati ispravan proces isporuke.
 
-Ispravnost testiranja provjeravam korištenjem \verb|XCS_TEST_FAILURE_COUNT| varijable. Testiranje smatram uspješnim isključivo ako je broj neuspješnih testova 0.
+Konfiguraciju koju projekt koristi je moguće podesiti u postavkama bota. Odabrati opciju \textit{Edit Bot... -> Build Configurations} te za svaki bot odabrati odgovarajuću konfiguraciju.
 
-Ispravnost provjere ispravnosti ovisi o definiranim provjerama ispravnosti. Swiftlint nepoštivanje pravila dojavljuje koristeći standardne pogreške i upozorenja. Trenutno nije moguće razaznati je li pogreška ili upozorenje generirano izgradnjom ili Swiftlint provjerom. Zbog navedenog se držim pravila definiranog u sklopu ispravnosti izgradnje. Pokrivenost koda trenutno nije dostupna putem varijable okruženja. Međutim, moguće ju je dohvatiti korištenjem javnog Xcode Server APIja pozivom \verb|GET HTTPS| metode:
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{BotConfiguration}
+\caption{Odabir konfiguracije koju bot koristi}
+\label{fig:BotConfiguration}
+\end{figure}
 
-\begin{verbatim}
-/integration/{id}/coverage{?include_methods}
-\end{verbatim}
+Isporuku ostvarujem korištenjem fastlane staza definiraniranih u prošlom poglavlju. Stazu je potrebno pokrenuti po završetku obavljanja integracije za što koristim fazu koja se obavlja nakon integracije \eng{Post-integration script}. Odabrati opciju \textit{Edit Bot... -> Triggers} te dodati novu fazu. Odabrati opciju pokretanja jedino u slučaju uspješnog obavljanja integracije. Svaki bot treba pozivati stazu koja implementira željeni tip isporuke. Skripta \ref{listing:bot_fastlane_call} prikazuje sadržaj faze.
 
-Naredba vraća podatke o pokrivenosti koda u JSON formatu koje je moguće iskoristiti za provjeru dovoljne pokrivenosti koda testovima.
+\begin{lstlisting}[caption=Sadržaj faze nakon obavljanja isporuke, label=listing:bot_fastlane_call]
+#!/bin/bash
 
-Provjeru ispravnost cijele integracije implementiram koristeći sljedeću naredbu:
+cd $XCS_PRIMARY_REPO_DIR #1
 
-\begin{verbatim}
-if XCS_ERROR_COUNT == 0 &&
-    XCS_WARNING_CHANGE <= 0 &&
-    XCS_TEST_FAILURE_COUNT == 0
-        {isporuka}
-fi
-\end{verbatim}
+export PATH="~/.fastlane/bin:~/com.rep.Diplomski-rad.development:/usr/local/bin:~/.gem/ruby/2.0.0/bin/:$PATH" #2
 
-Tip isporuke koji se koristi je moguće definirati direktno u botu koji koristimo, na temelju imena bota ili imena izvorne grane. Definiranje tipa isporuke u samom botu je najjednostavnije, ali uzrokuje razlikom u implementaciji botova. U radu koristim ime bota pohranjeno u varijabli okruženja \verb|XCS_BOT_NAME|. Na temelju imena odlučujem koji proces isporuke pokrenuti.
+fastlane {ime_staze} #3
+\end{lstlisting}
 
-\begin{verbatim}
-if XCS_BOT_NAME == '*Test'
-    fastlane test
-elif XCS_BOT_NAME == '*ReleaseCandidate'
-    fastlane release_candidate
-elif XCS_BOT_NAME == '*Production'
-    fastlane production
-else
-    fastlane develop
-fi
-\end{verbatim}
+Naredba \#1 navigira proces u ispravni direktorij, naredba \#2 dodaje potrebne putanje u \verb|PATH| varijablu okruženja, dok nareba \#3 pokreće proces isporuke implementiran pomoću fastlane staze.
 
+\section{Pregled rezultata implementacije kontinuirane isporuke}
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.3]{CrashlyticsEmail}
+\caption{Crashlytics e-mail poruka izdana nakon objave nove verzije aplikacije}
+\label{fig:CrashlyticsEmail}
+\end{figure}
+
+Kreiranjem novog stanja repozitorija na razvojnoj, testnoj, pripremnoj i glavnoj grani se pokreće proces integracije i isporuke korištenjem navedenog stanja. Integracija se sastoji od izgradnje, testiranja i osiguranja kvalitete nove verzije aplikacije. Ukoliko se svi procesi ispravno izvrše započinje proces isporuke koji odgovara grani na kojoj je stanje kreirano. Glavna verzija aplikacije se objavljuje na App Store platformi dok se ostale verzije aplikacije objavljuju na Crashlytics platformi.
+
+Navedeni se proces odvija u potpunosti automatizirano.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[scale=0.3]{Beta}
+\caption{Preuzimanje aplikacije s Crashlytics platforme korištenjem aplikacije Beta}
+\label{fig:Beta}
+\end{figure}
+
+Novu verziju aplikacije je moguće preuzeti s Crashlytics platforme desetak minuta nakon kreiranja novog stanja repozitorija. Svaka osoba dodana kao tester aplikacije dobiva e-mail poruku pomoću koje može preuzeti aplikaciju. Na željenom mobilnom uređaju otvoriti dobivenu e-mail poruku te odabirom opcije \verb|Let Me In| započeti proces preuzimanja nove verzije aplikacije. Slika \ref{fig:CrashlyticsEmail} prikazuje dobivenu e-mail poruku.
+
+Instalacija aplikacija objavljenih na Crashlytics platformi se obavlja pomoću aplikacije \textit{Beta}. Ako aplikacija već nije  instalirana na mobilnom uređaju, opcija pokreće proces instalacije i konfiguracije navedene aplikacije. Slika \ref{fig:Beta} prikazuje izgled ekrana aplikacije Beta s kojeg je moguće preuzeti objavljne aplikacije. Odabirom opcije \verb|Install| se pokreće instalacija nanovije verzije aplikacije. Moguće je preuzeti i neku od starijih verzija.
+
+S druge strane, verzija objavljena na App Store platformi prvo mora proći Appleovu provjeru. Ako provjera uspješno završi aplikaciju je potrebno objaviti korištenjem iTunes Connect platforme. Navedeni proces trenutno nije moguće automatizirati. Nakon objave je nova verzija vidljiva na App Store platformi te se već instalirane aplikacije samostalno osvježavaju.
 
 \chapter{Zaključak}
-Zaključak.
+
+Kontinuirana isporuka je tek u svojim začecima u iOS zajednici. Iako praksa dobiva sve više pozornosti, trenutno ne postoji dovoljna potpora zajednice i vodečih kompanija. Implementcija čak i najosnovnih funkcionalnosti je teška, zahtijeva kombinaciju nekoliko različitih alata te sadrži veliki broj pokušaja i pogreška. Dodatnu, u praksi situacija nikad nije ovako jednostavna. Gotovo svaki tim definira vlastiti način rada a izuzeci se koriste čak i u najbolje organiziranim timovima.
+
+Iako je implementacija zahtijevna, benefiti kontinuirane isporuke značajno olakšava razvoj. Automatska isporuke novih promjena u potpunosti eliminira potrebnu obavljanja ručne isporuke. Ručna isporuke iziskuje utrošak ljudskih resursa. Ovisno o timu i zahtjevima razvoja, proces može zauzeti i do desetak posto ukupnog vremena. Utrošak je posebno visok u timovima koji koriste agilni pristup razvoju. Ovaj pristup učestalom isporukom i kominikacijom s klijentom nastoji osigurati izgradnju ispravnog produkta, ali upravo navedena učestala isporuka zahtijeva utošak značajnog dijela vremena. Kontinuirana isporuka u potpunosti eliminira ovaj zadatak.
+
+Najvažnije, korištenje kontinuirane isporuke gotovo upoče ne mijenja postoječi proces razvoja programske potpore. Proces jednostavno verziju već integriranu procesom kontinuirane integracije objavljuje željenim tipom isporuke. Jedino što je potrebno definirati je koju verziju repozitorija objaviti kojim tipom isporuke. U sklopu rada koristim Gitflow tok rada ali je isto moguće ostvariti na više načina, na primjer označavanjem postoječih verzija repozitorija.
+
+Glavni cilj kontinuirane isporuke je automatizacijom isporuke povečati njenu učestalost i time poboljšati kvalitu produkta. Iako automatizacija procesa omogučava češću objavu, potrebno je izmijeniti i cijeli pristup razvoju. Trenutno je vrlo rijetko verziju iOS aplikacije osvježiti češće od jednom tjedno čak i u timovima s velikim brojem članova. Navedenom problemu dijelom pridonosi Appleov proces provjere novih verzija, ali dijelom i nerazumijevanje razvojnog tima. Razvijene funkcionalnosti se nastoje grupirati i objaviti zajedno, umjesto njihove pojedinačne isporuke. Vođen primjerom web razvoja je za očekivati da će se navedeni problem riješiti sam od sebe. Olakšavanjem isporuke očekujem postupno povečanje učestalosti isporuke slično brojkama zabilježenim u zadnjem desetlječu razvoja web aplikacija.
+
+U sklopu rada sam implementirao kontinuiranu isporuku za programsku potporu za iOS operacijski sustav. Kontinuiranu integraciju i automatsko pokretanje isporuke sam implementirao korištenjem aplikacije Xcode Servera, dok sam isporuku implementirao korištenjem alata fastlane. Alat implementira isporuku četiri verzije aplikacije uz objavu na App Store i Crashlytics platformu.
+
+S druge strane, za alat Xcode Server imam puno manje pohvala. Glavna mana alata proizlazi iz činjenice da je on namjenjen za jednostavnu implementaciju kontinuirane za iOS operacijski sustav. Navedena jednostavnost značajno otežava proširenje osnovnog seta funkcionalnosti. Osnovan problem leži u sučelju alata koje je za razliku večine sličnih alat grafičko. Navedeno značajno otžava proces kreiranja procesa buduči da je sve korake potrebno obaviti ručno.
+
+Prije prihvačanja kontinuirane isporuke kao sastavnog dijela razvoja je potrebno olakšati proces implementacije.
+
+
+
 
 \bibliography{literatura}
 \bibliographystyle{fer}
@@ -1203,132 +1254,130 @@ Abstract.
 \end{abstract}
 
 
-
-
 \begin{appendices}
 
+\chapter{Usporedba alata za implementaciju kontinuirane integracije} \label{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}
+
+Kontinuirana integracija je ustaljena i dobro prihvaćena praksa u sklopu razvoja programske potpore. Jedan od glavnih razloga njene prihvačenosti je postojanje velikog broja alata koji značajno olakšavaju njenu implementaciju.
+
+Međutim, navedeni alati se međusobno značajno razlikuju. Dok neki alati nastoje podržati što veči broj funkcionalnosti za što više tehnologija, drugi se fokusiraju na pojedinu instancu razvojnog procesa. Neki sustavi se ističu u svojoj jednostavnosti, dok drugi pružaju veću fleksibilnost.
+
+Cilj ovog dodatka je korištenjem i ocjenom četiri trenutno najpopularnija alata ustanoviti koji najbolje odgovara zahtjevima kontinuirane integracije za iOS operacijski sustav. U sklopu dodatka rankiram četiri alata: Jenkins, Travis CI, CircleCI i Xcode Server.
+
+Uz ovoliku količinu gotovih rješenja je teško naći argument za razvoj vlastitog rješenja. Gotovo sve implementacije kontinuirane integracije koriste neki od postojećih alata. Čak i kada tim krene u razvoj vlastitog rješenja, najčešće modificira ili proširuje već postojeće alate otvorenog koda.
+
+Međutim, teško je iz navedene količine dostupnih sustava izabrati onaj koji najviše odgovara zahtjevima tima te u isto vrijeme zahtjeva najmanje truda za implementaciju i korištenje. Javno dostupni dokumenti ne pomažnu zmačajno u ovom pitanju. S ciljem boljeg razumijevanja danog problema i jednostavnije procjene karakteristika sustava kontinuirane integracije provodim ispitivanje sustava korištenjem dva jednostavna upitnika. Rezultati upitnika su isključivo moja procjena te je njihova glavna svrha bolja organizacija i lakša procjena karakteristika sustava.
+
+Oba upitnika se zajedno s ocjenama sustava nalaze na kraju dodatka.
+
+\section{Prvi upitnik}
+Prvo upitnik procjenjuje koliko dobro sustav zadovoljava funkcionalnosti opisane u prethodnom poglavlju. Kako bi se lakše provelo ocjenjivanje te rezultati bili bolje razumljiviji, pitanja su podijeljena u pet kategorije.
+
+Prva kategorija, \textit{opći zahtjevi}, specificira koliko je lako sustav uklopiti u postojeći proces razvoja programske potpore. U ovo poglavlje ubrajamo mogućnost integracije sustava sa sustavima za kontrolu verzija i mogućnost integracije u postojeći proces razvoja. Poželjno je sustav kontinuirane integracije ostvariti ne mijenjajući postojeći proces razvoja.
+
+Druga kategorija, \textit{provjera ispravnosti}, ispituje podržava li sustav sve zahtjeve automatizacije provjere ispravnosti integracije. Ovi se zahtjevi sastoje od automatiziranja izgradnje, testiranja i osiguranja kvalitete. Dodatno, kategorija ocjenjuje konfigurabilnost testne okoline i mogućnost testiranja na stvarnim uređajima.
+
+Treća kategorije, \textit{izvršavanje procesa}, provjerava koliku slobodu sustav pruža pri definiranju i obavljanju procesa. Kategorija promatra kada je moguće pokrenuti procese te pruža li sustav napredne mogućnosti ulančavanja procesa i stvaranje ne standardnih procesa.
+
+Četvrto poglavlje, \textit{rezultati procesa}, prikazuje u kojem stupnju sustav podržava automatsko izvještavanje te koliko je dostupan i detaljan pregled rezultata procesa.
+
+Peto poglavlje, \textit{kontinuirana dostava i isporuka}, daje uvid stupnja u kojem sustav podržava željene funkcionalnosti kontinuirane dostave i isporuke.
+
+Svaka se točka upitnika ocjenjuje brojčanom ocjenom od 0 do 5. Ocjena 0 znači da sustav ne podržava danu funkcionalnost, dok ocjena 5 znači da sustav podržava danu funkcionalnost bez potrebne dodatne modifikacije \eng{off the shelf}. Ocjene od 1 do 4 označavaju da je funkcionalnost podržavana, ali je potrebna različita količina truda za njezinu implementaciju. Ocjena 1 označava da je funkcionalnost jako teško implementirati, dok ocjena 4 označava da je funkcionalnost jednostavno implementirati.
+
+Upitnik ne daje definitivnu ocjenu sustava, već služi za generalnu navigaciju po širokom tržištu alata kontinuirane integracije. Uz ukupan rezultat pojedinog sustava, korisno je promatrati i rezultate pojedine kategorije.
+
+\section{Drugi upitnik}
+Drugi se upitnik fokusira na jednostavnost korištenja, implementacije i održavanja sustava iz perspektive razvoja programske podrške za mobilne operacijske sustave. Cilj ovog ispitivanje je procijeniti koliko je složeno implementirati odabrani sustav kontinuirane integracije za postojeće proces razvoja programske potpore za mobilne operacijske sustave.
+
+Na tržištu trenutno dominiraju tri mobilna operacijska sustava: Android, iOS i Windows Phone. U sklopu ovog rada preskačem Windows Phone zbog neizvjesnosti nastavka njegove primjene.
+
+Kod razvoja programske potpore za iOS i Android prepoznajemo nekoliko različitih procesa razvoja i korištenih tehnologija. Najkorišteniji su procesi vezani uz odvojeni razvoj korištenjem službenih alata i tehnologija. Za iOS to je Xcode IDE s Objective-C ili Swift programskim jezicima, dok je za Android to Android Studio IDE i programski jezik Java. Alternativna opcija razvoja aplikacija za mobilne platforme je više platformski razvoj \eng{cross-platform} koji omogućuje potpunu ili djelomičnu ponovnu iskoristivost koda na više platformi. Prvi pristup je puno popularnije te pruža značajno šire mogućnosti razvoja. Zbog toga se u sklopu ovog rada fokusiram prvenstveno na odvojeni pristup razvoju. Međutim, zaključci do kojih dolazi ovo poglavlje se s manjim ograničenjem mogu preslikati na više platformski razvoj.
+
+Poželjno je isti sustav kontinuirane integracije iskoristiti za oba razvojna procesa. Međutim, kako su određeni sustavi specijalizirani za određeni proces, oni istovremeno mogu biti vrlo dobri za jedan, a vrlo loši za drugi razvojni proces.
+
+Upitnik se sastoji od sljedećih pitanja:
+
+\begin{easylist}
+
+& jednostavnost korištenja
+& jednostavnost ugradnje
+& jednostavnost konfiguracije
+& jednostavnost održavanja
+
+\end{easylist}
+
+pri čemu se svaka stavka ocjenjuje ocjenom od 1 do 5, gdje 1 znači vrlo složeno a 5 vrlo jednostavno. Poredak sugerira važnost pojedine stavke na temelju prethodnog iskustva.
+
+\section{Ispitani sustavi}
+Sustave za kontinuiranu integraciju generalno možemo podijeliti u dvije grupe. \textit{SaaS, Software as a Service} alati su hostani od strane davatelja usluge. Navedeni alati zahtijevaju minimalnu konfiguraciju, dostupni su prema potrebi korisnika te su jednostavni za korištenje. Međutim, oni uglavnom pružaju predefinirani i ne fleksibilan set funkcionalnosti. Dostupni su uglavnom kao aplikacije za web poslužitelje koje dodatne mogućnosti omogućuju pružanjem fleksibilnog programskog sučelja \eng{Application Interface, API}. Drugi tip alata su samostalno hostani alati koje korisnik podiže na vlastitom računalu. Ovi tipovi sustavi su fleksibilniji te korisniku pružaju napredne funkcionalnosti, ali zahtijevaju veći napor za postavljanje, održavanje i korištenje.
+
+Kroz ovu cjelinu detaljno promatram po dva sustava iz pojedine kategorije. Odabrani sustavi se ubrajaju među najpoznatije i najkorištenije sustave kontinuirane integracije. Smatram da ovaj mali skup pokriva većinu zahtjeva koje sam definirao u drugom poglavlju ovog rada, odnosno, većinu stvarnih potreba razvoja programske potpore za mobilne sustave.
+
+\subsection{Jenkins}
+
+Jenkins je najpopularniji samostalno hostani CI sustav. Golemu popularnost je zaslužio zbog velike fleksibilnosti i kompatibilnosti s gotovo svim alatima korištenim u razvoju programske potpore. Jenkins je moguće koristiti kao generički sustav kontinuirane integracije ili ga pretvoriti u složeni sustav koji podržava specifične zahtjeve pojedinog tima. Navedena fleksibilnost je ostvarena \textit{plugin arhitekturom}. Pluginovi, koji se jednostavno razvijaju i spajaju s osnovnim sustavom, omogućuju integraciju Jenkinsa s bilo kojom tehnologijom i razvojnim procesom. Danas postoje stotine pluginovi koji omogućavaju jednostavnu integraciju Jenkinsa s gotovo svim IDEovima, sustavima za kontrolu verzija i bazama podataka\citep{wiki:Jenkins}.
+
+Jenkins je sustav otvorenog koda, originalno razvijen u kompaniji \textit{Sun Microsystems} pod imenom \textit{Hudson}\citep{wiki:Hudson} 2004. godine. Ubrzo je stekao popularnost kao bolji od tada dostupnih poslužitelja za izgradnju programske podrške \eng{build server}. Između Hudsonove zajednice i vlasnika, kompanije \textit{Oracle}, se 2010. godine pojavio mali problem oko korištene infrastrukture. Problem je prerastao u široku raspravu oko vlasništva i kontrole nad sustavom. Iako su se zajednica i Oracle slagali u velikom broju pitanja, vlasništvo nad imenom “Hudson” je postao nepremostivi problem.  Zajednica je u siječnju 2011. objavila poziv na glasanje za izmjenu imena projekta iz “Hudson”u “Jenkins”. Izmjena je usvojena velikom većinom glasova te je osnovan projekt Jenkins. Oracle nastavlja razvoj Hudsona odvojeno od Jenkinsa, međutim, bez podrške zajednice Hudson značajno zaostaje u razvoju i popularnosti.
+
+Jenkins je odličan ako je timu potrebna velika razina kontrole nad procesom automatizacije. Ova razina kontrole može donijeti značajnu korist timu i, u cijelosti, olakšati i poboljšati proces razvoja programske potpore. Naravno, visoka razina kontrole otežava postavljanje, održavanje i korištenje sustava.
+
+Jenkins je na prvom ocjenjivanju ostvario 44 od ukupno 60 bodova. Najlošije ostvaruje 5. kategoriju zbog nepostojanja jednostavnog načina podjele korisnika i automatske isporuke. Ovo je očekivano kako je Jenkins jedan od najfleksibilnijih alata trenutno dostupnih na tržištu, međutim zahtjeva puno programiranja te je složen za svladavanje.
+
+Na drugom ocjenjivanju je sustav ocijenjen puno lošije. Jenkins je skupio 11/20 bodova iz perspektive mobilnih sustava. Sustav je jednostavan za korištenje, međutim vrlo složen za ugradnju i konfiguriranje. Potrebno je uložiti barem 20 sati kako bi programer postao upoznat s osnovama sustava i njegovog korištenja. Međutim, postoje vrlo dobri pluginovi koji podržavaju razvoj aplikacija za iOS u Xcodeu i aplikacija za Android u Android Studiju koji ovaj problem djelomično otklanjanju.
+
+Jenkins je jedno od najboljih rješenja za kontinuiranu integraciju ako je tim spreman uložiti nekoliko mjeseci rada za ostvarivanje sustava kontinuirane integracije. Mogućnosti su gotovo beskonačne a velika zajednica koja ga okružuje čini implementaciju puno lakšom.
+
+\subsection{Xcode Server}
+
+Xcode Server omogućava vrlo jednostavnu kontinuiranu integraciju za korisnike programskog alata Xcode, odnosno za razvoj aplikacija za iOS i OS X operacijske sustave. Xcode Server je kombinacija dva alata, Xcodea, alata za razvoj iOS i OS X aplikacija, te OS X Servera, alata za automatizaciju razvojnog procesa. Xcode Server omogućava automatiziranu integraciju, izgradnju, testiranje, analizu i arhiviranje aplikacija. Također omogućava automatsku dojavu rezultata i generiranje statistika za velik broj parametara.
+
+Xcode Server, Appleov alat za kontinuiranu integraciju, je po mnogima najbolji sistem za kontinuiranu integraciju iOS i OS X aplikacija. Xcode Server se razvija kontinuirano uz Xcode. Za razliku od ostalih alata, sve su nove funkcionalnosti potrebne za integraciju Xcode projekata dostupne na dan njihovog izdavanja. Ova je funkcionalnost vrlo korisna pri ranom testiranju novih verzija sustava te se pokazala vrlo korisnom u mnogim projektima.
+
+On je, kao i Jenkins, samostalno hostan i fleksibilan sustav. Funkcionalnosti se implementiraju izgradnjom \textit{botova} koji zatim pokreću zadani proces. Procesi su implementirani korištenjem jezika korištenog u razvoju iOS i OS X aplikacija. Zbog korištenja istog alata i istog jezika kao i za razvoj iOS aplikacija, implementiranje kontinuirane integracije korištenjem Xcode Servera je vrlo jednostavno programerima upoznatima s razvojem iOS aplikacija. Navedeno značajno olakšava implementaciju koja tada zahtjeva značajno manje od implementacije Jenkins sustava.
+
+Dodatna prednost Xcode Servera je mogućnost automatske instalacije aplikacije na testne uređaj te lako praćenje i nadzor instaliranih testnih aplikacija. Navedena mogućnost omogućava automatizaciju testne distribucije i značajno olakšava proces testiranja. Međutim, navedene funkcionalnosti ne podržavaju sve funkcionalnosti kontinuirane dostave zbog čega je ovaj dio potrebno implementirati odvojeno.
+
+Na kraju, laka integracija s postojećim Appleovim sustavima, kao što su sustavi za certificiranje i arhiviranje čine Xcode Server najboljim alatom za ostvarivanje kontinuirane integracije za razvoj programske potpore za iOS operacijski sustav.
+
+Xcode Server je na testiranju funkcionalnosti ostvario 52 od 60 bodova za razvoj iz perspektive iOS operacijskog sustava. Xcode Server omogućava automatizaciju svih procesa korištenih prilikom razvoja u Xcodeu. Xcode Server, kao i Jenkins, nema jaku podršku za kontinuiranu isporuku. Moguće je implementirati obilježavanje funkcionalnosti, ali je funkcionalnosti teško razdvojiti u produkciji.
+
+Xcode Server dobre rezultate ostvaruje i u ocjeni jednostavnosti gdje ostvaruje 17 od 20 bodova, naravno, is perspektive razvoja za iOS operacijski sustav. Korištenje, ugradnja i konfiguracija su jednostavne, dok održavanje ne zahtijeva gotovo ništa truda. Jedini potencijalni minus je ograničenost alata na OS X operacijski sustav, ali ovo je standardno kod razvoja iOS aplikacija zbog čega navedeno ne uzimam kao manu.
+
+Iako je korištenjem univerzalnog alata, na primjer Jenkinsa, moguće iskoristiti jedan alat za implementaciju kontinuirane integracije za više razvojnih procesa, još je uvijek svaki proces potrebno odvojeno implementirati. Zbog navedenog nije moguće značajno uštedjeti na vremenu potrebnim za implementaciju kontinuirane integracije. Glavnina uštede dolazi iz potrebe svladavanja samo jednog sustava.
+
+\subsection{CircleCI}
+CircleCI je jedan od najpopularnijih SaaS alata koji olakšavaju ostvarenje kontinuirane integracije. CircleCI se ističe svojom jednostavnošću, intuitivnim dizajnom i podrškom velikog broja popularnih razvojnih procesa.
+
+CircleCI se jednostavno dodaje na postojeći repozitorij izvornog koda te samostalno konfigurira početno okruženje. Iz postojećeg koda otkriva koji se jezik i alati koriste iz čega zatim provodi konfiguraciju okruženja. Veliki broj podržanih alata koje je vrlo jednostavno uključiti u svoje okruženje dodatno olakšava ugradnju CircleCI alata u postojeći proces razvoja.
+
+Alat se ističe kao jedan od najjednostavnijih alata za ostvarenje kontinuirane integracije na tržištu koji istovremeno podržava razvoj za sve mobilne platforme. Uz jednostavnost, alat pruža veliki broj funkcionalnosti koje je jednostavno ostvariti i koristiti. Njegova glava mana je, s druge strane, nefleksibilnost, odnosno teško proširenje osnovnog seta funkcionalnosti. Ovo sprječava potpunu implementaciju kontinuirane isporuke i podjelu korisnika.
+
+CircleCI je ostvario 40 od 60 bodova u ocjenjivanju funkcionalnosti sustava. Velika jednostavnost sustava donekle ograničava njegove mogućnosti. Nastavljaju se problemi sustava s kontinuiranom dostavom i isporukom, posebno s podjelom korisnika i obilježavanju funkcionalnosti. CircleCI ne omogućava brojne dodatne funkcionalnosti provjere ispravnosti i složene funkcionalnosti procesa gdje gubi dio bodova.
+
+S druge strane, sustav je vrlo jednostavno za koristiti. On ostvaruje 18 od 20 bodova u ocjenjivanju jednostavnosti sustava.
+
+CircleCI svoju popularnost može zahvaliti jednostavnosti korištenja i instalacije. Navedena jednostavnost djelomično opravdava nedostatak brojnih funkcionalnosti.
+
+\subsection{Travis CI}
+Travis CI je sustav jedan od najpopularnijih CI sustava otvorenog koda. Dostupan je kao samostalno hostani i SaaS proizvod, ali je SaaS verzija u zadnje vrijeme puno popularnija. Sustav se jednostavno spaja na postojeći repozitorij koda te omogućava većinu funkcionalnosti navedenih u drugom poglavlju. Alat je besplatan za repozitorije otvorenog koda te pruža prihvatljive cijene za privatne repozitorije.
+
+Pokretanje i konfiguracija sustava je vrlo jednostavna. Moguće je provoditi automatsko testiranje ispravnosti korištenjem standardnih metoda testiranja. Dodatno, testiranje je moguće provoditi nad spajanjem te nad pokušajem spajanja \eng{pull request}.
+
+Automatska isporuka je djelomično moguća. Sustav omogućava prebacivanje programske podrške u produkciju ali ne podržava označavanje funkcionalnosti.
+
+Alat ostvaruje očekivanje rezultate na prvom upitniku. Od 60 bodova Travis CI ostvaruje 41 bod. Najlošije ostvaruje kontinuiranu dostavu i isporuku. S druge strane ostvaruje 20 od mogućih 20 bodova na ocjeni jednostavnosti.
+
+\includepdf[pages={1-2}, landscape=true]{OcjenaAlata.pdf}
 
 
-\chapter{Tehnički detalji implementacije kontinuirane integracije, dostave i isporuke}
+\chapter{Alat xcodebuild} \label{header:xcodebuild}
 
+Alat xcodebuild implementira izgradnju, testiranje i arhiviranje programske potpore za iOS operacijski sustav. U pozadini ga koristi veliki broj aplikacija i alata, od Xcodea i Xcode Servera, do Jenkinsa i Travis CI platforme. Iako u procesu automatizacije ne koristim alat direktno, korisno je znati što aplikacije izvršavaju u pozadini. Dodatno, alat pruža naredbeno sučelje te ga je moguće direktno koristiti.
 
-\subsection{Ručna isporuka} \label{header:RučnaImplementacijaIsporuke}
+Xcodebuild je razvila kompanija Apple krajem za potrebe izgradnje programske potpore za macOS operacijski sustav. U međuvremenu je alat proširen te danas podržava razvoj programske potpore za iOS, tvOS i watchOS operacijske sustave.
 
-
-\paragraph{Objava} \label{header:rucna_objaca}
-
-
-
-\paragraph{Dostava}
-
-Kontinuirana isporuka automatski isporučuje novo izgrađene funkcionalnosti. Funkcionalnosti se isporučuju u četiri faze. Prvo se izdaju samo članovima tima, zatim u dva navrata timu za osiguranje kvalitete te na kraju na javno na App Store platformu. Funkcionalnost se prvi puta isporučuje testnom timu radi provjere novo razvijenih funkcionalnosti, a drugi puta radi verifikacije ispravnosti verzije aplikacije koja će se izdati za javnost.
-
-Za pokretanje procesa isporuke koristim modificirani \textit{Gitflow} tok rada. Samu isporuku ostvarujem kombinacijom procesa definiranih u prijašnja dva poglavlja.
-
-\subsection{Gitflow radni tok}
-
-Kako bi ostvario isporuku četiri različitih verzija aplikacija koristim modificirani Gitflow tok rada. Standardan Gitflow tok rada koristi tri specijalne grane: glavnu, razvojnu i pripremnu granu. Glavna grana predstavlja trenutno stanje projekta dok razvojna grana služi za dodavanje novih funkcionalnosti. Za svaku funkcionalnost koja se razvija se kreira nova grana iz trenutnog stanja razvojne grane. Nakon završetka razvoja funkcionalnosti kreirana grana se spaja u razvojnu granu.
-
-Glavna grana i time cijeli projekt se osvježava spajanjem promjena razvojne grane s glavnom granom. Kako bi se osigurala ispravnost funkcionalnosti koje se dodaju projektu, spajanje razvoje i glavne grane se obavlja korištenjem pripremne grane. Pripremna grana se kreira iz radne grane te se nakon provjere ispravnosti spaja s glavnom granom. U slučaju pronalaska pogrešaka iste se otklanjaju na pripremnoj grani. Pogreške ispravljene na ovaj način je potrebno na kraju dodati i razvojnoj grani. Dodatno, pripremna grana se može kreirati iz glavne grane kad je potrebno otkloniti pogrešku u trenutnoj verziji aplikacije.
-
-Uz navedene grane koristim i testnu granu koja služi za isporuku testne aplikacije timu za osiguranje kvalitete. Navedena se grana kreira iz razvojne grane. Na grani se otklanjaju pronađene pogreške nakon čega se ista spaja s razvojnom granom.
-
-Isporuku produkcijske aplikacije obavljamo s glavne grane, isporuku razvojne aplikacije s razvojne grane, testne aplikacije s testne grane, a pripremne aplikacije s pripremne grane. Slika \ref{fig:ModificiraniGitflowTokRaka} prikazuje modificirani Gitflow radni tok.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.4]{ModificiraniGitflowTokRaka}
-\caption{Modificirani Gitflow radni tok}
-\label{fig:ModificiraniGitflowTokRaka}
-\end{figure}
-
-Sada je vrlo jednostavno odrediti koju isporuku treba koristiti. Ukoliko se izmjena nalazi na razvojnoj grani potrebno je osvježiti razvojnu verziju aplikacije, ako se izmjena nalazi na testnoj grani potrebno je osvježiti testnu verziju, u slučaju izmjene pripremne grane je potrebno osvježiti pripremnu verziju dok je u slučaju izmjene glavne grane potrebno osvježiti javnu verziju aplikacije na App Store platformi.
-
-Skripta \ref{listing:git_branch_creation} prikazuje proces kreiranja potrebnih grana.
-
-\begin{lstlisting}[caption=Kreiranje potrebnih grana Gitflow radnog toka, label=listing:git_branch_creation]
-git checkout -b develop
-git push --set-upstream origin develop
-
-git checkout -b release-candidate
-git push --set-upstream origin release-candidate
-
-git checkout -b test
-git push --set-upstream origin test
-\end{lstlisting}
-
-Za svaku granu je potrebno kreirati jedan bot. Najjednostavnije je duplicirati postojeći bot te promijeniti granu na kojoj bot pokreće integraciju. Slika \ref{fig:MultipleBots} prikazuje novo kreirane botove.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.7]{MultipleBots}
-\caption{Novo kreirani botovi}
-\label{fig:MultipleBots}
-\end{figure}
-
-\subsection{Konfiguracija projekta}
-
-iOS operacijski sustav aplikacije razlikuje na temelju identifikatora aplikacije \eng{Bundle Identifier}. Kako bi na istom uređaju mogli instalirati sve četiri verzije aplikacije, navedene verzije moraju imati različite identifikatore aplikacije. Navedeno ostvarujem kreiranjem više konfiguracija sheme i korištenjem \verb|.xcconfig| datoteka.
-
-U sklopu projekta kreiram četiri \verb|.xcconfig| datoteke, jednu za svaki tip isporuke. Sadržaj datoteka je prikazan u skripti \ref{listing:xcconfig}. Naredba pod \#1 dodaje konfiguraciju CocoaPods projekta novo kreiranoj konfiguraciji. Naredba pod \#2 postavlja vrijednost identifikatora aplikacije. Svaki od tipova isporuke mora imati jedinstven identifikator. Jedinstvenos ostvarjem korištnjem sufiksa.
-
-\begin{lstlisting}[caption=Sadržaj .xcconfig datoteke, label=listing:xcconfig]
-#include "Pods/Target Support Files/Pods-Diplomski_rad/Pods-Diplomski_rad.debug.xcconfig" #1
-
-PRODUCT_BUNDLE_IDENTIFIER = com.rep.Diplomski-rad.{sufix} #2
-\end{lstlisting}
-
-\subsection{Automatsko pokretanje isporuke}
-
-Za svaki tip isporuke je potrebno kreirati zaseban bot. Navedeno je najlakše ostvariti dupliciranjem postojećeg bota. Botovi se razlikuju u dva pogleda - u konfiguraciji koju koriste te u procesu isporuke koji pokreću.
-
-Konfiguraciju koju projekt koristi je moguće postviti u konfiguraciji bota. Odabrati opciju \textit{Edit Bot... -> Build Configurations} te odabrati odgovarajuću konfiguraciju.
-Konfiguraciju koju projekt koristi je moguće postaviti u konfiguraciji bota. Odabrati opciju \textit{Edit Bot... -> Build Configurations} te odabrati odgovarajuću konfiguraciju.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{BotConfiguration}
-\caption{Odabir konfiguracije u postavkama bota}
-\label{fig:BotConfiguration}
-\end{figure}
-
-Za implementaciju isporuke koristim fastlane skriptu definiranu u prijašnjem odlomku. Skriptu pokrećem nakon obavljanja integracije. Odabrati opciju \textit{Edit Bot... -> Triggers} te dodati novu fazu nakon integracije. Skripta \ref{listing:bot_fastlane_call} prikazuje sadržaj koji je potrebno dodati novo kreiranoj fazi.
-
-\begin{lstlisting}[caption=Sadržaj faze nakon obavljanja isporuke, label=listing:bot_fastlane_call]
-#!/bin/bash
-
-cd $XCS_PRIMARY_REPO_DIR #1
-
-export PATH="~/.fastlane/bin:~/com.rep.Diplomski-rad.development:/usr/local/bin:~/.gem/ruby/2.0.0/bin/:$PATH" #2
-
-fastlane {ime_staze} #3
-\end{lstlisting}
-
-Naredba pod \#1 navigira proces u ispravni direktorij, naredba pod \#2 dodaje potrebne putanje u PATH varijablu okružtenja, dok nareba pod \#3 pokreće proces isporuke implementiran pomoću fastlane staze.
-Naredba pod \#1 navigira proces u ispravni direktorij, naredba pod \#2 dodaje potrebne putanje u PATH varijablu okruženja, dok naredba pod \#3 pokreće proces isporuke implementiran pomoću fastlane staze.
-
-Promjene obavljene na bilo kojoj od posebnih staza sada pokreću vlastiti proces isporuke.
-
-
-\chapter{Alat Xcodebuild} \label{header:xcodebuild}
-
-Za izgradnju, testiranje i arhiviranje iOS aplikacija koristim \textit{xcodebuild} alat. Alat je razvio Apple za izgradnju macOS aplikacija. U međuvremenu je alat proširen te danas podržava razvoj programske potpore za iOS, tvOS i watchOS operacijske sustave. Xcode i Xcode Server alati koriste xcodebuild za obavljanje svih operacija vezanih uz projekt. Iako se u procesu automatizacije nećemo direktno susretati s alatom, korisno je znati što se dešava u pozadini.
-
-Alat je vrlo jednostavan za uporabu. Dovoljno je pokrenuti naredbu \verb|xcodebuild| u početnom direktoriju projekta. Ako u direktoriju postoji samo jedan projekt, naredba pokreće proces izgradnje za predodređenu shemu projekta.
-
-Projekt i cilj se je moguće odabrati korištenjem sljedećih parametara:
-
-\begin{verbatim}
-xcodebuild [-project imeprojekta] [-target imecilja]
-\end{verbatim}
-
-Shema projekta se odabire \verb|scheme| parametrom:
-
-\begin{verbatim}
-xcodebuild [-project imeprojekta] -scheme imesheme
-\end{verbatim}
-
-Naredba prima operaciju kao argument. Ako operacija nije specificirana, xcodebuild naredba predodređeno pokreće izgradnju \eng{build}. Ostale podržane operacije su:
+Alat je jednostavan za uporabu ali pruža vrlo velik broj opcija koje je moguće konfigurirati. Naredba kao argument prima operaciju koja se pokreće. Ako operacija nije specificirana, xcodebuild naredba predodređeno pokreće izgradnju \eng{build}. Ostale podržane operacije su:
 
 \verb|analyze| - Izgrađuje i analizira cilj ili shemu
 
@@ -1342,61 +1391,73 @@ Naredba prima operaciju kao argument. Ako operacija nije specificirana, xcodebui
 
 \verb|clean| - Briše metapodatke i rezultate izgradnje
 
-Ispis xcodebuild operacije je vrlo detaljan. Operacija ispisuje sve postupke koje obavlja te daje detaljno izvješće u slučaju pogreške. Međutim, ovaj tip ispisa je teško čitljiv. Zbog navedenog se često koriste alati koji parsiraju i prikazuju ispis u lakše čitljivom formatu.
+Projekt ili okruženje se odabire korištenjem \verb|-project| odnosno \verb|-workspace| argumenata. Ukoliko se ne specificira jedan od argumenata naredba pokreće projekt samo ako je on jedini projekt u repozitoriju. Za odabir projekta između više opcija ili za odabir okruženja je potrebno koristiti argumente.
 
-\subsection{Testiranje} \label{TestiranjeXcodeBuild}
+\begin{lstlisting}[caption=Odabir projekta i okruženja za obavljanje operacije]
+xcodebuild -project {ime_projekta}
 
-Xcode projekt implementira dvije vrste testova: \textit{Unit} i \textit{UI} testove. Oba tipa testa su implementirani kao ciljevi unutar projekta koji pokazuju na cilj aplikacije. Unit testovi služe za testiranje unutarnje implementacije projekta. Ovaj tip testa se pokreće kao omotač oko izvorne aplikacije te pristupa njenim resursima. UI test omogućava testiranje ponašanja aplikacije u stvarnom svijetu. Navedeni tip testa simulira korisničku interakciju te provjerava ponašanje aplikacije.
+xcodebuild -workspace {ime_okruzenja}
+\end{lstlisting}
 
-Oba tipa testa se pokreću na iOS simulatoru. Zbog navedenog je potrebno imati barem jedan simulator prihvatljive verzije operacijskog sustava. Simulatore je moguće dohvatiti pomoću Xcode alata. Za prikaz dostupnih simulatora je moguće iskoristiti naredbu:
+Dodatno, moguće je odabrati shemu projekta korištenjem \verb|-scheme| argumenta. Operacija koristi cilj kojeg specificira shema. Cilj je moguće izmijeniti korištenjem argumenta \verb|-target|.
 
-\begin{verbatim}
+\begin{lstlisting}[caption=Odabir sheme projekta]
+xcodebuild [-project {ime_projekta}] -scheme {ime_sheme}
+\end{lstlisting}
+
+Ispis xcodebuild alata je vrlo detaljan. Operacija ispisuje sve postupke koje obavlja te daje detaljno izvješće u slučaju pogreške. Međutim, ovaj tip ispisa je teško čitljiv. Zbog navedenog se često koriste alati koji parsiraju i prikazuju ispis u lakše čitljivom formatu.
+
+\section{Testiranje} \label{TestiranjeXcodeBuild}
+
+Xcode projekt implementira dvije vrste testova: \textit{Unit} i \textit{UI} testove. Oba tipa testa su implementirani kao ciljevi unutar projekta koji referenciraju cilj koji testiraju. Unit testovi služe za testiranje unutarnje implementacije projekta. Ovaj tip testa se pokreće kao omotač oko izvorne aplikacije te pristupa njenim resursima. UI test omogućava testiranje ponašanja aplikacije u stvarnom svijetu. Navedeni tip testa simulira korisničku interakciju te provjerava ponašanje aplikacije.
+
+Oba tipa testa se pokreću na iOS simulatoru. Zbog navedenog je potrebno imati barem jedan simulator prihvatljive verzije operacijskog sustava. Nove simulatore je moguće instalirati pomoću Xcode alata. Za prikaz dostupnih simulatora pokrenuti naredbu u skripti \ref{listing:simulatori}.
+
+\begin{lstlisting}[caption=Ispis dostupnih simulatora, label=listing:simulatori]
 instruments -s devices
-\end{verbatim}
+\end{lstlisting}
 
-Testiranje se pokreće naredbom:
+Naredba koja pokreće proces testiranja je prikazana u skripti \ref{listing:xcodebuildTest}.
 
-\begin{verbatim}
-xcodebuild test -workspace Diplomski_rad.xcworkspace
--scheme Diplomski_rad
--destination 'platform=iOS Simulator,OS=10.3,
-name=iPhone 7'
-\end{verbatim}
+\begin{lstlisting}[caption=Pokretanje testne operaije korištenjem xcodebuild alata, label=listing:xcodebuildTest]
+xcodebuild test -workspace Diplomski_rad.xcworkspace -scheme Diplomski_rad -destination 'platform=iOS Simulator, OS=10.3, name=iPhone 7'
+\end{lstlisting}
 
 Naredba će pokrenuti testni cilj odabrane sheme na odabranom radnom okruženju. Odabir drugog projekta, cilja i sheme se radi jednako kao i kod izgradnje. Za pokretanje drugog testnog cilja je potrebno kreirati novu shemu te joj kao cilj testne operacije postaviti željeni testni cilj.
 
-\subsection{Osiguranje kvalitete} \label{OsiguranjeKvaliteteImplementacija}
+\section{Osiguranje kvalitete} \label{OsiguranjeKvaliteteImplementacija}
 
 U sklopu osiguranja kvalitete provodim dva procesa: provjeru pokrivenosti koda testovima i statičku provjeru koda alatom \textit{Swiftlint}.
 
-Provjeru pokrivenosti koda dobivamo koristeći parametar \verb|-showBuildSettings| pri izgradnji i testiranju projekta. Primjer naredbe:
+Provjeru pokrivenosti koda dobivamo koristeći parametar \verb|-showBuildSettings| pri izgradnji i testiranju projekta. Naredba je prikazana u skripti \ref{listing:xcodebuildCodeCoverage}
 
-\begin{verbatim}
-xcodebuild -workspace Diplomski_rad.xcworkspace
--scheme Diplomski_rad -showBuildSettings
-\end{verbatim}
+\begin{lstlisting}[caption=Prikupljanje podataka o pokrivenosti koda tekstovima, label=listing:xcodebuildCodeCoverage]
+xcodebuild -workspace Diplomski_rad.xcworkspace -scheme Diplomski_rad -showBuildSettings
+\end{lstlisting}
 
-Naredba podatke o pokrivenosti koda sprema u \verb|~/Library/Developer/|\\\verb|Xcode/DerivedData/{ime_projekta+slučajan_identifikator}/|\\\verb|Build/Intermediates/CodeCoverage| direktoriju. Generirani dokumenti su teško čitljivi. Postoji nekoliko alata koji ih obrađuju i generiraju čitljive rezultati. Budući da u razvoju koristim Xcode, neću u njih dublje ulaziti.
+Naredba podatke o pokrivenosti koda sprema u \path|~/Library/Developer/Xcode/DerivedData/{ime_projekta}/Build/Intermediates/CodeCoverage| direktoriju. Generirani dokumenti su teško čitljivi. Postoji nekoliko alata koji ih obrađuju i generiraju čitljive rezultati. Budući da u razvoju koristim Xcode, neću u njih dublje ulaziti.
 
 Switlint je alat za statičku analizu koda napisanog u programskom jeziku Swift. Alat definira veliki broj pravila kojim nastoji osigurati praćenje stila i konvencija jezika Swift. Većina pravila se odnosi na izgled i format koda, ali postoje i pravila koja nastoje izbjeći pojavu grešaka.
 
-Alat se pokreće pozivanjem naredbe \verb|swiftlint| u početnom direktoriju projekta. Ispis alata je sličan onome xcodebuild alata. Za lakše praćenje pogrešaka i pokretanje naredbe kod svakog procesa izgradnje je moguće Xcode projektu dodati novu \verb|Run Script| fazu s naredbom:
+Alat se pokreće pozivanjem naredbe \verb|swiftlint| u početnom direktoriju projekta. Ispis alata je sličan onome xcodebuild alata. Za lakše praćenje pogrešaka i pokretanje naredbe kod svakog procesa izgradnje je moguće Xcode projektu dodati novu \verb|Run Script| fazu sa sadržajem skripte \ref{listing:swiftlintAdd}.
 
-\begin{verbatim}
+\begin{lstlisting}[caption=Pokretanje provjere koda korištenjem alata Swiftlint, label=listing:swiftlintAdd]
 if which swiftlint >/dev/null; then
-swiftlint
+    swiftlint
 else
-echo "warning: Swiftlint nije instaliran"
+    echo "warning: Swiftlint nije instaliran"
 fi
-\end{verbatim}
+\end{lstlisting}
 
-\subsection{Isporuka}
+\section{Arhiviranje}
 
-\begin{verbatim}
-xcodebuild -scheme {imesheme} archive
-\end{verbatim}
+Arhiviranje je proces kreiranja arhive i manifesta pomoču kojih je moguće aplikaciju instalirati na mobilni uređaj. Arhiviranje se provodi specificiranjem operacije \verb|archive|.
 
-Naredba je interaktivna te od korisnika zahtijeva unos nekoliko parametara. Dovoljno je slijediti upute naredbe. Naredba generira dvije datoteke. Arhivu aplikacije s \verb|.ipa| nastavkom i manifest aplikacije s \verb|.plist| nastavkom. Arhiva aplikacije se koristi za instalaciju aplikacije na mobilni uređaj, dok se manifest može koristiti za jednostavnije preuzimanje arhive. Unutar manifesta je moguće specificirati lokaciju arhive. Budući da je manifest vrlo mala xml datoteka, jednostavno ju je moguće podijeliti sa svim potrebnim osobama. Na temelju preuzetog manifesta sustav preuzima povezanu arhivu i instalira aplikaciju.
+\begin{lstlisting}[caption=Pokretanje operaije arhiviranja korištenjem xcodebuild alata]
+xcodebuild -scheme {ime_sheme} archive
+\end{lstlisting}
+
+Naredba generira dvije datoteke. Arhivu aplikacije s \verb|.ipa| nastavkom i manifest aplikacije s \verb|.plist| nastavkom.
 
 
 
@@ -1470,8 +1531,6 @@ Izgradnja projekta se obavlja pozivom naredbe \verb|fastlane gym|. Ako projekt s
 Fastlane testiranje projekta obavlja korištenjem dodatka \verb|scan|\citep{fastlane:scan}. Scan se ponaša slično dodatku gym. Operaciju testiranja obavlja korištenjem xcodebuild alata. Dodatak samostalno detektira projekte i sheme za koje pokreće testove. U slučaju postojanja više sheme, dodatak korisnika traži odabir željene sheme. Dodatka zatim pokreče sve testne ciljeve koje definira shema.
 
 Dodatak rezultate pohranjuje u \verb|fastlane\test_output\report.junit| datoteci. \verb|Junit| format je široko prihvaćen naćin zapisa rezultata testova te postoji veliki broj alata za njegov vizualan prikaz.
-
-\chapter{Usporedba alata za implementaciju kontinuirane integracije} \label{header:dodatak_usporedba_alata_za_kontinuiranu_integraciju}
 
 \end{appendices}
 

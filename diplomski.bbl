@@ -12,12 +12,6 @@ Apple.
   \url{https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html}.
 \newblock [Online; accessed 16-March-2017].
 
-\bibitem[Apple(2017)]{codesigning}
-Apple.
-\newblock Code signing, 2017.
-\newblock URL \url{https://developer.apple.com/support/code-signing/}.
-\newblock [Online; accessed 1-May-2017].
-
 \bibitem[Atlassian(2016)]{versioningWorkflows}
 Atlassian.
 \newblock Comparing workflows, 2016.
@@ -38,6 +32,13 @@ Intercom.
 \newblock URL
   \url{https://blog.intercom.com/why-continuous-deployment-just-keeps-on-giving/}.
 \newblock [Online; accessed 20-May-2017].
+
+\bibitem[Jez~Humble(2006)]{mics:DPT}
+Dan~North Jez~Humble, Chris~Read.
+\newblock The deployment production line, 2006.
+\newblock URL
+  \url{https://continuousdelivery.com/wp-content/uploads/2011/04/deployment_production_line.pdf}.
+\newblock [Online; accessed 20-Jun-2017].
 
 \bibitem[realm(2017)]{SwiftLint}
 realm.
@@ -87,18 +88,6 @@ Open source.
 \newblock URL \url{https://brew.sh/}.
 \newblock [Online; accessed 11-Jun-2017].
 
-\bibitem[source(2017{\natexlab{h}})]{ruby}
-Open source.
-\newblock Ruby, 2017{\natexlab{h}}.
-\newblock URL \url{https://www.ruby-lang.org/en/}.
-\newblock [Online; accessed 11-Jun-2017].
-
-\bibitem[supermarin(2017)]{xcpretty}
-supermarin.
-\newblock xcpretty, 2017.
-\newblock URL \url{https://github.com/supermarin/xcpretty}.
-\newblock [Online; accessed 22-March-2017].
-
 \bibitem[Wikipedia(2015)]{wiki:BoochMethod}
 Wikipedia.
 \newblock Booch method --- {W}ikipedia{,} the free encyclopedia, 2015.
@@ -119,24 +108,36 @@ Wikipedia.
 \newblock URL \url{https://en.wikipedia.org/wiki/Continuous_delivery}.
 \newblock [Online; accessed 28-Apr-2017].
 
-\bibitem[Wikipedia(2017{\natexlab{c}})]{wiki:SoftwareTesting}
+\bibitem[Wikipedia(2017{\natexlab{c}})]{wiki:Hudson}
+Wikipedia.
+\newblock Hudson, 2017{\natexlab{c}}.
+\newblock URL \url{https://en.wikipedia.org/wiki/Hudson_(software)}.
+\newblock [Online; accessed 22-Jun-2017].
+
+\bibitem[Wikipedia(2017{\natexlab{d}})]{wiki:Jenkins}
+Wikipedia.
+\newblock Jenkins, 2017{\natexlab{d}}.
+\newblock URL \url{https://en.wikipedia.org/wiki/Jenkins_(software)}.
+\newblock [Online; accessed 22-Jun-2017].
+
+\bibitem[Wikipedia(2017{\natexlab{e}})]{wiki:SoftwareTesting}
 Wikipedia.
 \newblock Software testing --- {W}ikipedia{,} the free encyclopedia,
-  2017{\natexlab{c}}.
+  2017{\natexlab{e}}.
 \newblock URL \url{https://en.wikipedia.org/wiki/Software_testing}.
 \newblock [Online; accessed 23-Apr-2017].
 
-\bibitem[Wikipedia(2017{\natexlab{d}})]{wiki:SoftwareVersioning}
+\bibitem[Wikipedia(2017{\natexlab{f}})]{wiki:SoftwareVersioning}
 Wikipedia.
 \newblock Software versioning --- {W}ikipedia{,} the free encyclopedia,
-  2017{\natexlab{d}}.
+  2017{\natexlab{f}}.
 \newblock URL \url{https://en.wikipedia.org/wiki/Software_versioning}.
 \newblock [Online; accessed 18-Feb-2017].
 
-\bibitem[Wikipedia(2017{\natexlab{e}})]{wiki:VersionControl}
+\bibitem[Wikipedia(2017{\natexlab{g}})]{wiki:VersionControl}
 Wikipedia.
 \newblock Version control --- {W}ikipedia{,} the free encyclopedia,
-  2017{\natexlab{e}}.
+  2017{\natexlab{g}}.
 \newblock URL \url{https://en.wikipedia.org/wiki/Version_control}.
 \newblock [Online; accessed 18-Feb-2017].
 

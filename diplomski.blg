@@ -5,25 +5,25 @@ The style file: fer.bst
 Database file #1: literatura.bib
 You've used 21 entries,
             2773 wiz_defined-function locations,
-            686 strings with 7338 characters,
-and the built_in function-call counts, 6485 in all, are:
+            692 strings with 7526 characters,
+and the built_in function-call counts, 6487 in all, are:
 = -- 588
 > -- 210
 < -- 21
-+ -- 95
++ -- 96
 - -- 63
-* -- 343
-:= -- 988
+* -- 345
+:= -- 987
 add.period$ -- 84
 call.type$ -- 21
 change.case$ -- 84
-chr.to.int$ -- 10
+chr.to.int$ -- 9
 cite$ -- 42
 duplicate$ -- 315
 empty$ -- 673
 format.name$ -- 84
 if$ -- 1387
-int.to.chr$ -- 12
+int.to.chr$ -- 13
 int.to.str$ -- 1
 missing$ -- 0
 newline$ -- 134
@@ -32,10 +32,10 @@ pop$ -- 252
 preamble$ -- 1
 purify$ -- 63
 quote$ -- 0
-skip$ -- 259
+skip$ -- 258
 stack$ -- 0
 substring$ -- 42
-swap$ -- 34
+swap$ -- 35
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0

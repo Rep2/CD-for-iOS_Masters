@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  20 JUN 2017 14:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  23 JUN 2017 11:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -656,22 +656,52 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 \c@@ppsavesec=\count127
 \c@@ppsaveapp=\count128
 )
+(/usr/local/texlive/2017/texmf-dist/tex/latex/easylist/easylist.sty
+Package: easylist 2014/01/11 v.1.4 Numbered items with a single command.
+\el@CounterTotal=\count129
+\el@Scratch=\count130
+\el@ControlCounter=\count131
+\el@CounterLevel=\count132
+\c@List1=\count133
+\c@List2=\count134
+\c@List3=\count135
+\c@List4=\count136
+\c@List5=\count137
+\c@List6=\count138
+\c@List7=\count139
+\c@List8=\count140
+\c@List9=\count141
+\c@List10=\count142
+\el@ProgressiveDimension=\dimen153
+\el@CounterBox=\box33
+\el@ControlBox=\box34
+\el@TotalMargin=\dimen154
+\el@LeftMove=\dimen155
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
 (./diplomski.aux)
 \openout1 = `diplomski.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 24.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
@@ -711,16 +741,16 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count129
-\scratchdimen=\dimen153
-\scratchbox=\box33
-\nofMPsegments=\count130
-\nofMParguments=\count131
+\scratchcounter=\count143
+\scratchdimen=\dimen156
+\scratchbox=\box35
+\nofMPsegments=\count144
+\nofMParguments=\count145
 \everyMPshowfont=\toks28
-\MPscratchCnt=\count132
-\MPscratchDim=\dimen154
-\MPnumerator=\count133
-\makeMPintoPDFobject=\count134
+\MPscratchCnt=\count146
+\MPscratchDim=\dimen157
+\MPnumerator=\count147
+\makeMPintoPDFobject=\count148
 \everyMPtoPDFconversion=\toks29
 ) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
@@ -771,43 +801,34 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box34
-
-(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/pdflscape.sty
-Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
-
-(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/lscape.sty
-Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
-)
-Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-)
-\c@lstlisting=\count135
-LaTeX Font Info:    Try loading font information for T1+phv on input line 29.
+\AtBeginShipoutBox=\box36
+\c@lstlisting=\count149
+LaTeX Font Info:    Try loading font information for T1+phv on input line 32.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 29.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 32.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 29.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 32.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 29.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 32.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 29.
-LaTeX Font Info:    Try loading font information for U+msa on input line 29.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 32.
+LaTeX Font Info:    Try loading font information for U+msa on input line 32.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 29.
+LaTeX Font Info:    Try loading font information for U+msb on input line 32.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 32.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 35.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
@@ -833,37 +854,37 @@ Poglavlje 2.
 File: images/CIFazes.png Graphic file (type png)
 
 <use images/CIFazes.png>
-Package pdftex.def Info: images/CIFazes.png used on input line 84.
+Package pdftex.def Info: images/CIFazes.png used on input line 87.
 (pdftex.def)             Requested size: 302.33183pt x 215.0049pt.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 85.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 88.
  [4 <./images/CIFazes.png>]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 93.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 96.
 
 <images/XcodeServerSetup1.png, id=41, 1038.88126pt x 653.44125pt>
 File: images/XcodeServerSetup1.png Graphic file (type png)
 
 <use images/XcodeServerSetup1.png>
-Package pdftex.def Info: images/XcodeServerSetup1.png used on input line 107.
+Package pdftex.def Info: images/XcodeServerSetup1.png used on input line 110.
 (pdftex.def)             Requested size: 363.61389pt x 228.70786pt.
  [5]
 <images/XcodeServerSetup2.png, id=45, 1038.88126pt x 651.43375pt>
 File: images/XcodeServerSetup2.png Graphic file (type png)
 
 <use images/XcodeServerSetup2.png>
-Package pdftex.def Info: images/XcodeServerSetup2.png used on input line 118.
+Package pdftex.def Info: images/XcodeServerSetup2.png used on input line 121.
 (pdftex.def)             Requested size: 363.61389pt x 228.00522pt.
 
 <images/DodavanjeCertifikata.png, id=46, 789.95125pt x 457.71pt>
 File: images/DodavanjeCertifikata.png Graphic file (type png)
 
 <use images/DodavanjeCertifikata.png>
-Package pdftex.def Info: images/DodavanjeCertifikata.png used on input line 127
+Package pdftex.def Info: images/DodavanjeCertifikata.png used on input line 130
 .
 (pdftex.def)             Requested size: 315.9749pt x 183.08075pt.
 
-Overfull \hbox (0.63573pt too wide) in paragraph at lines 134--135
+Overfull \hbox (0.63573pt too wide) in paragraph at lines 137--138
 []\T1/ptm/m/n/12 Proces pot-pi-si-va-nja koda osi-gu-rava auten-ti£-nost i ne-i
 z-mje-nje-nost kre-irane pro-gram-
  []
@@ -874,42 +895,42 @@ ges/DodavanjeCertifikata.png>]
 File: images/BotServerSelection.png Graphic file (type png)
 
 <use images/BotServerSelection.png>
-Package pdftex.def Info: images/BotServerSelection.png used on input line 146.
+Package pdftex.def Info: images/BotServerSelection.png used on input line 149.
 (pdftex.def)             Requested size: 295.90025pt x 176.65686pt.
  [8 <./images/BotServerSelection.png>]
 <images/BuildProcess.png, id=63, 191.71625pt x 395.4775pt>
 File: images/BuildProcess.png Graphic file (type png)
 
 <use images/BuildProcess.png>
-Package pdftex.def Info: images/BuildProcess.png used on input line 167.
+Package pdftex.def Info: images/BuildProcess.png used on input line 170.
 (pdftex.def)             Requested size: 95.85788pt x 197.73827pt.
  [9 <./images/BuildProcess.png>]
 <images/VersioningTreeA.png, id=68, 75.78313pt x 435.6275pt>
 File: images/VersioningTreeA.png Graphic file (type png)
 
 <use images/VersioningTreeA.png>
-Package pdftex.def Info: images/VersioningTreeA.png used on input line 184.
+Package pdftex.def Info: images/VersioningTreeA.png used on input line 187.
 (pdftex.def)             Requested size: 30.3127pt x 174.24791pt.
 
 <images/VersioningTreeB.png, id=69, 76.78688pt x 436.12938pt>
 File: images/VersioningTreeB.png Graphic file (type png)
 
 <use images/VersioningTreeB.png>
-Package pdftex.def Info: images/VersioningTreeB.png used on input line 190.
+Package pdftex.def Info: images/VersioningTreeB.png used on input line 193.
 (pdftex.def)             Requested size: 30.7142pt x 174.44865pt.
 
 <images/VersioningTreeC.png, id=70, 76.78688pt x 436.63126pt>
 File: images/VersioningTreeC.png Graphic file (type png)
 
 <use images/VersioningTreeC.png>
-Package pdftex.def Info: images/VersioningTreeC.png used on input line 196.
+Package pdftex.def Info: images/VersioningTreeC.png used on input line 199.
 (pdftex.def)             Requested size: 30.7142pt x 174.6494pt.
 
 <images/VersioningTree.png, id=71, 210.7875pt x 435.12563pt>
 File: images/VersioningTree.png Graphic file (type png)
 
 <use images/VersioningTree.png>
-Package pdftex.def Info: images/VersioningTree.png used on input line 202.
+Package pdftex.def Info: images/VersioningTree.png used on input line 205.
 (pdftex.def)             Requested size: 84.3135pt x 174.04716pt.
  [10 <./images/VersioningTreeA.png> <./images/VersioningTreeB.png> <./images/Ve
 rsioningTreeC.png> <./images/VersioningTree.png>] [11] <images/Initial_commit.p
@@ -917,63 +938,63 @@ ng, id=82, 115.43124pt x 220.825pt>
 File: images/Initial_commit.png Graphic file (type png)
 
 <use images/Initial_commit.png>
-Package pdftex.def Info: images/Initial_commit.png used on input line 235.
+Package pdftex.def Info: images/Initial_commit.png used on input line 238.
 (pdftex.def)             Requested size: 69.25926pt x 132.496pt.
 
 <images/Branching.png, id=83, 227.85126pt x 218.8175pt>
 File: images/Branching.png Graphic file (type png)
 
 <use images/Branching.png>
-Package pdftex.def Info: images/Branching.png used on input line 241.
+Package pdftex.def Info: images/Branching.png used on input line 244.
 (pdftex.def)             Requested size: 136.71179pt x 131.2915pt.
 
 <images/FastForwardA.png, id=84, 226.8475pt x 221.82875pt>
 File: images/FastForwardA.png Graphic file (type png)
 
 <use images/FastForwardA.png>
-Package pdftex.def Info: images/FastForwardA.png used on input line 253.
+Package pdftex.def Info: images/FastForwardA.png used on input line 256.
 (pdftex.def)             Requested size: 136.10954pt x 133.09825pt.
 
 <images/FastForwardB.png, id=85, 131.49126pt x 222.8325pt>
 File: images/FastForwardB.png Graphic file (type png)
 
 <use images/FastForwardB.png>
-Package pdftex.def Info: images/FastForwardB.png used on input line 259.
+Package pdftex.def Info: images/FastForwardB.png used on input line 262.
 (pdftex.def)             Requested size: 78.89534pt x 133.70053pt.
  [12 <./images/Initial_commit.png> <./images/Branching.png>] <images/ConflictA.
 png, id=91, 219.82124pt x 299.1175pt>
 File: images/ConflictA.png Graphic file (type png)
 
 <use images/ConflictA.png>
-Package pdftex.def Info: images/ConflictA.png used on input line 277.
+Package pdftex.def Info: images/ConflictA.png used on input line 280.
 (pdftex.def)             Requested size: 131.89375pt x 179.47188pt.
 
 <images/ConflictB.png, id=92, 218.8175pt x 299.1175pt>
 File: images/ConflictB.png Graphic file (type png)
 
 <use images/ConflictB.png>
-Package pdftex.def Info: images/ConflictB.png used on input line 283.
+Package pdftex.def Info: images/ConflictB.png used on input line 286.
 (pdftex.def)             Requested size: 131.2915pt x 179.47188pt.
  [13 <./images/FastForwardA.png> <./images/FastForwardB.png>] <images/RebaseA.p
 ng, id=98, 223.83624pt x 299.1175pt>
 File: images/RebaseA.png Graphic file (type png)
 
 <use images/RebaseA.png>
-Package pdftex.def Info: images/RebaseA.png used on input line 297.
+Package pdftex.def Info: images/RebaseA.png used on input line 300.
 (pdftex.def)             Requested size: 111.91785pt x 149.55838pt.
 
 <images/RebaseB.png, id=99, 223.83624pt x 300.12125pt>
 File: images/RebaseB.png Graphic file (type png)
 
 <use images/RebaseB.png>
-Package pdftex.def Info: images/RebaseB.png used on input line 303.
+Package pdftex.def Info: images/RebaseB.png used on input line 306.
 (pdftex.def)             Requested size: 111.91785pt x 150.06026pt.
 
 <images/RebaseC.png, id=100, 123.46124pt x 300.12125pt>
 File: images/RebaseC.png Graphic file (type png)
 
 <use images/RebaseC.png>
-Package pdftex.def Info: images/RebaseC.png used on input line 309.
+Package pdftex.def Info: images/RebaseC.png used on input line 312.
 (pdftex.def)             Requested size: 61.73045pt x 150.06026pt.
  [14 <./images/ConflictA.png> <./images/ConflictB.png> <./images/RebaseA.png> <
 ./images/RebaseB.png> <./images/RebaseC.png>]
@@ -981,17 +1002,17 @@ Package pdftex.def Info: images/RebaseC.png used on input line 309.
 File: images/FeatureBranch.png Graphic file (type png)
 
 <use images/FeatureBranch.png>
-Package pdftex.def Info: images/FeatureBranch.png used on input line 332.
+Package pdftex.def Info: images/FeatureBranch.png used on input line 335.
 (pdftex.def)             Requested size: 283.05681pt x 146.04526pt.
  [15]
 <images/Gitflow.png, id=114, 700.6175pt x 428.60126pt>
 File: images/Gitflow.png Graphic file (type png)
 
 <use images/Gitflow.png>
-Package pdftex.def Info: images/Gitflow.png used on input line 345.
+Package pdftex.def Info: images/Gitflow.png used on input line 348.
 (pdftex.def)             Requested size: 350.30789pt x 214.3001pt.
  [16 <./images/FeatureBranch.png>] [17 <./images/Gitflow.png>]
-Overfull \hbox (9.67096pt too wide) in paragraph at lines 366--367
+Overfull \hbox (9.67096pt too wide) in paragraph at lines 369--370
 []\T1/ptm/m/n/12 HTTPS auten-ti-fi-ka-cija pris-tup kon-tro-lira ko-ri-²te-njem
  je-dins-tve-nog ko-ris-ni£-kog imena
  []
@@ -1000,33 +1021,33 @@ Overfull \hbox (9.67096pt too wide) in paragraph at lines 366--367
 File: images/BotAddingSSH.png Graphic file (type png)
 
 <use images/BotAddingSSH.png>
-Package pdftex.def Info: images/BotAddingSSH.png used on input line 374.
+Package pdftex.def Info: images/BotAddingSSH.png used on input line 377.
 (pdftex.def)             Requested size: 371.88846pt x 220.32259pt.
  [18]
 <images/CIStartConfig.png, id=127, 736.7525pt x 460.72125pt>
 File: images/CIStartConfig.png Graphic file (type png)
 
 <use images/CIStartConfig.png>
-Package pdftex.def Info: images/CIStartConfig.png used on input line 383.
+Package pdftex.def Info: images/CIStartConfig.png used on input line 386.
 (pdftex.def)             Requested size: 368.37535pt x 230.36006pt.
  [19 <./images/BotAddingSSH.png> <./images/CIStartConfig.png>] <images/GitHubSS
 H.png, id=133, 1010.77625pt x 850.17625pt>
 File: images/GitHubSSH.png Graphic file (type png)
 
 <use images/GitHubSSH.png>
-Package pdftex.def Info: images/GitHubSSH.png used on input line 398.
+Package pdftex.def Info: images/GitHubSSH.png used on input line 401.
 (pdftex.def)             Requested size: 303.23521pt x 255.05484pt.
  [20 <./images/GitHubSSH.png>] [21]
 <images/XcodeConfigurations.png, id=142, 575.14874pt x 233.87375pt>
 File: images/XcodeConfigurations.png Graphic file (type png)
 
 <use images/XcodeConfigurations.png>
-Package pdftex.def Info: images/XcodeConfigurations.png used on input line 461.
+Package pdftex.def Info: images/XcodeConfigurations.png used on input line 464.
 
 (pdftex.def)             Requested size: 402.60138pt x 163.71048pt.
  [22 <./images/XcodeConfigurations.png>]
 [23] [24]
-Overfull \hbox (1.88768pt too wide) in paragraph at lines 551--552
+Overfull \hbox (1.88768pt too wide) in paragraph at lines 554--555
  \T1/ptm/b/n/12 Auto-ma-ti-za-cija do-hva-¢a-nja ovis-nosti[] \T1/ptm/m/n/12 Ob
 je skripte je po-trebno po-kre-nuti prije obav-
  []
@@ -1035,7 +1056,7 @@ je skripte je po-trebno po-kre-nuti prije obav-
 File: images/PreIntegrationScript.png Graphic file (type png)
 
 <use images/PreIntegrationScript.png>
-Package pdftex.def Info: images/PreIntegrationScript.png used on input line 555
+Package pdftex.def Info: images/PreIntegrationScript.png used on input line 558
 .
 (pdftex.def)             Requested size: 370.88472pt x 222.33008pt.
  [25 <./images/PreIntegrationScript.png>]
@@ -1043,24 +1064,24 @@ Package pdftex.def Info: images/PreIntegrationScript.png used on input line 555
 File: images/TargetScheme.png Graphic file (type png)
 
 <use images/TargetScheme.png>
-Package pdftex.def Info: images/TargetScheme.png used on input line 600.
+Package pdftex.def Info: images/TargetScheme.png used on input line 603.
 (pdftex.def)             Requested size: 316.68236pt x 119.94783pt.
 
 <images/XcodeServerOptions.png, id=163, 740.7675pt x 437.635pt>
 File: images/XcodeServerOptions.png Graphic file (type png)
 
 <use images/XcodeServerOptions.png>
-Package pdftex.def Info: images/XcodeServerOptions.png used on input line 611.
+Package pdftex.def Info: images/XcodeServerOptions.png used on input line 614.
 (pdftex.def)             Requested size: 370.38284pt x 218.81696pt.
 
 <images/XcodeServerResult.png, id=164, 872.25874pt x 415.5525pt>
 File: images/XcodeServerResult.png Graphic file (type png)
 
 <use images/XcodeServerResult.png>
-Package pdftex.def Info: images/XcodeServerResult.png used on input line 618.
+Package pdftex.def Info: images/XcodeServerResult.png used on input line 621.
 (pdftex.def)             Requested size: 436.1283pt x 207.77574pt.
 
-Overfull \hbox (23.56332pt too wide) in paragraph at lines 618--619
+Overfull \hbox (23.56332pt too wide) in paragraph at lines 621--622
  [][] 
  []
 
@@ -1071,7 +1092,7 @@ File: images/XcodeServerSingleIntegration.png Graphic file (type png)
 
 <use images/XcodeServerSingleIntegration.png>
 Package pdftex.def Info: images/XcodeServerSingleIntegration.png used on input 
-line 635.
+line 638.
 (pdftex.def)             Requested size: 385.83466pt x 218.41212pt.
  [29 <./images/XcodeServerSingleIntegration.png>] [30]
 <images/XcodeServerTestAction.png, id=182, 731.73375pt x 461.725pt>
@@ -1079,7 +1100,7 @@ File: images/XcodeServerTestAction.png Graphic file (type png)
 
 <use images/XcodeServerTestAction.png>
 Package pdftex.def Info: images/XcodeServerTestAction.png used on input line 66
-6.
+9.
 (pdftex.def)             Requested size: 365.86598pt x 230.86194pt.
 
 <images/XcodeServerTestDevices.png, id=183, 730.73pt x 459.7175pt>
@@ -1087,7 +1108,7 @@ File: images/XcodeServerTestDevices.png Graphic file (type png)
 
 <use images/XcodeServerTestDevices.png>
 Package pdftex.def Info: images/XcodeServerTestDevices.png used on input line 6
-73.
+76.
 (pdftex.def)             Requested size: 365.3641pt x 229.85818pt.
 
 <images/XcodeServerTestResult.png, id=184, 956.57375pt x 436.63126pt>
@@ -1095,10 +1116,10 @@ File: images/XcodeServerTestResult.png Graphic file (type png)
 
 <use images/XcodeServerTestResult.png>
 Package pdftex.def Info: images/XcodeServerTestResult.png used on input line 68
-6.
+9.
 (pdftex.def)             Requested size: 382.62271pt x 174.6494pt.
  [31 <./images/XcodeServerTestAction.png>]
-Overfull \hbox (41.97647pt too wide) in paragraph at lines 691--692
+Overfull \hbox (41.97647pt too wide) in paragraph at lines 694--695
 []\T1/ptm/m/n/12 Rezultati obav-lja-nja tes-tova su ta-ko-žer na po-£et-nom ekr
 anu bota u sek-ciji [][]\T1/pcr/m/n/12 Test History[]\T1/ptm/m/n/12 .
  []
@@ -1109,10 +1130,10 @@ File: images/XcodeServerTestCoverage.png Graphic file (type png)
 
 <use images/XcodeServerTestCoverage.png>
 Package pdftex.def Info: images/XcodeServerTestCoverage.png used on input line 
-710.
+713.
 (pdftex.def)             Requested size: 420.06549pt x 63.23566pt.
 
-Overfull \hbox (7.50052pt too wide) in paragraph at lines 710--711
+Overfull \hbox (7.50052pt too wide) in paragraph at lines 713--714
  [][] 
  []
 
@@ -1127,17 +1148,17 @@ Poglavlje 3.
 File: images/ContinuousDelivery.png Graphic file (type png)
 
 <use images/ContinuousDelivery.png>
-Package pdftex.def Info: images/ContinuousDelivery.png used on input line 766.
+Package pdftex.def Info: images/ContinuousDelivery.png used on input line 769.
 (pdftex.def)             Requested size: 106.59906pt x 186.09668pt.
  [37 <./images/ContinuousDelivery.png>]
 <images/CodeSigning.png, id=214, 199.74625pt x 303.1325pt>
 File: images/CodeSigning.png Graphic file (type png)
 
 <use images/CodeSigning.png>
-Package pdftex.def Info: images/CodeSigning.png used on input line 779.
+Package pdftex.def Info: images/CodeSigning.png used on input line 782.
 (pdftex.def)             Requested size: 119.84866pt x 181.8809pt.
 
-Overfull \hbox (5.90518pt too wide) in paragraph at lines 786--787
+Overfull \hbox (5.90518pt too wide) in paragraph at lines 789--790
 []\T1/ptm/m/n/12 Svi ar-te-fakti se kre-iraju i do-hva-¢aju ko-ri-²te-njem $\T1
 /pcr/m/n/12 https : / / developer . apple .
  []
@@ -1147,10 +1168,10 @@ Overfull \hbox (5.90518pt too wide) in paragraph at lines 786--787
 File: images/PrivateKeyExport.png Graphic file (type png)
 
 <use images/PrivateKeyExport.png>
-Package pdftex.def Info: images/PrivateKeyExport.png used on input line 796.
+Package pdftex.def Info: images/PrivateKeyExport.png used on input line 799.
 (pdftex.def)             Requested size: 415.62283pt x 96.23955pt.
 
-Overfull \hbox (3.05786pt too wide) in paragraph at lines 796--797
+Overfull \hbox (3.05786pt too wide) in paragraph at lines 799--800
  [][] 
  []
 
@@ -1160,17 +1181,17 @@ File: images/SigningArtefactsSetup.png Graphic file (type png)
 
 <use images/SigningArtefactsSetup.png>
 Package pdftex.def Info: images/SigningArtefactsSetup.png used on input line 81
-1.
+4.
 (pdftex.def)             Requested size: 294.50252pt x 148.7569pt.
 
 <images/iTunesUUID.png, id=226, 662.475pt x 215.80624pt>
 File: images/iTunesUUID.png Graphic file (type png)
 
 <use images/iTunesUUID.png>
-Package pdftex.def Info: images/iTunesUUID.png used on input line 822.
+Package pdftex.def Info: images/iTunesUUID.png used on input line 825.
 (pdftex.def)             Requested size: 331.2367pt x 107.90285pt.
  [40 <./images/SigningArtefactsSetup.png> <./images/iTunesUUID.png>]
-Overfull \hbox (3.31218pt too wide) in paragraph at lines 837--838
+Overfull \hbox (3.31218pt too wide) in paragraph at lines 840--841
 []\T1/ptm/m/n/12 Automatizaciju pot-pi-si-va-nja koda u ovom radu os-tva-ru-jem
  ko-ri-²te-njem alata [][]\T1/pcr/m/n/12 match
  []
@@ -1179,122 +1200,149 @@ Overfull \hbox (3.31218pt too wide) in paragraph at lines 837--838
 File: images/XcodeArchiveOptions.png Graphic file (type png)
 
 <use images/XcodeArchiveOptions.png>
-Package pdftex.def Info: images/XcodeArchiveOptions.png used on input line 877.
+Package pdftex.def Info: images/XcodeArchiveOptions.png used on input line 880.
 
 (pdftex.def)             Requested size: 353.52347pt x 215.0049pt.
  [43 <./images/XcodeArchiveOptions.png>]
 [44]
-Overfull \hbox (0.71437pt too wide) in paragraph at lines 932--933
+Overfull \hbox (0.71437pt too wide) in paragraph at lines 935--936
 \T1/ptm/m/n/12 nicu $\T1/pcr/m/n/12 https : / / www . fabric . io / settings / 
 organizations$\T1/ptm/m/n/12 . Na-kon pri-jave
  []
 
 [45]
-Overfull \hbox (7.57869pt too wide) in paragraph at lines 934--935
+Overfull \hbox (7.57869pt too wide) in paragraph at lines 937--938
 \T1/ptm/m/n/12 tak [][]\T1/pcr/m/n/12 application(application: didFinishLaunchi
 ngWithOptions:)
  []
 
-<images/CrashlyticsEmail.jpg, id=251, 752.8125pt x 1339.0025pt>
-File: images/CrashlyticsEmail.jpg Graphic file (type jpg)
-
-<use images/CrashlyticsEmail.jpg>
-Package pdftex.def Info: images/CrashlyticsEmail.jpg used on input line 944.
-(pdftex.def)             Requested size: 225.84549pt x 401.70386pt.
- [46]
-<images/Beta.jpg, id=255, 752.8125pt x 1339.0025pt>
-File: images/Beta.jpg Graphic file (type jpg)
- <use images/Beta.jpg>
-Package pdftex.def Info: images/Beta.jpg used on input line 973.
-(pdftex.def)             Requested size: 225.84549pt x 401.70386pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[47 <./images/CrashlyticsEmail.jpg>] [48 <./images/Beta.jpg>]
-Overfull \hbox (3.51799pt too wide) in paragraph at lines 987--988
+[46]
+Overfull \hbox (3.51799pt too wide) in paragraph at lines 969--970
 []\T1/ptm/m/n/12 Kreiranje pro-fila se obav-lja na $\T1/pcr/m/n/12 https : / / 
 itunesconnect . apple . com/$ \T1/ptm/m/n/12 stra-
  []
 
-<images/iTunesConnectAppCreation.png, id=262, 470.75874pt x 541.02126pt>
+<images/iTunesConnectAppCreation.png, id=254, 470.75874pt x 541.02126pt>
 File: images/iTunesConnectAppCreation.png Graphic file (type png)
 
 <use images/iTunesConnectAppCreation.png>
 Package pdftex.def Info: images/iTunesConnectAppCreation.png used on input line
- 991.
+ 973.
 (pdftex.def)             Requested size: 188.30016pt x 216.40466pt.
- [49 <./images/iTunesConnectAppCreation.png>] <images/iTunesConnectAppId.png, i
-d=267, 814.04124pt x 551.05875pt>
+ [47 <./images/iTunesConnectAppCreation.png>] [48]
+<images/iTunesConnectAppId.png, id=262, 814.04124pt x 551.05875pt>
 File: images/iTunesConnectAppId.png Graphic file (type png)
 
 <use images/iTunesConnectAppId.png>
-Package pdftex.def Info: images/iTunesConnectAppId.png used on input line 1022.
+Package pdftex.def Info: images/iTunesConnectAppId.png used on input line 1004.
 
 (pdftex.def)             Requested size: 366.31517pt x 247.97414pt.
- [50] [51 <./images/iTunesConnectAppId.png>]
+ [49 <./images/iTunesConnectAppId.png>]
+[50]
 Poglavlje 4.
-<images/CDDifferences.png, id=276, 722.7pt x 286.06876pt>
+<images/CDDifferences.png, id=271, 722.7pt x 286.06876pt>
 File: images/CDDifferences.png Graphic file (type png)
 
 <use images/CDDifferences.png>
-Package pdftex.def Info: images/CDDifferences.png used on input line 1049.
+Package pdftex.def Info: images/CDDifferences.png used on input line 1035.
 (pdftex.def)             Requested size: 397.48622pt x 157.3383pt.
+ [51
 
-Overfull \hbox (1.94426pt too wide) in paragraph at lines 1054--1055
-[]\T1/ptm/m/n/12 Kontinuirana is-po-ruka auto-mat-skom is-po-ru-kom pro-mjena u
- pro-duk-ciju nas-toji sma-
- []
-
-<images/IntercomShipsPerDay.png, id=277, 521.95pt x 187.70125pt>
+ <./images/CDDifferences.png>]
+<images/IntercomShipsPerDay.png, id=276, 521.95pt x 187.70125pt>
 File: images/IntercomShipsPerDay.png Graphic file (type png)
 
 <use images/IntercomShipsPerDay.png>
-Package pdftex.def Info: images/IntercomShipsPerDay.png used on input line 1058
+Package pdftex.def Info: images/IntercomShipsPerDay.png used on input line 1048
 .
 (pdftex.def)             Requested size: 365.3625pt x 131.38997pt.
- [52
-
- <./images/CDDifferences.png>]
-<images/DeploymentStages.png, id=282, 685.56125pt x 319.1925pt>
+ [52 <./images/IntercomShipsPerDay.png>]
+<images/DeploymentStages.png, id=281, 692.5875pt x 314.17375pt>
 File: images/DeploymentStages.png Graphic file (type png)
 
 <use images/DeploymentStages.png>
-Package pdftex.def Info: images/DeploymentStages.png used on input line 1071.
-(pdftex.def)             Requested size: 411.33992pt x 191.51697pt.
- [53 <./images/IntercomShipsPerDay.png> <./images/DeploymentStages.png>] [54] [
-55]
-<images/FeatureBranchCD.png, id=294, 695.59875pt x 400.49625pt>
-File: images/FeatureBranchCD.png Graphic file (type png)
+Package pdftex.def Info: images/DeploymentStages.png used on input line 1061.
+(pdftex.def)             Requested size: 415.5557pt x 188.50569pt.
 
-<use images/FeatureBranchCD.png>
-Package pdftex.def Info: images/FeatureBranchCD.png used on input line 1110.
-(pdftex.def)             Requested size: 347.79852pt x 200.24763pt.
- [56 <./images/FeatureBranchCD.png>]
-<images/GitFlowCD.png, id=300, 780.9175pt x 518.93875pt>
+Overfull \hbox (2.99072pt too wide) in paragraph at lines 1061--1062
+ [][] 
+ []
+
+[53 <./images/DeploymentStages.png>]
+<images/GitFlowCD.png, id=286, 780.9175pt x 518.93875pt>
 File: images/GitFlowCD.png Graphic file (type png)
 
 <use images/GitFlowCD.png>
-Package pdftex.def Info: images/GitFlowCD.png used on input line 1127.
+Package pdftex.def Info: images/GitFlowCD.png used on input line 1087.
 (pdftex.def)             Requested size: 390.4578pt x 259.46873pt.
-
-<images/HotfixGitflow.png, id=301, 477.785pt x 400.49625pt>
+ [54]
+<images/HotfixGitflow.png, id=290, 477.785pt x 400.49625pt>
 File: images/HotfixGitflow.png Graphic file (type png)
 
 <use images/HotfixGitflow.png>
-Package pdftex.def Info: images/HotfixGitflow.png used on input line 1134.
+Package pdftex.def Info: images/HotfixGitflow.png used on input line 1096.
 (pdftex.def)             Requested size: 238.8919pt x 200.24763pt.
- [57 <./images/GitFlowCD.png>]
-Overfull \hbox (2.69272pt too wide) in paragraph at lines 1148--1149
-\T1/ptm/m/n/12 Zbog na-ve-de-nog se umjesto broja upo-zo-re-nja £esto ko-ris-ti
-m [][]\T1/pcr/m/n/12 XCS_WARNING_CHANGE
+ [55 <./images/GitFlowCD.png> <./images/HotfixGitflow.png>] <images/XcodeConfig
+uration.png, id=296, 1126.2075pt x 406.51875pt>
+File: images/XcodeConfiguration.png Graphic file (type png)
+
+<use images/XcodeConfiguration.png>
+Package pdftex.def Info: images/XcodeConfiguration.png used on input line 1124.
+
+(pdftex.def)             Requested size: 416.69026pt x 150.40958pt.
+
+Overfull \hbox (4.12529pt too wide) in paragraph at lines 1124--1125
+ [][] 
  []
 
-[58 <./images/HotfixGitflow.png>] [59]
-Poglavlje 5.
-(./diplomski.bbl [60
+[56] <images/XcodeConfigurationCreation.png, id=301, 570.13pt x 239.89626pt>
+File: images/XcodeConfigurationCreation.png Graphic file (type png)
 
-]
+<use images/XcodeConfigurationCreation.png>
+Package pdftex.def Info: images/XcodeConfigurationCreation.png used on input li
+ne 1133.
+(pdftex.def)             Requested size: 342.08064pt x 143.93886pt.
+ [57 <./images/XcodeConfiguration.png> <./images/XcodeConfigurationCreation.png
+>]
+<images/XcodeXCConfigSet.png, id=307, 554.07pt x 233.87375pt>
+File: images/XcodeXCConfigSet.png Graphic file (type png)
+
+<use images/XcodeXCConfigSet.png>
+Package pdftex.def Info: images/XcodeXCConfigSet.png used on input line 1152.
+(pdftex.def)             Requested size: 332.44456pt x 140.32532pt.
+
+<images/MultipleBots.png, id=308, 378.41376pt x 103.38625pt>
+File: images/MultipleBots.png Graphic file (type png)
+
+<use images/MultipleBots.png>
+Package pdftex.def Info: images/MultipleBots.png used on input line 1164.
+(pdftex.def)             Requested size: 264.88782pt x 72.36987pt.
+ [58 <./images/XcodeXCConfigSet.png> <./images/MultipleBots.png>]
+<images/BotConfiguration.png, id=314, 737.75626pt x 463.7325pt>
+File: images/BotConfiguration.png Graphic file (type png)
+
+<use images/BotConfiguration.png>
+Package pdftex.def Info: images/BotConfiguration.png used on input line 1175.
+(pdftex.def)             Requested size: 368.87723pt x 231.86568pt.
+ [59 <./images/BotConfiguration.png>]
+<images/CrashlyticsEmail.jpg, id=319, 752.8125pt x 1339.0025pt>
+File: images/CrashlyticsEmail.jpg Graphic file (type jpg)
+
+<use images/CrashlyticsEmail.jpg>
+Package pdftex.def Info: images/CrashlyticsEmail.jpg used on input line 1198.
+(pdftex.def)             Requested size: 225.84549pt x 401.70386pt.
+ [60 <./images/CrashlyticsEmail.jpg>]
+<images/Beta.jpg, id=323, 752.8125pt x 1339.0025pt>
+File: images/Beta.jpg Graphic file (type jpg)
+ <use images/Beta.jpg>
+Package pdftex.def Info: images/Beta.jpg used on input line 1209.
+(pdftex.def)             Requested size: 225.84549pt x 401.70386pt.
+
+[61 <./images/Beta.jpg>] [62]
+Poglavlje 5.
+[63
+
+] (./diplomski.bbl [64]
 Underfull \hbox (badness 5667) in paragraph at lines 9--14
 []\T1/ptm/m/n/12 Apple.  xco-de-bu-ild, 2013.  URL $\T1/pcr/m/n/12 https : / / 
 developer . apple .
@@ -1306,116 +1354,176 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--14
  []
 
 
-Overfull \hbox (23.00171pt too wide) in paragraph at lines 29--34
+Overfull \hbox (23.00171pt too wide) in paragraph at lines 23--28
 \T1/pcr/m/n/12 continuous-[]delivery-[]vs-[]continuous-[]deployment-[]what-[]s-
 []diff$\T1/ptm/m/n/12 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--41
+Underfull \hbox (badness 10000) in paragraph at lines 30--35
 []\T1/ptm/m/n/12 Intercom.  Why con-ti-nu-ous de-ployment just ke-eps on gi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--41
+Underfull \hbox (badness 10000) in paragraph at lines 30--35
 \T1/ptm/m/n/12 ving, 2015.  URL $\T1/pcr/m/n/12 https : / / blog . intercom . c
 om /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--41
+Underfull \hbox (badness 10000) in paragraph at lines 30--35
 \T1/pcr/m/n/12 why-[]continuous-[]deployment-[]just-[]keeps-[]on-[]giving/$\T1/
 ptm/m/n/12 .
  []
 
-[61
+
+Underfull \hbox (badness 1558) in paragraph at lines 37--42
+[]\T1/ptm/m/n/12 Dan North Jez Hum-ble, Chris Read.  The de-ployment pro-duc-ti
+on line,
+ []
+
+
+Underfull \hbox (badness 3826) in paragraph at lines 37--42
+\T1/ptm/m/n/12 2006.  URL $\T1/pcr/m/n/12 https : / / continuousdelivery . com 
+/ wp-[]content /
+ []
+
+[65
 
 ]
-Underfull \hbox (badness 1014) in paragraph at lines 116--121
+Underfull \hbox (badness 1014) in paragraph at lines 105--110
 \T1/ptm/m/n/12 URL $\T1/pcr/m/n/12 https : / / en . wikipedia . org / wiki / Co
 ntinuous _ delivery$\T1/ptm/m/n/12 .
  []
 
 
-Underfull \hbox (badness 1014) in paragraph at lines 130--135
+Underfull \hbox (badness 1014) in paragraph at lines 131--136
 \T1/ptm/m/n/12 URL $\T1/pcr/m/n/12 https : / / en . wikipedia . org / wiki / So
 ftware _ versioning$\T1/ptm/m/n/12 .
  []
 
 
-Underfull \hbox (badness 1902) in paragraph at lines 137--142
+Underfull \hbox (badness 1902) in paragraph at lines 138--143
 \T1/pcr/m/n/12 https : / / en . wikipedia . org / wiki / Version _ control$\T1/
 ptm/m/n/12 .  [Online;
  []
 
-) [62] [63] [64
+[66]) [67] [68] [69
 
 
 ]
 Dodatak A.
-[65
-
-] <images/ModificiraniGitflowTokRaka.png, id=332, 975.645pt x 643.40375pt>
-File: images/ModificiraniGitflowTokRaka.png Graphic file (type png)
-
-<use images/ModificiraniGitflowTokRaka.png>
-Package pdftex.def Info: images/ModificiraniGitflowTokRaka.png used on input li
-ne 1240.
-(pdftex.def)             Requested size: 390.25108pt x 257.35693pt.
- [66 <./images/ModificiraniGitflowTokRaka.png>] <images/MultipleBots.png, id=33
-7, 396.48125pt x 107.40125pt>
-File: images/MultipleBots.png Graphic file (type png)
-
-<use images/MultipleBots.png>
-Package pdftex.def Info: images/MultipleBots.png used on input line 1264.
-(pdftex.def)             Requested size: 277.53497pt x 75.18034pt.
- [67 <./images/MultipleBots.png>]
-<images/BotConfiguration.png, id=342, 737.75626pt x 463.7325pt>
-File: images/BotConfiguration.png Graphic file (type png)
-
-<use images/BotConfiguration.png>
-Package pdftex.def Info: images/BotConfiguration.png used on input line 1290.
-(pdftex.def)             Requested size: 368.87723pt x 231.86568pt.
- [68 <./images/BotConfiguration.png>] [69]
-Dodatak B.
 [70
 
-]
-Overfull \hbox (8.79755pt too wide) in paragraph at lines 1372--1373
+] [71] [72] [73] [74] [75]
+<images/OcjenaAlata.pdf, id=372, 845.1575pt x 597.23125pt>
+File: images/OcjenaAlata.pdf Graphic file (type pdf)
+
+<use images/OcjenaAlata.pdf>
+Package pdftex.def Info: images/OcjenaAlata.pdf used on input line 1371.
+(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
+File: images/OcjenaAlata.pdf Graphic file (type pdf)
+ <use images/OcjenaAlata.pdf>
+Package pdftex.def Info: images/OcjenaAlata.pdf used on input line 1371.
+(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
+
+<images/OcjenaAlata.pdf, id=375, page=1, 845.1575pt x 597.23125pt>
+File: images/OcjenaAlata.pdf Graphic file (type pdf)
+
+<use images/OcjenaAlata.pdf, page 1>
+Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1371.
+
+(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
+File: images/OcjenaAlata.pdf Graphic file (type pdf)
+ <use images/OcjenaAlata.pdf, page 1>
+Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1371.
+
+(pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
+
+[76]
+File: images/OcjenaAlata.pdf Graphic file (type pdf)
+ <use images/OcjenaAlata.pdf, page 1>
+Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1371.
+
+(pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
+File: images/OcjenaAlata.pdf Graphic file (type pdf)
+ <use images/OcjenaAlata.pdf, page 1>
+Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1371.
+
+(pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
+File: images/OcjenaAlata.pdf Graphic file (type pdf)
+
+<use images/OcjenaAlata.pdf, page 1>
+Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1371.
+
+(pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
+ [77 <./images/OcjenaAlata.pdf>]
+<images/OcjenaAlata.pdf, id=399, page=2, 845.1575pt x 597.23125pt>
+File: images/OcjenaAlata.pdf Graphic file (type pdf)
+
+<use images/OcjenaAlata.pdf, page 2>
+Package pdftex.def Info: images/OcjenaAlata.pdf, page2 used on input line 1371.
+
+(pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
+File: images/OcjenaAlata.pdf Graphic file (type pdf)
+ <use images/OcjenaAlata.pdf, page 2>
+Package pdftex.def Info: images/OcjenaAlata.pdf, page2 used on input line 1371.
+
+(pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
+File: images/OcjenaAlata.pdf Graphic file (type pdf)
+
+<use images/OcjenaAlata.pdf, page 2>
+Package pdftex.def Info: images/OcjenaAlata.pdf, page2 used on input line 1371.
+
+(pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
+ [78 <./images/OcjenaAlata.pdf>]
+Dodatak B.
+[79
+
+] [80]
+Overfull \hbox (8.79755pt too wide) in paragraph at lines 1432--1433
 []\T1/ptm/m/n/12 Provjeru po-kri-ve-nosti koda do-bi-vamo ko-ris-te¢i pa-ra-me-
 tar [][]\T1/pcr/m/n/12 -showBuildSettings
  []
 
-[71] [72]
+
+Overfull \hbox (16.11842pt too wide) in paragraph at lines 1438--1439
+[]\T1/ptm/m/n/12 Naredba po-datke o po-kri-ve-nosti koda sprema u $\T1/pcr/m/n/
+12 ~ / Library / Developer / Xcode /
+ []
+
+
+Overfull \hbox (12.23485pt too wide) in paragraph at lines 1438--1439
+\T1/pcr/m/n/12 DerivedData / {ime _ projekta} / Build / Intermediates / CodeCov
+erage$
+ []
+
+[81] [82]
 Dodatak C.
-[73
+[83
 
-] [74] [75]
-Dodatak D.
-[76
-
-] (./diplomski.aux) ) 
+] [84] [85] (./diplomski.aux) ) 
 Here is how much of TeX's memory you used:
- 9413 strings out of 492995
- 135722 string characters out of 6132704
- 242801 words of memory out of 5000000
- 12717 multiletter control sequences out of 15000+600000
- 62260 words of font info for 81 fonts, out of 8000000 for 9000
+ 9810 strings out of 492995
+ 140186 string characters out of 6132704
+ 251123 words of memory out of 5000000
+ 13106 multiletter control sequences out of 15000+600000
+ 62620 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,9n,42p,1236b,1640s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8
-r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></
-usr/local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/loc
-al/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texl
-ive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/201
-7/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-di
+ 43i,18n,46p,1236b,1574s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dv
+ips/base/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucr
+r8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb
+></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/
+local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/t
+exlive/2017/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/201
+7/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
-ype1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/t
-imes/utmri8a.pfb>
-Output written on diplomski.pdf (81 pages, 2230638 bytes).
+ype1/urw/times/utmri8a.pfb>
+Output written on diplomski.pdf (90 pages, 2274809 bytes).
 PDF statistics:
- 405 PDF objects out of 1000 (max. 8388607)
- 207 compressed objects within 3 object streams
+ 458 PDF objects out of 1000 (max. 8388607)
+ 240 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 266 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 296 words of extra memory for PDF output out of 10000 (max. 10000000)
 
