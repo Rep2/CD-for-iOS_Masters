@@ -37,20 +37,20 @@
 \contentsline {section}{\numberline {4.5}Pregled rezultata implementacije kontinuirane isporuke}{60}
 \contentsline {chapter}{\numberline {5}Zaklju\IeC {\v c}ak}{63}
 \contentsline {chapter}{Literatura}{65}
-\contentsline {chapter}{Appendices}{69}
-\contentsline {chapter}{\numberline {A}Usporedba alata za implementaciju kontinuirane integracije}{70}
-\contentsline {section}{\numberline {A.1}Prvi upitnik}{71}
-\contentsline {section}{\numberline {A.2}Drugi upitnik}{71}
-\contentsline {section}{\numberline {A.3}Ispitani sustavi}{72}
-\contentsline {subsection}{\numberline {A.3.1}Jenkins}{73}
-\contentsline {subsection}{\numberline {A.3.2}Xcode Server}{74}
-\contentsline {subsection}{\numberline {A.3.3}CircleCI}{75}
-\contentsline {subsection}{\numberline {A.3.4}Travis CI}{76}
-\contentsline {chapter}{\numberline {B}Alat xcodebuild}{79}
-\contentsline {section}{\numberline {B.1}Testiranje}{80}
-\contentsline {section}{\numberline {B.2}Osiguranje kvalitete}{81}
-\contentsline {section}{\numberline {B.3}Arhiviranje}{81}
-\contentsline {chapter}{\numberline {C}Fastlane}{83}
-\contentsline {section}{\numberline {C.1}Dohvat ovisnosti}{84}
-\contentsline {section}{\numberline {C.2}Izgradnja}{85}
-\contentsline {section}{\numberline {C.3}Testiranje}{85}
+\contentsline {chapter}{Dodaci}{70}
+\contentsline {chapter}{\numberline {A}Usporedba alata za implementaciju kontinuirane integracije}{71}
+\contentsline {section}{\numberline {A.1}Prvi upitnik}{72}
+\contentsline {section}{\numberline {A.2}Drugi upitnik}{72}
+\contentsline {section}{\numberline {A.3}Ispitani sustavi}{73}
+\contentsline {subsection}{\numberline {A.3.1}Jenkins}{74}
+\contentsline {subsection}{\numberline {A.3.2}Xcode Server}{75}
+\contentsline {subsection}{\numberline {A.3.3}CircleCI}{76}
+\contentsline {subsection}{\numberline {A.3.4}Travis CI}{77}
+\contentsline {chapter}{\numberline {B}Alat xcodebuild}{80}
+\contentsline {section}{\numberline {B.1}Testiranje}{81}
+\contentsline {section}{\numberline {B.2}Osiguranje kvalitete}{82}
+\contentsline {section}{\numberline {B.3}Arhiviranje}{82}
+\contentsline {chapter}{\numberline {C}Fastlane}{84}
+\contentsline {section}{\numberline {C.1}Dohvat ovisnosti}{85}
+\contentsline {section}{\numberline {C.2}Izgradnja}{86}
+\contentsline {section}{\numberline {C.3}Testiranje}{86}
