@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  24 JUN 2017 16:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  25 JUN 2017 14:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1167,7 +1167,7 @@ Package pdftex.def Info: images/CodeSigning.png used on input line 776.
 (pdftex.def)             Requested size: 119.84866pt x 181.8809pt.
 
 Overfull \hbox (5.90518pt too wide) in paragraph at lines 783--784
-[]\T1/ptm/m/n/12 Svi ar-te-fakti se kre-iraju i do-hva-¢aju ko-ri-²te-njem $\T1
+[]\T1/ptm/m/n/12 Svi se ar-te-fakti kre-iraju i do-hva-¢aju ko-ri-²te-njem $\T1
 /pcr/m/n/12 https : / / developer . apple .
  []
 
@@ -1198,13 +1198,13 @@ File: images/iTunesUUID.png Graphic file (type png)
 <use images/iTunesUUID.png>
 Package pdftex.def Info: images/iTunesUUID.png used on input line 819.
 (pdftex.def)             Requested size: 331.2367pt x 107.90285pt.
- [40 <./images/SigningArtefactsSetup.png> <./images/iTunesUUID.png>]
-Overfull \hbox (3.31218pt too wide) in paragraph at lines 834--835
-[]\T1/ptm/m/n/12 Automatizaciju pot-pi-si-va-nja koda u ovom radu os-tva-ru-jem
- ko-ri-²te-njem alata [][]\T1/pcr/m/n/12 match
+ [40 <./images/SigningArtefactsSetup.png>] [41 <./images/iTunesUUID.png>] [42]
+Overfull \hbox (8.14899pt too wide) in paragraph at lines 870--871
+[]\T1/ptm/m/n/12 Kori²tenjem apli-ka-cije Xcode po-trebno je oda-brati op-ciju 
+[][]\T1/pcr/m/n/12 Product -> Archive
  []
 
-[41] [42] <images/XcodeArchiveOptions.png, id=238, 589.20125pt x 358.33875pt>
+<images/XcodeArchiveOptions.png, id=238, 589.20125pt x 358.33875pt>
 File: images/XcodeArchiveOptions.png Graphic file (type png)
 
 <use images/XcodeArchiveOptions.png>
@@ -1212,21 +1212,21 @@ Package pdftex.def Info: images/XcodeArchiveOptions.png used on input line 874.
 
 (pdftex.def)             Requested size: 353.52347pt x 215.0049pt.
  [43 <./images/XcodeArchiveOptions.png>]
-[44]
-Overfull \hbox (0.71437pt too wide) in paragraph at lines 929--930
-\T1/ptm/m/n/12 nicu $\T1/pcr/m/n/12 https : / / www . fabric . io / settings / 
-organizations$\T1/ptm/m/n/12 . Na-kon pri-jave
+[44] [45]
+Overfull \hbox (2.5844pt too wide) in paragraph at lines 929--930
+\T1/ptm/m/n/12 trebno pri-ja-viti na Fa-bric plat-formu ko-ri-²te-njem po-vez-n
+ice $\T1/pcr/m/n/12 https : / / www . fabric .
  []
 
-[45]
-Overfull \hbox (7.57869pt too wide) in paragraph at lines 931--932
-\T1/ptm/m/n/12 tak [][]\T1/pcr/m/n/12 application(application: didFinishLaunchi
-ngWithOptions:)
+
+Overfull \hbox (30.23454pt too wide) in paragraph at lines 931--932
+\T1/ptm/m/n/12 po-£e-tak [][]\T1/pcr/m/n/12 application(application: didFinishL
+aunchingWithOptions:)
  []
 
 [46]
 Overfull \hbox (3.51799pt too wide) in paragraph at lines 963--964
-[]\T1/ptm/m/n/12 Kreiranje pro-fila se obav-lja na $\T1/pcr/m/n/12 https : / / 
+[]\T1/ptm/m/n/12 Kreiranje pro-fila obav-lja se na $\T1/pcr/m/n/12 https : / / 
 itunesconnect . apple . com/$ \T1/ptm/m/n/12 stra-
  []
 
@@ -1237,7 +1237,7 @@ File: images/iTunesConnectAppCreation.png Graphic file (type png)
 Package pdftex.def Info: images/iTunesConnectAppCreation.png used on input line
  967.
 (pdftex.def)             Requested size: 188.30016pt x 216.40466pt.
- [47 <./images/iTunesConnectAppCreation.png>] [48]
+ [47] [48 <./images/iTunesConnectAppCreation.png>]
 <images/iTunesConnectAppId.png, id=262, 814.04124pt x 551.05875pt>
 File: images/iTunesConnectAppId.png Graphic file (type png)
 
@@ -1324,28 +1324,29 @@ File: images/MultipleBots.png Graphic file (type png)
 <use images/MultipleBots.png>
 Package pdftex.def Info: images/MultipleBots.png used on input line 1158.
 (pdftex.def)             Requested size: 264.88782pt x 72.36987pt.
- [58 <./images/XcodeXCConfigSet.png> <./images/MultipleBots.png>]
-<images/BotConfiguration.png, id=314, 737.75626pt x 463.7325pt>
+
+<images/BotConfiguration.png, id=309, 737.75626pt x 463.7325pt>
 File: images/BotConfiguration.png Graphic file (type png)
 
 <use images/BotConfiguration.png>
 Package pdftex.def Info: images/BotConfiguration.png used on input line 1169.
 (pdftex.def)             Requested size: 368.87723pt x 231.86568pt.
- [59 <./images/BotConfiguration.png>]
-<images/CrashlyticsEmail.jpg, id=319, 752.8125pt x 1339.0025pt>
+ [58 <./images/XcodeXCConfigSet.png>]
+<images/CrashlyticsEmail.jpg, id=314, 752.8125pt x 1339.0025pt>
 File: images/CrashlyticsEmail.jpg Graphic file (type jpg)
 
 <use images/CrashlyticsEmail.jpg>
 Package pdftex.def Info: images/CrashlyticsEmail.jpg used on input line 1192.
 (pdftex.def)             Requested size: 225.84549pt x 401.70386pt.
- [60 <./images/CrashlyticsEmail.jpg>]
-<images/Beta.jpg, id=323, 752.8125pt x 1339.0025pt>
+
+<images/Beta.jpg, id=315, 752.8125pt x 1339.0025pt>
 File: images/Beta.jpg Graphic file (type jpg)
  <use images/Beta.jpg>
 Package pdftex.def Info: images/Beta.jpg used on input line 1203.
 (pdftex.def)             Requested size: 225.84549pt x 401.70386pt.
 
-[61 <./images/Beta.jpg>] [62]
+[59 <./images/MultipleBots.png>] [60 <./images/BotConfiguration.png>] [61 <./im
+ages/CrashlyticsEmail.jpg>] [62 <./images/Beta.jpg>]
 Poglavlje 5.
 [63
 
@@ -1429,41 +1430,41 @@ Dodatak A.
 File: images/OcjenaAlata.pdf Graphic file (type pdf)
 
 <use images/OcjenaAlata.pdf>
-Package pdftex.def Info: images/OcjenaAlata.pdf used on input line 1384.
+Package pdftex.def Info: images/OcjenaAlata.pdf used on input line 1387.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 File: images/OcjenaAlata.pdf Graphic file (type pdf)
  <use images/OcjenaAlata.pdf>
-Package pdftex.def Info: images/OcjenaAlata.pdf used on input line 1384.
+Package pdftex.def Info: images/OcjenaAlata.pdf used on input line 1387.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 
 <images/OcjenaAlata.pdf, id=378, page=1, 845.1575pt x 597.23125pt>
 File: images/OcjenaAlata.pdf Graphic file (type pdf)
 
 <use images/OcjenaAlata.pdf, page 1>
-Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1384.
+Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1387.
 
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 File: images/OcjenaAlata.pdf Graphic file (type pdf)
  <use images/OcjenaAlata.pdf, page 1>
-Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1384.
+Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1387.
 
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 
 [77]
 File: images/OcjenaAlata.pdf Graphic file (type pdf)
  <use images/OcjenaAlata.pdf, page 1>
-Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1384.
+Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1387.
 
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: images/OcjenaAlata.pdf Graphic file (type pdf)
  <use images/OcjenaAlata.pdf, page 1>
-Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1384.
+Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1387.
 
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: images/OcjenaAlata.pdf Graphic file (type pdf)
 
 <use images/OcjenaAlata.pdf, page 1>
-Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1384.
+Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1387.
 
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
  [78 <./images/OcjenaAlata.pdf>]
@@ -1471,18 +1472,18 @@ Package pdftex.def Info: images/OcjenaAlata.pdf, page1 used on input line 1384.
 File: images/OcjenaAlata.pdf Graphic file (type pdf)
 
 <use images/OcjenaAlata.pdf, page 2>
-Package pdftex.def Info: images/OcjenaAlata.pdf, page2 used on input line 1384.
+Package pdftex.def Info: images/OcjenaAlata.pdf, page2 used on input line 1387.
 
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: images/OcjenaAlata.pdf Graphic file (type pdf)
  <use images/OcjenaAlata.pdf, page 2>
-Package pdftex.def Info: images/OcjenaAlata.pdf, page2 used on input line 1384.
+Package pdftex.def Info: images/OcjenaAlata.pdf, page2 used on input line 1387.
 
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: images/OcjenaAlata.pdf Graphic file (type pdf)
 
 <use images/OcjenaAlata.pdf, page 2>
-Package pdftex.def Info: images/OcjenaAlata.pdf, page2 used on input line 1384.
+Package pdftex.def Info: images/OcjenaAlata.pdf, page2 used on input line 1387.
 
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
  [79 <./images/OcjenaAlata.pdf>]
@@ -1490,19 +1491,19 @@ Dodatak B.
 [80
 
 ] [81]
-Overfull \hbox (8.79755pt too wide) in paragraph at lines 1445--1446
+Overfull \hbox (8.79755pt too wide) in paragraph at lines 1448--1449
 []\T1/ptm/m/n/12 Provjeru po-kri-ve-nosti koda do-bi-vamo ko-ris-te¢i pa-ra-me-
 tar [][]\T1/pcr/m/n/12 -showBuildSettings
  []
 
 
-Overfull \hbox (16.11842pt too wide) in paragraph at lines 1451--1452
+Overfull \hbox (16.11842pt too wide) in paragraph at lines 1454--1455
 []\T1/ptm/m/n/12 Naredba po-datke o po-kri-ve-nosti koda sprema u $\T1/pcr/m/n/
 12 ~ / Library / Developer / Xcode /
  []
 
 
-Overfull \hbox (12.23485pt too wide) in paragraph at lines 1451--1452
+Overfull \hbox (12.23485pt too wide) in paragraph at lines 1454--1455
 \T1/pcr/m/n/12 DerivedData / {ime _ projekta} / Build / Intermediates / CodeCov
 erage$
  []
@@ -1512,7 +1513,7 @@ Dodatak C.
 [84
 
 ]
-Overfull \hbox (12.38506pt too wide) in paragraph at lines 1519--1520
+Overfull \hbox (12.38506pt too wide) in paragraph at lines 1522--1523
 []\T1/ptm/m/n/12 Za do-hvat ovis-nosti po-mo¢u Co-co-aPods alata je do-voljno u
  stazi po-zvati [][]\T1/pcr/m/n/12 cocoapods
  []
@@ -1535,7 +1536,7 @@ l/texlive/2017/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
 2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/urw/times/utmri8a.pfb>
-Output written on diplomski.pdf (92 pages, 2278551 bytes).
+Output written on diplomski.pdf (92 pages, 2279075 bytes).
 PDF statistics:
  465 PDF objects out of 1000 (max. 8388607)
  245 compressed objects within 3 object streams

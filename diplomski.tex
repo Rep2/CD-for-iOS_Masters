@@ -920,21 +920,21 @@ pod 'Fabric'
 pod 'Crashlytics'
 \end{lstlisting}
 
-Nakon toga kreirati novu \verb|Run scrip| fazu za željeni cilj te joj dodati skriptu \ref{listing:fabric_run_script}.
+Nakon toga treba kreirati novu \verb|Run scrip| fazu za željeni cilj te joj dodati skriptu \ref{listing:fabric_run_script}.
 
 \begin{lstlisting}[caption=Fabric Run Script faza, label=listing:fabric_run_script]
 "${PODS_ROOT}/Fabric/run" {api_kljuc} {tajni_kljuc}
 \end{lstlisting}
 
-API i tajni ključ je potrebno dohvatiti korištenjem Fabric platforme. Otvoriti poveznicu \path{https://www.fabric.io/settings/organizations}. Nakon prijave odabrati željenu organizaciju te preuzeti ključeve.
+Potrebno je dohvatiti API i tajni ključ korištenjem Fabric platforme. Zatim se je potrebno prijaviti na Fabric platformu korištenjem poveznice \path{https://www.fabric.io/settings/organizations}. Nakon prijave treba odabrati željenu organizaciju te preuzeti ključeve.
 
-Na kraju, dodati naredbu \verb|Fabric.with([Crashlytics.self])| na početak \verb|application(application: didFinishLaunchingWithOptions:)| metode klase \verb|AppDelegate|. Registracija aplikacije će se dogoditi prilikom prvog pokretanja aplikacije. Profil aplikacije se nakon pokretanja aplikacije nalazi na stranici \path|https://fabric.io/home|.
+Na kraju se mora dodati naredba \verb|Fabric.with([Crashlytics.self])| na početak \verb|application(application: didFinishLaunchingWithOptions:)| metode klase \verb|AppDelegate|. Registracija aplikacije dogodit će se pri prvom pokretanju aplikacije. Profil aplikacije nakon njezina pokretanja nalazi se na stranici \path|https://fabric.io/home|.
 
-Nakon kreiranja profila je arhivu i manifest moguće ručno dodati na Crashlytics platformu.
+Nakon kreiranja profila arhivu i manifest moguće je ručno dodati na Crashlytics platformu.
 
 \paragraph{Automatizacije objave}
 
-Za automatizacije objave korištenjem Crashlytics platforme koristim fastlane dodatak \verb|crashlytics|. Dodatak omogućava jednostavnu objavu aplikacije uz minimalnu konfiguraciju projekta te se nadovezuje direktno na dodatak gym. Za pokretanje dostavje je potrebno pokrenuti naredbu nakon arhiviranja projekta. Skripta \ref{listing:crashlytics_deploy} prikazuje fastlane stazu koja izgrađuje, arhivira i objavljuje aplikaciju na Crashlytics platformi.
+Za automatizacije objave korištenjem Crashlytics platforme koristim fastlane dodatak \textit{crashlytics}. Dodatak omogućava jednostavnu objavu aplikacije uz minimalnu konfiguraciju projekta te se nadovezuje direktno na dodatak gym. Za pokretanje objave potrebno je pokrenuti dodatak nakon kreiranja arhive aplikacije. Skripta \ref{listing:crashlytics_deploy} prikazuje fastlane stazu koja izgrađuje, arhivira i objavljuje aplikaciju na Crashlytics platformi.
 
 \begin{lstlisting}[caption=Fastlane staza za isporuku korištenjem Crashlytics platforme, label=listing:crashlytics_deploy]
 lane :develop do
@@ -952,42 +952,42 @@ lane :develop do
 end
 \end{lstlisting}
 
-Dodatno, kako prilikom pokretanja naredbe ne bi morao unositi crashlytics API i tajni ključ, iste je moguće specificirati kao argumente crashlytics naredbe. Grupa testera kojoj će aplikacija biti vidljiva se može dodati kao argument Crashlytics naredbi - \verb|groups: {ime_grupe}|.
+Dodatno, kako prilikom pokretanja naredbe ne bih morao unositi crashlytics API i tajni ključ, iste je moguće specificirati kao argumente crashlytics naredbe. Grupa testera kojoj će aplikacija biti vidljiva može se dodati kao argument Crashlytics naredbi - \verb|groups: {ime_grupe}|.
 
 \subsection{App Store}
 
-Objava javnih iOS aplikacija se ostvaruje korištenjem App Store platforme. App Store je službena platforma za distribuciju programske potpore za macOS, iOS, tvOS i watchOS operacijske sustave. Uz dostupnost aplikacije svim korisnicima navedenih operacijskih sustava, platforma pruža i brojne druge funkcionalnosti kao što su automatsko instaliranje novih verzija aplikacija i praćenje ponašanja korisnika.
+Objava javnih iOS aplikacija ostvaruje se korištenjem App Store platforme. App Store je službena platforma za distribuciju programske potpore za macOS, iOS, tvOS i watchOS operacijske sustave. Uz dostupnost aplikacije svim korisnicima navedenih operacijskih sustava, platforma pruža i brojne druge funkcionalnosti kao što su automatsko instaliranje novih verzija aplikacija i praćenje ponašanja korisnika.
 
-Objava programske potpore na App Store platformu se obavlja korištenjem iTunes Connect web stranice. iTunes Connect omogućava kreiranje, modificiranje i praćenje objavljene programske potpore. Prije objave je potrebno kreirati profil aplikacije korištenjem iTunes Connect alata.
+Objava programske potpore na App Store platformu obavlja se korištenjem iTunes Connect web-stranice. iTunes Connect omogućava kreiranje i modificiranje profila aplikacije te dodavanje arhive koja se objavljuje. Potrebno je prije objave kreirati profil aplikacije korištenjem iTunes Connect alata.
 
-Kreiranje profila se obavlja na \path|https://itunesconnect.apple.com/| stranici. Nakon prijave je potrebno odabrati opciju \verb|My Apps| te kreirati novi profil. Slika \ref{fig:iTunesConnectAppCreation} prikazuje formu za kreiranje profila aplikacije.
+Kreiranje profila obavlja se na \path|https://itunesconnect.apple.com/| stranici. Nakon prijave potrebno je odabrati opciju \verb|My Apps| te kreirati novi profil. Slika \ref{fig:iTunesConnectAppCreation} prikazuje formu za kreiranje profila aplikacije.
 
 \begin{figure}[b!]
 \centering
 \includegraphics[scale=0.4]{iTunesConnectAppCreation}
-\caption{Forma za kreiranje profila aplikacije na iTunes Connect web stranici}
+\caption{Forma za kreiranje profila aplikacije na iTunes Connect web-stranici}
 \label{fig:iTunesConnectAppCreation}
 \end{figure}
 
-Nakon kreiranja profila aplikacije je potrebno ispuniti dodatne podatke o aplikaciji kao što su opis i kategorija aplikacije. Slično kao i kod Crashlytics platforme, sada je moguće jednostavno dostaviti arhivu i manifest aplikacije.
+Nakon kreiranja profila aplikacije potrebno je ispuniti dodatne podatke o aplikaciji kao što su opis i kategorija aplikacije. Slično kao i kod Crashlytics platforme, sada je moguće jednostavno dostaviti arhivu i manifest aplikacije.
 
-Iako isporuka aplikacija korištenjem App Store platforme donosi brojne prednosti, ona donosi i brojne nedostatke. Ovaj tip isporuke je poprilično složen te traje puno duže u usporedbi s ostalim tipovima isporuke. Apple vrlo strogo regulira aplikacije koje se nalaze na App Store platformi.
+Iako isporuka aplikacija korištenjem App Store platforme donosi brojne prednosti, ujedno donosi i brojne nedostatke. Ovaj je tip isporuke poprilično složen te traje puno duže u usporedbi s ostalim tipovima isporuke. Apple vrlo strogo regulira aplikacije koje se nalaze na App Store platformi.
 
-Proces provjere aplikacije zna trajati i do nekoliko tjedana te često rezultira odbijanjem aplikacije. Aplikacija može biti odbijena jer je previše slična već postojećoj aplikacije, jer se ne slaže s nekom od Appleovih politika, zbog loše implementacije i brojnih drugih razloga. Nakon otklanjanja razloga odbijanja je potrebno ponovno proći cijeli proces.
+Proces provjere aplikacije zna trajati i do nekoliko tjedana te često rezultira odbijanjem aplikacije. Aplikacija može biti odbijena jer je previše slična već postojećoj aplikaciji, jer se ne slaže s nekom od Appleovih politika, zbog loše implementacije i brojnih drugih razloga. Nakon otklanjanja razloga odbijanja potrebno je ponovno proći cijeli proces.
 
-Za objavu nove verzije aplikacije je potrebno proći nešto blažu provjeru. Ona može trajati od nekoliko sati do nekoliko dana te najčešće završava odobrenjem promjena. Odbijanje promjena je vrlo rijetko te služi prvenstveno za prevenciju očitog narušavanja Appleovih politika.
+Za objavu nove verzije aplikacije potrebno je proći nešto blažu provjeru. Ona može trajati od nekoliko sati do nekoliko dana te najčešće završava odobrenjem promjena. Odbijanje promjena vrlo je rijetko te služi prvenstveno za prevenciju očitog narušavanja Appleovih politika.
 
-Ovaj proces isporuke je složen i dugotrajan. Iako se u zadnjih nekoliko godina proces značajno poboljšao, veliki broj članova industrije je još uvijek vrlo nezadovoljan. Međutim, Apple zabranjuje isporuku aplikacija za javnu uporabu korištenjem bilo koje druge metode. Ako navedeni proces usporedimo s procesom isporuke web aplikacija, onda su njegovi nedostaci jasno vidljivi. Nova verzija web aplikacije se isporučuje jednostavno promjenom verzije koja se nalazi na poslužitelju. Prvi sljedeći korisnik koji pristupi služitelju automatski koristi sljedeću verziju. Ne samo da je proces isporuke iOS aplikacija daleko teži i sporiji, već korisnik mora samostalno preuzeti novu verziju aplikacije.
+Cijeli je proces isporuke složen i dugotrajan. Iako se u zadnjih nekoliko godina proces značajno poboljšao, velik broj članova industrije još je uvijek vrlo nezadovoljan. Međutim, Apple zabranjuje isporuku aplikacija za javnu uporabu korištenjem bilo koje druge metode. Ako se navedeni proces usporedi s procesom isporuke web aplikacija, onda su njegovi nedostaci jasno vidljivi. Nova verzija web aplikacije isporučuje se jednostavno promjenom verzije koja se nalazi na poslužitelju. Prvi sljedeći korisnik koji pristupi služitelju automatski koristi sljedeću verziju. Ne samo da je proces isporuke iOS aplikacija daleko teži i sporiji, već korisnik mora samostalno preuzeti novu verziju aplikacije.
 
-Apple nastoji što jednostavnije i neprimjetnije osvježiti verzije aplikacije. Aplikacije se automatski osvježuju kad je uređaj spojen na WiFi mrežu te je dovoljno napunjen. Međutim, određeni broj korisnika isključuje ovu funkcionalnost ili ručno odobrava svaku novu verziju aplikacije. Zbog navedenog uvijek postoji određeni postotak korisnika koji vrlo dugo koriste starije verzije aplikacije. Navedeno iziskuje dugoročnu podršku starijih verzija aplikacije što značajno otežava razvoj.
+Apple nastoji što jednostavnije i neprimjetnije osvježiti verzije aplikacije. Aplikacije se automatski osvježuju kad je uređaj spojen na WiFi mrežu te je dovoljno napunjen. Međutim, određeni broj korisnika isključuje ovu funkcionalnost ili ručno odobrava svaku novu verziju aplikacije. Zbog navedenog uvijek postoji određeni postotak korisnika koji vrlo dugo koriste starije verzije aplikacije. Ovaj problem iziskuje dugoročnu podršku starijih verzija aplikacije što značajno otežava razvoj.
 
-Zbog navedenih razloga prominenti pojedinci u iOS zajednici predviđaju skoru zamjenu App Store platforme nekim boljim načinom isporuke. Međutim, Apple nije objavio nikakvu naznaku ovog te smo za sad ograničeni sustavom koji imamo.
+Zbog navedenih razloga prominentni pojedinci u iOS zajednici predviđaju skoru zamjenu App Store platforme nekim boljim načinom isporuke. Međutim, Apple nije objavio nikakvu naznaku ovog te smo zasad ograničeni sustavom koji imamo.
 
 \paragraph{Automatizacija objave}
 
-Isporuku programske potpore za App Store platformu implementiram pomoću fastlane dodatak \verb|deliver|\citep{fastlane:deliver}. Dodatak korištenjem javnog APIa iTunes Connect platforme automatizira dostavu arhive i manifesta. Alat se direktno nadovezuje na alat gym, samostalno detektira potrebne artefakte te omogućava jednostavnu konfiguraciju procesa.
+Isporuku programske potpore za App Store platformu implementiram pomoću fastlane dodatak \textit{deliver}\citep{fastlane:deliver}. Dodatak korištenjem javnog API-ja iTunes Connect platforme automatizira dostavu arhive i manifesta. Alat se direktno nadovezuje na alat \textit{gym}, samostalno detektira potrebne artefakte te omogućava jednostavnu konfiguraciju procesa.
 
-Inicijalizacija deliver dodataka je prikazana u skripti \ref{listing:deliverInit}. Naredba projekt povezuje s iTunes Connect platformom kako bi ubuduće dodatak mogao samostalno obaviti objavu. Za autorizaciju pristupa je potrebno je korisničko ime i lozinku Apple Developer računa. Inicijalizaciju dovršiti unosom iTunes identifikatora profila aplikacije. Identifikator je moguće dohvatiti korištenjem iTunes Connect platforme. Nakon prijave na web stranicu \path{https://itunesconnect.apple.com} odabrati opciju \verb|My Apps| te odabrati željenu aplikaciju. Slika \ref{fig:iTunesConnectAppId} prikazuje lokaciju identifikatora aplikacije na profilu aplikacije.
+Inicijalizacija \textit{deliver} dodataka je prikazana u skripti \ref{listing:deliverInit}. Naredba projekt povezuje s iTunes Connect platformom kako bi ubuduće dodatak mogao samostalno obaviti objavu. Za autorizaciju pristupa potrebno je unijeti korisničko ime i lozinku Apple Developer računa. Inicijalizaciju dovršiti unosom iTunes identifikatora profila aplikacije. Identifikator je moguće dohvatiti korištenjem iTunes Connect platforme. Nakon prijave na web stranicu \path{https://itunesconnect.apple.com} je potrebno odabrati opciju \verb|My Apps| te odabrati željenu aplikaciju. Slika \ref{fig:iTunesConnectAppId} prikazuje lokaciju identifikatora aplikacije na profilu aplikacije.
 
 \begin{lstlisting}[caption=Inicijalizacija deliver dodatka, label=listing:deliverInit]
 fastlane deliver init
@@ -1033,9 +1033,9 @@ Automatizacija procesa isporuke zahtjeva prethodnu implementaciju procesa isporu
 
 Kontinuirana isporuka je vrlo mlada praksa. Termin je prvi puta iskoristio poznati autor Kent Beck u raspravi o agilnom razvoju programske potpore. Kent Beck je neisporučenu funkcionalnost usporedio s inventarom koji nije prikazan korisniku. Termin kontinuirana isporuka je prvi puta definiran u članku \textit{The Deployment Production Line} autora Jez Humblea, Chris Reada i Dan Northa\citep{mics:DPT}. Danas praksu razvija i unaprjeđuje uglavnom zajednica web programera koji ju, zbog jednostavnosti isporuke programske podrške za web poslužitelje, mogu jednostavno implementirati.
 
-Isporuka programske podrške za web poslužitelje ima značajnu prednost u usporedbi s ostalom programskom potporom. Najvažnije, web aplikacije nije potrebno instalirati na uređaj. Korisnik promjene vidi čim su one dodane na poslužitelju. Dodatno, razvojni tim može direktno upravljati koju će verziju programske potpore korisnik vidjeti. U usporedbi, isporuka iOS aplikacija prvo mora proći provjeru Apple tima te zatim korisnik mora novu verziju preuzeti na uređaj.
+Isporuka programske podrške za web poslužitelje ima značajnu prednost u usporedbi s ostalom programskom potporom. Najvažnije, web aplikacije nije potrebno instalirati na uređaj. Korisnik promjene vidi čim su one dodane na poslužitelju. Dodatno, razvojni tim može direktno upravljati koju će verziju programske potpore korisnik vidjeti. U usporedbi s tim, isporuka iOS aplikacija prvo mora proći provjeru Appleovog tima te korisnik zatim mora novu verziju preuzeti na uređaj.
 
-\textit{Intercom}, novonastala kompanije bazirana u Irskoj je proces kontinuirane isporuke implementirala krajem 2012. godine. Uz automatizirano obavljanje isporuke, kompanija u sklopu procesa implementira i brojne složeniji funkcionalnosti. Na primjer, kompanija isporuku obavlja u fazama. Umjesto isporuke nove promjene svim korisnicima, promjene vidi samo manji postotak iskusnih korisnika. U blogu objavljenom 2016. godine bilježi stabilan porast broja dnevnih isporuka promjenu od produkcija. Od ispod 10 isporuka u 2012. godini, do preko 80 isporuka u 2015. godini. Slika \ref{fig:IntercomShipsPerDay} prikazuje broj dnevnih isporuka promjena u produkciju kompanije \textit{Intercom}\citep{intercom:cd}.
+Intercom, novonastala kompanija bazirana u Irskoj proces kontinuirane isporuke implementirala je krajem 2012. godine. Uz automatizirano obavljanje isporuke, kompanija u sklopu procesa implementira i brojne složenije funkcionalnosti. Na primjer, kompanija isporuku obavlja u fazama. Umjesto isporuke nove promjene svim korisnicima, promjene vidi samo manji postotak iskusnih korisnika. U blogu objavljenom 2016. godine bilježi se stabilan porast broja dnevnih isporuka za promjenu od produkcija. Od ispod 10 isporuka u 2012. godini do preko 80 isporuka u 2015. godini. Slika \ref{fig:IntercomShipsPerDay} prikazuje broj dnevnih isporuka promjena u produkciju kompanije Intercom\citep{intercom:cd}.
 
 \begin{figure}
 \centering
@@ -1044,11 +1044,11 @@ Isporuka programske podrške za web poslužitelje ima značajnu prednost u uspor
 \label{fig:IntercomShipsPerDay}
 \end{figure}
 
-Na žalost, praksa je puno slabije zastupljena u razvoju programske potpore za iOS operacijski sustav. Postoji nekoliko neslužbenih objava u kojima članovi zajednici raspravljaju o procesu automatizacije, međutim navedeni su procesi značajno reducirani u usporedbi s procesima koji se kriste u razvoju programske potpore za web platformu.
+Nažalost, praksa je puno slabije zastupljena u razvoju programske potpore za iOS operacijski sustav. Postoji nekoliko neslužbenih objava u kojima članovi zajednici raspravljaju o procesu automatizacije, međutim navedeni su procesi značajno reducirani u usporedbi s procesima koji se koriste u razvoju programske potpore za web platformu.
 
 \section{Tipovi isporuke}
 
-Ovisno o potrebama tima, kontinuirana isporuka može automatsku isporuku obavljati i za do desetak različitih verzija programske potpore. Navedeni broj verzija se koristi zbog osiguranja kvalitete programske potpore. Nema smisla tek razvijenu funkcionalnost objaviti direktno krajnjim korisnicima. Funkcionalnost je prvo potrebno testirati te osigurati njenju spremnost za objavu u produkciji. Umjesto direktne isporuke nove verzije u produkciju, ista prolazi nekoliko stupnjeva provjere ispravnosti. Drugim riječima, verzija se isporučuje korištenjem nekoliko različitih procesa isporuke. U sklopu rada isporučujem četiri verzije programske potpore: produkcijsku, pripremnu, testnu i razvojnu verziju. Tipovi i redoslijed isporuke verzija je prikazana na slici \ref{fig:DeploymentStages}.
+Ovisno o potrebama tima, kontinuirana isporuka može automatsku isporuku obavljati i za desetak različitih verzija programske potpore. Navedeni broj verzija koristi se zbog osiguranja kvalitete programske potpore. Nema smisla tek razvijenu funkcionalnost objaviti direktno krajnjim korisnicima. Funkcionalnost je prvo potrebno testirati te osigurati njezinu spremnost za objavu u produkciji. Umjesto direktne isporuke nove verzije u produkciju, ista prolazi nekoliko stupnjeva provjere ispravnosti. Drugim riječima, verzija se isporučuje korištenjem nekoliko različitih procesa isporuke. U sklopu rada isporučujem četiri verzije programske potpore: produkcijsku, pripremnu, testnu i razvojnu verziju. Tipovi i redoslijed isporuke verzija prikazani su na slici \ref{fig:DeploymentStages}.
 
 \begin{figure}[h]
 \centering
@@ -1059,22 +1059,22 @@ Ovisno o potrebama tima, kontinuirana isporuka može automatsku isporuku obavlja
 
 Razvojna verzija programske potpore prikazuje najnovije stanje aplikacije. Razvojna verzija sadrži najnovije implementirane izmjene koje još nisu nužno prošle proces osiguranja kvalitete. Ovu verziju aplikacije koriste članovi tima za provjeru razvijenih funkcionalnost.
 
-Testnu aplikaciju koristi tim za osiguranje kvalitete kako bi osigurao ispravnost novo razvijenih funkcionalnosti. Kako bi osigurao ispravnost tim provjerava sve izmjene ostvare od zadnje verzije aplikacije. Zbog navedenog je poželjno da je broj izmjena između verzija mali ali dobro dokumentiran. Verzija ovog tipa aplikacije se osvježava otprilike jednom tjedno.
+Testnu aplikaciju koristi tim za osiguranje kvalitete kako bi osigurao ispravnost novo razvijenih funkcionalnosti. Kako bi osigurao ispravnost, tim provjerava sve izmjene ostvarene od zadnje verzije aplikacije. Zbog navedenog poželjno je da je broj izmjena između verzija manji, ali dobro dokumentiran. Verzija ovog tipa aplikacije osvježava se otprilike jednom tjedno.
 
-Pripremna verzija aplikacije služi za završnu provjeru aplikacije koja se izdaje u produkciju. Za razliku od testne verzije aplikacije koja sadrži funkcionalnosti korištenje samo u testiranju, pripremna aplikacija mora biti identična onoj koja se želi isporučiti. Jedino na ovaj način možemo provjeriti ispravnost aplikacije u produkcijskom okruženju. Verzija aplikacije se kreira jednom kad tim odluči objaviti novu produkcijsku verziju.
+Pripremna verzija aplikacije služi za završnu provjeru aplikacije koja se izdaje u produkciju. Za razliku od testne verzije aplikacije koja sadrži funkcionalnosti korištenje samo u testiranju, pripremna aplikacija mora biti identična onoj koja se želi isporučiti. Jedino se na ovaj način može provjeriti ispravnost aplikacije u produkcijskom okruženju. Verzija aplikacije kreira se jednom kada tim odluči objaviti novu produkcijsku verziju.
 
-Produkcijska aplikacija je aplikacija trenutno dostupna korisniku. Učestalost isporuke ovisi o timu ali je se zbog Appleovog procesa provjere gotovo nikad ne obavlja češće od jednom tjedno.
+Produkcijska aplikacija je aplikacija trenutno dostupna korisniku. Učestalost isporuke ovisi o timu, ali zbog Appleovog procesa provjere gotovo se nikad ne obavlja češće od jednom tjedno.
 
-Iz navedenog je jasno da trenutan proces ne slijedi principe kontinuirane isporuke. Spor proces izdavanja promjena u produkciju rezultira većim brojem ljudskih pogrešaka i lošijim iskustvom korisnika. Zbog navedenog automatizacijom procesa ne samo da pokušavam smanjiti vrijeme koje tim ulaže u isporuku, već i smanjiti period između dvije isporuke.
+Iz navedenog je jasno da trenutan proces ne slijedi principe kontinuirane isporuke. Spor proces izdavanja promjena u produkciju rezultira većim brojem ljudskih pogrešaka i lošijim iskustvom korisnika. Zbog navedenog, automatizacijom procesa ne samo da pokušavam smanjiti vrijeme koje tim ulaže u isporuku, već i smanjiti period između dvije isporuke.
 
 
 \section{Odabir tipa isporuke}
 
-Međutim, kako odrediti koju verziju repozitorija objaviti kojim tipom isporuke? Kako bi istovremeno implementirao isporuku različitih verzija aplikacije te zadržao fleksibilnost razvoja koristm modificirani Gitflow tok rada.
+Međutim, pitanje je kako odrediti koju verziju repozitorija objaviti kojim tipom isporuke? Kako bih istovremeno implementirao isporuku različitih verzija aplikacije te zadržao fleksibilnost razvoja, koristm modificirani Gitflow tok rada.
 
-Standardni Gitflow proces sadrži tri grane: glavnu, razvojnu i pripremnu granu. Glavna grana \eng{master branch} predstavlja trenutno stanje programske potpore u produkciji. Svaka verzija ove grane je obilježena oznakom koja sadrži ljudski čitljivu verziju aplikacije i popis promjena obavljenih od prošle verzije. Razvojna grana \eng{develop branch} predstavlja trenutno stanje aplikacije u razvoju. Objava promjena u produkciju se obavlja korištenjem pomoćne pripremne grane koja se kreira iz razvojne grane. Nakon provjere ispravnosti promjena iste se dodaju glavnoj grani i time objavljuju u produkciju. Nove funkcionalnosti se razvijaju u zasebnoj grani koja se za potrebe razvoja funkcionalnosti kreira iz razvojne grane te se po završetku razvoja u nju spaja. Pregled cijelog procesa je dostupan u odlomku \ref{header:Implementacija_verzioniranja}.
+Standardni Gitflow proces sadrži tri grane: glavnu, razvojnu i pripremnu granu. Glavna grana \eng{master branch} predstavlja trenutno stanje programske potpore u produkciji. Svaka verzija ove grane je obilježena oznakom koja sadrži ljudski čitljivu verziju aplikacije i popis promjena obavljenih od prošle verzije. Razvojna grana \eng{develop branch} predstavlja trenutno stanje aplikacije u razvoju. Objava promjena u produkciju obavlja se korištenjem pomoćne pripremne grane koja se kreira iz razvojne grane. Nakon provjere ispravnosti promjena, one se dodaju glavnoj grani i time objavljuju u produkciju. Nove funkcionalnosti razvijaju se u zasebnoj grani koja se za potrebe razvoja funkcionalnosti kreira iz razvojne grane te se po završetku razvoja u nju spaja. Pregled cijelog procesa dostupan je u odlomku \ref{header:Implementacija_verzioniranja}.
 
-Uz navedene grane koristim i testnu granu koja služi za održavanje i isporuku testne aplikacije. Kako bi olakšali i poboljšali proces testiranja, korisno je testne verzije objavljivati sistematizirano. Nova testna verzija se kreira spajanjem svih verzija dodanih razvojnoj grani od zadnjeg kreiranja testne verzije. Sve promjene dodane u sklopu ove testne verzije je potrebno jasno specficirati. Greške koje se otkriju u sklopu testiranja se otklanjaju na testnoj grani te se po završetku testiranja spajaju s razvojnom granom. Slika \ref{fig:GitFlowCD} prikazuje proces automatizirane isporuke korištenjem \textit{gitflow} procesa.
+Uz navedene grane koristim i testnu granu koja služi za održavanje i isporuku testne aplikacije. Kako bi se olakšali i poboljšali procesi testiranja, korisno je testne verzije objavljivati sistematizirano. Nova testna verzija kreira se spajanjem svih verzija dodanih razvojnoj grani od zadnjeg kreiranja testne verzije. Sve promjene dodane u sklopu ove testne verzije potrebno je jasno specficirati. Greške koje se otkriju u sklopu testiranja otklanjaju se na testnoj grani te se pri završetku testiranja spajaju s razvojnom granom. Slika \ref{fig:GitFlowCD} prikazuje proces automatizirane isporuke korištenjem \textit{gitflow} procesa.
 
 \begin{figure}[t!]
 \centering
@@ -1083,7 +1083,7 @@ Uz navedene grane koristim i testnu granu koja služi za održavanje i isporuku 
 \label{fig:GitFlowCD}
 \end{figure}
 
-Sada je vrlo jednostavno odrediti koji tip isporuke iskoristiti za koju verziju repozitorija. Ukoliko se izmjena nalazi na razvojnoj grani potrebno je osvježiti razvojnu verziju aplikacije a ako se izmjena nalazi na testnoj grani potrebno je osvježiti testnu verziju.
+Sada je vrlo jednostavno odrediti koji tip isporuke iskoristiti za koju verziju repozitorija. Ako se izmjena nalazi na razvojnoj grani, potrebno je osvježiti razvojnu verziju aplikacije, a ako se izmjena nalazi na testnoj grani, potrebno je osvježiti testnu verziju.
 
 \begin{figure}[b!]
 \centering
@@ -1092,7 +1092,7 @@ Sada je vrlo jednostavno odrediti koji tip isporuke iskoristiti za koju verziju 
 \label{fig:HotfixGitflow}
 \end{figure}
 
-U praksi se često javljaju novi, neočekivani zahtjevi. Jedan od primjera ovog tipa zahtjeva je otkrivanje pogreške u produkcijskoj verziji koju je odmah potrebno ukloniti. Budući da razvojna grana sadrži promjene koje još nisu objavljene na produkciji, grešku nije moguće otkloniti sljedeći standardnu praksu. Međutim, moguće je granu za otklanjanje pogreške kreirati direktno iz glavne grane. Nakon otklanjanja pogreške i testiranja, promjena se spaja s glavnom granom čime se ista objavljuje u produkciju i s radnom granom. Primjer otklanjanja greške u produkciji se nalazi na slici \ref{fig:HotfixGitflow}. Važno je prilikom pojave zahtjeva ovog tipa iskoristiti postojeće procese isporuke.
+U praksi se često javljaju novi, neočekivani zahtjevi. Jedan od primjera ovog tipa zahtjeva jest otkrivanje pogreške u produkcijskoj verziji koju je odmah potrebno ukloniti. Budući da razvojna grana sadrži promjene koje još nisu objavljene na produkciji, grešku nije moguće otkloniti slijedeći standardnu praksu. Međutim, moguće je granu za otklanjanje pogreške kreirati direktno iz glavne grane. Nakon otklanjanja pogreške i testiranja, promjena se spaja s glavnom granom čime se ista objavljuje u produkciju i s radnom granom. Primjer otklanjanja greške u produkciji nalazi se na slici \ref{fig:HotfixGitflow}. Važno je prilikom pojave zahtjeva ovog tipa iskoristiti postojeće procese isporuke.
 
 Skripta \ref{listing:git_branch_creation} prikazuje proces kreiranja potrebnih grana.
 
@@ -1109,9 +1109,9 @@ git push --set-upstream origin test
 
 \section{Priprema projekta za automatsku isporuku}
 
-Uz različiti proces isporuke, različite verzije aplikacije mogu zahtijevati i različitu konfiguraciju projekta. Na primjer, standardno je testnoj verziji aplikacije dodati funkcionalnosti koje olakšavaju testiranje a nisu dostupne stvarnom korisniku. Dodatno, kako bi na isti uređaj mogli imati više različitih verzija aplikacije, navedene verzije se moraju na neki način razlikovati. iOS operacijski sustav aplikacije razlikuje na temelju identifikatora aplikacije \eng{Bundle Identifier}.
+Uz različite procese isporuke, različite verzije aplikacije mogu zahtijevati i različitu konfiguraciju projekta. Na primjer, standardno je testnoj verziji aplikacije dodati funkcionalnosti koje olakšavaju testiranje, a nisu dostupne stvarnom korisniku. Dodatno, kako bi se na istom uređaju moglo imati više različitih verzija aplikacije, navedene se verzije moraju na neki način razlikovati. iOS operacijski sustav aplikacije to razlikuje na temelju identifikatora aplikacije \eng{Bundle Identifier}.
 
-Navedeni tipovi funkcionalnosti se implementiraju konfiguracijom postavka projekta. Svaki cilj iOS projekta sadrži najmanju jednu konfiguraciju projekta \eng{configuration}. Konfiguracija omogućava modifikaciju velikog broja opcija definiranih u procesu kreiranja projekta. Konfiguracija je pohranjena u \verb|.xcodeproj| datoteci zajedno s ostatkom informacija o projektu koja nije pogodna za ručnu izmjenu. Datoteku je najlakše modificirati korištenjem Xcode aplikacije koja konfiguraciju prikazuje u jednostavnom i intuitivnom grafičkom sučelju. Slika \ref{fig:XcodeConfiguration} prikazuje dio opcija konfiguracije prikazanih pomoću Xcode alata.
+Navedeni se tipovi funkcionalnosti implementiraju konfiguracijom postavka projekta. Svaki cilj iOS projekta sadrži najmanje jednu konfiguraciju projekta \eng{configuration}. Konfiguracija omogućava modifikaciju velikog broja opcija definiranih u procesu kreiranja projekta. Konfiguracija je pohranjena u \verb|.xcodeproj| datoteci zajedno s ostatkom informacija o projektu koja nije pogodna za ručnu izmjenu. Datoteku je najlakše modificirati korištenjem Xcode aplikacije koja konfiguraciju prikazuje u jednostavnom i intuitivnom grafičkom sučelju. Slika \ref{fig:XcodeConfiguration} prikazuje dio opcija konfiguracije prikazanih pomoću Xcode alata.
 
 \begin{figure}
 \centering
@@ -1120,7 +1120,7 @@ Navedeni tipovi funkcionalnosti se implementiraju konfiguracijom postavka projek
 \label{fig:XcodeConfiguration}
 \end{figure}
 
-Dodatno, projekt može sadržavati više od jedne konfiguracije. Standardno se koristi jedna glavna i više specifičnih konfiguracija. Glavna konfiguracija definira standardna pravila za cijeli projekt. Specifične konfiguracije nasljeđuju glavnu konfiguraciju, izmijenjuju željene postavke te se koriste za konfiguraciju operacija projekta. Slika \ref{fig:XcodeConfigurationCreation} prikazuje proces kreiranja specifične konfiguracije. Kreiranja konfiguracije se ostvaruje dupliciranjem postojećem konfiguracije. Pokrenuti projekt korištenjem Xcode aplikacije te odabrati željenu shemu. U sekciji \verb|Info| te u odjeljku \verb|Configurations| odabirom opcije \verb|Plus| i željene postojeće konfiguracije kreirati konfiguraciju.
+Također, projekt može sadržavati više od jedne konfiguracije. Standardno se koristi jedna glavna i više specifičnih konfiguracija. Glavna konfiguracija definira standardna pravila za cijeli projekt. Specifične konfiguracije nasljeđuju glavnu konfiguraciju, izmijenjuju željene postavke te se koriste za konfiguraciju operacija projekta. Slika \ref{fig:XcodeConfigurationCreation} prikazuje proces kreiranja specifične konfiguracije. Kreiranje konfiguracije ostvaruje se dupliciranjem postojeće konfiguracije. Potrebno je okrenuti projekt korištenjem Xcode aplikacije te odabrati željenu shemu. U sekciji \verb|Info| te u odjeljku \verb|Configurations| odabirom opcije \verb|Plus| i željene postojeće konfiguracije treba kreirati konfiguraciju.
 
 \begin{figure}[b!]
 \centering
@@ -1129,7 +1129,7 @@ Dodatno, projekt može sadržavati više od jedne konfiguracije. Standardno se k
 \label{fig:XcodeConfigurationCreation}
 \end{figure}
 
-Modifikacija postavka pomoću specifične konfiguracije je jednostavna ali je teško pronaći sve specificirane postavke. Dodatno, vrlo je teško pratiti promjenu postavka budući da se iste dodaju \verb|.xcodeproj| datoteci. Zbog navedenog se u praksi često koriste zasebne tekstualne \verb|.xcconfig| datoteke koje specificiraju samo željene opcije. U sklopu rada kreiram četiri \verb|.xcconfig| datoteke. Sadržaj datoteka je prikazan u skripti \ref{listing:xcconfig}. Naredba \#1 dodaje konfiguraciju CocoaPods projekta novo kreiranoj konfiguraciji dok naredba \#2 postavlja vrijednost identifikatora aplikacije. Testna konfiguracija sadrži dodatnu \verb|IS_TEST| opciju koja se koristi za dodavanje testnih funkcionalnosti.
+Modifikacija postavki pomoću specifične konfiguracije jednostavna je, ali je teško pronaći sve specificirane postavke. Isto tako, vrlo je teško pratiti promjenu postavki budući da se one dodaju \verb|.xcodeproj| datoteci. Zbog navedenog se u praksi često koriste zasebne tekstualne \verb|.xcconfig| datoteke koje specificiraju samo željene opcije. U sklopu rada kreiram četiri \verb|.xcconfig| datoteke. Sadržaj datoteka prikazan je u skripti \ref{listing:xcconfig}. Naredba \#1 dodaje konfiguraciju CocoaPods projekta novokreiranoj konfiguraciji, dok naredba \#2 postavlja vrijednost identifikatora aplikacije. Testna konfiguracija sadrži dodatnu \verb|IS_TEST| opciju koja se koristi za dodavanje testnih funkcionalnosti.
 
 \begin{lstlisting}[caption=Sadržaj .xcconfig datoteke, label=listing:xcconfig]
 #include "Pods/Target Support Files/Pods-Diplomski_rad/Pods-Diplomski_rad.debug.xcconfig" #1
@@ -1139,7 +1139,7 @@ PRODUCT_BUNDLE_IDENTIFIER = com.rep.Diplomski-rad.{sufix} #2
 IS_TEST = 1 #3
 \end{lstlisting}
 
-Kreirane \verb|.xcconfig| datoteke je potrebno dodati konfiguraciji. U sekciji \verb|Info| te u odjeljku \verb|Configurations| odabrati željenu konfiguraciju te za sve ciljeve iskoristiti istu \verb|.xcconfig| datoteku. Slika \ref{fig:XcodeXCConfigSet} prikazuje dodavanje datoteka razvojnoj konfiguraciji.
+Kreirane \verb|.xcconfig| datoteke potrebno je dodati konfiguraciji. U sekciji \verb|Info| te u odjeljku \verb|Configurations| treba odabrati željenu konfiguraciju te za sve ciljeve iskoristiti istu \verb|.xcconfig| datoteku. Slika \ref{fig:XcodeXCConfigSet} prikazuje dodavanje datoteka razvojnoj konfiguraciji.
 
 \begin{figure}
 \centering
@@ -1151,27 +1151,27 @@ Kreirane \verb|.xcconfig| datoteke je potrebno dodati konfiguraciji. U sekciji \
 
 \section{Implementacija kontinuirane isporuke}
 
-Za dovršenje implementacije je potrebno isporuku pokrenuti korištenjem bota. Prvo je za svaki tip isporuke potrebno kreirati zaseban bot. Najjednostavnije je duplicirati već postojeći bot te promijeniti na kojoj bot pokreće integraciju. Slika \ref{fig:MultipleBots} prikazuje botove korištene u radu.
+Za dovršenje implementacije potrebno je isporuku pokrenuti korištenjem bota. Prvo je za svaki tip isporuke potrebno kreirati zaseban bot. Najjednostavnije je duplicirati već postojeći bot te promijeniti na kojoj isporuci bot pokreće integraciju. Slika \ref{fig:MultipleBots} prikazuje botove korištene u radu.
 
 \begin{figure}[b!]
 \centering
 \includegraphics[scale=0.7]{MultipleBots}
-\caption{Novo kreirani botovi}
+\caption{Novokreirani botovi}
 \label{fig:MultipleBots}
 \end{figure}
 
-Nakon kreiranja botova je potrebno promijeniti konfiguraciju koju botovi koriste te pozvati ispravan proces isporuke.
+Nakon kreiranja botova potrebno je promijeniti konfiguraciju koju botovi koriste te pozvati ispravan proces isporuke.
 
-Konfiguraciju koju projekt koristi je moguće podesiti u postavkama bota. Odabrati opciju \textit{Edit Bot... -> Build Configurations} te za svaki bot odabrati odgovarajuću konfiguraciju.
+Konfiguraciju koju projekt koristi moguće je prilagoditi u postavkama bota. Treba odabrati opciju \textit{Edit Bot... -> Build Configurations} te za svaki bot odabrati odgovarajuću konfiguraciju.
 
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{BotConfiguration}
-\caption{Odabir konfiguracije koju bot koristi}
+\caption{Odabir konfiguracije koju koristi bot}
 \label{fig:BotConfiguration}
 \end{figure}
 
-Isporuku ostvarujem korištenjem fastlane staza definiraniranih u prošlom poglavlju. Stazu je potrebno pokrenuti po završetku obavljanja integracije za što koristim fazu koja se obavlja nakon integracije \eng{Post-integration script}. Odabrati opciju \textit{Edit Bot... -> Triggers} te dodati novu fazu. Odabrati opciju pokretanja jedino u slučaju uspješnog obavljanja integracije. Svaki bot treba pozivati stazu koja implementira željeni tip isporuke. Skripta \ref{listing:bot_fastlane_call} prikazuje sadržaj faze.
+Isporuku ostvarujem korištenjem fastlane staza definiraniranim u prošlom poglavlju. Stazu je potrebno pokrenuti pri završetku obavljanja integracije za što koristim fazu koja se obavlja nakon integracije \eng{Post-integration script}. Potrebno je odabrati opciju \textit{Edit Bot... -> Triggers} te dodati novu fazu. Nakon toga, dabrati opciju pokretanja jedino u slučaju uspješnog obavljanja integracije. Svaki bot treba pozivati stazu koja implementira željeni tip isporuke. Skripta \ref{listing:bot_fastlane_call} prikazuje sadržaj faze.
 
 \begin{lstlisting}[caption=Sadržaj faze nakon obavljanja isporuke, label=listing:bot_fastlane_call]
 #!/bin/bash
@@ -1190,11 +1190,11 @@ Naredba \#1 navigira proces u ispravni direktorij, naredba \#2 dodaje potrebne p
 \begin{figure}[b!]
 \centering
 \includegraphics[scale=0.3]{CrashlyticsEmail}
-\caption{Crashlytics e-mail poruka izdana nakon objave nove verzije aplikacije}
+\caption{Crashlytics poruka e-pošte izdana nakon objave nove verzije aplikacije}
 \label{fig:CrashlyticsEmail}
 \end{figure}
 
-Kreiranjem novog stanja repozitorija na razvojnoj, testnoj, pripremnoj i glavnoj grani se pokreće proces integracije i isporuke korištenjem navedenog stanja. Integracija se sastoji od izgradnje, testiranja i osiguranja kvalitete nove verzije aplikacije. Ukoliko se svi procesi ispravno izvrše započinje proces isporuke koji odgovara grani na kojoj je stanje kreirano. Glavna verzija aplikacije se objavljuje na App Store platformi dok se ostale verzije aplikacije objavljuju na Crashlytics platformi.
+Kreiranjem novog stanja repozitorija na razvojnoj, testnoj, pripremnoj i glavnoj grani pokreće se proces integracije i isporuke korištenjem navedenog stanja. Integracija se sastoji od izgradnje, testiranja i osiguranja kvalitete nove verzije aplikacije. Ako se svi procesi ispravno izvrše, započinje proces isporuke koji odgovara grani na kojoj je stanje kreirano. Glavna verzija aplikacije objavljuje se na App Store platformi, dok se ostale verzije aplikacije objavljuju na Crashlytics platformi.
 
 Navedeni se proces odvija u potpunosti automatizirano.
 
@@ -1205,27 +1205,27 @@ Navedeni se proces odvija u potpunosti automatizirano.
 \label{fig:Beta}
 \end{figure}
 
-Novu verziju aplikacije je moguće preuzeti s Crashlytics platforme desetak minuta nakon kreiranja novog stanja repozitorija. Svaka osoba dodana kao tester aplikacije dobiva e-mail poruku pomoću koje može preuzeti aplikaciju. Na željenom mobilnom uređaju otvoriti dobivenu e-mail poruku te odabirom opcije \verb|Let Me In| započeti proces preuzimanja nove verzije aplikacije. Slika \ref{fig:CrashlyticsEmail} prikazuje dobivenu e-mail poruku.
+Novu verziju aplikacije moguće je preuzeti s Crashlytics platforme desetak minuta nakon kreiranja novog stanja repozitorija. Svaka osoba dodana kao tester aplikacije dobiva poruku e-pošte pomoću koje može preuzeti aplikaciju. Na željenom mobilnom uređaju treba otvoriti dobivenu poruku te odabirom opcije \verb|Let Me In| započeti proces preuzimanja nove verzije aplikacije. Slika \ref{fig:CrashlyticsEmail} prikazuje dobivenu poruku e-pošte.
 
-Instalacija aplikacija objavljenih na Crashlytics platformi se obavlja pomoću aplikacije \textit{Beta}. Ako aplikacija već nije  instalirana na mobilnom uređaju, opcija pokreće proces instalacije i konfiguracije navedene aplikacije. Slika \ref{fig:Beta} prikazuje izgled ekrana aplikacije Beta s kojeg je moguće preuzeti objavljne aplikacije. Odabirom opcije \verb|Install| se pokreće instalacija nanovije verzije aplikacije. Moguće je preuzeti i neku od starijih verzija.
+Instalacija aplikacija objavljenih na Crashlytics platformi obavlja se pomoću aplikacije \textit{Beta}. Ako aplikacija već nije instalirana na mobilnom uređaju, opcija pokreće proces instalacije i konfiguracije navedene aplikacije. Slika \ref{fig:Beta} prikazuje izgled ekrana aplikacije Beta s kojeg je moguće preuzeti objavljene aplikacije. Odabirom opcije \verb|Install| pokreće se instalacija najnovije verzije aplikacije. Moguće je preuzeti i neku od starijih verzija.
 
-S druge strane, verzija objavljena na App Store platformi prvo mora proći Appleovu provjeru. Ako provjera uspješno završi aplikaciju je potrebno objaviti korištenjem iTunes Connect platforme. Navedeni proces trenutno nije moguće automatizirati. Nakon objave je nova verzija vidljiva na App Store platformi te se već instalirane aplikacije samostalno osvježavaju.
+S druge strane, verzija objavljena na App Store platformi prvo mora proći Appleovu provjeru. Ako provjera uspješno završi, aplikaciju je potrebno objaviti korištenjem iTunes Connect platforme. Navedeni proces trenutno nije moguće automatizirati. Nakon objave nova je verzija vidljiva na App Store platformi te se već instalirane aplikacije samostalno osvježavaju.
 
 \chapter{Zaključak}
 
-Kontinuirana isporuka je tek u svojim začecima u iOS zajednici. Iako praksa dobiva sve više pozornosti, trenutno ne postoji dovoljna potpora zajednice i vodečih kompanija. Implementcija čak i najosnovnih funkcionalnosti je teška, zahtijeva kombinaciju nekoliko različitih alata te sadrži veliki broj pokušaja i pogreška. Dodatnu, u praksi situacija nikad nije ovako jednostavna. Gotovo svaki tim definira vlastiti način rada a izuzeci se koriste čak i u najbolje organiziranim timovima.
+Kontinuirana isporuka tek je u svojim začecima u iOS zajednici. Iako praksa dobiva sve više pozornosti, trenutno ne postoji dovoljna potpora zajednice i vodećih kompanija. Implementcija čak i najosnovnih funkcionalnosti teška je, zahtijeva kombinaciju nekoliko različitih alata te sadrži veliki broj pokušaja i pogreška. Ujedno, u praksi situacija nikad nije ovako jednostavna. Gotovo svaki tim definira vlastiti način rada, a izuzeci se koriste čak i u najbolje organiziranim timovima.
 
-Iako je implementacija zahtijevna, benefiti kontinuirane isporuke značajno olakšava razvoj. Automatska isporuke novih promjena u potpunosti eliminira potrebnu obavljanja ručne isporuke. Ručna isporuke iziskuje utrošak ljudskih resursa. Ovisno o timu i zahtjevima razvoja, proces može zauzeti i do desetak posto ukupnog vremena. Utrošak je posebno visok u timovima koji koriste agilni pristup razvoju. Ovaj pristup učestalom isporukom i kominikacijom s klijentom nastoji osigurati izgradnju ispravnog produkta, ali upravo navedena učestala isporuka zahtijeva utošak značajnog dijela vremena. Kontinuirana isporuka u potpunosti eliminira ovaj zadatak.
+Iako je implementacija zahtijevna, benefiti kontinuirane isporuke značajno olakšava razvoj. Automatska isporuka novih promjena u potpunosti eliminira potrebnu obavljanja ručne isporuke. Ručna isporuka iziskuje utrošak ljudskih resursa. Ovisno o timu i zahtjevima razvoja, proces može zauzeti i do desetak posto ukupnog vremena. Utrošak je posebno visok u timovima koji koriste agilni pristup razvoju. Ovaj pristup učestalom isporukom i komunikacijom s klijentom nastoji osigurati izgradnju ispravnog produkta, ali upravo navedena učestala isporuka zahtijeva utrošak značajnog dijela vremena. Kontinuirana isporuka u potpunosti eliminira ovaj zadatak.
 
-Najvažnije, korištenje kontinuirane isporuke gotovo upoče ne mijenja postoječi proces razvoja programske potpore. Proces jednostavno verziju već integriranu procesom kontinuirane integracije objavljuje željenim tipom isporuke. Jedino što je potrebno definirati je koju verziju repozitorija objaviti kojim tipom isporuke. U sklopu rada koristim Gitflow tok rada ali je isto moguće ostvariti na više načina, na primjer označavanjem postoječih verzija repozitorija.
+Najvažnije, korištenje kontinuirane isporuke gotovo uopće ne mijenja postojeći proces razvoja programske potpore. Proces jednostavno verziju, već integriranu procesom kontinuirane integracije, objavljuje željenim tipom isporuke. Jedino što je potrebno definirati jest koju verziju repozitorija objaviti kojim tipom isporuke. U sklopu rada koristim Gitflow tijek rada, ali je isto moguće ostvariti na više načina, na primjer označavanjem postojećih verzija repozitorija.
 
-Glavni cilj kontinuirane isporuke je automatizacijom isporuke povečati njenu učestalost i time poboljšati kvalitu produkta. Iako automatizacija procesa omogučava češću objavu, potrebno je izmijeniti i cijeli pristup razvoju. Trenutno je vrlo rijetko verziju iOS aplikacije osvježiti češće od jednom tjedno čak i u timovima s velikim brojem članova. Navedenom problemu dijelom pridonosi Appleov proces provjere novih verzija, ali dijelom i nerazumijevanje razvojnog tima. Razvijene funkcionalnosti se nastoje grupirati i objaviti zajedno, umjesto njihove pojedinačne isporuke. Vođen primjerom web razvoja je za očekivati da će se navedeni problem riješiti sam od sebe. Olakšavanjem isporuke očekujem postupno povečanje učestalosti isporuke slično brojkama zabilježenim u zadnjem desetlječu razvoja web aplikacija.
+Glavni cilj kontinuirane isporuke jest automatizacijom isporuke povećati njezinu učestalost i time poboljšati kvalitetu produkta. Iako automatizacija procesa omogućava češću objavu, potrebno je izmijeniti i cijeli pristup razvoju. Trenutno je vrlo rijetko osvježavanje verzije iOS aplikacije češće od jednom tjedno, čak i u timovima s velikim brojem članova. Navedenom problemu dijelom pridonosi Appleov proces provjere novih verzija, ali dijelom i nerazumijevanje razvojnog tima. Razvijene funkcionalnosti nastoje se grupirati i objaviti zajedno, umjesto njihove pojedinačne isporuke. Vođen primjerom web razvoja, za očekivati je da će se navedeni problem riješiti sam od sebe. Olakšavanjem isporuke očekujem postupno povećanje učestalosti isporuke, slično brojkama zabilježenim u zadnjem desetljeću razvoja web aplikacija.
 
-U sklopu rada sam implementirao kontinuiranu isporuku za programsku potporu za iOS operacijski sustav. Kontinuiranu integraciju i automatsko pokretanje isporuke sam implementirao korištenjem aplikacije Xcode Servera, dok sam isporuku implementirao korištenjem alata fastlane. Alat implementira isporuku četiri verzije aplikacije uz objavu na App Store i Crashlytics platformu.
+U sklopu rada implementirao sam kontinuiranu isporuku za programsku potporu za iOS operacijski sustav. Kontinuiranu integraciju i automatsko pokretanje isporuke implementirao sam korištenjem aplikacije Xcode Servera, dok sam isporuku implementirao korištenjem alata fastlane. Alat implementira isporuku četiriju verzija aplikacije uz objavu na App Store i Crashlytics platformu.
 
-S druge strane, za alat Xcode Server imam puno manje pohvala. Glavna mana alata proizlazi iz činjenice da je on namjenjen za jednostavnu implementaciju kontinuirane za iOS operacijski sustav. Navedena jednostavnost značajno otežava proširenje osnovnog seta funkcionalnosti. Osnovan problem leži u sučelju alata koje je za razliku večine sličnih alat grafičko. Navedeno značajno otžava proces kreiranja procesa buduči da je sve korake potrebno obaviti ručno.
+S druge strane, za alat Xcode Server imam puno manje pohvala. Glavna mana alata proizlazi iz činjenice da je on namijenjen za jednostavnu implementaciju kontinuirane za iOS operacijski sustav. Navedena jednostavnost značajno otežava proširenje osnovnog seta funkcionalnosti. Osnovni problem leži u sučelju alata koje je za razliku većine sličnih alata grafičko. Navedeno također uvelike otežava proces kreiranja procesa budući da je sve korake potrebno obaviti ručno.
 
-Prije prihvačanja kontinuirane isporuke kao sastavnog dijela razvoja je potrebno olakšati proces implementacije.
+Prije prihvaćanja kontinuirane isporuke kao sastavnog dijela razvoja potrebno je olakšati proces implementacije.
 
 
 
@@ -1265,6 +1265,9 @@ The result of the thesis is automated integration and delivery of every new repo
 Continuous Deployment, Continuous Delivery, Continuous Integration, Xcode Server, fastlane
 
 \end{abstract}
+
+
+
 
 
 \begin{appendices}
