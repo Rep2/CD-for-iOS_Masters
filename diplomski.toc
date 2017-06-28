@@ -1,56 +1,56 @@
 \select@language {croatian}
 \contentsline {chapter}{\numberline {1}Uvod}{1}
 \contentsline {chapter}{\numberline {2}Kontinuirana integracija}{3}
-\contentsline {section}{\numberline {2.1}Priprema}{5}
-\contentsline {subsection}{\numberline {2.1.1}Xcode Server}{5}
-\contentsline {subsection}{\numberline {2.1.2}Homebrew}{8}
-\contentsline {section}{\numberline {2.2}Izgradnja}{9}
-\contentsline {subsection}{\numberline {2.2.1}Verzioniranje}{10}
-\contentsline {paragraph}{Uvod u git}{12}
-\contentsline {paragraph}{Tijek verzioniranja}{15}
-\contentsline {paragraph}{Verzioniranje u sklopu kontinuirane integracije}{18}
-\contentsline {paragraph}{SSH autentifikacija}{19}
-\contentsline {subsection}{\numberline {2.2.2}Priprema sustava}{21}
-\contentsline {subsection}{\numberline {2.2.3}Upravljanje ovisnostima}{22}
-\contentsline {paragraph}{CocoaPods}{23}
-\contentsline {paragraph}{Carthage}{24}
-\contentsline {paragraph}{Automatizacija dohva\IeC {\'c}anja ovisnosti}{25}
-\contentsline {subsection}{\numberline {2.2.4}Izgradnja}{27}
-\contentsline {section}{\numberline {2.3}Testiranje}{30}
-\contentsline {subsection}{\numberline {2.3.1}Automatizacija testiranja}{31}
-\contentsline {section}{\numberline {2.4}Osiguranje kvalitete}{33}
-\contentsline {chapter}{\numberline {3}Kontinuirana dostava}{35}
-\contentsline {section}{\numberline {3.1}Potpisivanje koda}{38}
-\contentsline {subsection}{\numberline {3.1.1}Automatizacija potpisivanja koda}{41}
-\contentsline {section}{\numberline {3.2}Arhiviranje}{42}
-\contentsline {subsection}{\numberline {3.2.1}Automatizacija arhiviranja}{44}
-\contentsline {section}{\numberline {3.3}Objava}{44}
-\contentsline {subsection}{\numberline {3.3.1}Crashlytics}{45}
-\contentsline {paragraph}{Automatizacije objave}{46}
-\contentsline {subsection}{\numberline {3.3.2}App Store}{47}
-\contentsline {paragraph}{Automatizacija objave}{49}
-\contentsline {chapter}{\numberline {4}Kontinuirana isporuka}{51}
-\contentsline {section}{\numberline {4.1}Tipovi isporuke}{53}
-\contentsline {section}{\numberline {4.2}Odabir tipa isporuke}{54}
-\contentsline {section}{\numberline {4.3}Priprema projekta za automatsku isporuku}{56}
-\contentsline {section}{\numberline {4.4}Implementacija kontinuirane isporuke}{58}
-\contentsline {section}{\numberline {4.5}Pregled rezultata implementacije kontinuirane isporuke}{59}
-\contentsline {chapter}{\numberline {5}Zaklju\IeC {\v c}ak}{63}
-\contentsline {chapter}{Literatura}{65}
-\contentsline {chapter}{Dodaci}{70}
-\contentsline {chapter}{\numberline {A}Usporedba alata za implementaciju kontinuirane integracije}{71}
-\contentsline {section}{\numberline {A.1}Prvi upitnik}{72}
-\contentsline {section}{\numberline {A.2}Drugi upitnik}{72}
-\contentsline {section}{\numberline {A.3}Ispitani sustavi}{73}
-\contentsline {subsection}{\numberline {A.3.1}Jenkins}{74}
-\contentsline {subsection}{\numberline {A.3.2}Xcode Server}{75}
-\contentsline {subsection}{\numberline {A.3.3}CircleCI}{76}
-\contentsline {subsection}{\numberline {A.3.4}Travis CI}{77}
-\contentsline {chapter}{\numberline {B}Alat xcodebuild}{80}
-\contentsline {section}{\numberline {B.1}Testiranje}{81}
-\contentsline {section}{\numberline {B.2}Osiguranje kvalitete}{82}
-\contentsline {section}{\numberline {B.3}Arhiviranje}{82}
-\contentsline {chapter}{\numberline {C}Fastlane}{84}
-\contentsline {section}{\numberline {C.1}Dohvat ovisnosti}{85}
-\contentsline {section}{\numberline {C.2}Izgradnja}{86}
-\contentsline {section}{\numberline {C.3}Testiranje}{86}
+\contentsline {section}{\numberline {2.1}Usporedba alata za implementaciju kontinuirane integracije}{5}
+\contentsline {subsection}{\numberline {2.1.1}Prvi upitnik}{5}
+\contentsline {subsection}{\numberline {2.1.2}Drugi upitnik}{6}
+\contentsline {subsection}{\numberline {2.1.3}Ispitani sustavi}{7}
+\contentsline {paragraph}{Jenkins}{8}
+\contentsline {paragraph}{Xcode Server}{9}
+\contentsline {paragraph}{CircleCI}{10}
+\contentsline {paragraph}{Travis CI}{11}
+\contentsline {section}{\numberline {2.2}Priprema}{14}
+\contentsline {subsection}{\numberline {2.2.1}Xcode Server}{14}
+\contentsline {subsection}{\numberline {2.2.2}Homebrew}{17}
+\contentsline {section}{\numberline {2.3}Izgradnja}{17}
+\contentsline {subsection}{\numberline {2.3.1}Verzioniranje}{19}
+\contentsline {paragraph}{Uvod u git}{21}
+\contentsline {paragraph}{Tijek verzioniranja}{24}
+\contentsline {paragraph}{Verzioniranje u sklopu kontinuirane integracije}{27}
+\contentsline {paragraph}{SSH autentifikacija}{28}
+\contentsline {subsection}{\numberline {2.3.2}Priprema sustava}{30}
+\contentsline {subsection}{\numberline {2.3.3}Upravljanje ovisnostima}{31}
+\contentsline {paragraph}{CocoaPods}{31}
+\contentsline {paragraph}{Carthage}{33}
+\contentsline {paragraph}{Automatizacija dohva\IeC {\'c}anja ovisnosti}{34}
+\contentsline {subsection}{\numberline {2.3.4}Izgradnja}{35}
+\contentsline {section}{\numberline {2.4}Testiranje}{38}
+\contentsline {subsection}{\numberline {2.4.1}Automatizacija testiranja}{40}
+\contentsline {section}{\numberline {2.5}Osiguranje kvalitete}{41}
+\contentsline {chapter}{\numberline {3}Kontinuirana dostava}{44}
+\contentsline {section}{\numberline {3.1}Potpisivanje koda}{47}
+\contentsline {subsection}{\numberline {3.1.1}Automatizacija potpisivanja koda}{50}
+\contentsline {section}{\numberline {3.2}Arhiviranje}{51}
+\contentsline {subsection}{\numberline {3.2.1}Automatizacija arhiviranja}{53}
+\contentsline {section}{\numberline {3.3}Objava}{53}
+\contentsline {subsection}{\numberline {3.3.1}Crashlytics}{54}
+\contentsline {paragraph}{Automatizacije objave}{55}
+\contentsline {subsection}{\numberline {3.3.2}App Store}{56}
+\contentsline {paragraph}{Automatizacija objave}{58}
+\contentsline {chapter}{\numberline {4}Kontinuirana isporuka}{60}
+\contentsline {section}{\numberline {4.1}Tipovi isporuke}{62}
+\contentsline {section}{\numberline {4.2}Odabir tipa isporuke}{63}
+\contentsline {section}{\numberline {4.3}Priprema projekta za automatsku isporuku}{65}
+\contentsline {section}{\numberline {4.4}Implementacija kontinuirane isporuke}{67}
+\contentsline {section}{\numberline {4.5}Pregled rezultata implementacije kontinuirane isporuke}{69}
+\contentsline {chapter}{\numberline {5}Zaklju\IeC {\v c}ak}{72}
+\contentsline {chapter}{Literatura}{74}
+\contentsline {chapter}{Dodaci}{79}
+\contentsline {chapter}{\numberline {A}Alat xcodebuild}{80}
+\contentsline {section}{\numberline {A.1}Testiranje}{81}
+\contentsline {section}{\numberline {A.2}Osiguranje kvalitete}{82}
+\contentsline {section}{\numberline {A.3}Arhiviranje}{82}
+\contentsline {chapter}{\numberline {B}Fastlane}{84}
+\contentsline {section}{\numberline {B.1}Dohvat ovisnosti}{85}
+\contentsline {section}{\numberline {B.2}Izgradnja}{86}
+\contentsline {section}{\numberline {B.3}Testiranje}{86}
